@@ -1,0 +1,78 @@
+/* Non, c'est pas beau, mais il faut aller vite ! */
+.section-flex {
+    display: flex;
+    align-items:stretch;
+}
+
+.opt_img {
+}
+
+.illu-1 {
+  width: 517px;
+  object-fit: contain;
+}
+
+.team-startup-illu {
+  object-fit: contain;
+  max-width: 668px;
+  height:auto;
+}
+
+
+.container-leftpad {
+    padding-left:6rem;
+}
+
+.number {
+    font-size:5rem;
+    font-weight:bold;
+    color: #53657d;
+    font-family: 'Evolventa';
+    }
+
+.text_1 { max-width:40em; padding-left:5em; }
+.text_2 { max-width:30em; padding-left:5em; }
+
+
+.numlist > * {
+  flex-basis:0;
+  flex-grow:1;
+  padding:.5rem;
+}
+
+.pane {
+    padding: 3em;
+    padding: var(--space-xl);
+    margin:0;
+}
+
+.formrow {
+    max-width:1200px;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.leftpane {
+    background-image: linear-gradient(to left, #0053b3, #003b80);
+    color:#fff;
+}
+.leftpane a {
+  color: #fff;
+  color: var(--white);
+}
+
+.leftpane a:hover {
+  background: #53657d;
+  background: var(--darker-grey);
+}
+
+
+@media (max-width: 850px) {
+  .opt_img {
+    display:none;
+  }
+    .text_1 { max-width:50em; }
+    .text_2 { max-width:50em; }
+}
