@@ -10,7 +10,7 @@
 
 _Faciliter l'immersion professionnelle des personnes en situation de handicap_
 
-Bienvenue sur notre repo. On s'installe, y'a des échafaudages partout; mettez votre casque de chantier et venez boire un café :coffee:
+Bienvenue sur notre repo. On s'installe, y'a des échafaudages partout; mettez votre casque de chantier et venez boire un café ! :coffee:
 
 ## 🚀 C'est Parti !
 
