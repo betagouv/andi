@@ -36,6 +36,15 @@ module.exports = {
         respectDNT: true,
       },
     },
+    // FIXME: Once obtained, set site id
+    // {
+    //   resolve: 'gatsby-plugin-matomo',
+    //   options: {
+    //     siteId: 'YOUR_SITE_ID',
+    //     matomoUrl: 'https://YOUR_MATOMO_URL.COM',
+    //     siteUrl: 'https://YOUR_LIVE_SITE_URL.COM'
+    //   }
+    // }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
