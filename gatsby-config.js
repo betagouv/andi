@@ -43,15 +43,14 @@ module.exports = {
         sv: 6
       },
     },
-    // FIXME: Once obtained, set site id
-    // {
-    //   resolve: 'gatsby-plugin-matomo',
-    //   options: {
-    //     siteId: 'YOUR_SITE_ID',
-    //     matomoUrl: 'https://YOUR_MATOMO_URL.COM',
-    //     siteUrl: 'https://YOUR_LIVE_SITE_URL.COM'
-    //   }
-    // }
+    {
+      resolve: 'gatsby-plugin-matomo',
+      options: {
+        siteId: '94',
+        matomoUrl: 'https://stats.data.gouv.fr',
+        siteUrl: 'https://andi.beta.gouv.fr'
+      }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
