@@ -1,22 +1,22 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "ANDi",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Faciliter l'immersion professionnelle des personnes en situation de handicap",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Pieterjan Montens <pieterjan@montens.net>",
   "dependencies": {
-    "gatsby": "^2.13.15",
-    "gatsby-image": "^2.2.5",
+    "gatsby": "^2.13.25",
+    "gatsby-image": "^2.2.6",
     "gatsby-plugin-favicon": "^3.1.6",
     "gatsby-plugin-google-analytics": "^2.1.4",
     "gatsby-plugin-hotjar": "^1.0.1",
-    "gatsby-plugin-manifest": "^2.2.2",
+    "gatsby-plugin-manifest": "^2.2.3",
     "gatsby-plugin-matomo": "^0.7.2",
-    "gatsby-plugin-offline": "^2.2.2",
+    "gatsby-plugin-offline": "^2.2.4",
     "gatsby-plugin-react-helmet": "^3.1.2",
-    "gatsby-plugin-sharp": "^2.2.4",
-    "gatsby-source-filesystem": "^2.1.4",
-    "gatsby-transformer-sharp": "^2.2.2",
+    "gatsby-plugin-sharp": "^2.2.7",
+    "gatsby-source-filesystem": "^2.1.5",
+    "gatsby-transformer-sharp": "^2.2.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -42,7 +42,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/betagouv/andi"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
