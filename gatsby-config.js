@@ -31,10 +31,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        // replace "UA-XXXXXXXXX-X" with your own Tracking ID
         trackingId: "UA-4219222-9",
         head: true,
         respectDNT: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        id: 1404590,
+        sv: 6
       },
     },
     // FIXME: Once obtained, set site id

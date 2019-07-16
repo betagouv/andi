@@ -12,13 +12,19 @@ const FormPage = () => (
               <Link to="/" style={{color: '#fff'}}>Accueil</Link> / Inscription
             </div>
             <h1>Inscrivez-vous pour participer à l'aventure</h1>
-            <h4>Nous vous accompagnons pour :</h4>
+            <p>Ce projet est expérimental. Il se construit pour vous et avec vous. Chacun est libre d’y participer et de l’arrêter quand il le souhaite.</p>
+            <h4>Cette expérimentation est faite pour vous si vous souhaitez :</h4>
             <ul>
               <li>Découvrir un métier ou un secteur d'activité</li>
               <li>Confirmer votre projet professionnel</li>
-              <li>Initier une démarche de recrutement avec l'employeur</li>
+              <li>Initier une démarche de recrutement avec un employeur</li>
             </ul>
-            <p style={{marginTop: '3em'}}>Ce projet est expérimental.<br />Il se construit pour vous et avec vous.</p>
+            <h4>Comment ça se passe concrètement :</h4>
+            <p>Vous êtes accompagné pendant 1 à 2 mois par notre équipe.</p>
+            <p>Durant cette période nous travaillons avec vous pour définir au mieux votre projet professionnel.</p>
+            <p>Nous vous aidons ensuite à trouver une entreprise adaptée à votre projet et prête à vous accueillir en immersion.</p>
+            <p>Nous examinons ensemble les difficultés que vous rencontrez au cours de cette immersion et nous vous proposons des solutions pour les régler.</p>
+            <p>Nous faisons un bilan à la fin de la période d’immersion et nous vous aidons à prendre la direction que vous avez choisi.</p>
           </div>
           <div className="section pane section-grey">
             <form action="https://formkeep.com/f/a7a5b70426bc" accept-charset="UTF-8" enctype="multipart/form-data" method="POST">
