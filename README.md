@@ -18,4 +18,4 @@ Bienvenue sur notre repo. On s'installe, y'a des échafaudages partout; mettez v
 
 ## 💫 Deploiement
 
-[![Deployer vers Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+[![Deployer vers Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/betagouv/andi)

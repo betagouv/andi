@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 
 const Footer = () => (
       <footer className="footer" role="contentinfo">
@@ -15,7 +16,7 @@ const Footer = () => (
             </ul>
           </div>
           <ul className="footer__links">
-            <li><a href="conditions.html">Conditions générales d'utilisation</a></li>
+            <li><Link to="/conditions-generales">Conditions générales d'utilisation</Link></li>
             <li><a href="mailto:andi@beta.gouv.fr" title="Nous écrire un mail">Nous contacter</a></li>
             {/*
                     <li><a href="https://www.data.gouv.fr/reference">Données de référence</a></li>

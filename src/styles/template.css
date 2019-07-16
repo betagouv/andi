@@ -288,8 +288,8 @@ select {
   color: var(--black);
   border-radius: 3px;
   border-radius: var(--theme-border-radius);
-  border: 1px solid #adb9c9;
-  border: 1px solid var(--theme-border);
+  border: 3px solid #adb9c9;
+  border: 3px solid var(--theme-border);
   background: #fff;
   background: var(--theme-background-white);
   vertical-align: middle;
@@ -473,7 +473,7 @@ input[type="button"]:visited {
   background-color: var(--theme-primary);
   border-radius: 3px;
   border-radius: var(--theme-border-radius);
-  border: 0;
+  border: 5px solid #001329;
   font-family: "Source Sans Pro", Arial, sans-serif;
   font-size: 1em;
   font-size: var(--space-s);
@@ -491,6 +491,8 @@ input[type="submit"]:hover,
 input[type="button"]:hover {
   background: #003b80;
   background: var(--theme-secondary-darken);
+  border-color:#fff;
+  border-style:inset;
 }
 
 a.button:active,
@@ -606,7 +608,7 @@ input[type="submit"].large,
 input[type="button"].large,
 a.button-outline.large,
 button.button-outline.large {
-  font-size: 1.25em;
+  font-size: 1.35em;
 }
 
 .button.warning,

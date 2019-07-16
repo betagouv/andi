@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `ANDi`,
+    description: `Faciliter l'immersion professionnelle des personnes en situation de handicap`,
+    author: `@ANDi_betagouv`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -14,38 +14,33 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
+    // `gatsby-plugin-eslint`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-favicon`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-      },
-    },
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        // replace "UA-XXXXXXXXX-X" with your own Tracking ID
         trackingId: "UA-4219222-9",
         head: true,
         respectDNT: true,
       },
     },
-    // FIXME: Once obtained, set site id
-    // {
-    //   resolve: 'gatsby-plugin-matomo',
-    //   options: {
-    //     siteId: 'YOUR_SITE_ID',
-    //     matomoUrl: 'https://YOUR_MATOMO_URL.COM',
-    //     siteUrl: 'https://YOUR_LIVE_SITE_URL.COM'
-    //   }
-    // }
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        id: 1404590,
+        sv: 6
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-matomo',
+      options: {
+        siteId: '94',
+        matomoUrl: 'https://stats.data.gouv.fr',
+        siteUrl: 'https://andi.beta.gouv.fr'
+      }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
