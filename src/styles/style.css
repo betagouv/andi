@@ -18,6 +18,33 @@
   height:auto;
 }
 
+/* FOCUS */
+a:focus,
+a:visited,
+a:active {
+  text-decoration: underline;
+  color: #0053b3;
+  color: var(--theme-primary);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #006be6;
+  border-color: var(--theme-border-active);
+  -webkit-transition: border-color 0.2s ease-out;
+  transition: border-color 0.2s ease-out;
+}
+
+select:focus {
+  outline: none;
+}
+/*****************************/
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
 
 
 .container-leftpad {

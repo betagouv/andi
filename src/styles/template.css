@@ -288,8 +288,8 @@ select {
   color: var(--black);
   border-radius: 3px;
   border-radius: var(--theme-border-radius);
-  border: 1px solid #adb9c9;
-  border: 1px solid var(--theme-border);
+  border: 3px solid #adb9c9;
+  border: 3px solid var(--theme-border);
   background: #fff;
   background: var(--theme-background-white);
   vertical-align: middle;
