@@ -74,7 +74,7 @@ const IndexPage = () => (
               <p>Notre objectif est de permettre aux personnes en situation de handicap de réaliser des immersions professionnelles.</p>
               <p>Ce projet est en cours d’expérimentation. Il se construit actuellement avec des employeurs, des associations, des organismes d’Etat, et bien sur avec des personnes en situation de handicap qui cherchent un emploi.</p>
             </div>
-            <img className="opt_img team-startup-illu" src={'team-startup-illu.png'} alt="début description: l'équipe assis autour d'une table. Fin description." srcSet="images/team-startup-illu@2x.png 2x, images/team-startup-illu@3x.png 3x" />
+            <img className="opt_img team-startup-illu" src={'team-startup-illu.png'} srcSet="images/team-startup-illu@2x.png 2x, images/team-startup-illu@3x.png 3x" />
           </div>
         </section>
       </div>
