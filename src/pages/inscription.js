@@ -21,7 +21,7 @@ const FormPage = () => (
             <p style={{marginTop: '3em'}}>Ce projet est expérimental.<br />Il se construit pour vous et avec vous.</p>
           </div>
           <div className="section pane section-grey">
-            <form action="#" method="post" name="form" target="_blank" noValidate>
+            <form action="https://formkeep.com/f/a7a5b70426bc" accept-charset="UTF-8" enctype="multipart/form-data" method="POST">
               <div className="form__group">
                 <label htmlFor="prenom">Prénom</label>
                 <input name="prenom" id="prenom" type="text" />

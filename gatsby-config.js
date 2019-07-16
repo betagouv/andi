@@ -15,6 +15,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-favicon`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -27,6 +28,24 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // replace "UA-XXXXXXXXX-X" with your own Tracking ID
+        trackingId: "UA-4219222-9",
+        head: true,
+        respectDNT: true,
+      },
+    },
+    // FIXME: Once obtained, set site id
+    // {
+    //   resolve: 'gatsby-plugin-matomo',
+    //   options: {
+    //     siteId: 'YOUR_SITE_ID',
+    //     matomoUrl: 'https://YOUR_MATOMO_URL.COM',
+    //     siteUrl: 'https://YOUR_LIVE_SITE_URL.COM'
+    //   }
+    // }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
