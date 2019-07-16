@@ -38,7 +38,12 @@ const IndexPage = () => (
             <img style={{}} className="opt_img illu-1" src={'illu-1.png'} alt="début description: Une personne utilise des jumelles. Fin description." srcSet="images/illu-1@2x.png 2x, images/illu-1@3x.png 3x" />
           </div>
         </section>
-
+        <div className="svg_container" aria-hidden="true" focusable="false">
+          <svg className="svg_1" viewBox="0 70 500 80" preserveAspectRatio="none">
+            <rect x={0} y={0} width={500} height={500} style={{stroke: 'none'}} />
+            <path d="M0,100 C150,0 350,250 500,100 L500,00 L0,0 Z" style={{stroke: 'none'}} />
+          </svg>
+        </div>
         <section>
           <h2 className="section__title" style={{marginTop: '3rem'}}>Comment participer ?</h2>
           <div className="container" style={{marginTop: '6rem'}}>
@@ -66,7 +71,15 @@ const IndexPage = () => (
               </div>
             </div>
           </div>
+          <br />
+          <br />
         </section>
+        <div className="svg_container" aria-hidden="true" focusable="false">
+          <svg className="svg_2" viewBox="0 70 500 60" preserveAspectRatio="none">
+            <rect x={0} y={0} width={500} height={500} style={{stroke: 'none'}} />
+            <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z" style={{stroke: 'none'}} />
+          </svg>
+        </div>
         <section className="section section-grey" style={{marginTop: '2rem'}}>
           <div className="row">
             <div className="container text_2">

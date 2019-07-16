@@ -121,3 +121,30 @@ body a.fullwidth {
     .text_1 { max-width:50em; }
     .text_2 { max-width:50em; }
 }
+
+/* svg curve */
+.svg_1, .svg_2 {
+  width: 100%;
+  height: 100%;
+}
+
+.svg_1 path { fill: #ebeff3; }
+.svg_1 rect { fill: #fff; }
+.svg_2 rect { fill: #ebeff3; }
+.svg_2 path { fill: #fff; }
+
+.svg_container {
+  --divider-height: 4rem;
+  
+  position: relative;
+  top: calc( var(--divider-height)/2 * -1 );
+
+  height: var(--divider-height);
+  width: 100%;
+    /* alternatively, could get rid of the rect, and move the svg container further down */
+
+  float: left; 
+  z-index: 1;
+  
+/*   outline: 1px solid red; */
+}
