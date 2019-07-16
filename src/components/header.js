@@ -1,7 +1,14 @@
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import { Link } from "gatsby"
 
+import Svg from "./svg"
+
+import marianneSVG from '../images/logo-marianne.svg'
+import betagouvSVG from '../images/pointbetagouvfr.svg'
+
+/*
 const Header = ({ siteTitle }) => (
   <header
     style={{
@@ -29,6 +36,26 @@ const Header = ({ siteTitle }) => (
       </h1>
     </div>
   </header>
+)
+*/
+
+const Header = () => (
+    <>
+        <Svg />
+        <header className="navbar" role="navigation">
+            <div className="navbar__container">
+              <Link to="/" className="navbar__home">
+                <img className="navbar__logo" src={marianneSVG} alt="andi.beta.gouv.fr" />
+                <span className="navbar__domain">andi</span>
+                <img className="navbar__gouvfr" src={betagouvSVG} alt="beta.gouv.fr" />
+              </Link>
+              <nav>
+                <ul className="nav__links">
+                </ul>
+              </nav>
+            </div>
+      </header>
+    </>
 )
 
 Header.propTypes = {
