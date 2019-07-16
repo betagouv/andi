@@ -33,7 +33,7 @@ const IndexPage = () => (
             <div className="container text_1">
               <h1>Essayez un métier simplement</h1>
               <h3>Vous êtes en situation de handicap et vous souhaitez prendre ou reprendre contact avec la vie professionnelle ? Participez à notre expérience</h3>
-              <Link className="button" to="/inscription">Je m'inscris</Link>
+              <Link className="button large" to="/inscription">Je m'inscris</Link>
             </div>
             <img style={{}} className="opt_img illu-1" src={'illu-1.png'} alt="début description: Une personne utilise des jumelles. Fin description." srcSet="images/illu-1@2x.png 2x, images/illu-1@3x.png 3x" />
           </div>
@@ -46,7 +46,7 @@ const IndexPage = () => (
                 <span className="number">1</span>
                 <h3>Je m’inscris</h3>
                 <p>Je donne mon nom et mon email pour recevoir ensuite un questionnaire sur mon projet professionnel.</p>
-                <Link className="button" to="/inscription">Je m'inscris</Link>
+                <Link className="button fullwidth" to="/inscription">Je m'inscris</Link>
               </div>
               <div>
                 <span className="number">2</span>

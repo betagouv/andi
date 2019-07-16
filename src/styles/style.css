@@ -8,19 +8,25 @@
 }
 
 .illu-1 {
-  width: 517px;
+  max-width: 424px;
   object-fit: contain;
 }
 
 .team-startup-illu {
   object-fit: contain;
-  max-width: 668px;
+  max-width: 502px;
   height:auto;
 }
 
 
+
 .container-leftpad {
     padding-left:6rem;
+}
+
+body a.fullwidth {
+    width:100%;
+    text-align:center;
 }
 
 .number {
@@ -29,6 +35,10 @@
     color: #53657d;
     font-family: 'Evolventa';
     }
+
+.text-bold {
+    font-weight:bold;
+}
 
 .text_1 { max-width:40em; padding-left:5em; }
 .text_2 { max-width:30em; padding-left:5em; }
