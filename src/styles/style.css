@@ -19,9 +19,16 @@
 }
 
 /* FOCUS */
-a:focus,
-a:visited,
-a:active {
+body a.button:focus,
+body a:focus,
+input:focus,
+input[type=text]:focus,
+input[type=email]:focus {
+    outline:5px dotted #888;
+    outline-offset:2px;
+}
+/*
+a:focus {
   text-decoration: underline;
   color: #0053b3;
   color: var(--theme-primary);
@@ -39,12 +46,13 @@ select:focus {
 select:focus {
   outline: none;
 }
-/*****************************/
 
 select:-moz-focusring {
   color: transparent;
   text-shadow: 0 0 0 #000;
 }
+*/
+/*****************************/
 
 
 .container-leftpad {

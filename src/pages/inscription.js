@@ -30,15 +30,15 @@ const FormPage = () => (
             <form action="https://formkeep.com/f/a7a5b70426bc" accept-charset="UTF-8" enctype="multipart/form-data" method="POST">
               <div className="form__group">
                 <label htmlFor="prenom">Prénom</label>
-                <input name="prenom" id="prenom" type="text" />
+                <input name="prenom" id="prenom" type="text" required="true" />
               </div>
               <div className="form__group">
                 <label htmlFor="nom">Nom</label>
-                <input name="nom" id="nom" type="text" />
+                <input name="nom" id="nom" type="text" required="true" />
               </div>
               <div className="form__group">
                 <label htmlFor="email">Email</label>
-                <input name="email" id="email" type="email" />
+                <input name="email" id="email" type="email" required="true" />
               </div>
               <input type="submit" className="button" value="Envoyer ma réponse" style={{width: '100%'}} />
               <p>Vous allez recevoir un email de confirmation et la suite des étapes.</p>
