@@ -11,7 +11,7 @@ import PropTypes from "prop-types"
 
 import Header from "./header"
 import Footer from "./footer"
-import "./layout.css"
+// import "./layout.css"
 
 /*
 const Layout = ({ children }) => {
@@ -48,11 +48,11 @@ const Layout = ({ children }) => {
 }
 */
 
-const Layout = ({contents}) => {
+const Layout = ({children}) => {
     return (
         <>
         <Header />
-        <main role="main">{contents}</main>
+        <main role="main">{children}</main>
         <Footer />
         </>
     )

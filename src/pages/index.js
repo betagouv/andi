@@ -1,12 +1,11 @@
 import React from "react"
-// import { Link } from "gatsby"
+import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 // import Image from "../components/image"
 // import SEO from "../components/seo"
 
 /* TODO: 
- * - use gatsby links
  * - use gatsby images
  * - add SEO
  * /
@@ -34,9 +33,9 @@ const IndexPage = () => (
             <div className="container text_1">
               <h1>Notre Objectif:<br />Faciliter l'immersion professionnelle des personnes en situation de handicap.</h1>
               <h3>Vous voulez faire partie de l'expérience ?</h3>
-              <a className="button" href="inscription.html">Inscrivez-vous</a>
+              <Link className="button" to="/inscription">inscrivez-vous</Link>
             </div>
-            <img style={{}} className="opt_img illu-1" src="images/illu-1.png" alt="début description: Une personne utilise des jumelles. Fin description." srcSet="images/illu-1@2x.png 2x, images/illu-1@3x.png 3x" />
+            <img style={{}} className="opt_img illu-1" src={'illu-1.png'} alt="début description: Une personne utilise des jumelles. Fin description." srcSet="images/illu-1@2x.png 2x, images/illu-1@3x.png 3x" />
           </div>
         </section>
         <section>
@@ -47,7 +46,7 @@ const IndexPage = () => (
                 <span className="number">1</span>
                 <h3>Inscrivez-vous</h3>
                 <p>Inscrivez-vous et donnez nous plus d'informations sur ce que vous souhaitez faire.</p>
-                <a className="button" href="inscription.html">Inscrivez-vous</a>
+                <Link className="button" to="/inscription">inscrivez-vous</Link>
               </div>
               <div>
                 <span className="number">2</span>
@@ -77,7 +76,7 @@ const IndexPage = () => (
                 aux personnes en situation de handicap
                 de réaliser des immersions professionnelles.</p>
             </div>
-            <img className="opt_img team-startup-illu" src="images/team-startup-illu.png" alt="début description: l'équipe assis autour d'une table. Fin description." srcSet="images/team-startup-illu@2x.png 2x, images/team-startup-illu@3x.png 3x" />
+            <img className="opt_img team-startup-illu" src={'team-startup-illu.png'} alt="début description: l'équipe assis autour d'une table. Fin description." srcSet="images/team-startup-illu@2x.png 2x, images/team-startup-illu@3x.png 3x" />
           </div>
         </section>
       </div>

@@ -1,6 +1,12 @@
 // import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import { Link } from "gatsby"
+
+import Svg from "./svg"
+
+import marianneSVG from '../images/logo-marianne.svg'
+import betagouvSVG from '../images/pointbetagouvfr.svg'
 
 /*
 const Header = ({ siteTitle }) => (
@@ -33,21 +39,23 @@ const Header = ({ siteTitle }) => (
 )
 */
 
-// TODO: implement a as link
 const Header = () => (
-    <header className="navbar" role="navigation">
-        <div className="navbar__container">
-          <a className="navbar__home" href="index.html">
-            <img className="navbar__logo" src="images/logo-marianne.svg" alt="andi.beta.gouv.fr" />
-            <span className="navbar__domain">andi</span>
-            <img className="navbar__gouvfr" src="images/pointbetagouvfr.svg" alt="beta.gouv.fr" />
-          </a>
-          <nav>
-            <ul className="nav__links">
-            </ul>
-          </nav>
-        </div>
-  </header>
+    <>
+        <Svg />
+        <header className="navbar" role="navigation">
+            <div className="navbar__container">
+              <Link to="/" className="navbar__home">
+                <img className="navbar__logo" src={marianneSVG} alt="andi.beta.gouv.fr" />
+                <span className="navbar__domain">andi</span>
+                <img className="navbar__gouvfr" src={betagouvSVG} alt="beta.gouv.fr" />
+              </Link>
+              <nav>
+                <ul className="nav__links">
+                </ul>
+              </nav>
+            </div>
+      </header>
+    </>
 )
 
 Header.propTypes = {
