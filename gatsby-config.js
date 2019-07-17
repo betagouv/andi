@@ -41,6 +41,18 @@ module.exports = {
         siteUrl: 'https://andi.beta.gouv.fr'
       }
     },
+    {
+      resolve: 'gatsby-plugin-react-axe',
+      options: {
+        showInProduction: false,
+
+        // Options to pass to axe-core.
+        // See: https://github.com/dequelabs/axe-core/blob/master/doc/API.md#api-name-axeconfigure
+        axeOptions: {
+          // Your axe-core options.
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
