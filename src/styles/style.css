@@ -7,6 +7,22 @@
 .opt_img {
 }
 
+body label, body legend {
+  color: #fff;
+  font-size:1.25em;
+}
+
+form input[type="submit"],
+form input[type="submit"]:focus,
+form input[type="submit"]:active,
+form input[type="submit"]:visited {
+    background-color:#018f44;
+    font-size:1.5em;
+}
+form input[type="submit"]:hover {
+    background-color:#002612;
+}
+
 .text_1 h2 {
   margin: 1em auto;
   font-weight:normal;
