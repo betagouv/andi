@@ -1,0 +1,28 @@
+backend:
+  name: github
+  repo: betagouv/andi
+
+site_url: https://andi.beta.gouv.fr
+display_url: https://andi.beta.gouv.fr
+
+media_folder: static/assets
+public_folder: assets
+
+collections:
+  - name: 'pages'
+    label: 'Pages'
+    files:
+        - label: "Accueil"
+          name: "landing page"
+          file: "site/index.yml"
+          fields:
+            - { name: 'test_cms', label: 'Sous-titre', widget: 'string'}
+  # - name: blog
+  #   label: Blog
+  #   folder: blog
+  #   create: true
+  #   fields:
+  #     - { name: path, label: Path }
+  #     - { name: date, label: Date, widget: date }
+  #     - { name: title, label: Title }
+  #     - { name: body, label: Body, widget: markdown }
