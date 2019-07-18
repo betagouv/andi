@@ -20,6 +20,7 @@ form input[type="submit"]:visited {
     font-size:1.5em;
     border-color:#29a229;
     color:#051505;
+    white-space: normal;
 }
 form input[type="submit"]:hover {
     background-color:#29a229;
@@ -82,6 +83,10 @@ select:-moz-focusring {
 */
 /*****************************/
 
+
+a.button.large {
+    text-align:center;
+}
 
 label {
     padding-bottom:.4em;
