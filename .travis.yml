@@ -25,3 +25,4 @@ addons:
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_218785b12a81_key -iv $encrypted_218785b12a81_iv -in deploy_ed25519.enc -out deploy_ed25519 -d
+  - chmod 600 deploy_ed25519
