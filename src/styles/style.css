@@ -20,7 +20,6 @@ form input[type="submit"]:visited {
     font-size:1.5em;
     border-color:#29a229;
     color:#051505;
-    white-space: normal;
 }
 form input[type="submit"]:hover {
     background-color:#29a229;
@@ -56,32 +55,7 @@ input[type=email]:focus {
     outline:5px dotted #888;
     outline-offset:2px;
 }
-/*
-a:focus {
-  text-decoration: underline;
-  color: #0053b3;
-  color: var(--theme-primary);
-}
 
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: #006be6;
-  border-color: var(--theme-border-active);
-  -webkit-transition: border-color 0.2s ease-out;
-  transition: border-color 0.2s ease-out;
-}
-
-select:focus {
-  outline: none;
-}
-
-select:-moz-focusring {
-  color: transparent;
-  text-shadow: 0 0 0 #000;
-}
-*/
-/*****************************/
 
 
 a.button.large {
@@ -155,8 +129,9 @@ body a.fullwidth {
   .opt_img {
     display:none;
   }
-    .text_1 { max-width:50em; }
-    .text_2 { max-width:50em; }
+  .text_1 { max-width:50em; }
+  .text_2 { max-width:50em; }
+    form input[type="submit"] { white-space:normal}
 }
 
 /* svg curve */
