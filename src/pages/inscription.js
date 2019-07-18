@@ -12,7 +12,7 @@ const FormPage = () => (
               <Link to="/" style={{color: '#fff'}}>Accueil</Link> / Inscription
             </div>
             <h1>Inscrivez-vous pour participer à l'aventure</h1>
-            <form action="https://formkeep.com/f/a7a5b70426bc" acceptCharset="UTF-8" encType="multipart/form-data" method="POST">
+            <form action="https://usebasin.com/f/2ed85c3d52b3" acceptCharset="UTF-8" encType="multipart/form-data" method="POST">
               <div className="form__group">
                 <label htmlFor="prenom">Prénom</label>
                 <input name="prenom" id="prenom" type="text" required />
