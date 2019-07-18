@@ -42,7 +42,8 @@ const Header = ({ siteTitle }) => (
 const Header = () => (
     <>
         <Svg />
-        <header className="navbar" role="navigation">
+        {/* Fixme when nav menu exists: <header className="navbar" role="navigation" aria-label="en-tête de la page"> */ }
+        <header className="navbar" aria-label="en-tête de la page">
             <div className="navbar__container">
               <Link to="/" className="navbar__home">
                 <img className="navbar__logo" src={marianneSVG} alt="andi.beta.gouv.fr" />

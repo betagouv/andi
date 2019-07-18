@@ -53,15 +53,13 @@ const Layout = ({children}) => {
     return (
         <>
         <Helmet
-            title="andi.beta.gouv.fr" defer={false}
             meta={[
                 { name: 'description', content: 'Faciliter l\'immersion professionnelle des personnes en situation de handicap' }
             ]}
         >
-            <html lang="fr" />
         </Helmet>
         <Header />
-        <main role="main">{children}</main>
+        {children}
         <Footer />
         </>
     )

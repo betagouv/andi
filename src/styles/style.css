@@ -55,13 +55,17 @@ select:-moz-focusring {
 /*****************************/
 
 
+label {
+    padding-bottom:.4em;
+}
+
 .container-leftpad {
     padding-left:6rem;
 }
 
 body a.fullwidth {
-    width:100%;
-    text-align:center;
+    width:100% !important;
+    text-align:center !important;
 }
 
 .number {
