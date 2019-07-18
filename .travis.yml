@@ -1,9 +1,27 @@
 language: node_js
 node_js:
-  - '10.0'
+- '10.0'
 
+git:
+  submodules: false
 dist: trusty
 sudo: false
-
 notifications:
   slack: andi-startup:4EvkZ1UZEV4LwZXzvXhDGP8u
+
+jobs:
+  include:
+  - stage: Build
+    name: Build static pages
+    script: npm run build
+  - stage: Deploy
+    name: Deploy pages to host
+    # if: branch = master
+    skip_cleanup: true
+    script: rsync -e "ssh -i deploy_ed25519" -r --delete-after --quiet ./public/ travis@137.74.171.12:/var/www/test/
+
+addons:
+  ssh_known_hosts: andi.beta.gouv.fr
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_218785b12a81_key -iv $encrypted_218785b12a81_iv -in deploy_ed25519.enc -out deploy_ed25519 -d
