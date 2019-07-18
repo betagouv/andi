@@ -16,11 +16,13 @@ form input[type="submit"],
 form input[type="submit"]:focus,
 form input[type="submit"]:active,
 form input[type="submit"]:visited {
-    background-color:#018f44;
+    background-color:#ffe08c;
     font-size:1.5em;
+    border-color:#e4b34f;
+    color:#212529;
 }
 form input[type="submit"]:hover {
-    background-color:#002612;
+    background-color:#e4b34f;
 }
 
 .text_1 h2 {
