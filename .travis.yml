@@ -18,7 +18,7 @@ jobs:
     name: Deploy pages to host
     # if: branch = master
     skip_cleanup: true
-    script: rsync -e "ssh -i deploy_ed25519" -r --delete-after --quiet ./public/ travis@137.74.171.12:/var/www/test/
+    script: rsync -e "ssh -i deploy_ed25519" -r --delete-after --quiet ./public/ travis@andi.beta.gouv.fr:/var/www/test/
 
 addons:
   ssh_known_hosts: andi.beta.gouv.fr
