@@ -9,12 +9,14 @@ sudo: false
 notifications:
   slack: andi-startup:4EvkZ1UZEV4LwZXzvXhDGP8u
 
+
 # TODO: add S3 integration to copy stage artefacts
 jobs:
   include:
   - stage: Build
     name: Build static pages
     script: npm run build
+    skip_cleanup: true
   - stage: Deploy
     name: Deploy pages to host
     if: branch = master AND type = push AND fork = false
