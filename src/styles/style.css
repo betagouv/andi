@@ -7,6 +7,34 @@
 .opt_img {
 }
 
+body label, body legend {
+  color: #fff;
+  font-size:1.25em;
+}
+
+form input[type="submit"],
+form input[type="submit"]:focus,
+form input[type="submit"]:active,
+form input[type="submit"]:visited {
+    background-color:#7d7;
+    font-size:1.5em;
+    border-color:#29a229;
+    color:#051505;
+}
+form input[type="submit"]:hover {
+    background-color:#29a229;
+}
+
+.text_1 h2 {
+  margin: 1em auto;
+  font-weight:normal;
+  margin: var(--space-s) auto;
+  color: #26353f;
+  color: var(--theme-dark-text);
+  font-size: 1.5em;
+  font-family: "Source Sans Pro", Arial, sans-serif;
+}
+
 .illu-1 {
   max-width: 424px;
   object-fit: contain;

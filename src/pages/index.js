@@ -68,7 +68,7 @@ const IndexPage = () => (
                   <div>
                     <span className="number">4</span>
                     <h3>Je démarre l’expérience</h3>
-                    <p>L’équipe d’ANDi m’accompagne dans la recherche d’un métier qui me plait et me met en relation avec des entreprises qui sont prêtes à m'accueillir.</p>
+                    <p>L’équipe ANDi m’appuie dans la recherche d’un métier qui me plait et me met en relation avec des entreprises qui sont prêtes à m'accueillir.</p>
                   </div>
                 </div>
               </div>
