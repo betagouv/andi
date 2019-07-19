@@ -14,7 +14,12 @@ Bienvenue sur notre repo. On s'installe, y'a des échafaudages partout; mettez v
 
 ## 🚀 C'est Parti !
 
-(en cours de pré-construction)
+Comment déployer en local pour contribuer ? C'est par ici:
+
+1. installer npm (nodejs) et gatsby (voir [docs internet](https://www.gatsbyjs.org/docs/) sur le sujet)
+2. cloner le repo github
+3. `npm install --dev` dans le répertoire racine du projet puis un `gatsby develop` pour lancer l'environnement
+4. `localhost:8000` tu auras le tout qui tourne. Tout changement sauvegardé dans un fichier se verra dans le navigateur en temps réel. De plus, le linter donnera un retour des erreurs détectées dans le terminal, et la console de navigateur affichera les alertes d'accessibilité détectées par [Axe](https://www.deque.com/axe/).
 
 ## 💫 Deploiement
 
