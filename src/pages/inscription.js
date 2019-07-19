@@ -7,7 +7,7 @@ const FormPage = () => (
     <Layout>
       <section>
         <div className="row formrow">
-          <div className="section pane leftpane" role="main">
+          <div className="section pane section-grey" role="main">
             <div>
               <Link to="/" style={{color: '#fff'}}>Accueil</Link> / Inscription
             </div>
@@ -30,7 +30,7 @@ const FormPage = () => (
             </form>
 
           </div>
-          <div className="section pane section-grey" role="form">
+          <div className="section pane leftpane" role="form">
              <p>Ce projet est expérimental. Il se construit pour vous et avec vous. Chacun est libre d’y participer et de l’arrêter quand il le souhaite.</p>
             <h4>Cette expérimentation est faite pour vous si vous souhaitez :</h4>
             <ul>
