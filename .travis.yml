@@ -6,9 +6,11 @@ git:
   submodules: false
 dist: trusty
 sudo: false
+cache:
+  directories:
+    - public
 notifications:
   slack: andi-startup:4EvkZ1UZEV4LwZXzvXhDGP8u
-
 
 # TODO: add S3 integration to copy stage artefacts
 jobs:
@@ -24,6 +26,7 @@ jobs:
     if: branch = master AND type = push AND fork = false
     skip_cleanup: true
     script: 
+      - ls public/
       - npm run build
       - rsync -e "ssh -i deploy_ed25519" -r --delete-after --quiet public/ travis@andi.beta.gouv.fr:/var/www/static_ci/
       - curl --header "Content-Type: application/json" --request POST --data '{"message":"ANDi: Site mis a jour"}' https://hooks.zapier.com/hooks/catch/5355796/oo5ibqz/
