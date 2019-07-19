@@ -7,6 +7,34 @@
 .opt_img {
 }
 
+body label, body legend {
+  color: #fff;
+  font-size:1.25em;
+}
+
+form input[type="submit"],
+form input[type="submit"]:focus,
+form input[type="submit"]:active,
+form input[type="submit"]:visited {
+    background-color:#7d7;
+    font-size:1.5em;
+    border-color:#29a229;
+    color:#051505;
+}
+form input[type="submit"]:hover {
+    background-color:#29a229;
+}
+
+.text_1 h2 {
+  margin: 1em auto;
+  font-weight:normal;
+  margin: var(--space-s) auto;
+  color: #26353f;
+  color: var(--theme-dark-text);
+  font-size: 1.5em;
+  font-family: "Source Sans Pro", Arial, sans-serif;
+}
+
 .illu-1 {
   max-width: 424px;
   object-fit: contain;
@@ -27,33 +55,12 @@ input[type=email]:focus {
     outline:5px dotted #888;
     outline-offset:2px;
 }
-/*
-a:focus {
-  text-decoration: underline;
-  color: #0053b3;
-  color: var(--theme-primary);
-}
 
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: #006be6;
-  border-color: var(--theme-border-active);
-  -webkit-transition: border-color 0.2s ease-out;
-  transition: border-color 0.2s ease-out;
-}
 
-select:focus {
-  outline: none;
-}
 
-select:-moz-focusring {
-  color: transparent;
-  text-shadow: 0 0 0 #000;
+a.button.large {
+    text-align:center;
 }
-*/
-/*****************************/
-
 
 label {
     padding-bottom:.4em;
@@ -122,8 +129,9 @@ body a.fullwidth {
   .opt_img {
     display:none;
   }
-    .text_1 { max-width:50em; }
-    .text_2 { max-width:50em; }
+  .text_1 { max-width:50em; }
+  .text_2 { max-width:50em; }
+    form input[type="submit"] { white-space:normal}
 }
 
 /* svg curve */
