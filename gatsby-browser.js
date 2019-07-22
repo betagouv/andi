@@ -6,5 +6,7 @@
 
 // You can delete this file if you're not using it
 //
+
 import "./src/styles/template.css"
+import "./src/styles/bootstrap-grid.css"
 import "./src/styles/style.css"

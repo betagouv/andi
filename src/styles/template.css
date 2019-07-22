@@ -288,8 +288,8 @@ select {
   color: var(--black);
   border-radius: 3px;
   border-radius: var(--theme-border-radius);
-  border: 3px solid #adb9c9;
-  border: 3px solid var(--theme-border);
+  border: 1px solid #adb9c9;
+  border: 1px solid var(--theme-border);
   background: #fff;
   background: var(--theme-background-white);
   vertical-align: middle;
@@ -473,7 +473,7 @@ input[type="button"]:visited {
   background-color: var(--theme-primary);
   border-radius: 3px;
   border-radius: var(--theme-border-radius);
-  border: 5px solid #001329;
+  border: 0;
   font-family: "Source Sans Pro", Arial, sans-serif;
   font-size: 1em;
   font-size: var(--space-s);
@@ -491,8 +491,6 @@ input[type="submit"]:hover,
 input[type="button"]:hover {
   background: #003b80;
   background: var(--theme-secondary-darken);
-  border-color:#fff;
-  border-style:inset;
 }
 
 a.button:active,
@@ -608,7 +606,7 @@ input[type="submit"].large,
 input[type="button"].large,
 a.button-outline.large,
 button.button-outline.large {
-  font-size: 1.35em;
+  font-size: 1.25em;
 }
 
 .button.warning,
@@ -1270,8 +1268,7 @@ fieldset {
   height: var(--space-l);
 }
 /* stylelint-disable declaration-block-no-redundant-longhand-properties */
-/*
-.pagination {
+/* .pagination {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1289,8 +1286,7 @@ fieldset {
       flex-wrap: wrap;
   margin-top: 1.5em;
   margin-top: var(--space-m);
-}
-*/
+} */
 /* stylelint-enable declaration-block-no-redundant-longhand-properties */
 .pagination__display-group {
   margin-left: 1.5em;
@@ -1315,8 +1311,7 @@ select.pagination__display {
   margin-left: var(--space-m);
 }
 
-/*
-.pagination__pages {
+/* .pagination__pages {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -1329,9 +1324,8 @@ select.pagination__display {
           justify-content: end;
   margin-left: 1.5em;
   margin-left: var(--space-m);
-}
+} */
 
-*/
 .pagination__pages li a {
   color: #0053b3;
   color: var(--theme-primary);
@@ -2087,8 +2081,7 @@ a.article__link {
   background: 0;
 }
 
-/*
-.side-pane li.side-pane__dropdown > a {
+/* .side-pane li.side-pane__dropdown > a {
   background: url("images/icons/external/arrow-right.svg") no-repeat;
   background-position: center right 1em;
   background-position: center right var(--space-s);
@@ -2106,8 +2099,7 @@ a.article__link {
 .side-pane li.unfolded.side-pane__dropdown > a,
 .side-pane li.unfolded.side-pane__dropdown > a:hover {
   background-image: url("images/icons/external/arrow-down.svg");
-}
-*/
+} */
 
 .side-pane li.active.side-pane__dropdown a {
   font-weight: 700;
