@@ -12,6 +12,6 @@ import "./src/styles/style.css"
 export const onClientEntry = () => {
   window.onload = () => {
     const _paq = window._paq || []
-    _paq.push(['alwaysUseSendBeacon']);
+    _paq.push(["alwaysUseSendBeacon"]);
     }
 }
