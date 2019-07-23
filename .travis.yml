@@ -19,11 +19,6 @@ jobs:
     name: Build static pages
     script: 
       - npm run build
-      - >
-        curl
-        --header "Content-Type: application/json"
-        --request POST --data "{\"message\":\"ANDi - Site mis a jour\"}"
-        https://hooks.zapier.com/hooks/catch/5355796/oo5ibqz/
     skip_cleanup: true
   - stage: Deploy
     name: Deploy pages to host
