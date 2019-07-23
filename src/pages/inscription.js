@@ -14,12 +14,12 @@ class FormPage extends React.Component {
     handleClick(event) {
         const _paq = window._paq || []
         console.log("clicked", event.target.id)
-        _paq.push(['form_action', 'click', event.target.id]);
+        _paq.push(['trackEvent', 'form_action', 'click', event.target.id]);
     }
 
     handleSubmit(event) {
         const _paq = window._paq || []
-        _paq.push(['form_action', 'submit']);
+        _paq.push(['trackEvent', 'form_action', 'submit']);
     }
 
     render() {
