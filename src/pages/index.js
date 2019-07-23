@@ -24,18 +24,19 @@ const IndexPage = () => (
   </Layout>
 )
 */
+const abbr_andi = "accompagnement numérique au développement de l'insertion"
 
 const IndexPage = () => (
     <Layout>
      <div>
-        <section className="section section-grey" role="banner">
+        <section className="section section-grey">
           <div className="row">
             <div className="container text_1">
               <h1>Essayez un métier simplement</h1>
               <h2>Vous êtes en situation de handicap et vous souhaitez prendre ou reprendre contact avec la vie professionnelle ? Participez à notre expérience</h2>
               <Link className="button large" to="/inscription">Je m'inscris</Link>
             </div>
-            <img style={{}} className="opt_img illu-1" src={'illu-1.png'} alt="Image début. Une personne utilise des jumelles. Image fin." srcSet="images/illu-1@2x.png 2x, images/illu-1@3x.png 3x" />
+            <img style={{}} className="opt_img illu-1" src={'illu-1.png'} alt="" srcSet="images/illu-1@2x.png 2x, images/illu-1@3x.png 3x" />
           </div>
         </section>
         <div className="svg_container" aria-hidden="true" focusable="false">
@@ -57,7 +58,7 @@ const IndexPage = () => (
               <div>
                 <span className="number">2</span>
                 <h3>Je remplis le questionnaire</h3>
-                <p>Je donne le plus d'éléments possible sur ma situation. Je peux me faire aider d’un proche ou d’un aidant pour le remplir.</p>
+                <p>Je donne le plus d'éléments possibles sur ma situation. Je peux me faire aider d’un proche ou d’un aidant pour le remplir.</p>
               </div>
               <div>
                 <span className="number">3</span>
@@ -67,7 +68,7 @@ const IndexPage = () => (
               <div>
                 <span className="number">4</span>
                 <h3>Je démarre l’expérience</h3>
-                <p>L’équipe ANDi m’appuie dans la recherche d’un métier qui me plait et me met en relation avec des entreprises qui sont prêtes à m'accueillir.</p>
+                <p>L’équipe <abbr title={ abbr_andi } >ANDi</abbr> m’appuie dans la recherche d’un métier qui me plaît et me met en relation avec des entreprises qui sont prêtes à m'accueillir.</p>
               </div>
             </div>
           </div>
@@ -84,11 +85,11 @@ const IndexPage = () => (
           <div className="row">
             <div className="container text_2">
               <h2>Qui sommes nous ?</h2>
-              <p> Nous sommes une petite équipe à la Caisse des Dépôts et nous portons un nouveau projet baptisé <strong>andi</strong>.</p>
+              <p> Nous sommes une petite équipe à la Caisse des Dépôts et nous portons un nouveau projet baptisé <strong><abbr title={ abbr_andi }>ANDi</abbr></strong>.</p>
               <p>Notre objectif est de permettre aux personnes en situation de handicap de réaliser des immersions professionnelles.</p>
               <p>Ce projet est en cours d’expérimentation. Il se construit actuellement avec des employeurs, des associations, des organismes d’Etat, et bien sur avec des personnes en situation de handicap qui cherchent un emploi.</p>
             </div>
-            <img className="opt_img team-startup-illu" src={'team-startup-illu.png'} alt="Image début. l'équipe assis autour d'une table. Image fin." srcSet="images/team-startup-illu@2x.png 2x, images/team-startup-illu@3x.png 3x" />
+            <img className="opt_img team-startup-illu" src={'team-startup-illu.png'} alt="" srcSet="images/team-startup-illu@2x.png 2x, images/team-startup-illu@3x.png 3x" />
           </div>
         </section>
       </div>

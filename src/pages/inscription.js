@@ -27,7 +27,7 @@ class FormPage extends React.Component {
         <Layout>
           <section>
             <div className="row formrow">
-              <div className="section pane leftpane" role="main">
+              <div className="section pane leftpane" role="form">
                 <div>
                   <Link to="/" style={{color: '#fff'}}>Accueil</Link> / Inscription
                 </div>
@@ -50,15 +50,15 @@ class FormPage extends React.Component {
                 </form>
 
               </div>
-              <div className="section pane section-grey" role="form">
+              <div className="section pane section-grey">
                  <p>Ce projet est expérimental. Il se construit pour vous et avec vous. Chacun est libre d’y participer et de l’arrêter quand il le souhaite.</p>
-                <h4>Cette expérimentation est faite pour vous si vous souhaitez :</h4>
+                <h2>Cette expérimentation est faite pour vous si vous souhaitez :</h2>
                 <ul>
                   <li>Découvrir un métier ou un secteur d'activité</li>
                   <li>Confirmer votre projet professionnel</li>
                   <li>Initier une démarche de recrutement avec un employeur</li>
                 </ul>
-                <h4>Comment ça se passe concrètement :</h4>
+                <h2>Comment ça se passe concrètement :</h2>
                 <ol>
                     <li>L’équipe ANDi travaille avec vous <strong>pendant 1 à 2 mois</strong> pour <strong>définir au mieux votre projet professionnel</strong></li>
                     <li>Nous vous orientons pour <strong>trouver une entreprise</strong> adaptée à votre projet professionnel et prête à vous accueillir en immersion</li>
