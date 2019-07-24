@@ -32,6 +32,7 @@ const IndexPage = () => (
   </Layout>
 )
 */
+const abbr_andi = "accompagnement numérique au développement de l'insertion"
 
 const IndexPage = () => (
     <Layout>
@@ -81,7 +82,7 @@ const IndexPage = () => (
                   <div className="col pull-1">
                     <span className="number">4</span>
                     <h3>Je démarre l’expérience</h3>
-                    <p>L’équipe ANDi m’appuie dans la recherche d’un métier qui me plait et me met en relation avec des entreprises qui sont prêtes à m'accueillir.</p>
+                    <p>L’équipe <abbr title={ abbr_andi } >ANDi</abbr> m’appuie dans la recherche d’un métier qui me plait et me met en relation avec des entreprises qui sont prêtes à m'accueillir.</p>
                   </div>
                 </div>
               </div>
@@ -103,7 +104,7 @@ const IndexPage = () => (
                 <div className="row">
                   <div className="col-lg-5 col-xs-12 align-self-center">
                       <h2>Qui sommes nous ?</h2>
-                      <p> Nous sommes une petite équipe à la Caisse des Dépôts et nous portons un nouveau projet baptisé <strong>andi</strong>.</p>
+                      <p> Nous sommes une petite équipe à la Caisse des Dépôts et nous portons un nouveau projet baptisé <strong><abbr title={ abbr_andi }>ANDi</abbr></strong>.</p>
                       <p>Notre objectif est de permettre aux personnes en situation de handicap de réaliser des immersions professionnelles.</p>
                       <p>Ce projet est en cours d’expérimentation. Il se construit actuellement avec des employeurs, des associations, des organismes d’Etat, et bien sur avec des personnes en situation de handicap qui cherchent un emploi.</p>
                   </div>

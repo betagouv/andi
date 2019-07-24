@@ -19,7 +19,6 @@ jobs:
     name: Build static pages
     script: 
       - npm run build
-      - curl --header "Content-Type: application/json" --request POST --data '{"message":"ANDi: Site mis a jour"}' https://hooks.zapier.com/hooks/catch/5355796/oo5ibqz/
     skip_cleanup: true
   - stage: Deploy
     name: Deploy pages to host
@@ -29,8 +28,11 @@ jobs:
       - ls public/
       - npm run build
       - rsync -e "ssh -i deploy_ed25519" -r --delete-after --quiet public/ travis@andi.beta.gouv.fr:/var/www/static_ci/
-      - curl --header "Content-Type: application/json" --request POST --data '{"message":"ANDi: Site mis a jour"}' https://hooks.zapier.com/hooks/catch/5355796/oo5ibqz/
-
+      - >
+        curl
+        --header "Content-Type: application/json"
+        --request POST --data "{\"message\":\"ANDi - Site mis a jour\"}"
+        https://hooks.zapier.com/hooks/catch/5355796/oo5ibqz/
 addons:
   ssh_known_hosts: andi.beta.gouv.fr
 

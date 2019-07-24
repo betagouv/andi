@@ -18,14 +18,14 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-favicon`,
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-4219222-9",
-        head: true,
-        respectDNT: true,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: "UA-4219222-9",
+    //     head: true,
+    //     respectDNT: true,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-hotjar`,
       options: {
