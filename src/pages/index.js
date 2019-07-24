@@ -46,7 +46,7 @@ const IndexPage = () => (
                 <Link className="button large btn-xl" to="/inscription">Je m'inscris</Link>
               </div>
               <div className="col-lg-4 col-sm-12 text-right no-gutters">
-              <img style={{}} className="opt_img illu-1" src={illu1} alt="Image début. Une personne utilise des jumelles. Image fin." srcSet={`${illu1_2x} 2x, ${illu1_3x} 3x`}  />
+              <img style={{}} className="opt_img illu-1" src={illu1} alt="" srcSet={`${illu1_2x} 2x, ${illu1_3x} 3x`}  />
               </div>
             </div>
           </div>
@@ -109,7 +109,7 @@ const IndexPage = () => (
                       <p>Ce projet est en cours d’expérimentation. Il se construit actuellement avec des employeurs, des associations, des organismes d’Etat, et bien sur avec des personnes en situation de handicap qui cherchent un emploi.</p>
                   </div>
                   <div className="col-lg-7 col-xs-12 align-self-center text-center no-gutters">
-                    <img className="opt_img team-startup-illu" src={team_illu} alt="Image début. l'équipe assis autour d'une table. Image fin." srcSet={`${team_illu_2x} 2x, ${team_illu_3x} 3x`} />
+                    <img className="opt_img team-startup-illu" src={team_illu} alt="" srcSet={`${team_illu_2x} 2x, ${team_illu_3x} 3x`} />
                   </div>
                   </div>
                 </div>
