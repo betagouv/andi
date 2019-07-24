@@ -15,7 +15,7 @@ body,html{
 
 
 body label, body legend {
-  color: #fff;
+  color: #26353f;
   font-size:1.25em;
 }
 
@@ -23,14 +23,14 @@ form input[type="submit"],
 form input[type="submit"]:focus,
 form input[type="submit"]:active,
 form input[type="submit"]:visited {
-    background-color:#7d7;
+    background-color:#0053b3;
     font-size:1.5em;
-    border-color:#29a229;
-    color:#051505;
+    border-color:#0053b3;
+    color: white;
 }
-form input[type="submit"]:hover {
+/* form input[type="submit"]:hover {
     background-color:#29a229;
-}
+} */
 
 .text_1 h2 {
   margin: 1em auto;
@@ -145,16 +145,26 @@ body a.fullwidth {
   
   .text_1 { max-width:50em; }
   .text_2 { max-width:50em; }
-    form input[type="submit"] { white-space:normal}
-    a.btn-xl{
-      width: 100%;
-    }
+  form input[type="submit"] { white-space:normal}
+  a.btn-xl{
+    width: 100%;
+  }
+  .sub-nav{
+    flex-direction: column;
+  }
+  .navbar-nav:first-child{
+    margin: 10px 0 20px 0;
+    margin-left: 0 !important;
+  }
 }
 
 @media (max-width: 749px){
   .row > * + * {
       margin-left: 0;
-      margin-top: 3.5em;
+      margin-top: 2.5em;
+  }
+  .illu-1{
+    width: 100%;
   }
 }
 
@@ -195,9 +205,81 @@ a.btn-xl{
   font-size: 24px; 
 }
 
+a.nav-link:hover{
+  background-color: #ebeff3;
+    color: #1c1c1c;
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+
 .container-fluid{
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.navbar-nav{
+  flex-direction: row;
+  margin-top: 0;
+}
+
+.nav-item{
+  margin-right: 30px;
+}
+
+.navbar-nav .nav-link{
+  font-family: "Source Sans Pro";
+  font-size: 16px;
+  color: #1c1c1c;
+  text-decoration: none;
+  padding: 5px 15px;
+}
+
+.nav-item:last-child{
+  margin-right: 0;
+}
+
+.navbar{
+  justify-content: initial;
+}
+
+.nav-link.active{
+  background-color: #ebeff3;
+  color: #1c1c1c;
+  padding: 5px 15px;
+  border-radius: 3px;
+}
+
+.sub-nav{
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1 1;
+}
+
+.ear-btn-icon{
+  padding: 8px !important;
+}
+
+.ear-btn-icon:before{
+  content: url('../images/hearing-24-px.svg');
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.alert__success {
+  padding: 20px;
+  border-radius: 3px;
+  border: solid 1px #03bd5b;
+  background-color: #daf5e7;
+  color: #26353f;
+}
+
+
+.header__contact{
+  padding: 40px 0 0 0;
+  background-image: linear-gradient(to left, #0053b3, #003b80);
+  color: white;
 }

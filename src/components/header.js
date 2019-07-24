@@ -50,10 +50,27 @@ const Header = () => (
                 <span className="navbar__domain">andi</span>
                 <img className="navbar__gouvfr" src={betagouvSVG} alt="beta.gouv.fr" />
               </Link>
-              <nav>
-                <ul className="nav__links">
-                </ul>
-              </nav>
+            </div>
+            <div className="sub-nav">
+              <ul className="navbar-nav" style={{marginLeft: '100px'}}>
+                <li className="nav-item">
+                  <Link to="/inscription" className="nav-link">Inscription</Link>
+                </li>
+                <li className="nav-item">
+                <Link to="/" className="nav-link">Présentation</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/contact" className="nav-link">Contact</Link>
+                </li>
+              </ul>
+              <ul className="navbar-nav">
+                <li style={{marginRight: '10px'}}>
+                  <a className="button ear-btn-icon" aria-label="aide" href="#"></a>
+                </li>
+                <li className="nav-item">
+                  <a className="button" href="#">Adapter l'affichage</a>
+                </li>
+              </ul>
             </div>
       </header>
     </>
