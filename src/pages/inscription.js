@@ -47,7 +47,7 @@ class FormPage extends React.Component {
             </ol>
 
           </div>
-          <div className="col section pane section-grey" role="form">
+          <div className="col section pane section-grey" role="form" style={{marginTop: '0'}}>
             <form action="https://usebasin.com/f/2ed85c3d52b3" acceptCharset="UTF-8" encType="multipart/form-data" method="POST">
                 <div className="form__group">
                   <label htmlFor="prenom">Prénom</label>

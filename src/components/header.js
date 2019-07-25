@@ -51,9 +51,9 @@ const Header = () => (
               </Link>
             </div>
             <div className="sub-nav">
-              <ul className="navbar-nav" style={{marginLeft: '100px'}}>
+              <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link to="/inscription" className="nav-link">Inscription</Link>
+                  <Link to="/" className="nav-link">Accueil</Link>
                 </li>
                 <li className="nav-item">
                 <Link to="/" className="nav-link">Présentation</Link>
@@ -61,13 +61,16 @@ const Header = () => (
                 <li className="nav-item">
                   <Link to="/contact" className="nav-link">Contact</Link>
                 </li>
+                <li className="nav-item register__button">
+                  <Link to="/inscription" className="button nav-button">Inscription</Link>
+                </li>
               </ul>
               <ul className="navbar-nav">
                 <li style={{marginRight: '10px'}}>
-                  <a className="button ear-btn-icon" aria-label="aide" href="#"></a>
+                  <a className="button ear-btn-icon secondary" aria-label="aide" href="#"></a>
                 </li>
                 <li className="nav-item">
-                  <a className="button" href="#">Adapter l'affichage</a>
+                  <a className="button secondary" href="#">Adapter l'affichage</a>
                 </li>
               </ul>
             </div>

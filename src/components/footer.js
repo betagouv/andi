@@ -1,28 +1,60 @@
 import React from "react"
 import { Link } from "gatsby"
 
+
+import twitter_icon from '../images/twitter.svg';
+
 const Footer = () => (
       <footer className="footer" role="contentinfo">
-        <div className="container">
-          <div className="footer__logo">
-            <h2>andi.beta.gouv.fr</h2>
-            <ul className="footer__social">
-              <li><a href="https://twitter.com/ANDi_betagouv" title="Twitter"><svg className="icon icon-twitter" aria-labelledby="title_twitter"><title id="title_twitter" lang="fr">Twitter</title><desc>Icône Twitter</desc><use xlinkHref="#twitter" /></svg></a></li>
-              <li><a href="https://github.com/betagouv/andi" title="Github"><svg className="icon icon-github" aria-labelledby="title_github"><title id="title_github" lang="fr">Github</title><desc>Icône Github</desc><use xlinkHref="#github" /></svg></a></li>
-              {/*
-                      <li><a href="https://www.facebook.com/etalab" title="Facebook"><svg class="icon icon-fb"><use xlink:href="#facebook"></use></svg></a></li>
-                      */}
-              <li><a href="mailto:andi@beta.gouv.fr" title="Nous écrire un mail"><svg className="icon icon-mail" aria-labelledby="title_email"><title id="title_email" lang="fr">E-mail</title><desc>Icône d\'une envelope, symbolisant un courrier électronique</desc><use xlinkHref="#envelope" /></svg></a></li>
-            </ul>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-xs-12 offset-xs-0 col-lg-6 offset-lg-1">
+              <h2>Dîtes-nous tout</h2>
+              <p style={{marginTop: '20px', marginBottom: '25px'}}>Ce projet est expérimental. <br/>Si vous rencontrez des difficultés <br/>faites-le savoir ici.</p>
+              <div className="form__group">
+                  <label htmlFor="email">Email</label>
+                  <input name="email" id="email" type="text" placeholder="Ex: mail@andi.beta.gouv.fr" title="Ex: mail@andi.beta.gouv.fr" required/>
+              </div>
+              <div className="form__group">
+                  <label htmlFor="message">Message</label>
+                  <textarea name="message" id="message" type="text" placeholder="Dites nous tout !" title="Dites nous tout !" rows="5" required></textarea>
+              </div>
+              <div className="form__group text-right">
+                  <button type="submit" className="button-outline large button-submit__footer" value="Envoyer">Envoyer</button>
+              </div>
+            </div>
+            <div className="col-xs-12 offset-xs-0 col offset-lg-2">
+              <h2>Liens</h2>
+              <ul className="footer-link">
+                <li><Link to="/conditions-generales">Plan du site</Link></li>
+                <li><a href="mailto:andi@beta.gouv.fr" title="Nous écrire un mail">Lien GitHub</a></li>
+                <ul class="social-link col-6 col-xs-4">
+                    <li className="col">
+                      <a href="">
+                        <span className="icon-twitter"></span>
+                      </a>
+                    </li>
+                    <li className="col">
+                      <a href="">
+                        <span className="icon-medium"></span>
+                      </a>
+                    </li>
+                    <li className="col">
+                      <a href="">
+                        <span className="icon-linkedin"></span>
+                      </a>
+                    </li>
+                    <li className="col">
+                      <a href="">
+                        <span className="icon-facebook"></span>
+                      </a>
+                    </li>
+                </ul>
+                <li><Link to="/conditions-generales">Mentions légales</Link></li>
+                <Link to="/" style={{marginTop: '25px', color: 'white', display: 'block'}}>Retour en haut de page</Link>
+              </ul>
+            </div>
           </div>
-          <ul className="footer__links">
-            <li><Link to="/conditions-generales">Conditions générales d'utilisation</Link></li>
-            <li><a href="mailto:andi@beta.gouv.fr" title="Nous écrire un mail">Nous contacter</a></li>
-            {/*
-                    <li><a href="https://www.data.gouv.fr/reference">Données de référence</a></li>
-                    <li><a href="https://www.data.gouv.fr/api">API</a></li>
-                    */}
-          </ul>
         </div>
       </footer>
 )

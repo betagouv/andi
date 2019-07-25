@@ -37,13 +37,15 @@ const abbr_andi = "accompagnement numérique au développement de l'insertion"
 const IndexPage = () => (
     <Layout>
      <div>
-        <section className="section section-grey" role="banner">
+        <section className="section section-grey section__bottom_svg" role="banner">
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-6 offset-lg-2 col-sm-10 offset-sm-1 col-xs-12 offset-xs-0 title_wrapper">
                 <h1>Essayez un métier simplement</h1>
-                <h2>Vous êtes en situation de handicap et vous souhaitez prendre ou reprendre contact avec la vie professionnelle ? Participez à notre expérience</h2>
-                <Link className="button large btn-xl" to="/inscription">Je m'inscris</Link>
+                <div className="hero__p">
+                  <p>Vous êtes en situation de handicap et vous souhaitez prendre ou reprendre contact avec la vie professionnelle ? Participez à notre expérience</p>
+                </div>
+                <Link className="button large btn-xl" to="/inscription" style={{top: '30px'}}>Je m'inscris</Link>
               </div>
               <div className="col-lg-4 col-sm-12 text-right no-gutters">
               <img style={{}} className="opt_img illu-1" src={illu1} alt="" srcSet={`${illu1_2x} 2x, ${illu1_3x} 3x`}  />
@@ -51,14 +53,14 @@ const IndexPage = () => (
             </div>
           </div>
         </section>
-        <div className="svg_container" aria-hidden="true" focusable="false">
+        {/* <div className="svg_container" aria-hidden="true" focusable="false">
           <svg className="svg_1" viewBox="0 70 500 80" preserveAspectRatio="none">
             <rect x={0} y={0} width={500} height={500} style={{stroke: 'none'}} />
             <path d="M0,100 C150,0 350,250 500,100 L500,00 L0,0 Z" style={{stroke: 'none'}} />
           </svg>
-        </div>
+        </div> */}
         <section>
-          <h2 className="section__title" style={{marginTop: '8rem'}}>Comment participer ?</h2>
+          <h2 className="section__title" style={{marginTop: '6rem'}}>Comment participer ?</h2>
           <div className="container-fluid" style={{marginTop: '6rem', marginBottom: '4rem'}}>
             <div className="row numlist">
               <div className="col-lg-10 offset-lg-1 col-sm-12">
@@ -72,7 +74,7 @@ const IndexPage = () => (
                   <div className="col">
                     <span className="number">2</span>
                     <h3>Je remplis le questionnaire</h3>
-                    <p>Je donne le plus d'éléments possible sur ma situation. Je peux me faire aider d’un proche ou d’un aidant pour le remplir.</p>
+                    <p>Je donne le plus d'éléments possibles sur ma situation. Je peux me faire aider d’un proche ou d’un aidant pour le remplir.</p>
                   </div>
                   <div className="col">
                     <span className="number">3</span>

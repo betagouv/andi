@@ -34,7 +34,7 @@ const inscriptionComplete = () => (
         <div className="col-9 alert__success" style={{marginBottom: '25px', marginTop: '50px'}}>
           Votre demande d'inscription a bien été envoyé.
         </div>
-        <a>Retourner à l'accueil</a>
+        <Link to="/">Retourner à l'accueil</Link>
       </div>
     </div>
   </section>

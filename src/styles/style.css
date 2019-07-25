@@ -5,7 +5,7 @@
 }
 
 .section{
-  padding: 4em 0 0;
+  padding: 6em 0 0;
   position: relative;
 }
 
@@ -19,7 +19,7 @@ body label, body legend {
   font-size:1.25em;
 }
 
-form input[type="submit"],
+/* form input[type="submit"],
 form input[type="submit"]:focus,
 form input[type="submit"]:active,
 form input[type="submit"]:visited {
@@ -27,7 +27,7 @@ form input[type="submit"]:visited {
     font-size:1.5em;
     border-color:#0053b3;
     color: white;
-}
+} */
 /* form input[type="submit"]:hover {
     background-color:#29a229;
 } */
@@ -47,6 +47,7 @@ form input[type="submit"]:visited {
   position: absolute;
   right: -15px;
   width: 100%;
+  top: -40px;
 }
 
 @media screen and (max-width: 1000px){
@@ -63,14 +64,14 @@ form input[type="submit"]:visited {
 }
 
 /* FOCUS */
-body a.button:focus,
+/* body a.button:focus,
 body a:focus,
 input:focus,
 input[type=text]:focus,
 input[type=email]:focus {
     outline:5px dotted #888;
     outline-offset:2px;
-}
+} */
 
 
 
@@ -86,7 +87,7 @@ label {
     padding-left:6rem;
 }
 
-body a.fullwidth {
+a.button.fullwidth, a.button.fullwidth:focus {
     width:100%;
     text-align:center;
 }
@@ -140,32 +141,20 @@ body a.fullwidth {
   background: var(--darker-grey);
 }
 
-
-@media (max-width: 850px) {
-  
-  .text_1 { max-width:50em; }
-  .text_2 { max-width:50em; }
-  form input[type="submit"] { white-space:normal}
-  a.btn-xl{
-    width: 100%;
-  }
-  .sub-nav{
-    flex-direction: column;
-  }
-  .navbar-nav:first-child{
-    margin: 10px 0 20px 0;
-    margin-left: 0 !important;
-  }
+.button-submit__footer{
+  width: 35%;
 }
 
-@media (max-width: 749px){
-  .row > * + * {
-      margin-left: 0;
-      margin-top: 2.5em;
-  }
-  .illu-1{
-    width: 100%;
-  }
+
+
+.nav-item.register__button{
+  align-items: center;
+  display: flex;
+  margin-left: 10px;
+}
+
+.nav-item.register__button a{
+  flex: 1;
 }
 
 /* svg curve */
@@ -200,7 +189,7 @@ body a.fullwidth {
   z-index: 10;
 }
 
-a.btn-xl{
+a.button.btn-xl, a.button.btn-xl:focus{
   padding: 20px 50px;
   font-size: 24px; 
 }
@@ -222,10 +211,7 @@ a.nav-link:hover{
 .navbar-nav{
   flex-direction: row;
   margin-top: 0;
-}
-
-.nav-item{
-  margin-right: 30px;
+  align-items: center;
 }
 
 .navbar-nav .nav-link{
@@ -251,11 +237,15 @@ a.nav-link:hover{
   border-radius: 3px;
 }
 
+.navbar__container{
+  flex: 1 0 10%;
+}
+
 .sub-nav{
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  flex: 1 1;
+  flex: 1 0 65%;
 }
 
 .ear-btn-icon{
@@ -279,7 +269,129 @@ a.nav-link:hover{
 
 
 .header__contact{
-  padding: 40px 0 0 0;
+  padding: 40px 0px 0;
   background-image: linear-gradient(to left, #0053b3, #003b80);
   color: white;
+}
+
+
+.hero__p {
+  margin: 1em auto;
+  margin: var(--space-s) auto;
+  color: #26353f;
+  color: var(--theme-dark-text);
+  font-size: 1.5em;
+}
+
+a.button.grey-button{
+  background: #53657d;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 20px;
+  white-space: nowrap;
+}
+
+a.button.nav-button{
+  padding: 7px 12px;
+}
+
+.section__bottom_svg:after{
+  content: url('../images/path.svg');
+  background: white;
+  bottom: 15px;
+  position: relative;
+  padding-bottom: 40px;
+}
+
+footer.footer{
+  padding: 50px 0 80px 0;
+}
+
+footer label{
+  color: white;
+  font-size: 16px;
+}
+
+.footer-link li a{
+  color: white;
+  text-decoration: none;
+}
+
+.footer-link li{
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+footer .social-link li{
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+}
+
+footer .social-link {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0;
+}
+
+footer .social-link svg{
+  height: 30px;
+}
+
+footer .social-link svg path{
+  fill: white;
+}
+
+
+
+
+@media (max-width: 850px) {
+  
+  .text_1 { max-width:50em; }
+  .text_2 { max-width:50em; }
+  form input[type="submit"] { white-space:normal}
+  a.btn-xl{
+    width: 100%;
+  }
+  .row > * + * {
+    margin-left: 0;
+    margin-top: 2.5em;
+  }
+  .button-submit__footer{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 790px){
+  .sub-nav{
+    flex-direction: column;
+  }
+  .navbar-nav:first-child{
+    margin: 10px 0 20px 0;
+    margin-left: 0 !important;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .nav-item{
+    flex: 1 0 30%;
+  }
+
+  .nav-item.register__button{
+    flex-basis: 100%;
+    display: flex;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 749px){
+  .illu-1{
+    width: 100%;
+    top: 0
+  }
 }
