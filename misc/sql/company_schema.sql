@@ -1,33 +1,33 @@
-CREATE COMPANY_SIZE AS ENUM (
-    "1-2",
-    "3-5",
-    "6-9",
-    "10-19",
-    "20-49",
-    "50-99",
-    "100-199",
-    "200-249",
-    "250-499",
-    "500-999"
-    "1000-1999",
-    "2000-4999",
-    "5000-9999",
-    "+10000"
-)
+CREATE TYPE COMPANY_SIZE AS ENUM (
+    '1-2',
+    '3-5',
+    '6-9',
+    '10-19',
+    '20-49',
+    '50-99',
+    '100-199',
+    '200-249',
+    '250-499',
+    '500-999'
+    '1000-1999',
+    '2000-4999',
+    '5000-9999',
+    '+10000'
+);
 
-CREATE RATING AS ENUM (
-    "mediocre",
-    "satisfaisant",
-    "bon",
-    "excellent"
-)
+CREATE TYPE RATING AS ENUM (
+    'mediocre',
+    'satisfaisant',
+    'bon',
+    'excellent'
+);
 
 -- Quality of data entry, level of trustworthness
-CREATE QOD AS ENUM (
-    "mediocre",
-    "satisfaisan",
-    "excellent"
-)
+CREATE TYPE QOD AS ENUM (
+    'mediocre',
+    'satisfaisan',
+    'excellent'
+);
 
 DROP TABLE IF EXISTS "company";
 CREATE TABLE "company" (
@@ -58,7 +58,7 @@ CREATE TABLE "company" (
 
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     date_updated TIMESTAMP WITH TIME ZONE
-)
+);
 
 DROP TABLE IF EXISTS "company_position";
 CREATE TABLE "company_position" (
@@ -72,7 +72,7 @@ CREATE TABLE "company_position" (
     data_quality QOD,
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     date_updated TIMESTAMP WITH TIME ZONE
-)
+);
 
 DROP TABLE IF EXISTS "company_rome";
 CREATE TABLE "company_rome" (
@@ -87,8 +87,7 @@ CREATE TABLE "company_rome" (
 
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     date_updated TIMESTAMP WITH TIME ZONE
-)
-
+);
 
 DROP TABLE IF EXISTS "company_contact";
 CREATE TABLE "company_contact" (
@@ -116,10 +115,4 @@ CREATE TABLE "company_contact" (
 
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     date_updated TIMESTAMP WITH TIME ZONE
-)
-
-
-
-
-
-
+);
