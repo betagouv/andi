@@ -10,7 +10,8 @@ const Footer = () => (
           <div className="row">
             <div className="col-xs-12 offset-xs-0 col-lg-6 offset-lg-1">
               <h2>Dîtes-nous tout</h2>
-              <p style={{marginTop: '20px', marginBottom: '25px'}}>Ce projet est expérimental. <br/>Si vous rencontrez des difficultés <br/>faites-le savoir ici.</p>
+              <p style={{marginTop: '20px'}}>Ce projet est expérimental. Si vous rencontrez des difficultés faites-le savoir ici.</p>
+              <p style={{marginBottom: '25px'}}>Nous nous excusons par avance si vous rencontrez des difficultés pour consulter ANDi.<br/>Faites-nous part de vos retours pour que nous puissions les prendre en compte.</p>
               <div className="form__group">
                   <label htmlFor="email">Email</label>
                   <input name="email" id="email" type="text" placeholder="Ex: mail@andi.beta.gouv.fr" title="Ex: mail@andi.beta.gouv.fr" required/>
