@@ -8,9 +8,8 @@
 //
 
 import "./src/styles/template.css"
-import "./src/styles/bootstrap-grid.css"
-import "./src/styles/style.css"
 import './src/styles/icomoon.css'
+import "./src/styles/main.css"
 
 export const onClientEntry = () => {
   window.onload = () => {

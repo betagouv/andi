@@ -58,9 +58,6 @@ const Header = () => (
                 <li className="nav-item">
                 <Link to="/" className="nav-link">Présentation</Link>
                 </li>
-                <li className="nav-item">
-                  <Link to="/contact" className="nav-link">Contact</Link>
-                </li>
                 <li className="nav-item register__button">
                   <Link to="/inscription" className="button nav-button">Inscription</Link>
                 </li>
@@ -70,7 +67,7 @@ const Header = () => (
                   <a className="button ear-btn-icon secondary" aria-label="aide" href="#"></a>
                 </li>
                 <li className="nav-item">
-                  <a className="button secondary" href="#">Adapter l'affichage</a>
+                  <a className="button secondary" href="#" style={{whiteSpace: 'nowrap'}}>Adapter l'affichage</a>
                 </li>
               </ul>
             </div>

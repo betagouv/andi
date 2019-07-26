@@ -48,7 +48,7 @@ const IndexPage = () => (
                 <Link className="button large btn-xl" to="/inscription" style={{top: '30px'}}>Je m'inscris</Link>
               </div>
               <div className="col-lg-4 col-sm-12 text-right no-gutters">
-              <img style={{}} className="opt_img illu-1" src={illu1} alt="" srcSet={`${illu1_2x} 2x, ${illu1_3x} 3x`}  />
+              <img  className="opt_img illu-1" src={illu1} alt="" srcSet={`${illu1_2x} 2x, ${illu1_3x} 3x`}  />
               </div>
             </div>
           </div>

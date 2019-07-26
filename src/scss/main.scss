@@ -1,0 +1,375 @@
+@import 'bootstrap-grid';
+
+body,html{
+    overflow: hidden auto;
+    label, legend{
+        color: #26353f;
+        font-size:1.25em;
+    }
+    label{
+        padding-bottom:.4em;
+    }
+}
+
+.section{
+  padding: 6em 0 0;
+  position: relative;
+  &-flex{
+    display: flex;
+    align-items:stretch;
+  }
+  &__bottom_svg:after{
+    content: url('../images/path.svg');
+    background: white;
+    bottom: 15px;
+    position: relative;
+    padding-bottom: 40px;
+  }
+}
+
+.text{
+    &_1{
+        max-width:40em; 
+        padding-left:5em;
+        h2{
+            margin: 1em auto;
+            font-weight:normal;
+            margin: var(--space-s) auto;
+            color: #26353f;
+            color: var(--theme-dark-text);
+            font-size: 1.5em;
+            font-family: "Source Sans Pro", Arial, sans-serif;
+        }
+    }
+    &_2{
+        max-width:30em; 
+        padding-left:5em;
+    }
+    &-bold{
+        font-weight:bold;
+    }
+}
+
+.title{
+	&_wrapper{
+		z-index: 10;
+	}
+}
+
+.container{
+    &-fluid{
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    &-leftpad {
+        padding-left:6rem;
+    }
+}
+
+
+.hero__p {
+    margin: 1em auto;
+    margin: var(--space-s) auto;
+    color: #26353f;
+    color: var(--theme-dark-text);
+    font-size: 1.5em;
+}
+
+.alert{
+    &__success {
+        padding: 20px;
+        border-radius: 3px;
+        border: solid 1px #03bd5b;
+        background-color: #daf5e7;
+        color: #26353f;
+    }
+}
+
+
+/* ILLUSTRATION */
+.illu-1 {
+  z-index: 20;
+  position: absolute;
+  right: -15px;
+  width: 100%;
+  top: -40px;
+}
+
+.team-startup-illu {
+  height: 100%;
+  width: 100%;
+}
+
+
+/* BUTTON + LINK */
+a, button{
+   &.ear-btn-icon{
+      padding: 8px !important;
+      &:before{
+        content: url('../images/hearing-24-px.svg');
+        display: block;
+        width: 24px;
+        height: 24px;
+      }
+		}
+		&.button{
+			&.grey-button{
+				background: #53657d;
+				text-align: center;
+				color: #ffffff;
+				font-weight: bold;
+				font-size: 16px;
+				padding: 8px 20px;
+				white-space: nowrap;
+			}
+			&.nav-button{
+				padding: 7px 12px;
+			}
+			&.large {
+				text-align:center;
+			}
+			&.fullwidth, &.fullwidth:focus {
+				width:100%;
+				text-align:center;
+			}
+			&-submit__footer{
+				width: 35%;
+			}
+			&.btn-xl, &.btn-xl:focus{
+				padding: 20px 50px;
+				font-size: 24px; 
+			}
+		}
+		&.nav-link:hover{
+			background-color: #ebeff3;
+				color: #1c1c1c;
+				padding: 5px 15px;
+				border-radius: 3px;
+		}
+}
+
+// CONTACT //
+
+.header__contact{
+  padding: 40px 0px 0;
+  background-image: linear-gradient(to left, #0053b3, #003b80);
+  color: white;
+}
+
+
+/* svg curve */
+.svg{
+	&_1, &_2 {
+		width: 100%;
+		height: 100%;
+	}
+	&_1{
+		path{
+			fill: #ebeff3;
+		}
+		rect{
+			fill: #fff;
+		}
+	}
+	&_2{
+		rect{
+			fill: #ebeff3;
+		}
+		path{
+			fill: #fff;
+		}
+	}
+	&_container{
+		--divider-height: 4rem;
+		position: relative;
+		top: calc( var(--divider-height)/2 * -1 );
+
+		height: var(--divider-height);
+		width: 100%;
+			/* alternatively, could get rid of the rect, and move the svg container further down */
+
+		float: left; 
+		z-index: 1;
+	}
+}
+
+/* NAVBAR */
+
+.navbar{
+	justify-content: initial;
+	&__container{
+		flex: 1 0 10%;
+	}
+	.sub-nav{
+		display: inline-flex;
+		align-items: center;
+		justify-content: space-between;
+		flex: 1 0 65%;
+		.navbar-nav, .nav-link{
+			font-family: "Source Sans Pro";
+			font-size: 16px;
+			color: #1c1c1c;
+			text-decoration: none;
+			padding: 5px 15px;
+		}
+		.navbar-nav{
+			flex-direction: row;
+			margin-top: 0;
+			align-items: center;
+			.nav-item{
+				&:last-child{
+					margin-right: 0;
+				}
+				&.register__button{
+					align-items: center;
+					display: flex;
+					margin-left: 10px;
+					a{
+						flex: 1;
+					}
+				}
+			}
+		}
+		&.nav-link{
+			&.active{
+					background-color: #ebeff3;
+					color: #1c1c1c;
+					padding: 5px 15px;
+					border-radius: 3px;
+			}
+		}
+	}
+}
+
+
+.numlist > * {
+  flex-basis:0;
+  flex-grow:1;
+  padding:.5rem;
+}
+
+.number {
+	font-size:5rem;
+	font-weight:bold;
+	color: #53657d;
+	font-family: 'Evolventa';
+}
+
+
+
+/* PANE */
+
+.leftpane {
+	background-image: linear-gradient(to left, #0053b3, #003b80);
+	color:#fff;
+	a{
+		color: #fff;
+		color: var(--white);
+		&:hover{
+			background: #53657d;
+			background: var(--darker-grey);
+		}
+	}
+}
+
+.pane {
+	padding: 3em;
+	padding: var(--space-xl);
+	margin:0;
+}
+  
+// FOOTER //
+footer.footer{
+    padding: 50px 0 80px 0;
+    label{
+    color: white;
+    font-size: 16px;
+  }
+  
+  
+  .footer-link li{
+    margin-bottom: 10px;
+    padding: 0;
+    >a{
+        color: white;
+        text-decoration: none;
+    }
+  }
+  
+  .social-link {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0;
+    li{
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+    }
+    svg{
+        height: 30px;
+        path{
+            fill: white;
+        }
+    }
+  }
+}
+
+
+@media (max-width: 850px) {
+  
+  .text_1 { max-width:50em; }
+  .text_2 { max-width:50em; }
+  form input[type="submit"] { white-space:normal}
+  a.btn-xl{
+    width: 100%;
+  }
+  .row > * + * {
+    margin-left: 0;
+    margin-top: 2.5em;
+  }
+  .button-submit__footer{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 790px){
+  .sub-nav{
+    flex-direction: column;
+  }
+  .navbar-nav:first-child{
+    margin: 10px 0 20px 0;
+    margin-left: 0 !important;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .nav-item{
+    flex: 1 0 30%;
+  }
+
+  .nav-item.register__button{
+    flex-basis: 100%;
+    display: flex;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 749px){
+  .illu-1{
+    width: 100%;
+    top: 0
+  }
+}
+
+@media screen and (max-width: 1000px){
+  .illu-1{
+    position: relative;
+    margin-top: 15px;
+    width: auto;
+  }
+}
