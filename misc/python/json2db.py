@@ -95,7 +95,7 @@ def write_company(cur, d):
     if match:
         taille = f'{match[1]}-{match[2]}'
     elif d.get('tranche_deffectif_de_lentreprise').startswith('10000'):
-        taille = '10000+'
+        taille = '+10000'
     else:
         taille = '0'
 
