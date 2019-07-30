@@ -1,3 +1,13 @@
+-- Drop Tables
+DROP TABLE IF EXISTS "company";
+DROP TABLE IF EXISTS "company_position";
+DROP TABLE IF EXISTS "company_rome";
+DROP TABLE IF EXISTS "company_contact";
+-- Drop Enums
+DROP TYPE COMPANY_SIZE;
+DROP TYPE RATING;
+DROP TYPE QOD;
+
 CREATE TYPE COMPANY_SIZE AS ENUM (
     '0', -- Unknown or No other employees
     '1-2',
@@ -30,7 +40,6 @@ CREATE TYPE QOD AS ENUM (
     'excellent'
 );
 
-DROP TABLE IF EXISTS "company";
 CREATE TABLE "company" (
     id_internal SERIAL PRIMARY KEY,
     nom TEXT NOT NULL,
@@ -47,7 +56,7 @@ CREATE TABLE "company" (
     pmsmp_interest BOOLEAN,
     pmsmp_count_recent INTEGER,
     alternance_interest BOOLEAN,
-    rome_offers TEXT,
+    rome_offers TEXT [],
 
     rating_us RATING,
     rating_other RATING,
@@ -62,7 +71,6 @@ CREATE TABLE "company" (
     date_updated TIMESTAMP WITH TIME ZONE
 );
 
-DROP TABLE IF EXISTS "company_position";
 CREATE TABLE "company_position" (
     id_internal SERIAL PRIMARY KEY,
     id_company INT NOT NULL,
@@ -76,7 +84,6 @@ CREATE TABLE "company_position" (
     date_updated TIMESTAMP WITH TIME ZONE
 );
 
-DROP TABLE IF EXISTS "company_rome";
 CREATE TABLE "company_rome" (
     id_internal SERIAL PRIMARY KEY,
     id_company INT NOT NULL,
@@ -91,7 +98,6 @@ CREATE TABLE "company_rome" (
     date_updated TIMESTAMP WITH TIME ZONE
 );
 
-DROP TABLE IF EXISTS "company_contact";
 CREATE TABLE "company_contact" (
     id_internal SERIAL PRIMARY KEY,
     id_company INT NOT NULL,

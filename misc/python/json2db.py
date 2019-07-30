@@ -23,9 +23,11 @@ INSERT INTO "company" (
     macro_sector,
     taille,
     pmsmp_interest,
+    pmsmp_count_recent,
+    rome_offers,
     source,
     import_tag,
-    flags,
+    flags
 )
 VALUES (
     %(nom)s,
@@ -37,6 +39,8 @@ VALUES (
     %(macro_sector)s,
     %(taille)s,
     %(pmsmp_interest)s,
+    %(pmsmp_count_recent)s,
+    %(rome_offers)s,
     %(source)s,
     %(import_tag)s,
     %(flags)s
@@ -51,7 +55,7 @@ SQL_POSITION = """
 )
 VALUES (
     %(id_company)s,
-    %(commune)s,
+    %(commune)s
 )
 """
 
@@ -94,6 +98,15 @@ def write_company(cur, d):
         taille = '10000+'
     else:
         taille = '0'
+
+    # Get romes
+    if d.get('rome_offres_deposees_12_mois'):
+        rome_list = d.get('rome_offres_deposees_12_mois').split(';')
+        rome_list = [v.strip() for v in rome_list]
+        rome_list = [v for v in rome_list if v != '...']
+    else:
+        rome_list = []
+
     # continue
     data = {
         'nom': d.get('raison_sociale'),
@@ -104,13 +117,15 @@ def write_company(cur, d):
         'naf': d.get('naf'),
         'macro_sector': d.get('macro_secteur'),
         'taille': taille,
-        'pmsmp_interest': True if "OUI" == d.get('VOLONTAIRE_PMSMP') else False,
+        'pmsmp_interest': "OUI" in d.get('volontaire_pmsmp', ''),
+        'pmsmp_count_recent': int(d.get('nb_pmsmp_24_mois')),
+        'rome_offers': rome_list,
         'source': 'csv_26k_pole_emploi',
         'import_tag': 'csv_26k',
         'flags': [],
     }
     cur.execute(SQL_COMPANY, data)
-    (cid) = cur.fetchone()
+    (cid,) = cur.fetchone()
     return cid
 
 
@@ -162,13 +177,13 @@ def main(config_file):
     logger.info('Starting import of csv data')
     count_success = 0
     count_error = 0
-    with psycopg2.connect(**cfg['postgresql']) as cur:
+    with psycopg2.connect(**cfg['postgresql']) as conn, conn.cursor() as cur:
         for line in sys.stdin:
             try:
                 record = json.loads(line)
                 cid = write_company(cur, record)
                 write_position(cur, cid, record)
-                write_company(cur, cid, record)
+                write_contact(cur, cid, record)
                 logger.debug(
                     'Wrote record for %s: %s/%s',
                     cid,

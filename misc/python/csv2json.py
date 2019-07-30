@@ -43,6 +43,7 @@ def main(ctx, file, delimiter, quotechar, maxrows):
                 break
     ctx.obj['data'] = csv_data
 
+
 @main.command()
 @click.pass_context
 def test(ctx):
@@ -50,6 +51,17 @@ def test(ctx):
     Test provided csv file, output a single row
     """
     print(json.dumps(ctx.obj['data'][1]))
+
+
+@main.command()
+@click.pass_context
+def parse(ctx):
+    """
+    Loop through all rows, and output them
+    """
+    for row in ctx.obj['data']:
+        sys.stdout.write(json.dumps(row) + "\n")
+
 
 @main.command()
 @click.pass_context
