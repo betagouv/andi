@@ -55,21 +55,21 @@ const Header = () => (
                 <li className="nav-item">
                   <Link to="/" className="nav-link">Accueil</Link>
                 </li>
-                <li className="nav-item">
-                <Link to="/" className="nav-link">Présentation</Link>
-                </li>
+                {/* <li className="nav-item">
+                <Link to="#a-propos" className="nav-link">Présentation</Link>
+                </li> */}
                 <li className="nav-item register__button">
                   <Link to="/inscription" className="button nav-button">Inscription</Link>
                 </li>
               </ul>
-              <ul className="navbar-nav">
+              {/* <ul className="navbar-nav">
                 <li style={{marginRight: '10px'}}>
                   <a className="button ear-btn-icon secondary" aria-label="aide" href="#"></a>
                 </li>
                 <li className="nav-item">
                   <a className="button secondary" href="#" style={{whiteSpace: 'nowrap'}}>Adapter l'affichage</a>
                 </li>
-              </ul>
+              </ul> */}
             </div>
       </header>
     </>

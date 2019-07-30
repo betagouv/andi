@@ -99,7 +99,7 @@ const IndexPage = () => (
             <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z" style={{stroke: 'none'}} />
           </svg>
         </div>
-        <section className="section-grey" style={{marginTop: '1rem', paddingBottom: '8rem'}}>  
+        <section id="a-propos" className="section-grey" style={{marginTop: '1rem', paddingBottom: '8rem'}}>  
           <div className="container-fluid" style={{display: 'inline-block'}}>
             <div className="row no-gutters">
               <div className="col-lg-10 offset-lg-1 col-xs-12">

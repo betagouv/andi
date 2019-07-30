@@ -4713,7 +4713,7 @@ a.nav-link:hover, button.nav-link:hover {
           flex: 1;
 }
 
-.navbar .sub-nav.nav-link.active {
+.navbar .sub-nav .nav-link.active {
   background-color: #ebeff3;
   color: #1c1c1c;
   padding: 5px 15px;

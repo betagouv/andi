@@ -11,8 +11,8 @@ const Footer = () => (
             <div className="col-xs-12 offset-xs-0 col-lg-6 offset-lg-1">
               <h2>Dîtes-nous tout</h2>
               <p style={{marginTop: '20px'}}>Ce projet est expérimental. Si vous rencontrez des difficultés faites-le savoir ici.</p>
-              <p style={{marginBottom: '25px'}}>Nous nous excusons par avance si vous rencontrez des difficultés pour consulter ANDi.<br/>Faites-nous part de vos retours pour que nous puissions les prendre en compte.</p>
-              <div className="form__group">
+              <p style={{marginBottom: '25px'}}>Nous travaillons à rendre cette page la plus accessible possible pour vous. Nous nous excusons par avance si vous rencontrez des difficultés pour consulter ANDi.<br/>Faites-nous part de vos retours pour que nous puissions les prendre en compte.</p>
+              {/* <div className="form__group">
                   <label htmlFor="email">Email</label>
                   <input name="email" id="email" type="text" placeholder="Ex: mail@andi.beta.gouv.fr" title="Ex: mail@andi.beta.gouv.fr" required/>
               </div>
@@ -22,14 +22,14 @@ const Footer = () => (
               </div>
               <div className="form__group text-right">
                   <button type="submit" className="button-outline large button-submit__footer" value="Envoyer">Envoyer</button>
-              </div>
+              </div> */}
             </div>
             <div className="col-xs-12 offset-xs-0 col offset-lg-2">
               <h2>Liens</h2>
               <ul className="footer-link">
                 <li><Link to="/conditions-generales">Plan du site</Link></li>
                 <li><a href="mailto:andi@beta.gouv.fr" title="Nous écrire un mail">Lien GitHub</a></li>
-                <ul class="social-link col-6 col-xs-4">
+                <ul className="social-link col-6 col-xs-4">
                     <li className="col">
                       <a href="">
                         <span className="icon-twitter"></span>
