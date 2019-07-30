@@ -10,6 +10,8 @@ flake8 = "*"
 [packages]
 click = "*"
 unidecode = "*"
+pyyaml = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.7"

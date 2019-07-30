@@ -1,4 +1,5 @@
 CREATE TYPE COMPANY_SIZE AS ENUM (
+    '0', -- Unknown or No other employees
     '1-2',
     '3-5',
     '6-9',
@@ -34,9 +35,10 @@ CREATE TABLE "company" (
     id_internal SERIAL PRIMARY KEY,
     nom TEXT NOT NULL,
     enseigne TEXT,
-    
+
     siren VARCHAR(9),
     nic VARCHAR(5),
+    siret VARCHAR(14),
     naf VARCHAR(5),
     naf_label TEXT,
     macro_sector TEXT,
@@ -50,7 +52,7 @@ CREATE TABLE "company" (
     rating_us RATING,
     rating_other RATING,
     rating_social RATING,
-    
+
     source TEXT,
     import_tag TEXT,
     flags TEXT [],
@@ -63,7 +65,7 @@ CREATE TABLE "company" (
 DROP TABLE IF EXISTS "company_position";
 CREATE TABLE "company_position" (
     id_internal SERIAL PRIMARY KEY,
-    id_company INT,
+    id_company INT NOT NULL,
     commune VARCHAR(128),
     departement VARCHAR(128),
     lat NUMERIC,
@@ -77,7 +79,7 @@ CREATE TABLE "company_position" (
 DROP TABLE IF EXISTS "company_rome";
 CREATE TABLE "company_rome" (
     id_internal SERIAL PRIMARY KEY,
-    id_company INT,
+    id_company INT NOT NULL,
     rome VARCHAR(5),
     rome_label_a TEXT,
     rome_label_b TEXT, 
@@ -92,7 +94,7 @@ CREATE TABLE "company_rome" (
 DROP TABLE IF EXISTS "company_contact";
 CREATE TABLE "company_contact" (
     id_internal SERIAL PRIMARY KEY,
-    id_company INT,
+    id_company INT NOT NULL,
     website TEXT,
     social_twitter TEXT,
     social_linkedin TEXT,

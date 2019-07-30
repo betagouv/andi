@@ -1,0 +1,6 @@
+postgresql:
+  dbname: 'db'
+  user: 'user'
+  password: 'password'
+  host: 'host'
+  port: 5945

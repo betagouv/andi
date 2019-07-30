@@ -21,12 +21,27 @@ logger.addHandler(logging.StreamHandler())
 @click.argument('file')
 @click.option('--delimiter', default='\t')
 @click.option('--quotechar', default='"')
-def main(ctx, file, delimiter, quotechar):
+@click.option('--maxrows', default=0)
+def main(ctx, file, delimiter, quotechar, maxrows):
     ctx.obj['file'] = file
     ctx.obj['csv'] = {
         'delimiter': delimiter,
         'quotechar': quotechar,
     }
+
+    csv_data = []
+    count = 0
+    with open(ctx.obj['file'], newline='') as csvfile:
+        reader = csv.DictReader(csvfile, delimiter=delimiter, quotechar=quotechar)
+        for row in reader:
+            r = {}
+            for field, value in row.items():
+                r[key_to_slug(field)] = value
+            csv_data.append(r)
+            count += 1
+            if maxrows and count >= maxrows:
+                break
+    ctx.obj['data'] = csv_data
 
 @main.command()
 @click.pass_context
@@ -34,16 +49,16 @@ def test(ctx):
     """
     Test provided csv file, output a single row
     """
-    delimiter, quotechar = ctx.obj['csv']['delimiter'], ctx.obj['csv']['quotechar']
-    out = []
-    with open(ctx.obj['file'], newline='') as csvfile:
-        reader = csv.DictReader(csvfile, delimiter=delimiter, quotechar=quotechar)
-        for row in reader:
-            r = {}
-            for field, value in row.items():
-                r[key_to_slug(field)] = value
-            out.append(r)
-    print(json.dumps(out[1]))
+    print(json.dumps(ctx.obj['data'][1]))
+
+@main.command()
+@click.pass_context
+def keys(ctx):
+    """
+    Output keys / column titles
+    """
+    record = ctx.obj['data'][1]
+    print(list(record.keys()))
 
 def key_to_slug(raw_string):
     step1 = unidecode.unidecode(raw_string)
