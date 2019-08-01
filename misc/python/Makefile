@@ -1,4 +1,4 @@
-tests: flake8
+test: flake8
 
 isort:
 	pipenv run isort --recursive *.py
