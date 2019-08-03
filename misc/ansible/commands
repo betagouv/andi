@@ -1,0 +1,5 @@
+# Initial playbook for basic security
+ansible-playbook secure_ssh.yml -i inv.ini -u root --ask-pass
+
+# For later playbooks
+ansible-playbook default_apps.yml -i inv.ini -b --become-user=root

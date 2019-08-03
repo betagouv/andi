@@ -1,0 +1,40 @@
+---
+- hosts: all
+  vars:
+      deploy_user: 'intendant'
+      deploy_keys:
+        - ~/.ssh/id_intendant.pub
+      required_packages:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - gnupg2
+        - software-properties-common
+      docker_packages:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+
+  tasks:
+  - name: Install required packages
+    apt: state=present pkg={{ required_packages }}
+
+  - name : Add docker apt key
+    shell: curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+
+  - name: Add apt source
+    apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable
+      state: present
+
+  - name: Update APT package cache
+    apt: update_cache=yes cache_valid_time=3600
+
+  - name: Install docker packages
+    apt: state=present pkg={{ docker_packages }}
+
+  - name: Add deploy user to docker group
+    user:
+      name: '{{ deploy_user }}'
+      groups: docker
+      append: yes

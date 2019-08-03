@@ -3,8 +3,9 @@ FROM node:9
 ARG PG_USER="user"
 ARG PG_PASS="secret"
 ARG PG_HOST="172.17.0.1"
+ARG PG_PORT="54320"
 ARG PG_DB="andi_entreprises"
-ENV DATABASE_URL=postgres://$PG_USER:$PG_PASS@$PG_HOST:54320/$PG_DB
+ENV DATABASE_URL=postgres://$PG_USER:$PG_PASS@$PG_HOST:$PG_PORT/$PG_DB
 
 RUN mkdir /src
 WORKDIR /src
