@@ -1,3 +1,4 @@
+import re
 
 SQL_COMPANY = """
 INSERT INTO "company" (
@@ -75,6 +76,7 @@ VALUES (
 )
 """
 
+
 def exec_row(cur, data_row):
     cur.execute(sql_company(cur, data_row))
     (cid,) = cur.fetchone()
@@ -83,11 +85,16 @@ def exec_row(cur, data_row):
         sql_contact(cur, cid, data_row)
     ]
     cur.execute(';'.join(sqls))
-    return f"{cid}: {data_row.get('raison_sociale')} / {data_row.get('enseigne')}"
+    d = data_row
+    return f"{cid}: {d.get('raison_sociale')} / {d.get('enseigne')}"
+
 
 def sql_company(cur, d):
     # Get size
-    match = re.match("(\d{3}) A (\d{3})", d.get('tranche_deffectif_de_lentreprise'))
+    match = re.match(
+        r'(\d{3}) A (\d{3})',
+        d.get('tranche_deffectif_de_lentreprise')
+    )
     if match:
         taille = f'{match[1]}-{match[2]}'
     elif d.get('tranche_deffectif_de_lentreprise').startswith('10000'):
@@ -130,9 +137,15 @@ def sql_position(cur, cid, d):
     }
     return cur.mogrify(SQL_POSITION, data)
 
+
 def sql_contact(cur, cid, d):
-    addr_fields = ['adresse_compl', 'adresse_compl_2', 'adresse_principale', 'distribution_specifique']
-    addr_raw = [val for key, val in d.items() if key in addr_fields and val != '']
+    fields = [
+        'adresse_compl',
+        'adresse_compl_2',
+        'adresse_principale',
+        'distribution_specifique'
+    ]
+    addr_raw = [val for key, val in d.items() if key in fields and val != '']
     data = {
         'id_company': cid,
         'addr': addr_raw,

@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
+import json
 import logging
 import sys
-import re
-import psycopg2
-import yaml
-import json
 
 import click
+import psycopg2
+import yaml
 
 from lib_2db_company import exec_row as write_company
 from lib_2db_user import exec_row as write_user
@@ -14,8 +13,6 @@ from lib_2db_user import exec_row as write_user
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.getLevelName('DEBUG'))
 logger.addHandler(logging.StreamHandler())
-
-
 
 
 def cfg_get(config):
@@ -26,8 +23,8 @@ def cfg_get(config):
     return {**def_config, **config}
 
 
-# #################################################################### MAIN FLOW
-# ##############################################################################
+# ################################################################### MAIN FLOW
+# #############################################################################
 @click.command()
 @click.option('--config_file', default=None)
 @click.option('--company', is_flag=True)
@@ -61,7 +58,7 @@ def main(config_file, company, user, debug):
                     iden
                 )
                 count_success += 1
-            except Exception as e:
+            except Exception as e:  # pylint:disable=broad-except
                 logger.exception(e)
                 count_error += 1
     logger.info(
@@ -72,4 +69,4 @@ def main(config_file, company, user, debug):
 
 
 if __name__ == '__main__':
-    main()
+    main(None, None, None, None)

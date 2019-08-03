@@ -2,7 +2,6 @@
 import csv
 import json
 import logging
-import pprint
 import re
 import sys
 
@@ -14,8 +13,8 @@ logger.setLevel(logging.getLevelName('DEBUG'))
 logger.addHandler(logging.StreamHandler())
 
 
-# #################################################################### MAIN FLOW
-# ##############################################################################
+# ################################################################### MAIN FLOW
+# #############################################################################
 @click.group()
 @click.pass_context
 @click.argument('file')
@@ -32,7 +31,11 @@ def main(ctx, file, delimiter, quotechar, maxrows):
     csv_data = []
     count = 0
     with open(ctx.obj['file'], newline='') as csvfile:
-        reader = csv.DictReader(csvfile, delimiter=delimiter, quotechar=quotechar)
+        reader = csv.DictReader(
+            csvfile,
+            delimiter=delimiter,
+            quotechar=quotechar
+        )
         for row in reader:
             r = {}
             for field, value in row.items():
@@ -72,11 +75,12 @@ def keys(ctx):
     record = ctx.obj['data'][1]
     print(list(record.keys()))
 
+
 def key_to_slug(raw_string):
     step1 = unidecode.unidecode(raw_string)
     step2 = re.sub('[^a-zA-Z0-9 ]', '', step1)
-    return re.sub('\s+', '_', step2).lower()
+    return re.sub(r'\s+', '_', step2).lower()
 
 
 if __name__ == '__main__':
-    main(obj={})
+    main({}, None, None, None, None)
