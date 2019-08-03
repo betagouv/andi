@@ -2,7 +2,7 @@ FROM node:9
 
 ARG PG_USER="user"
 ARG PG_PASS="secret"
-ARG PG_HOST="172.17.0.1"
+ARG PG_HOST="database"
 ARG PG_PORT="54320"
 ARG PG_DB="andi_entreprises"
 ENV DATABASE_URL=postgres://$PG_USER:$PG_PASS@$PG_HOST:$PG_PORT/$PG_DB
@@ -38,5 +38,5 @@ COPY ./ui/user_model.js ./src/models/user_model.js
 
 WORKDIR /src
 
-# ENTRYPOINT ["/bin/bash"]
-ENTRYPOINT ["/src/start.sh"]
+ENTRYPOINT ["/bin/bash"]
+# ENTRYPOINT ["/src/start.sh"]
