@@ -69,4 +69,4 @@ def main(config_file, company, user, debug):
 
 
 if __name__ == '__main__':
-    main(None, None, None, None)
+    main(obj={})  # pylint:disable=no-value-for-parameter,unexpected-keyword-arg
