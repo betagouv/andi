@@ -11,6 +11,9 @@ pylint = "*"
 [packages]
 flask = "*"
 requests = "*"
+pyyaml = "*"
+pickledb = "*"
+pgware = {editable = true,git = "https://github.com/PieterjanMontens/pgware.git"}
 
 [requires]
 python_version = "3.7"
