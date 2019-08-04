@@ -13,6 +13,13 @@ from flask import (
     g
 )
 
+"""
+TODO:
+    - validate input
+    - send mail confirming subscription
+    - send mail forwarding subscription information
+"""
+
 
 def cfg_get(config=''):
     current_dir = os.path.dirname(os.path.abspath(__file__))
