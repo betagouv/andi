@@ -1,3 +1,4 @@
 module.exports = {
-    user: require('./user_model')
+    user: require('./user_model'),
+    asset: require('./asset_model'),
 };

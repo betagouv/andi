@@ -13,11 +13,11 @@ module.exports = {
 	// - Language (en/fr)
 	// defaults to getting locale from browser
 	locale: 'fr',
-	//locale: 'fr',
 
 	// - Timestamp columns u_date and c_date w/ date of record creation and last update 
     // FIXME: use custom column dates later on
 	wTimestamp: false,	
+
 	// - "WhoIs" columns u_uid and c_uid w/ userid of creator and last modifier
 	wWhoIs: false,
 
