@@ -28,15 +28,13 @@ RUN git checkout patch_udate_cdate && \
     npm install
 
 COPY ./server/config.js ./config.js
-COPY ./server/all_models.js ./models/all_models.js
-COPY ./server/user_model.js ./models/user_model.js
+COPY ./server/*.js ./models/
 
 WORKDIR /src/ui
 RUN npm install
-COPY ./ui/all_models.js ./src/models/all_models.js
-COPY ./ui/user_model.js ./src/models/user_model.js
+COPY ./ui/*.js ./src/models/
 
 WORKDIR /src
 
-ENTRYPOINT ["/bin/bash"]
-# ENTRYPOINT ["/src/start.sh"]
+# ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/src/start.sh"]
