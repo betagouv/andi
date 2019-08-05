@@ -1,4 +1,5 @@
 config.yaml
+start_docker.sh
 *.csv
 
 # Logs
