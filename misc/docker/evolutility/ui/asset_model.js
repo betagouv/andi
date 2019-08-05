@@ -12,7 +12,8 @@ module.exports = {
       id: "key",
       label: "Clé",
       type: "text",
-      width: 100,
+      width: 30,
+      maxLength: 120,
       required: true,
       inMany: true
     },
@@ -20,7 +21,8 @@ module.exports = {
       id: "description",
       label: "Description",
       type: "text",
-      width: 100,
+      width: 60,
+      maxLength: 250,
       required: true,
       inMany: true
     },
@@ -29,6 +31,7 @@ module.exports = {
       label: "Valeur",
       type: "textmultiline",
       width: 180,
+      height: 10,
       required: true,
       inMany: true
     }
@@ -37,12 +40,12 @@ module.exports = {
   groups: [
     {
       id:"p1", type:"panel", 
-      label: "Meta", width: 62,
+      label: "Meta", width: 100,
       fields: ["key", "description"]
     },
     {
       id:"p2", type:"panel", 
-      label: "Données", width: 38,
+      label: "Données", width: 100,
       fields: ["value"]
     }
   ]
