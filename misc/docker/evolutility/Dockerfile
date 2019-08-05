@@ -36,5 +36,5 @@ COPY ./server/*.js /src/server/models/
 COPY ./ui/*.js /src/ui/src/models/
 
 WORKDIR /src
-ENTRYPOINT ["/bin/bash"]
-# ENTRYPOINT ["/src/start.sh"]
+# ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/src/start.sh"]
