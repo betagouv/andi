@@ -14,9 +14,7 @@ WORKDIR /src
 # RUN apt-get update && \
 #     apt-get install postgresql-client -y
 
-COPY start.sh ./start.sh
-RUN npm install pm2@latest -g && \
-    chmod +x ./start.sh
+RUN npm install pm2@latest -g
 
 RUN echo "Cloning evolutility source.." && \
     # git clone https://github.com/evoluteur/evolutility-server-node.git ./ && \
@@ -27,16 +25,16 @@ WORKDIR /src/server
 RUN git checkout patch_udate_cdate && \
     npm install
 
-COPY ./server/config.js ./config.js
-COPY ./server/all_models.js ./models/all_models.js
-COPY ./server/user_model.js ./models/user_model.js
-
 WORKDIR /src/ui
 RUN npm install
-COPY ./ui/all_models.js ./src/models/all_models.js
-COPY ./ui/user_model.js ./src/models/user_model.js
 
 WORKDIR /src
+COPY ./start.sh /src/start.sh
+RUN chmod +x /src/start.sh
+COPY ./server/config.js /src/server/config.js
+COPY ./server/*.js /src/server/models/
+COPY ./ui/*.js /src/ui/src/models/
 
-ENTRYPOINT ["/bin/bash"]
-# ENTRYPOINT ["/src/start.sh"]
+WORKDIR /src
+CMD ["/bin/bash"]
+#ENTRYPOINT ["/src/start.sh"]
