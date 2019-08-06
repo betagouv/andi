@@ -29,9 +29,6 @@ class FormPage extends React.Component {
             <div>
               <Link to="/" style={{color: '#fff'}}>Accueil</Link> / Inscription
             </div>
-            <h1>Inscrivez-vous pour participer à l'aventure</h1>
-
-            <p>Ce projet est expérimental. Il se construit pour vous et avec vous. Chacun est libre d’y participer et de l’arrêter quand il le souhaite.</p>
             <h4>Cette expérimentation est faite pour vous si vous souhaitez :</h4>
             <ul>
               <li>Découvrir un métier ou un secteur d'activité</li>
@@ -48,6 +45,9 @@ class FormPage extends React.Component {
 
           </div>
           <div className="col section pane section-grey" role="form" style={{marginTop: '0'}}>
+            <h1>Inscrivez-vous pour participer à l'aventure</h1>
+
+            <p>Ce projet est expérimental. Il se construit pour vous et avec vous. Chacun est libre d’y participer et de l’arrêter quand il le souhaite.</p>
             <form action="https://usebasin.com/f/2ed85c3d52b3" acceptCharset="UTF-8" encType="multipart/form-data" method="POST">
                 <div className="form__group">
                   <label htmlFor="prenom">Prénom</label>
