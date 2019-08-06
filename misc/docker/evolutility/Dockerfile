@@ -30,9 +30,7 @@ RUN npm install
 
 WORKDIR /src
 COPY ./start.sh /src/start.sh
-COPY ./run_graphql.sh /src/run_graphql.sh
 RUN chmod +x /src/start.sh
-RUN chmod +x /src/run_graphql.sh
 COPY ./server/config.js /src/server/config.js
 COPY ./server/*.js /src/server/models/
 COPY ./ui/*.js /src/ui/src/models/
