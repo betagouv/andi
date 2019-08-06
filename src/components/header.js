@@ -53,13 +53,13 @@ const Header = () => (
             <div className="sub-nav">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link to="/" className="nav-link">Accueil</Link>
+                  <Link to="/" className='nav-link' activeClassName="active" style={{marginRight: '10px'}}>Accueil</Link>
                 </li>
                 {/* <li className="nav-item">
                 <Link to="#a-propos" className="nav-link">Présentation</Link>
                 </li> */}
-                <li className="nav-item register__button">
-                  <Link to="/inscription" className="button nav-button">Inscription</Link>
+                <li className="nav-item">
+                  <Link to="/inscription" className='nav-link' activeClassName="active">Inscription</Link>
                 </li>
               </ul>
               {/* <ul className="navbar-nav">
