@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "4e41dde0300145ffefd24162fd6f6e2eacd2639418d91e3317aa9fe97f374ec7"
+            "sha256": "794382a258bb6ca95662cf9accdccdf9bd03c11d4164e11ac28ba52e05ea1f5c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -86,6 +86,14 @@
                 "sha256:14dd6caf1527abb21f08f86c784eac40853ba93edb79552aa1e4b8aef1b61c7b"
             ],
             "version": "==2.10.1"
+        },
+        "liquidpy": {
+            "hashes": [
+                "sha256:34d64d274539891a02a4a2a9623d47e58e0121a6b555289300ad75e30c24ecd8",
+                "sha256:3a5b682f10d5cac018e3191bffa8d0e92ec11a6228d8c7a7a8987ab412838e68"
+            ],
+            "index": "pypi",
+            "version": "==0.0.7"
         },
         "markupsafe": {
             "hashes": [

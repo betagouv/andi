@@ -4,6 +4,7 @@ import yaml
 import json
 import pgware
 import csv
+import send_mail
 from flask import (
     Flask,
     request,
@@ -67,6 +68,13 @@ def write_user(d, dbconn):
     dbconn.execute(SQL_USER, data)
 
 
+def get_assets(formtype, dbconn):
+    result = dbconn.execute(f'SELECT key, value FROM asset WHERE description = \'mail_{formtype}\'')
+    results = result.fetchall()
+    data = {k: v for k, v in results}
+    return(data)
+
+
 SQL_USER = """
     INSERT INTO "inscription" (
         prenom,
@@ -84,6 +92,7 @@ VALUES (
 
 app = Flask(__name__)
 app.config = {**app.config, **cfg_get('./config.yaml')}
+
 
 # ################################################################ FLASK ROUTES
 # #############################################################################
@@ -111,9 +120,16 @@ def inscription():
             'prenom': request.form.get('prenom'),
             'email': request.form.get('email')
         }
+    data['form_type'] = 'landing_page'
 
     if not data['nom']:
         raise RuntimeError('missing field NOM')
+
+    with get_db() as dbconn:
+        assets = get_assets(data['form_type'], dbconn)
+
+    send_mail.send_mail(data['form_type'], data, assets)
+    return 'ok'
 
     submission_key = data2hash(data)
     store = get_local_store()

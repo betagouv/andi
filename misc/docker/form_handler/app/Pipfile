@@ -15,6 +15,7 @@ requests = "*"
 pyyaml = "*"
 pickledb = "*"
 pgware = {editable = true,git = "https://github.com/PieterjanMontens/pgware.git"}
+liquidpy = "*"
 
 [requires]
 python_version = "3.7"
