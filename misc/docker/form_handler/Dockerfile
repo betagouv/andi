@@ -17,4 +17,4 @@ WORKDIR /app
 RUN pipenv install --system --deploy
 ENV PYTHONPATH "${PYTONPATH}:/app/src"
 # ENTRYPOINT ["bash"]
-ENTRYPOINT ["waitress-serve", "--call", "src:run"]
+ENTRYPOINT ["waitress-serve", "--call", "src:create_app"]

@@ -26,8 +26,7 @@ TODO:
     - send mail forwarding subscription information
 """
 
-def run():
-    return Flask("app")
+
 
 
 def cfg_get(config=''):
@@ -98,80 +97,82 @@ VALUES (
 )
 """
 
-app = Flask(__name__)
-app.config = {**app.config, **cfg_get('./config.yaml')}
 
 
 # ################################################################ FLASK ROUTES
 # #############################################################################
-@app.route('/')
-def hello():
-    return 'form server'
+def create_app():
+    app = Flask(__name__)
+    app.config = {**app.config, **cfg_get('./config.yaml')}
 
+    @app.route('/')
+    def hello():
+        return 'form server'
 
-@app.route('/inscription', methods=['GET', 'POST'])
-def inscription():
-    is_post = request.method == 'POST'
-    is_get = request.method == 'GET'
-    is_json = request.content_type == 'application/json'
-    if is_get:
-        data = {
-            'nom': request.args.get('nom'),
-            'prenom': request.args.get('prenom'),
-            'email': request.args.get('email')
-        }
-    elif is_json:
-        data = request.get_json()
-    else:
-        data = {
-            'nom': request.form.get('nom'),
-            'prenom': request.form.get('prenom'),
-            'email': request.form.get('email')
-        }
-    data['form_type'] = 'landing_page'
+    @app.route('/inscription', methods=['GET', 'POST'])
+    def inscription():
+        is_post = request.method == 'POST'
+        is_get = request.method == 'GET'
+        is_json = request.content_type == 'application/json'
+        if is_get:
+            data = {
+                'nom': request.args.get('nom'),
+                'prenom': request.args.get('prenom'),
+                'email': request.args.get('email')
+            }
+        elif is_json:
+            data = request.get_json()
+        else:
+            data = {
+                'nom': request.form.get('nom'),
+                'prenom': request.form.get('prenom'),
+                'email': request.form.get('email')
+            }
+        data['form_type'] = 'landing_page'
 
-    if not data['nom']:
-        logger.warning('Missing field NOM')
-        abort(400)
-    if not data['prenom']:
-        logger.warning('Missing field PRENOM')
-        abort(400)
-    if not data['email']:
-        logger.warning('Missing field EMAIL')
-        abort(400)
+        if not data['nom']:
+            logger.warning('Missing field NOM')
+            abort(400)
+        if not data['prenom']:
+            logger.warning('Missing field PRENOM')
+            abort(400)
+        if not data['email']:
+            logger.warning('Missing field EMAIL')
+            abort(400)
 
-    with get_db() as dbconn:
-        assets = get_assets(data['form_type'], dbconn)
+        with get_db() as dbconn:
+            assets = get_assets(data['form_type'], dbconn)
 
-    send_mail.send_mail(data['form_type'], data, assets)
-    return 'ok'
+        send_mail.send_mail(data['form_type'], data, assets)
+        return 'ok'
 
-    submission_key = data2hash(data)
-    store = get_local_store()
-    if store.get(submission_key) is not False:  # Data already received
+        submission_key = data2hash(data)
+        store = get_local_store()
+        if store.get(submission_key) is not False:  # Data already received
+            if is_post and not is_json:
+                return redirect("https://andi.beta.gouv.fr/merci", code=302)
+            return Response(
+                json.dumps({'error': 'data already submitted'}),
+                status=409,
+                mimetype='application/json'
+            )
+
+        store.set(submission_key, 'true')
+        with get_db() as dbconn:
+            write_user(data, dbconn)
+
+        with open(app.config['csv_file'], 'a', newline='') as csvf:
+            columns = ['nom', 'prenom', 'email', 'ip']
+            wr = csv.DictWriter(csvf, columns)
+            wr.writerow({'ip': request.remote_addr, **data})
+
+        # redirect with 302, even if 303 is more (too ?) specific
         if is_post and not is_json:
             return redirect("https://andi.beta.gouv.fr/merci", code=302)
-        return Response(
-            json.dumps({'error': 'data already submitted'}),
-            status=409,
-            mimetype='application/json'
-        )
 
-    store.set(submission_key, 'true')
-    with get_db() as dbconn:
-        write_user(data, dbconn)
-
-    with open(app.config['csv_file'], 'a', newline='') as csvf:
-        columns = ['nom', 'prenom', 'email', 'ip']
-        wr = csv.DictWriter(csvf, columns)
-        wr.writerow({'ip': request.remote_addr, **data})
-
-    # redirect with 302, even if 303 is more (too ?) specific
-    if is_post and not is_json:
-        return redirect("https://andi.beta.gouv.fr/merci", code=302)
-
-    return jsonify(data)
+        return jsonify(data)
+    return app
 
 
 if __name__ == '__main__':
-    app.run()
+    create_app().run()
