@@ -27,8 +27,6 @@ TODO:
 """
 
 
-
-
 def cfg_get(config=''):
     current_dir = os.path.dirname(os.path.abspath(__file__))
     defpath = f'{current_dir}/config.default.yaml'
@@ -45,7 +43,7 @@ def data2hash(data):
     return str(hash(key_info))
 
 
-def get_local_store():
+def get_local_store(app):
     if 'pickledb' not in g:
         g.pickledb = pickledb.load(
             app.config['pickle_db'],
@@ -55,7 +53,7 @@ def get_local_store():
     return g.pickledb
 
 
-def get_db():
+def get_db(app):
     if 'pgw' not in g:
         g.pgw = pgware.build(
             client='psycopg2',
@@ -140,14 +138,14 @@ def create_app():
             logger.warning('Missing field EMAIL')
             abort(400)
 
-        with get_db() as dbconn:
+        with get_db(app) as dbconn:
             assets = get_assets(data['form_type'], dbconn)
 
         send_mail.send_mail(data['form_type'], data, assets)
         return 'ok'
 
         submission_key = data2hash(data)
-        store = get_local_store()
+        store = get_local_store(app)
         if store.get(submission_key) is not False:  # Data already received
             if is_post and not is_json:
                 return redirect("https://andi.beta.gouv.fr/merci", code=302)
@@ -158,7 +156,7 @@ def create_app():
             )
 
         store.set(submission_key, 'true')
-        with get_db() as dbconn:
+        with get_db(app) as dbconn:
             write_user(data, dbconn)
 
         with open(app.config['csv_file'], 'a', newline='') as csvf:

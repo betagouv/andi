@@ -1,5 +1,6 @@
 import requests
 import logging
+import os
 from liquid import Liquid
 
 logger = logging.getLogger(__name__)
@@ -48,7 +49,7 @@ Nouvel reçu envoi sur {{form_type}}:
 {{data}}
 """
 
-MAILGUN_KEY = '8e99ddd0cc009cd90ba07d8d833036f1-73ae490d-6c9a2e13'
+MAILGUN_KEY = os.environ['MG_KEY']
 MAILGUN_SANDBOX = 'sandbox7d55d674a9244e9785e41e244cf89074.mailgun.org'
 
 
