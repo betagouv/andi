@@ -1,0 +1,82 @@
+---
+- hosts: all
+  vars:
+      root_password: 'ROOT_PASSWORD'
+      intendant_password: 'ADMIN_PASSWORD'
+      deploy_user: 'intendant'
+      deploy_keys:
+          - ~/.ssh/id_intendant.pub
+
+      common_ssh_port: 22
+
+  tasks:
+  
+  - name: Add operator user named intendant
+    user:
+        name: "{{ deploy_user }}"
+        shell: /bin/bash
+        password: "{{ intendant_password | password_hash('sha512') }}"
+        update_password: on_create
+    register: newuser
+
+  - name: Force operator to update password
+    shell: passwd -e "{{ deploy_user }}"
+    when: newuser.changed
+  
+  - name: Add intendant to the sudoers
+    copy:
+         dest: "/etc/sudoers.d/{{ deploy_user }}"
+         content: "{{ deploy_user }}  ALL=(ALL)  NOPASSWD: ALL"
+  
+  - name: Add authorized keys for intendant
+    authorized_key: user="{{ deploy_user }}"
+                    key="{{ lookup('file', item) }}"
+                    state=present
+    with_items: "{{ deploy_keys }}"
+  
+  - name: Disable Password Authentication
+    lineinfile:
+          dest=/etc/ssh/sshd_config
+          regexp='^PasswordAuthentication'
+          line="PasswordAuthentication no"
+          state=present
+          backup=yes
+
+  - name: Disable Empty Password
+    lineinfile:
+          dest=/etc/ssh/sshd_config
+          regexp='^PermitEmptyPasswords'
+          line="PermitEmptyPasswords no"
+          state=present
+          backup=yes
+  
+  - name: Disable Old Protocol
+    lineinfile:
+          dest=/etc/ssh/sshd_config
+          regexp='^Protocol'
+          line="Protocol 2"
+          state=present
+          backup=yes
+
+  - name: Change root password
+    user: 
+      name: root
+      password: "{{ root_password | password_hash('sha512') }}"
+
+
+  - name: Disable Root Login
+    lineinfile:
+          dest=/etc/ssh/sshd_config
+          regexp='^PermitRootLogin'
+          line="PermitRootLogin no"
+          state=present
+          backup=yes
+    notify:
+      - restart sshd
+
+  handlers:
+    - name: restart sshd
+      service: name=sshd state=restarted
+      shell: sleep 3; /etc/init.d/sshd restart
+      async: 1
+      poll: 0

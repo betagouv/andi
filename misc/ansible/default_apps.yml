@@ -1,0 +1,93 @@
+---
+- hosts: all
+  vars:
+      deploy_user: 'intendant'
+      deploy_keys:
+          - ~/.ssh/id_intendant.pub
+      required_packages:
+          - fail2ban
+          - logwatch
+          - unattended-upgrades
+          - apt-listchanges
+          - sudo
+          - aptitude
+          - ufw
+      optional_packages:
+          - vim
+          - mosh    # ssh-variant for bad connections
+          - htop
+          - mtr     # traceroute
+          - pydf    # disk usage
+          # - nnn     # file size
+          - jq
+          # - ripgrep # full text search
+          - dtach
+          - screen
+          - xclip
+          - xsel
+          - xauth
+          - git
+          - less
+      logwatch_mail: 'pieterjan@montens.net'
+
+  tasks:
+  ## Update apt
+  - name: Update APT package cache
+    apt: update_cache=yes cache_valid_time=3600
+
+  ## Install packages
+  - name: Install required packages
+    apt: state=present pkg={{ required_packages }}
+
+  - name: Install optional packages
+    apt: state=present pkg={{ optional_packages }}
+
+  - name: Upgrade APT to the latest packages
+    apt: upgrade=safe
+
+  - name: Adjust APT update intervals
+    copy: src=apt_periodic dest=/etc/apt/apt.conf.d/10periodic
+
+ ## Misc
+  - name: set vimrc
+    copy: src=vimrc dest=/home/intendant/.vimrc
+
+  ## Config firewall
+  - name: Enable ipv6
+    lineinfile:
+          dest=/etc/default/ufw
+          regexp='^IPV6'
+          line="IPV6=yes"
+          state=present
+          backup=yes
+
+  - name: Setup ufw
+    ufw: state=enabled policy=deny direction=incoming
+
+  - name: rate-limit
+    ufw: rule=limit port=ssh proto=tcp
+
+  - name: Allow ssh traffic
+    ufw: rule=allow port=ssh proto=tcp
+
+
+  - name: Allow mosh traffic
+    ufw: rule=allow proto=udp port=60000:60100
+    when: "'mosh' in optional_packages"
+
+  
+  ## Setup Logwatch
+  - name: Set up Postfix to relay mail
+    debconf: name=postfix
+             question='{{ item.question }}'
+             value='{{ item.value }}'
+             vtype='{{ item.vtype }}'
+    with_items:
+      - { question: 'postfix/mailname', value: '{{ ansible_fqdn }}', vtype: 'string' }
+      - { question: 'postfix/main_mailer_type', value: 'Internet Site', vtype: 'string' }
+
+  - name: Email log summary daily
+    lineinfile: dest=/etc/cron.daily/00logwatch
+                regexp="^/usr/sbin/logwatch"
+                line="/usr/sbin/logwatch --output mail --mailto {{ logwatch_mail }} --detail high"
+                state=present create=yes

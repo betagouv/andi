@@ -1,0 +1,23 @@
+[MASTER]
+
+ignore=
+    .git,
+    __pycache__,
+    .venv
+
+[MESSAGES CONTROL]
+
+disable=missing-docstring,
+        too-many-instance-attributes,
+        too-many-format-args,
+        line-too-long,
+        ungrouped-imports,
+        redefined-outer-name,
+        invalid-name,
+        no-self-use,
+        no-name-in-module,
+
+[FORMAT]
+
+max-line-length=120
+good-names=fd

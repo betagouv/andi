@@ -1,3 +1,7 @@
+config.yaml
+start_docker.sh
+*.csv
+
 # Logs
 logs
 *.log
@@ -67,3 +71,7 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+# Misc
+deploy*
+*.csv

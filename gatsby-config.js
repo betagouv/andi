@@ -53,6 +53,15 @@ module.exports = {
         },
       },
     },
+    {
+      // Source graphql des ressources textuelles ANDi publiques
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "query",
+        fieldName: "andi",
+        url: "https://andi.beta.gouv.fr/gql/",
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
