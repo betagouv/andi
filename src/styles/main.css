@@ -4754,8 +4754,9 @@ a.nav-link:hover, button.nav-link:hover {
 }
 
 .pane {
-  padding: 3em;
-  padding: var(--space-xl);
+  padding-top: 3em;
+  padding-bottom: 3em;
+  padding-top: var(--space-xl);
   margin: 0;
 }
 
@@ -4807,6 +4808,27 @@ footer.footer .social-link svg path {
   fill: white;
 }
 
+form {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+form label {
+  font-size: 16px;
+}
+
+form .form__group + .form__group {
+  margin-top: 15px;
+}
+
+form input {
+  border: solid 1px #26353f;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
 @media (max-width: 850px) {
   .text_1 {
     max-width: 50em;
@@ -4818,7 +4840,7 @@ footer.footer .social-link svg path {
     white-space: normal;
   }
   a.btn-xl {
-    width: 100%;
+    width: 100% !important;
   }
   .row > * + * {
     margin-left: 0;
