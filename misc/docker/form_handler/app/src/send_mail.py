@@ -52,6 +52,15 @@ Nouvel reçu envoi sur {{form_type}}:
 MAILGUN_KEY = os.environ['MG_KEY']
 MAILGUN_SANDBOX = os.environ['MG_BOX']
 
+def notify_mail(form_type, data):
+    text = Liquid(MASK_NOTIFICATION).render(form_type=form_type, data=json.dumps(data, indent=4))
+    subject = f'Formulaire reçu type "{form_type}"'
+    send(
+        recipient='andi@beta.gouv.fr',
+        subject=subject,
+        text=text
+    )
+
 
 def send_mail(form_type, data, assets):
     logger.debug("Preparing to send mail %s", form_type)

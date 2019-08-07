@@ -128,6 +128,7 @@ def create_app():
             }
         data['form_type'] = 'landing_page'
 
+        # Validate data
         if not data['nom']:
             logger.warning('Missing field NOM')
             abort(400)
@@ -138,12 +139,7 @@ def create_app():
             logger.warning('Missing field EMAIL')
             abort(400)
 
-        with get_db(app) as dbconn:
-            assets = get_assets(data['form_type'], dbconn)
-
-        send_mail.send_mail(data['form_type'], data, assets)
-        return 'ok'
-
+        # Check if not already received
         submission_key = data2hash(data)
         store = get_local_store(app)
         if store.get(submission_key) is not False:  # Data already received
@@ -154,15 +150,26 @@ def create_app():
                 status=409,
                 mimetype='application/json'
             )
-
         store.set(submission_key, 'true')
+
+        # Write to database
         with get_db(app) as dbconn:
             write_user(data, dbconn)
 
+        # Log to csv
         with open(app.config['csv_file'], 'a', newline='') as csvf:
             columns = ['nom', 'prenom', 'email', 'ip']
             wr = csv.DictWriter(csvf, columns)
             wr.writerow({'ip': request.remote_addr, **data})
+
+        # Send "received" mail
+        with get_db(app) as dbconn:
+            assets = get_assets(data['form_type'], dbconn)
+
+        if send_mail.send_mail(data['form_type'], data, assets):
+            send_mail.notify_mail(data['form_type'], data)
+        else:
+            logger.warning('Failed to send mail %s', data)
 
         # redirect with 302, even if 303 is more (too ?) specific
         if is_post and not is_json:
