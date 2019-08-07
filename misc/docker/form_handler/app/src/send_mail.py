@@ -50,7 +50,7 @@ Nouvel reçu envoi sur {{form_type}}:
 """
 
 MAILGUN_KEY = os.environ['MG_KEY']
-MAILGUN_SANDBOX = 'sandbox7d55d674a9244e9785e41e244cf89074.mailgun.org'
+MAILGUN_SANDBOX = os.environ['MG_BOX']
 
 
 def send_mail(form_type, data, assets):
