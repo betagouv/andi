@@ -35,7 +35,7 @@ const Footer = () => (
                         <span className="icon-twitter"></span>
                       </a>
                     </li>
-                    <li className="col">
+                    {/* <li className="col">
                       <a href="">
                         <span className="icon-medium"></span>
                       </a>
@@ -49,7 +49,7 @@ const Footer = () => (
                       <a href="">
                         <span className="icon-facebook"></span>
                       </a>
-                    </li>
+                    </li> */}
                 </ul>
                 <li><Link to="/conditions-generales">Mentions légales</Link></li>
                 <Link to="/" style={{marginTop: '25px', color: 'white', display: 'block'}}>Retour en haut de page</Link>
