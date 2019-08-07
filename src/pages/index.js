@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { mdReact } from 'markdown-react-js';
 
 import Layout from "../components/layout"
 // import Image from "../components/image"
@@ -31,6 +32,34 @@ export const query = graphql`
 
 // const abbr_andi = "accompagnement numérique au développement de l'insertion"
 
+const PointDetail = ({number, title, text}) => (
+    <div className="col">
+      <span className="number">{ number }</span>
+      <h3>{ title }</h3>
+      <p>{ text }</p>
+    </div>
+)
+
+const Hero = ({title, text, button}) => (
+     <section className="section section-grey section__bottom_svg" role="banner">
+       <div className="container-fluid">
+         <div className="row">
+           <div className="col-lg-6 offset-lg-2 col-sm-10 offset-sm-1 col-xs-12 offset-xs-0 title_wrapper">
+             <h1>{ title }</h1>
+             <div className="hero__p">
+               <p>{ text }</p>
+             </div>
+             <Link className="button large btn-xl" to="/inscription" style={{top: '30px'}}>{ button }</Link>
+           </div>
+           <div className="col-lg-4 col-sm-12 text-right no-gutters">
+           <img  className="opt_img illu-1" src={illu1} alt="" srcSet={`${illu1_2x} 2x, ${illu1_3x} 3x`}  />
+           </div>
+         </div>
+       </div>
+     </section>
+)
+    
+
 class IndexPage extends React.Component {
 
     constructor(props) {
@@ -38,35 +67,19 @@ class IndexPage extends React.Component {
         let data = {};
         // For now evolutility graphql does not support filters, so filter here instead
         for (let asset of props.data.andi.assets) {
-            if (asset.description == 'lp_accueil') {
-                data[asset.key] = asset.value
+            if (asset.description === 'lp_accueil') {
+                data[asset.key] = mdReact()(asset.value)
                 }
         }
         this.d = data
-        console.log(this.d)
     }
 
     render() {
         return (
             <Layout>
             <div>
-                <section className="section section-grey section__bottom_svg" role="banner">
-                  <div className="container-fluid">
-                    <div className="row">
-                      <div className="col-lg-6 offset-lg-2 col-sm-10 offset-sm-1 col-xs-12 offset-xs-0 title_wrapper">
-                        <h1>{ this.d.titre }</h1>
-                        <div className="hero__p">
-                          <p>{ this.d.slogan }</p>
-                        </div>
-                        <Link className="button large btn-xl" to="/inscription" style={{top: '30px'}}>{ this.d.bouton }</Link>
-                      </div>
-                      <div className="col-lg-4 col-sm-12 text-right no-gutters">
-                      <img  className="opt_img illu-1" src={illu1} alt="" srcSet={`${illu1_2x} 2x, ${illu1_3x} 3x`}  />
-                      </div>
-                    </div>
-                  </div>
-                </section>
-                {/* <div className="svg_container" aria-hidden="true" focusable="false">
+                <Hero title={ this.d.titre } text={this.d.slogan} button={this.d.bouton} />
+               {/* <div className="svg_container" aria-hidden="true" focusable="false">
                   <svg className="svg_1" viewBox="0 70 500 80" preserveAspectRatio="none">
                     <rect x={0} y={0} width={500} height={500} style={{stroke: 'none'}} />
                     <path d="M0,100 C150,0 350,250 500,100 L500,00 L0,0 Z" style={{stroke: 'none'}} />
@@ -84,21 +97,9 @@ class IndexPage extends React.Component {
                             <p>{ this.d.point1_texte }</p>
                             <Link className="button fullwidth large" to="/inscription">{ this.d.bouton }</Link>
                           </div>
-                          <div className="col">
-                            <span className="number">2</span>
-                            <h3>{ this.d.point2 }</h3>
-                            <p>{ this.d.point2_texte }</p>
-                          </div>
-                          <div className="col">
-                            <span className="number">3</span>
-                            <h3>{ this.d.point3 }</h3>
-                            <p>{ this.d.point3_texte }</p>
-                          </div>
-                          <div className="col pull-1">
-                            <span className="number">4</span>
-                            <h3>{ this.d.point4 }</h3>
-                            <p>{ this.d.point4_texte }</p>
-                          </div>
+                          <PointDetail number="2" title={ this.d.point2 }  text={ this.d.point2_texte } />
+                          <PointDetail number="3" title={ this.d.point3 }  text={ this.d.point3_texte } />
+                          <PointDetail number="4" title={ this.d.point4 }  text={ this.d.point4_texte } />
                         </div>
                       </div>
                     </div>
