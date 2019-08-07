@@ -79,7 +79,7 @@ def send(recipient, subject, text, html=False):
     request = requests.post(request_url, auth=('api', MAILGUN_KEY), data={
         'from': 'no-reply@example.com',
         'to': recipient,
-        'subject': subject
+        'subject': subject,
         'text': text,
         'html': html,
         'h:Reply-To': 'andi@beta.gouv.fr'

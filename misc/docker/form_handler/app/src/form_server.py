@@ -4,6 +4,7 @@ import yaml
 import json
 import pgware
 import csv
+import logging
 import send_mail
 from flask import (
     Flask,
@@ -11,8 +12,12 @@ from flask import (
     Response,
     redirect,
     jsonify,
+    abort,
     g
 )
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.getLevelName('DEBUG'))
+logger.addHandler(logging.StreamHandler())
 
 """
 TODO:
@@ -20,6 +25,9 @@ TODO:
     - send mail confirming subscription
     - send mail forwarding subscription information
 """
+
+def run():
+    return Flask("app")
 
 
 def cfg_get(config=''):
@@ -123,7 +131,14 @@ def inscription():
     data['form_type'] = 'landing_page'
 
     if not data['nom']:
-        raise RuntimeError('missing field NOM')
+        logger.warning('Missing field NOM')
+        abort(400)
+    if not data['prenom']:
+        logger.warning('Missing field PRENOM')
+        abort(400)
+    if not data['email']:
+        logger.warning('Missing field EMAIL')
+        abort(400)
 
     with get_db() as dbconn:
         assets = get_assets(data['form_type'], dbconn)

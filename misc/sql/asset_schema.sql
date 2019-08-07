@@ -10,4 +10,4 @@ CREATE TABLE "asset" (
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     date_updated TIMESTAMP WITH TIME ZONE
 );
-CREATE UNIQUE INDEX asset_key_description ON table (key, description);
+CREATE UNIQUE INDEX asset_key_description ON "asset" (key, description);
