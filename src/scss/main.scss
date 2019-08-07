@@ -279,8 +279,9 @@ a, button{
 }
 
 .pane {
-	padding: 3em;
-	padding: var(--space-xl);
+  padding-top: 3em;
+  padding-bottom: 3em;
+	padding-top: var(--space-xl);
 	margin:0;
 }
   
@@ -322,13 +323,41 @@ footer.footer{
 }
 
 
+form{
+  margin-left: 0;
+  margin-right: 0;
+  label{
+    font-size: 16px;
+  }
+  .form__group + .form__group{
+    margin-top: 15px;
+  }
+  input{
+    border: solid 1px #26353f;
+  }
+}
+
+.underline{
+  text-decoration: underline;
+}
+
+// body a.button:focus,
+// body a:focus,
+// input:focus,
+// input[type=text]:focus,
+// input[type=email]:focus {
+//     outline: 4px dotted #888;
+//     outline-offset: 2px;
+// }
+
+
 @media (max-width: 850px) {
   
   .text_1 { max-width:50em; }
   .text_2 { max-width:50em; }
   form input[type="submit"] { white-space:normal}
   a.btn-xl{
-    width: 100%;
+    width: 100% !important;
   }
   .row > * + * {
     margin-left: 0;
