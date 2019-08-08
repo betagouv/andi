@@ -27,14 +27,11 @@ const Footer = () => (
             <div className="col-xs-12 offset-xs-0 col offset-lg-2">
               <h2>Liens</h2>
               <ul className="footer-link">
-                <li><Link to="/conditions-generales">Plan du site</Link></li>
-                <li><a href="mailto:andi@beta.gouv.fr" title="Nous écrire un mail">Lien GitHub</a></li>
+                <li><Link to="/conditions-generales">Conditions générales</Link></li>
+                <li><a href="mailto:andi@beta.gouv.fr" title="Nous écrire un mail">Nous contacter</a></li>
                 <ul className="social-link col-6 col-xs-4">
-                    <li className="col">
-                      <a href="">
-                        <span className="icon-twitter"></span>
-                      </a>
-                    </li>
+                    <li className="col"><a href="https://twitter.com/ANDi_betagouv" title="Twitter"><span className="icon-twitter"></span></a></li>
+                    <li className="col"><a href="https://github.com/betagouv/andi" title="Github"><span className="icon-github"></span></a></li>
                     {/* <li className="col">
                       <a href="">
                         <span className="icon-medium"></span>
@@ -51,8 +48,7 @@ const Footer = () => (
                       </a>
                     </li> */}
                 </ul>
-                <li><Link to="/conditions-generales">Mentions légales</Link></li>
-                <Link to="/" style={{marginTop: '25px', color: 'white', display: 'block'}}>Retour en haut de page</Link>
+                { /*<a href="#top" style={{marginTop: '25px', color: 'white', display: 'block'}}>Retour en haut de page</a>*/ }
               </ul>
             </div>
           </div>
