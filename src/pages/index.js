@@ -25,6 +25,7 @@ export const query = graphql`
             key
             value
             description
+            markdown
         }
     }
 }
@@ -68,8 +69,8 @@ class IndexPage extends React.Component {
         // For now evolutility graphql does not support filters, so filter here instead
         for (let asset of props.data.andi.assets) {
             if (asset.description === 'lp_accueil') {
-                data[asset.key] = mdReact()(asset.value)
-                }
+                data[asset.key] = asset.markdown ? mdReact()(asset.value) : asset.value
+            }
         }
         this.d = data
     }

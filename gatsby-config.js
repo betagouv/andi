@@ -60,6 +60,7 @@ module.exports = {
         typeName: "query",
         fieldName: "andi",
         url: "https://andi.beta.gouv.fr/gql/",
+        refetchInterval: 60,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

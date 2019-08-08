@@ -11,6 +11,7 @@ export const query = graphql`
             key
             value
             description
+            markdown
         }
     }
 }
@@ -34,12 +35,8 @@ class FormPage extends React.Component {
       // For now evolutility graphql does not support filters, so filter here instead
       for (let asset of props.data.andi.assets) {
           if (asset.description === 'lp_inscription') {
-              // FIXME: add "is_markdown" flag to table
-              if (!['envoyer', 'page_accueil', 'page_inscription'].includes(asset.key))
-                  data[asset.key] = mdReact()(asset.value)
-              else
-                  data[asset.key] = asset.value
-              }
+              data[asset.key] = asset.markdown ? mdReact()(asset.value) : asset.value
+          }
       }
       this.d = data
   }

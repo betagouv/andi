@@ -41,7 +41,7 @@ module.exports = {
             type: 'textmultiline', 
             label: 'commentaires',
             inMany: false
-        }
+        },
         {
             id: 'date_inscription',
             column: 'date_inscription',
