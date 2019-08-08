@@ -31,7 +31,7 @@ const Footer = () => (
                 <li><a href="mailto:andi@beta.gouv.fr" title="Nous écrire un mail">Nous contacter</a></li>
                 <ul className="social-link col-6 col-xs-4">
                     <li className="col"><a href="https://twitter.com/ANDi_betagouv" title="Twitter"><span className="icon-twitter"></span></a></li>
-                    <li className="col"><a href="https://github.com/betagouv/andi" title="Github"><span className="icon-github"></span></a></li>
+                    { /* <li className="col"><a href="https://github.com/betagouv/andi" title="Github"><span className="icon-github"></span></a></li> */ }
                     {/* <li className="col">
                       <a href="">
                         <span className="icon-medium"></span>
