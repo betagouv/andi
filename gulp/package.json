@@ -1,0 +1,33 @@
+{
+  "name": "CPA",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    ""
+  ],
+  "author": "Clément Lagneau / Caisse des Dépôts",
+  "license": "",
+  "homepage": "",
+  "devDependencies": {
+    "autoprefixer": "^7.2.5",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-install": "^1.1.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-minifier": "^1.1.0",
+    "gulp-minify": "^2.1.0",
+    "gulp-pixrem": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.3",
+    "run-sequence": "^2.2.1"
+  },
+  "dependencies": {
+    "orchestrator": "^0.3.8"
+  }
+}

@@ -49,10 +49,27 @@ const Header = () => (
                 <img className="navbar__logo" src={marianneSVG} alt="logo république française" />
                 <span className="navbar_domain">andi<b>.beta.gouv.</b><em>fr</em></span>
               </Link>
-              <nav>
-                <ul className="nav__links">
-                </ul>
-              </nav>
+            </div>
+            <div className="sub-nav">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link to="/" className='nav-link' activeClassName="active" style={{marginRight: '10px'}}>Accueil</Link>
+                </li>
+                {/* <li className="nav-item">
+                <Link to="#a-propos" className="nav-link">Présentation</Link>
+                </li> */}
+                <li className="nav-item">
+                  <Link to="/inscription" className='nav-link' activeClassName="active">Inscription</Link>
+                </li>
+              </ul>
+              {/* <ul className="navbar-nav">
+                <li style={{marginRight: '10px'}}>
+                  <a className="button ear-btn-icon secondary" aria-label="aide" href="#"></a>
+                </li>
+                <li className="nav-item">
+                  <a className="button secondary" href="#" style={{whiteSpace: 'nowrap'}}>Adapter l'affichage</a>
+                </li>
+              </ul> */}
             </div>
       </header>
     </>
