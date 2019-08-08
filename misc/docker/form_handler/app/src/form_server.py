@@ -47,7 +47,8 @@ def get_local_store(app):
     if 'pickledb' not in g:
         g.pickledb = pickledb.load(
             app.config['pickle_db'],
-            app.config['pickle_persist']
+            app.config['pickle_persist'],
+            False
         )
 
     return g.pickledb
@@ -64,13 +65,13 @@ def get_db(app):
 
 
 def write_user(d, dbconn):
-    data = {
+    query_data = {
         'prenom': d.get('prenom'),
         'nom': d.get('nom'),
         'email': d.get('email'),
         'entry_point': ['landing_page', 'integration_test']
     }
-    dbconn.execute(SQL_USER, data)
+    dbconn.execute(SQL_USER, query_data)
 
 
 def get_assets(formtype, dbconn):
@@ -116,17 +117,19 @@ def create_app():
             data = {
                 'nom': request.args.get('nom'),
                 'prenom': request.args.get('prenom'),
-                'email': request.args.get('email')
+                'email': request.args.get('email'),
+                'form_type': 'landing_page'
             }
         elif is_json:
             data = request.get_json()
+            data['form_type'] = 'landing_page'
         else:
             data = {
                 'nom': request.form.get('nom'),
                 'prenom': request.form.get('prenom'),
-                'email': request.form.get('email')
+                'email': request.form.get('email'),
+                'form_type': 'landing_page'
             }
-        data['form_type'] = 'landing_page'
 
         # Validate data
         if not data['nom']:
@@ -153,16 +156,21 @@ def create_app():
         store.set(submission_key, 'true')
 
         # Write to database
-        with get_db(app) as dbconn:
-            write_user(data, dbconn)
+        try:
+            with get_db(app) as dbconn:
+                write_user(data, dbconn)
+        except Exception as e:
+            logger.exception(e)
+            logger.warning('Database lost, continueing')
 
         # Log to csv
         with open(app.config['csv_file'], 'a', newline='') as csvf:
-            columns = ['nom', 'prenom', 'email', 'ip']
+            columns = ['nom', 'prenom', 'email', 'ip', 'form_type']
             wr = csv.DictWriter(csvf, columns)
             wr.writerow({'ip': request.remote_addr, **data})
 
         # Send "received" mail
+        print(json.dumps(data, indent=2))
         with get_db(app) as dbconn:
             assets = get_assets(data['form_type'], dbconn)
 

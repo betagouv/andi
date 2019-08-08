@@ -1,6 +1,9 @@
 import requests
 import logging
 import os
+import json
+import mistune
+import re
 from liquid import Liquid
 
 logger = logging.getLogger(__name__)
@@ -34,12 +37,7 @@ MASK_INSCRIPTION_HTML = """
 """
 
 MASK_INSCRIPTION_TEXT = """
-{{bonjour}}
-
-{{texte}}
-
-{{signature}}
-{{mail}}
+{{mail_text}}
 """
 
 
@@ -61,14 +59,22 @@ def notify_mail(form_type, data):
         text=text
     )
 
+def get_template(form_type):
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    path = f'{current_dir}/templates/{form_type}.html'
+    with open(path, 'r') as f:
+        data = f.read()
+    return data
+
 
 def send_mail(form_type, data, assets):
     logger.debug("Preparing to send mail %s", form_type)
     for key, value in assets.items():
         assets[key] = Liquid(value).render(**data)
-    assets['texte'] = "<br />\n".join(assets['texte'].split("\n"))
-    content_text = Liquid(MASK_INSCRIPTION_TEXT).render(**assets)
-    content_html = Liquid(MASK_INSCRIPTION_HTML).render(**assets)
+
+    mail_text = mistune.markdown(assets['texte'])
+    content_text = cleanhtml(Liquid(MASK_INSCRIPTION_TEXT).render(mail_text=mail_text))
+    content_html = Liquid(get_template(form_type)).render(mail_text=mail_text, mail_subject=assets['sujet'])
     result = send(
         recipient='pieterjan@montens.net',
         subject=assets.get('sujet', 'Courrier andi.beta.gouv.fr'),
@@ -84,14 +90,28 @@ def send_mail(form_type, data, assets):
     return False
 
 
-def send(recipient, subject, text, html=False):
-    request_url = f'https://api.mailgun.net/v3/{MAILGUN_SANDBOX}/messages'
-    request = requests.post(request_url, auth=('api', MAILGUN_KEY), data={
-        'from': 'no-reply@example.com',
+def send(recipient, subject, text, html=None):
+    request_url = f'https://api.eu.mailgun.net/v3/{MAILGUN_SANDBOX}/messages'
+    data = {
+        'from': 'ANDi no-reply <no-reply@mailgun.bilo.be>',
         'to': recipient,
         'subject': subject,
         'text': text,
         'html': html,
-        'h:Reply-To': 'andi@beta.gouv.fr'
-    })
+        'h:Reply-To': 'ANDi <andi@beta.gouv.fr>'
+    }
+
+    # if not html:
+    #     del data['html']
+
+    request = requests.post(
+        request_url,
+        auth=('api', MAILGUN_KEY),
+        data=data
+    )
     return request.status_code == 200
+
+def cleanhtml(raw_html):
+  cleanr = re.compile('<.*?>')
+  cleantext = re.sub(cleanr, '', raw_html)
+  return cleantext
