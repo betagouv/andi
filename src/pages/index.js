@@ -1,9 +1,18 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { mdReact } from 'markdown-react-js';
 
 import Layout from "../components/layout"
 // import Image from "../components/image"
 // import SEO from "../components/seo"
+
+import illu1 from '../images/illu-1.png';
+import illu1_2x from '../images/illu-1@2x.png';
+import illu1_3x from '../images/illu-1@3x.png';
+
+import team_illu from '../images/team-startup-illu.png';
+import team_illu_2x from '../images/team-startup-illu@2x.png';
+import team_illu_3x from '../images/team-startup-illu@3x.png';
 
 /* TODO: 
  * - use gatsby images
@@ -15,92 +24,115 @@ export const query = graphql`
         assets {
             key
             value
+            description
+            markdown
         }
     }
 }
 `
 
-const abbr_andi = "accompagnement numérique au développement de l'insertion"
+// const abbr_andi = "accompagnement numérique au développement de l'insertion"
+
+const PointDetail = ({number, title, text}) => (
+    <div className="col">
+      <span className="number">{ number }</span>
+      <h3>{ title }</h3>
+      <p>{ text }</p>
+    </div>
+)
+
+const Hero = ({title, text, button}) => (
+     <section className="section section-grey section__bottom_svg" role="banner">
+       <div className="container-fluid">
+         <div className="row">
+           <div className="col-lg-6 offset-lg-2 col-sm-10 offset-sm-1 col-xs-12 offset-xs-0 title_wrapper">
+             <h1>{ title }</h1>
+             <div className="hero__p">
+               <p>{ text }</p>
+             </div>
+             <Link className="button large btn-xl" to="/inscription" style={{top: '30px'}}>{ button }</Link>
+           </div>
+           <div className="col-lg-4 col-sm-12 text-right no-gutters">
+           <img  className="opt_img illu-1" src={illu1} alt="" srcSet={`${illu1_2x} 2x, ${illu1_3x} 3x`}  />
+           </div>
+         </div>
+       </div>
+     </section>
+)
+    
 
 class IndexPage extends React.Component {
+
     constructor(props) {
         super(props);
         let data = {};
+        // For now evolutility graphql does not support filters, so filter here instead
         for (let asset of props.data.andi.assets) {
-            data[asset.key] = asset.value
+            if (asset.description === 'lp_accueil') {
+                data[asset.key] = asset.markdown ? mdReact()(asset.value) : asset.value
+            }
         }
         this.d = data
     }
 
     render() {
         return (
-        <Layout>
-         <div>
-            <section className="section section-grey">
-              <div className="row">
-                <div className="container text_1">
-                  <h1>{ this.d.accueil_titre_1 }</h1>
-                  <h2>{ this.d.accueil_titre_2 }</h2>
-                  <Link className="button large" to="/inscription">Je m'inscris</Link>
+            <Layout>
+            <div>
+                <Hero title={ this.d.titre } text={this.d.slogan} button={this.d.bouton} />
+               {/* <div className="svg_container" aria-hidden="true" focusable="false">
+                  <svg className="svg_1" viewBox="0 70 500 80" preserveAspectRatio="none">
+                    <rect x={0} y={0} width={500} height={500} style={{stroke: 'none'}} />
+                    <path d="M0,100 C150,0 350,250 500,100 L500,00 L0,0 Z" style={{stroke: 'none'}} />
+                  </svg>
+                </div> */}
+                <section>
+                  <h2 className="section__title" style={{marginTop: '6rem'}}>{ this.d.soustitre1 }</h2>
+                  <div className="container-fluid" style={{marginTop: '6rem', marginBottom: '4rem'}}>
+                    <div className="row numlist">
+                      <div className="col-lg-10 offset-lg-1 col-sm-12">
+                        <div className="row">
+                          <div className="col">
+                            <span className="number">1</span>
+                            <h3>{ this.d.point1 }</h3>
+                            <p>{ this.d.point1_texte }</p>
+                            <Link className="button fullwidth large" to="/inscription">{ this.d.bouton }</Link>
+                          </div>
+                          <PointDetail number="2" title={ this.d.point2 }  text={ this.d.point2_texte } />
+                          <PointDetail number="3" title={ this.d.point3 }  text={ this.d.point3_texte } />
+                          <PointDetail number="4" title={ this.d.point4 }  text={ this.d.point4_texte } />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <br />
+                </section>
+                <div className="svg_container" aria-hidden="true" focusable="false">
+                  <svg className="svg_2" viewBox="0 70 500 60" preserveAspectRatio="none">
+                    <rect x={0} y={0} width={500} height={500} style={{stroke: 'none'}} />
+                    <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z" style={{stroke: 'none'}} />
+                  </svg>
                 </div>
-                <img style={{}} className="opt_img illu-1" src={'illu-1.png'} alt="" srcSet="images/illu-1@2x.png 2x, images/illu-1@3x.png 3x" />
-              </div>
-            </section>
-            <div className="svg_container" aria-hidden="true" focusable="false">
-              <svg className="svg_1" viewBox="0 70 500 80" preserveAspectRatio="none">
-                <rect x={0} y={0} width={500} height={500} style={{stroke: 'none'}} />
-                <path d="M0,100 C150,0 350,250 500,100 L500,00 L0,0 Z" style={{stroke: 'none'}} />
-              </svg>
+                <section id="a-propos" className="section-grey" style={{marginTop: '1rem', paddingBottom: '8rem'}}>  
+                  <div className="container-fluid" style={{display: 'inline-block'}}>
+                    <div className="row no-gutters">
+                      <div className="col-lg-10 offset-lg-1 col-xs-12">
+                        <div className="row">
+                          <div className="col-lg-5 col-xs-12 align-self-center">
+                              <h2>{ this.d.soustitre2 }</h2>
+                              <p>{ this.d.quinous }</p>
+                          </div>
+                          <div className="col-lg-7 col-xs-12 align-self-center text-center no-gutters">
+                            <img className="opt_img team-startup-illu" src={team_illu} alt="" srcSet={`${team_illu_2x} 2x, ${team_illu_3x} 3x`} />
+                          </div>
+                          </div>
+                        </div>
+                      </div> 
+                    </div>
+                </section>
             </div>
-            <section>
-              <h2 className="section__title" style={{marginTop: '3rem'}}>Comment participer ?</h2>
-              <div className="container" style={{marginTop: '6rem'}}>
-                <div className="row numlist">
-                  <div>
-                    <span className="number">1</span>
-                    <h3>Je m’inscris</h3>
-                    <p>Je donne mon nom et mon email pour recevoir ensuite un questionnaire sur mon projet professionnel.</p>
-                    <Link className="button fullwidth" to="/inscription">Je m'inscris</Link>
-                  </div>
-                  <div>
-                    <span className="number">2</span>
-                    <h3>Je remplis le questionnaire</h3>
-                    <p>Je donne le plus d'éléments possibles sur ma situation. Je peux me faire aider d’un proche ou d’un aidant pour le remplir.</p>
-                  </div>
-                  <div>
-                    <span className="number">3</span>
-                    <h3>Je suis contacté</h3>
-                    <p>Je reçois un email pour me dire quand commencera l’expérience pour moi. Elle peut démarrer plusieurs mois après l’envoi du questionnaire.</p>
-                  </div>
-                  <div>
-                    <span className="number">4</span>
-                    <h3>Je démarre l’expérience</h3>
-                    <p>L’équipe <abbr title={ abbr_andi } >ANDi</abbr> m’appuie dans la recherche d’un métier qui me plaît et me met en relation avec des entreprises qui sont prêtes à m'accueillir.</p>
-                  </div>
-                </div>
-              </div>
-              <br />
-              <br />
-            </section>
-            <div className="svg_container" aria-hidden="true" focusable="false">
-              <svg className="svg_2" viewBox="0 70 500 60" preserveAspectRatio="none">
-                <rect x={0} y={0} width={500} height={500} style={{stroke: 'none'}} />
-                <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z" style={{stroke: 'none'}} />
-              </svg>
-            </div>
-            <section className="section section-grey" style={{marginTop: '2rem'}}>
-              <div className="row">
-                <div className="container text_2">
-                  <h2>Qui sommes nous ?</h2>
-                  <p> Nous sommes une petite équipe à la Caisse des Dépôts et nous portons un nouveau projet baptisé <strong><abbr title={ abbr_andi }>ANDi</abbr></strong>.</p>
-                  <p>Notre objectif est de permettre aux personnes en situation de handicap de réaliser des immersions professionnelles.</p>
-                  <p>Ce projet est en cours d’expérimentation. Il se construit actuellement avec des employeurs, des associations, des organismes d’Etat, et bien sur avec des personnes en situation de handicap qui cherchent un emploi.</p>
-                </div>
-                <img className="opt_img team-startup-illu" src={'team-startup-illu.png'} alt="" srcSet="images/team-startup-illu@2x.png 2x, images/team-startup-illu@3x.png 3x" />
-              </div>
-            </section>
-          </div>
-        </Layout>
+            </Layout>
     )
     }
 }

@@ -34,6 +34,13 @@ module.exports = {
             type: 'textmultiline', 
             label: 'Valeur',
             inMany: true
+        },
+        {
+            id: 'markdown',
+            column: 'markdown',
+            type: 'boolean', 
+            label: 'Contenu Markdown',
+            inMany: false
         }
     ]
 }

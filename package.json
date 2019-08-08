@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Pieterjan Montens <pieterjan@montens.net>",
   "dependencies": {
+    "anchor-scroll": "^2.0.0",
     "gatsby": "^2.13.25",
     "gatsby-image": "^2.2.6",
     "gatsby-plugin-favicon": "^3.1.6",
@@ -19,10 +20,12 @@
     "gatsby-source-filesystem": "^2.1.5",
     "gatsby-source-graphql": "^2.1.3",
     "gatsby-transformer-sharp": "^2.2.3",
+    "markdown-react-js": "^1.0.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "smooth-scroll-anchor": "^1.2.2"
   },
   "devDependencies": {
     "eslint": "^6.0.1",

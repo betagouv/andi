@@ -81,7 +81,7 @@ def send_mail(form_type, data, assets):
     content_html = Liquid(get_template(form_type)).render(mail_text=mail_text, mail_subject=assets['sujet'])
 
     result = send(
-        recipient='pieterjan@montens.net',
+        recipient=data['email'],
         subject=assets.get('sujet', 'Courrier andi.beta.gouv.fr'),
         text=content_text,
         html=content_html
