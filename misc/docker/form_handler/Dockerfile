@@ -13,6 +13,10 @@ COPY app/ /app
 
 WORKDIR /app
 
+ARG ARG_MG_BOX="nope"
+ARG ARG_MG_KEY="nope"
+ENV MG_BOX=$ARG_MG_BOX
+ENV MG_KEY=$ARG_MG_KEY
 
 RUN pipenv install --system --deploy
 ENV PYTHONPATH "${PYTONPATH}:/app/src"
