@@ -3,6 +3,8 @@ import logging
 import os
 import json
 import mistune
+import urllib
+from requests.utils import requote_uri
 import re
 from liquid import Liquid
 
@@ -69,12 +71,15 @@ def get_template(form_type):
 
 def send_mail(form_type, data, assets):
     logger.debug("Preparing to send mail %s", form_type)
+    data['nom_url'] = requote_uri(data['nom'])
+    data['prenom_url'] = requote_uri(data['prenom'])
     for key, value in assets.items():
         assets[key] = Liquid(value).render(**data)
 
-    mail_text = mistune.markdown(assets['texte'])
+    mail_text = mistune.markdown(assets['texte'], escape=False)
     content_text = cleanhtml(Liquid(MASK_INSCRIPTION_TEXT).render(mail_text=mail_text))
     content_html = Liquid(get_template(form_type)).render(mail_text=mail_text, mail_subject=assets['sujet'])
+
     result = send(
         recipient='pieterjan@montens.net',
         subject=assets.get('sujet', 'Courrier andi.beta.gouv.fr'),
@@ -83,7 +88,7 @@ def send_mail(form_type, data, assets):
     )
 
     if result:
-        logger.debug("Mail %s sent", form_type)
+        logger.debug("Mail gg%s sent", form_type)
         return True
 
     logger.warning("Failed to send mail %s", form_type)
