@@ -66,6 +66,7 @@ class FormPage extends React.Component {
                 <div>
                   <Link to="/" style={{color: '#fff'}}>{ this.d.page_accueil }</Link> / { this.d.page_inscription }
                 </div>
+                <h4>{ this.d.titre_description }</h4>
                 { this.d.description }
               </div>
             </div>
