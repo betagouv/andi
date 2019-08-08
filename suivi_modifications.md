@@ -15,4 +15,5 @@ dans le bas de cette image:
 
 # Journal des modifications
 
+- 07/08/2019 Pietejran: modifications contenu "deploiement 3"
 - 05/08/2019 Pieterjan: début du journal

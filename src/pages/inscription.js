@@ -16,6 +16,13 @@ export const query = graphql`
 }
 `
 
+const FormElement = ({name, text, onclick}) => (
+    <div className="form__group">
+      <label htmlFor={ name }>{ text }</label>
+      <input name={ name } id={ name } type="text" required onClick={ onclick }/>
+    </div>
+)
+
 class FormPage extends React.Component {
   constructor(props) {
       super(props);
@@ -35,13 +42,12 @@ class FormPage extends React.Component {
               }
       }
       this.d = data
-      console.log(this.d)
-      console.log(this.d.envoyer)
   }
 
   handleClick(event) {
       const _paq = window._paq || [];
       _paq.push(['trackEvent', 'form_action', 'click', event.target.id]);
+      console.log('clicking')
   }
 
   handleSubmit(event) {
@@ -55,52 +61,37 @@ class FormPage extends React.Component {
       <section>
         <div className="row">
           <div className="col section pane leftpane" role="main">
-            <div>
-              <Link to="/" style={{color: '#fff'}}>{ this.d.page_accueil }</Link> / { this.d.page_inscription }
+            <div className="container-fluid">
+              <div className="col-lg-9 offset-lg-2">
+                <div>
+                  <Link to="/" style={{color: '#fff'}}>{ this.d.page_accueil }</Link> / { this.d.page_inscription }
+                </div>
+                { this.d.description }
+              </div>
             </div>
-            { this.d.description }
-            { /*<h4>Cette expérimentation est faite pour vous si vous souhaitez :</h4>
-            <ul>
-              <li>Découvrir un métier ou un secteur d'activité</li>
-              <li>Confirmer votre projet professionnel</li>
-              <li>Initier une démarche de recrutement avec un employeur</li>
-            </ul>
-            <h4>Comment ça se passe concrètement :</h4>
-            <ol>
-                <li>L’équipe ANDi travaille avec vous <strong>pendant 1 à 2 mois</strong> pour <strong>définir au mieux votre projet professionnel</strong></li>
-                <li>Nous vous orientons pour <strong>trouver une entreprise</strong> adaptée à votre projet professionnel et prête à vous accueillir en immersion</li>
-                <li>Nous vous <strong>appuyons tout au long de votre immersion</strong>.</li>
-                <li>Nous faisons un <strong>bilan à la fin de la période</strong> d'immersion et nous vous aidons à prendre la direction que vous avez choisie.</li>
-            </ol>
-            */ }
-
           </div>
           <div className="col section pane section-grey" role="form" style={{marginTop: '0'}}>
-            <h1>{ this.d.titre }</h1>
+            <div className="container-fluid">
+              <div className="col-12 col-lg-10" style={{marginTop: '40px'}}>
+                <h1>{ this.d.titre }</h1>
 
-            <p>{ this.d.experimental }</p>
-            <form action="https://usebasin.com/f/2ed85c3d52b3" acceptCharset="UTF-8" encType="multipart/form-data" method="POST">
-                <div className="form__group">
-                  <label htmlFor="prenom">{ this.d.prenom }</label>
-                  <input name="prenom" id="prenom" type="text" required onClick={ this.handleClick }/>
+                <p>{ this.d.experimental }</p>
+
+                <form action="https://usebasin.com/f/2ed85c3d52b3" acceptCharset="UTF-8" encType="multipart/form-data" method="POST">
+                    <FormElement name="prenom" text={ this.d.prenom } onclick={ this.handleClick } />
+                    <FormElement name="nom" text={ this.d.nom } onclick={ this.handleClick } />
+                    <FormElement name="email" text={ this.d.email } onclick={ this.handleClick } />
+                    <input type="submit" className="button light-green" value={ this.d.envoyer } style={{width: '100%'}} onClick={ this.handleClick }/>
+                      <p style={{fontSize: '12px'}}>En cliquant sur "Envoyer ma demande d’inscription", <Link to="/conditions-generales" style={{color: '#26353f'}}><span className="underline"> j’accepte les conditions générales d’utilisation</span></Link></p>
+                    <p>{ this.d.apres_envoi }</p>
+                </form>
+
                 </div>
-                <div className="form__group">
-                  <label htmlFor="nom">{ this.d.nom }</label>
-                  <input name="nom" id="nom" type="text" required onClick={ this.handleClick }/>
-                </div>
-                <div className="form__group">
-                  <label htmlFor="email">{ this.d.email }</label>
-                  <input name="email" id="email" type="email" required onClick={ this.handleClick }/>
-                </div>
-                <input type="submit" className="button light-green" value={ this.d.envoyer } style={{width: '100%'}} onClick={ this.handleClick }/>
-                <p>{ this.d.apres_envoi }</p>
-              </form>
             </div>
-            </div>
-          </section>
-        </Layout>
-      )
-    }
+          </div>
+        </div>
+      </section>
+    </Layout> )}
 }
 
 export default FormPage
