@@ -7,6 +7,10 @@ CREATE TABLE "inscription" (
     email VARCHAR(128),
     entry_point VARCHAR(64) [],
 
+    questionnaire_sent BOOLEAN DEFAULT FALSE,
+    questionaire_replied BOOLEAN DEFAULT FALSE,
+    comments TEXT,
+
     date_inscription TIMESTAMP WITH TIME ZONE,
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     date_updated TIMESTAMP WITH TIME ZONE

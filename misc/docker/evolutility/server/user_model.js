@@ -36,11 +36,33 @@ module.exports = {
             inMany: true
         },
         {
+            id: 'comments',
+            column: 'comments',
+            type: 'textmultiline', 
+            label: 'commentaires',
+            inMany: false
+        }
+        {
             id: 'date_inscription',
             column: 'date_inscription',
             type: 'datetime', 
             label: 'Date d\'inscription',
             inMany: true
         },
+        {
+            id: 'questionnaire_sent',
+            column: 'questionnaire_sent',
+            type: 'boolean', 
+            label: 'Questionnaire Transmis',
+            inMany: false
+        },
+        {
+            id: 'questionnaire_replied',
+            column: 'questionnaire_replied',
+            type: 'boolean', 
+            label: 'Questionnaire Répondu',
+            inMany: false
+        }
+
     ]
 }
