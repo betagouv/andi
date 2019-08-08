@@ -80,10 +80,10 @@ class FormPage extends React.Component {
                 <p>{ this.d.experimental }</p>
 
                 <form action={ this.formAction } acceptCharset="UTF-8" encType="multipart/form-data" method="POST">
+                    <input type="text" name="verstopt" aria-hidden="true" style={{ display: 'none' }} value="vrst" />
                     <FormElement name="prenom" text={ this.d.prenom } onclick={ this.handleClick } />
                     <FormElement name="nom" text={ this.d.nom } onclick={ this.handleClick } />
                     <FormElement name="email" text={ this.d.email } onclick={ this.handleClick } />
-                    <inpyt type="text" name="verstopt" aria-hidden="true" hidden value="vrst" />
                     <input type="submit" className="button light-green" value={ this.d.envoyer } style={{width: '100%'}} onClick={ this.handleClick }/>
                       <p style={{fontSize: '12px'}}>En cliquant sur "Envoyer ma demande d’inscription", <Link to="/conditions-generales" style={{color: '#26353f'}}><span className="underline"> j’accepte les conditions générales d’utilisation</span></Link></p>
                     <p>{ this.d.apres_envoi }</p>

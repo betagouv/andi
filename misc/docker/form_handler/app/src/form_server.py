@@ -114,7 +114,7 @@ def create_app():
         is_get = request.method == 'GET'
         is_json = request.content_type == 'application/json'
         if is_get:
-            if requests.args.get('verstop') != 'vrst':
+            if requests.args.get('verstopt') != 'vrst':
                 logger.info('Security check failed')
                 abort(400)
             data = {
@@ -137,7 +137,7 @@ def create_app():
                 'email': request.form.get('email'),
                 'form_type': 'landing_page'
             }
-            if request.form.get('verstop') != 'vrst':
+            if request.form.get('verstopt') != 'vrst':
                 logger.info('Security check failed')
                 abort(400)
 
