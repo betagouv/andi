@@ -69,7 +69,7 @@ def write_user(d, dbconn):
         'prenom': d.get('prenom'),
         'nom': d.get('nom'),
         'email': d.get('email'),
-        'entry_point': ['landing_page', 'integration_test']
+        'entry_point': ['landing_page', 'andi_form_v1']
     }
     dbconn.execute(SQL_USER, query_data)
 
@@ -86,13 +86,15 @@ SQL_USER = """
         prenom,
         nom,
         email,
-        entry_point
+        entry_point,
+        questionnaire_sent
 )
 VALUES (
     %(prenom)s,
     %(nom)s,
     %(email)s,
-    %(entry_point)s
+    %(entry_point)s,
+    TRUE
 )
 """
 
