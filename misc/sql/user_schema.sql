@@ -11,7 +11,7 @@ CREATE TABLE "inscription" (
     questionaire_replied BOOLEAN DEFAULT FALSE,
     comments TEXT,
 
-    date_inscription TIMESTAMP WITH TIME ZONE,
+    date_inscription TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     date_updated TIMESTAMP WITH TIME ZONE
 );

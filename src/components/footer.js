@@ -2,8 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 
 
-import twitter_icon from '../images/twitter.svg';
-
 const Footer = () => (
       <footer className="footer" role="contentinfo">
         <div className="container-fluid">

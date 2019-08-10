@@ -1,6 +1,7 @@
 config.yaml
 start_docker.sh
 *.csv
+__pycache__
 
 # Logs
 logs

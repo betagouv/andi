@@ -17,12 +17,6 @@ export const query = graphql`
 }
 `
 
-const FormElement = ({name, text, onclick}) => (
-    <div className="form__group">
-      <label htmlFor={ name }>{ text }</label>
-      <input name={ name } id={ name } type="text" required onClick={ onclick }/>
-    </div>
-)
 
 class inscriptionComplete extends React.Component {
   constructor(props) {

@@ -17,6 +17,7 @@ export const query = graphql`
 }
 `
 
+
 const FormElement = ({name, text, onclick}) => (
     <div className="form__group">
       <label htmlFor={ name }>{ text }</label>
@@ -27,6 +28,9 @@ const FormElement = ({name, text, onclick}) => (
 class FormPage extends React.Component {
   constructor(props) {
       super(props);
+
+      // this.formAction = 'https://usebasin.com/f/2ed85c3d52b3'
+      this.formAction = 'https://andi.beta.gouv.fr/f/inscription'
 
       this.handleClick = this.handleClick.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -75,7 +79,8 @@ class FormPage extends React.Component {
 
                 <p>{ this.d.experimental }</p>
 
-                <form action="https://usebasin.com/f/2ed85c3d52b3" acceptCharset="UTF-8" encType="multipart/form-data" method="POST">
+                <form action={ this.formAction } acceptCharset="UTF-8" encType="multipart/form-data" method="POST">
+                    <input type="text" name="verstopt" aria-hidden="true" style={{ display: 'none' }} value="vrst" />
                     <FormElement name="prenom" text={ this.d.prenom } onclick={ this.handleClick } />
                     <FormElement name="nom" text={ this.d.nom } onclick={ this.handleClick } />
                     <FormElement name="email" text={ this.d.email } onclick={ this.handleClick } />
