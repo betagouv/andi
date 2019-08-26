@@ -17,13 +17,16 @@ WORKDIR /src
 RUN npm install pm2@latest -g
 
 RUN echo "Cloning evolutility source.." && \
-    # git clone https://github.com/evoluteur/evolutility-server-node.git ./ && \
-    git clone https://github.com/PieterjanMontens/evolutility-server-node.git ./server && \
-    git clone https://github.com/evoluteur/evolutility-ui-react ./ui
+    git clone https://github.com/evoluteur/evolutility-server-node.git ./ && \
+    # git clone https://github.com/PieterjanMontens/evolutility-server-node.git ./server && \
+    # git clone https://github.com/evoluteur/evolutility-ui-react ./ui
+    git clone --single-branch --branch custom_interface https://github.com/PieterjanMontens/evolutility-ui-react.git ./ui
 
 WORKDIR /src/server
-RUN git checkout patch_udate_cdate && \
-    npm install
+# RUN git checkout patch_udate_cdate && \
+#     npm install
+
+RUN npm install
 
 WORKDIR /src/ui
 RUN npm install
