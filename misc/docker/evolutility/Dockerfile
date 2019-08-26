@@ -17,8 +17,8 @@ WORKDIR /src
 RUN npm install pm2@latest -g
 
 RUN echo "Cloning evolutility source.." && \
-    git clone https://github.com/evoluteur/evolutility-server-node.git ./ && \
-    # git clone https://github.com/PieterjanMontens/evolutility-server-node.git ./server && \
+    # git clone https://github.com/evoluteur/evolutility-server-node.git ./ && \
+    git clone --single-branch --branch patch_udate_cdate https://github.com/PieterjanMontens/evolutility-server-node.git ./server && \
     # git clone https://github.com/evoluteur/evolutility-ui-react ./ui
     git clone --single-branch --branch custom_interface https://github.com/PieterjanMontens/evolutility-ui-react.git ./ui
 
