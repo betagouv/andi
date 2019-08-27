@@ -9,6 +9,14 @@ class FormPage extends React.Component {
 
       this.handleClick = this.handleClick.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this.state = { checked: false };
+  }
+
+  handleChange() {
+    this.setState({
+      checked: !this.state.checked
+    })
   }
 
   handleClick(event) {
@@ -21,6 +29,7 @@ class FormPage extends React.Component {
       _paq.push(['trackEvent', 'form_action', 'submit']);
   }
   render(){
+    console.log(this.state.checked)
     return (
     <Layout>
       <section>
@@ -28,6 +37,7 @@ class FormPage extends React.Component {
           <div className="col section pane leftpane" role="main">
             <div className="container-fluid">
               <div className="col-lg-9 offset-lg-2">
+                  <div className="inscription-block--left">
                     <div>
                       <Link to="/" style={{color: '#fff'}}>Accueil</Link> / Inscription
                     </div>
@@ -44,12 +54,13 @@ class FormPage extends React.Component {
                         <li>Nous vous <strong>appuyons tout au long de votre immersion</strong>.</li>
                         <li>Nous faisons un <strong>bilan à la fin de la période</strong> d'immersion et nous vous aidons à prendre la direction que vous avez choisie.</li>
                     </ol>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="col section pane section-grey" role="form" style={{marginTop: '0'}}>
               <div className="container-fluid">
-                <div className="col-12 col-lg-10" style={{marginTop: '40px'}}>
+                <div className="col-12 col-lg-10 inscription-block--right" style={{marginTop: '40px'}}>
                   <h1>Inscrivez-vous pour participer à l'aventure</h1>
 
                   <p>Ce projet est expérimental. Il se construit pour vous et avec vous. Chacun est libre d’y participer et de l’arrêter quand il le souhaite.</p>
@@ -66,16 +77,19 @@ class FormPage extends React.Component {
                         <label htmlFor="email">Email</label>
                         <input name="email" id="email" type="email" required onClick={ this.handleClick }/>
                       </div>
-                      <input type="submit" className="button light-green" value="Envoyer ma demande d’inscription" style={{width: '100%'}} onClick={ this.handleClick }/>
-                      <p style={{fontSize: '12px'}}>En cliquant sur "Envoyer ma demande d’inscription", <Link to="/conditions-generales" style={{color: '#26353f'}}><span className="underline"> j’accepte les conditions générales d’utilisation</span></Link></p>
+                      <input type="submit" className="button light-green" value="Envoyer ma demande d’inscription" style={{width: '100%'}} onClick={ this.handleClick } disabled={!this.state.checked}/>
+                      <p>
+                        <input type="checkbox" name="checkbox" value="disabled" checked={this.state.checked} onChange={this.handleChange} />
+                        <Link to="/conditions-generales" style={{color: '#26353f', fontSize: '12px'}}><span className="underline">J’accepte les conditions générales d’utilisation</span></Link>
+                      </p>
                       <p>Vous allez recevoir un email de confirmation et la suite des étapes.</p>
                     </form>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-        </Layout>
+      </section>
+    </Layout>
       )
     }
 }

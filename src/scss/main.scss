@@ -406,3 +406,13 @@ form{
     width: auto;
   }
 }
+
+
+input.button:disabled{
+  cursor: default !important;
+  opacity: 0.4;
+  &:hover{
+    transform: none !important;
+    background: #0053b3;
+  }
+}
