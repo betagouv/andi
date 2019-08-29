@@ -33,7 +33,8 @@ def cfg_get(config):
 @click.option('--sirene', is_flag=True)
 @click.option('--debug', '-d', is_flag=True)
 @click.option('--dry', is_flag=True)
-def main(config_file, company, user, sirene, debug, dry):
+@click.option('--tag', default=None)
+def main(config_file, company, user, sirene, debug, dry, tag):
     """
     Get json line by line, write to enterpise database
     Reads from stdin (pipe)
@@ -55,7 +56,7 @@ def main(config_file, company, user, sirene, debug, dry):
                 if company:
                     iden = write_company(cur, record)
                 if sirene:
-                    iden = write_sirene(cur, record, dry)
+                    iden = write_sirene(cur, record, tag, dry)
                 elif user:
                     iden = write_user(cur, record)
                 else:

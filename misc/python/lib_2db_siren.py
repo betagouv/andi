@@ -63,9 +63,9 @@ VALUES (
 """
 
 
-def exec_row(cur, data_row, dry_run=False):
+def exec_row(cur, data_row, tag=False, dry_run=False):
     if not dry_run:
-        cur.execute(sql_company(cur, data_row))
+        cur.execute(sql_company(cur, data_row, tag))
         (cid,) = cur.fetchone()
         sqls = [
             sql_position(cur, cid, data_row),
@@ -75,7 +75,7 @@ def exec_row(cur, data_row, dry_run=False):
     else:
         cid = "test"
         sqls = [
-            sql_company(cur, data_row),
+            sql_company(cur, data_row, tag),
             sql_position(cur, cid, data_row),
             sql_contact(cur, cid, data_row),
         ]
@@ -87,7 +87,7 @@ def exec_row(cur, data_row, dry_run=False):
     return f"{cid}: {d.get('denominationunitelegale')} / {d.get('enseigne1etablissement')}"
 
 
-def sql_company(cur, d):
+def sql_company(cur, d, tag):
     # Get size
     taille = SIRENE_EFFECTIF_TO_SIZE.get(d.get('trancheeffectifsetablissement'))
     rome_list = []
@@ -107,7 +107,7 @@ def sql_company(cur, d):
         'pmsmp_count_recent': 0,
         'rome_offers': rome_list,
         'source': 'insee_sirene',
-        'import_tag': 'csv_sirene_95',
+        'import_tag': tag,
         'flags': [],
     }
     return cur.mogrify(SQL_COMPANY, data)
