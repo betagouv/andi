@@ -71,7 +71,7 @@ def exec_row(cur, data_row, dry_run=False):
             sql_position(cur, cid, data_row),
             sql_contact(cur, cid, data_row)
         ]
-        cur.execute(';'.join(sqls))
+        [cur.execute(sql) for sql in sqls]
     else:
         cid = "test"
         sqls = [

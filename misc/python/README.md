@@ -21,6 +21,9 @@ Exemples d'utilisation:
 
 # Importation inscription
 ./csv2json.py --maxrows 100 --delimiter "," ./CSV_FILE parse | ./json2db.py --user --config_file config.yaml
+
+# Importation sirene (depuis docker):
+./csv2json.py --delimiter "," --maxrows 1 /data/etablissements_95.csv parse  | ./json2db.py --sirene --config_file config.yaml
 ```
 
 ### Documentation:
