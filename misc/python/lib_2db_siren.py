@@ -52,13 +52,13 @@ SQL_CONTACT = """
     id_company,
     addr,
     postal_code,
-    postal_commune,
+    postal_commune
 )
 VALUES (
     %(id_company)s,
     %(addr)s,
     %(postal_code)s,
-    %(postal_commune)s,
+    %(postal_commune)s
 )
 """
 
