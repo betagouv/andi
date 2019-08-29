@@ -8,6 +8,7 @@ import psycopg2
 import yaml
 
 from lib_2db_company import exec_row as write_company
+from lib_2db_siren import exec_row as write_sirene
 from lib_2db_user import exec_row as write_user
 
 logger = logging.getLogger(__name__)
@@ -29,8 +30,10 @@ def cfg_get(config):
 @click.option('--config_file', default=None)
 @click.option('--company', is_flag=True)
 @click.option('--user', is_flag=True)
+@click.option('--sirene', is_flag=True)
 @click.option('--debug', '-d', is_flag=True)
-def main(config_file, company, user, debug):
+@click.option('--dry', is_flag=True)
+def main(config_file, company, user, sirene, debug, dry):
     """
     Get json line by line, write to enterpise database
     Reads from stdin (pipe)
@@ -38,6 +41,8 @@ def main(config_file, company, user, debug):
     cfg = cfg_get(config_file)
     logging.debug('Config:\n%s', json.dumps(cfg, indent=2))
     logger.info('Starting import of csv data')
+    if dry:
+        logger.warning("DRY RUN !!")
     count_success = 0
     count_error = 0
     with psycopg2.connect(**cfg['postgresql']) as conn, conn.cursor() as cur:
@@ -49,6 +54,8 @@ def main(config_file, company, user, debug):
                 iden = "no one"
                 if company:
                     iden = write_company(cur, record)
+                if sirene:
+                    iden = write_sirene(cur, record, dry)
                 elif user:
                     iden = write_user(cur, record)
                 else:
