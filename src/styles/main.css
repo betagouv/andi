@@ -4897,4 +4897,15 @@ form input {
   }
 }
 
+input.button:disabled {
+  cursor: default !important;
+  opacity: 0.4;
+}
+
+input.button:disabled:hover {
+  -webkit-transform: none !important;
+          transform: none !important;
+  background: #0053b3;
+}
+
 /*# sourceMappingURL=main.css.map */
