@@ -65,7 +65,6 @@ class FormPage extends React.Component {
   }
 
   render(){
-    console.log(this.state.checked)
     return (
     <Layout>
       <section>
@@ -94,11 +93,10 @@ class FormPage extends React.Component {
                     <FormElement name="nom" text={ this.d.nom } onclick={ this.handleClick } />
                     <FormElement name="email" text={ this.d.email } onclick={ this.handleClick } />
                     <p>
-                      <input type="checkbox" name="checkbox" value="disabled" checked={this.state.checked} onChange={this.handleChange} />
+                      <input type="checkbox" name="checkbox" value="disabled" checked={this.state.checked} onChange={this.handleChange} required=True />
                       <Link to="/conditions-generales" style={{color: '#26353f', fontSize: '12px'}}><span className="underline">J’accepte les conditions générales d’utilisation</span></Link>
                     </p>
                     <input type="submit" className="button light-green" value={ this.d.envoyer } style={{width: '100%'}} onClick={ this.handleClick }/>
-                     <p style={{fontSize: '12px'}}>En cliquant sur "Envoyer ma demande d’inscription", <Link to="/conditions-generales" style={{color: '#26353f'}}><span className="underline"> j’accepte les conditions générales d’utilisation</span></Link></p>
                     <p>{ this.d.apres_envoi }</p>
                 </form>
 
