@@ -51,6 +51,7 @@ class FormPage extends React.Component {
     this.setState({
       checked: !this.state.checked
     })
+ }
 
   handleClick(event) {
       const _paq = window._paq || [];
