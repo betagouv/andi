@@ -56,12 +56,16 @@ class FormPage extends React.Component {
   handleClick(event) {
       const _paq = window._paq || [];
       _paq.push(['trackEvent', 'form_action', 'click', event.target.id]);
-      console.log('clicking')
   }
 
   handleSubmit(event) {
       const _paq = window._paq || [];
       _paq.push(['trackEvent', 'form_action', 'submit']);
+      if (!this.state.checked)
+        {
+        event.preventDefault()
+        return false
+        }
   }
 
   render(){
@@ -87,13 +91,13 @@ class FormPage extends React.Component {
 
                 <p>{ this.d.experimental }</p>
 
-                <form action={ this.formAction } acceptCharset="UTF-8" encType="multipart/form-data" method="POST">
+                <form action={ this.formAction } acceptCharset="UTF-8" encType="multipart/form-data" method="POST" onSubmit={this.handleSubmit}>
                     <input type="text" name="verstopt" aria-hidden="true" style={{ display: 'none' }} value="vrst" />
                     <FormElement name="prenom" text={ this.d.prenom } onclick={ this.handleClick } />
                     <FormElement name="nom" text={ this.d.nom } onclick={ this.handleClick } />
                     <FormElement name="email" text={ this.d.email } onclick={ this.handleClick } />
                     <p>
-                      <input type="checkbox" name="checkbox" value="disabled" checked={this.state.checked} onChange={this.handleChange} required=True />
+                      <input type="checkbox" name="checkbox" value="disabled" checked={this.state.checked} onChange={this.handleChange}  required="true" />
                       <Link to="/conditions-generales" style={{color: '#26353f', fontSize: '12px'}}><span className="underline">J’accepte les conditions générales d’utilisation</span></Link>
                     </p>
                     <input type="submit" className="button light-green" value={ this.d.envoyer } style={{width: '100%'}} onClick={ this.handleClick }/>
