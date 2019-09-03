@@ -54,6 +54,10 @@ def get_local_store(app):
     return g.pickledb
 
 
+def save_local_store(app):
+    g.pickledb.dump()
+
+
 def get_db(app):
     if 'pgw' not in g:
         g.pgw = pgware.build(
@@ -156,8 +160,10 @@ def create_app():
 
         # Check if not already received
         submission_key = data2hash(data)
+        logging.info('Submission key is "%s"', submission_key)
         store = get_local_store(app)
         if store.get(submission_key) is not False:  # Data already received
+            logging.info('Duplicate submission, ignoring')
             if is_post and not is_json:
                 return redirect("https://andi.beta.gouv.fr/merci", code=302)
             return Response(
@@ -165,7 +171,9 @@ def create_app():
                 status=409,
                 mimetype='application/json'
             )
+        logging.info('New submission accepted')
         store.set(submission_key, 'true')
+        save_local_store(app)
 
         # Write to database
         try:
