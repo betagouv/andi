@@ -11,6 +11,7 @@ SQL_POSITION = """
         departement = %(departement)s,
         lat = %(lat)s,
         lon = %(lon)s,
+        postal_code = %(postal_code)s,
         data_quality = 'excellent',
         date_updated = now()
     WHERE id_company = %(id_company)s
@@ -27,7 +28,7 @@ def exec_row(cur, data_row, dry_run=False):
             print(sql.decode('utf8'))
 
     d = data_row
-    return f"{d.get('recid')} / {d.get('localtionlabel')}"
+    return f"{d.get('recid')} / {d.get('county')}"
 
 
 def sql_update(cur, d):
@@ -39,6 +40,7 @@ def sql_update(cur, d):
         'quartier': d.get('district'),
         'commune': d.get('city'),
         'departement': d.get('county'),
+        'postal_code': d.get('postalcode'),
         'region': d.get('state'),
         'lat': d.get('displaylatitude'),
         'lon': d.get('displaylongitude'),
