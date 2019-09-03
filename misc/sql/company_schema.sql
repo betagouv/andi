@@ -91,6 +91,7 @@ CREATE TABLE "company_position" (
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     date_updated TIMESTAMP WITH TIME ZONE
 );
+CREATE UNIQUE index company_position_company_id ON "company_position" (id_company);
 
 CREATE TABLE "company_rome" (
     id_internal SERIAL PRIMARY KEY,
