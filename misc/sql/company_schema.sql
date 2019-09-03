@@ -36,7 +36,7 @@ CREATE TYPE RATING AS ENUM (
 -- Quality of data entry, level of trustworthness
 CREATE TYPE QOD AS ENUM (
     'mediocre',
-    'satisfaisan',
+    'satisfaisant',
     'excellent'
 );
 
@@ -74,8 +74,16 @@ CREATE TABLE "company" (
 CREATE TABLE "company_position" (
     id_internal SERIAL PRIMARY KEY,
     id_company INT NOT NULL,
+    label TEXT,
+    numero VARCHAR(10),
+    rue VARCHAR(128),
+    quartier VARCHAR(128),
     commune VARCHAR(128),
+    postal_code VARCHAR(10),
+    region VARCHAR(128),
     departement VARCHAR(128),
+
+    postal_code VARCHAR(10),
     lat NUMERIC,
     lon NUMERIC,
     error_margin_km SMALLINT DEFAULT 0,
@@ -89,9 +97,9 @@ CREATE TABLE "company_rome" (
     id_company INT NOT NULL,
     rome VARCHAR(5),
     rome_label_a TEXT,
-    rome_label_b TEXT, 
-    rome_label_c TEXT, 
-    rome_label_d TEXT, 
+    rome_label_b TEXT,
+    rome_label_c TEXT,
+    rome_label_d TEXT,
     ogr_code VARCHAR(6),
 
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
@@ -106,6 +114,7 @@ CREATE TABLE "company_contact" (
     social_linkedin TEXT,
     social_facebook TEXT,
     addr TEXT [],
+    insee_code VARCHAR(10),
     postal_code VARCHAR(10),
     postal_commune VARCHAR(64),
     postal_person VARCHAR(64),
