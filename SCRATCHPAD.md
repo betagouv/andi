@@ -97,12 +97,20 @@ WITH comp_pos AS (
     ), crit_naf AS (
     SELECT
         comp_pos.id_company,
-        CASE substring(company.naf, 0, 3)
-            WHEN '02' THEN 3
-            WHEN '81' THEN 2
-            WHEN '01' THEN 2
-            WHEN '03' THEN 2
-            ELSE 1
+        CASE company.naf
+            WHEN '8130Z' THEN 3
+            WHEN '9104Z' THEN 3
+            WHEN '5530Z' THEN 2
+            WHEN '4312A' THEN 2
+            WHEN '9321Z' THEN 2
+            ELSE
+                CASE substring(company.naf, 0, 3)
+                    WHEN '02' THEN 3
+                    -- WHEN '81' THEN 2
+                    WHEN '01' THEN 2
+                    WHEN '03' THEN 2
+                    ELSE 1
+                END 
         END AS score
     FROM comp_pos
     INNER JOIN
@@ -111,6 +119,8 @@ WITH comp_pos AS (
 SELECT
     c.nom,
     c.macro_sector,
+    c.naf,
+    naf.intitule_de_la_naf_rev_2 as sector,
     c.taille,
     round(cg.dist/1000) || ' km' AS distance,
     cg.score AS score_geo,
@@ -127,6 +137,8 @@ INNER JOIN
     company c ON c.id_internal = cg.id_company
 INNER JOIN
     company_position cp ON cp.id_internal = cg.id_company
+LEFT JOIN
+    naf ON c.naf = naf.sous_classe_a_732
 ORDER BY score_total DESC
 -- ORDER BY cg.score DESC, cn.score DESC, cs.score DESC;
 
