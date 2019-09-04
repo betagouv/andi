@@ -70,6 +70,7 @@ CREATE TABLE "company" (
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     date_updated TIMESTAMP WITH TIME ZONE
 );
+CREATE INDEX company_naf_macro ON "company" (substring(naf, 0, 3));
 
 CREATE TABLE "company_position" (
     id_internal SERIAL PRIMARY KEY,
@@ -92,6 +93,7 @@ CREATE TABLE "company_position" (
     date_updated TIMESTAMP WITH TIME ZONE
 );
 CREATE UNIQUE index company_position_company_id ON "company_position" (id_company);
+CREATE INDEX company_geoloc ON company_position USING gist(ll_to_earth(lat, lon));
 
 CREATE TABLE "company_rome" (
     id_internal SERIAL PRIMARY KEY,
