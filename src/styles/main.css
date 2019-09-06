@@ -4813,15 +4813,15 @@ form {
   margin-right: 0;
 }
 
-form label {
+#lp_form form label {
   font-size: 16px;
 }
 
-form .form__group + .form__group {
+#lp_form form .form__group + .form__group {
   margin-top: 15px;
 }
 
-form input {
+#lp_form form input {
   border: solid 1px #26353f;
 }
 

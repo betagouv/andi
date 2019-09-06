@@ -6,6 +6,7 @@
   "author": "Pieterjan Montens <pieterjan@montens.net>",
   "dependencies": {
     "anchor-scroll": "^2.0.0",
+    "formik": "^1.5.8",
     "gatsby": "^2.14.7",
     "gatsby-image": "^2.2.15",
     "gatsby-plugin-favicon": "^3.1.6",
@@ -23,9 +24,11 @@
     "markdown-react-js": "^1.0.2",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
+    "react-albus": "^2.0.0",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
-    "smooth-scroll-anchor": "^1.2.2"
+    "smooth-scroll-anchor": "^1.2.2",
+    "yup": "^0.27.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
