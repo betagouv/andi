@@ -108,6 +108,7 @@ CREATE TABLE "company_rome" (
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     date_updated TIMESTAMP WITH TIME ZONE
 );
+CREATE UNIQUE index company_rome_company_id ON "company_rome" (id_company);
 
 CREATE TABLE "company_contact" (
     id_internal SERIAL PRIMARY KEY,
@@ -136,3 +137,4 @@ CREATE TABLE "company_contact" (
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     date_updated TIMESTAMP WITH TIME ZONE
 );
+CREATE UNIQUE index company_contact_company_id ON "company_contact" (id_company);
