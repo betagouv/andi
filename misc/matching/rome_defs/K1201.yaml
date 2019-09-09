@@ -1,0 +1,17 @@
+rome: 'K1201'
+desc: 'Action sociale'
+naf_domains_principal:
+  - '87'
+  - '88'
+naf_domains_secondary:
+  - '94'
+naf_principal:
+  - '8810C'
+  - '8891A'
+  - '8899A'
+  # - '8899B'
+naf_secondary:
+  - '8810A'
+  - '8810B'
+naf_of_interest:
+  - '8430A'
