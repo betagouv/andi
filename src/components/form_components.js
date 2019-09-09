@@ -25,7 +25,17 @@ export const InputText = ({id, label, ...props}) => (
         <Label htmlFor={ id } classes="col-form-label">
             { label }
         </Label>
-        <Field id={ id } name={ id } {...props} className='form-control' />
+        <Field id={ id } name={ id } component='input' className='form-control' {...props} />
+        <Error name={ id } />
+    </div>
+)
+
+export const InputTextMulti = ({id, label, ...props}) => (
+    <div className='form-group form__group'>
+        <Label htmlFor={ id } classes="col-form-label">
+            { label }
+        </Label>
+        <Field id={ id } name={ id } component='textarea' className='form-control' {...props}  />
         <Error name={ id } />
     </div>
 )
@@ -45,6 +55,36 @@ export const InputRadios = ({id, label, defs, ...props}) => (
                                 className='form-check-input'
                                 component='input'
                                 type='radio'
+                                value= { def.id }
+                                {...props}
+                               />
+                            <Label htmlFor={ def.id } classes='col-check-label label-inline'>
+                                { def.label }
+                            </Label>
+                        </div>
+                    ))}
+                </div>
+            )}
+        />
+        <Error name={ id } />
+    </fieldset>
+)
+
+export const InputCheckboxes = ({id, label, defs, ...props}) => (
+    <fieldset className="form-group form__group">
+        <legend>{ label }</legend>
+        <FieldArray
+            name={ id }
+            render={ arrayHelpers => (
+                <div>
+                    { defs.map( def => (
+                        <div className="form-check">
+                            <Field
+                                id={ def.id }
+                                name={ id }
+                                className='form-check-input'
+                                component='input'
+                                type='checkbox'
                                 value= { def.id }
                                 {...props}
                                />
