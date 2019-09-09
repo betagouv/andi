@@ -48,6 +48,22 @@ WHERE
 ORDER BY cg.score DESC, cg.dist ASC;
 
 --------
+CASE company.naf
+    WHEN '8130Z' THEN 3
+    WHEN '9104Z' THEN 3
+    WHEN '5530Z' THEN 2
+    WHEN '4312A' THEN 2
+    WHEN '9321Z' THEN 2
+    ELSE
+        CASE substring(company.naf, 0, 3)
+            WHEN '02' THEN 3
+            -- WHEN '81' THEN 2
+            WHEN '01' THEN 2
+            WHEN '03' THEN 2
+            ELSE 1
+        END 
+END AS score
+-------
 
 COPY (
 
@@ -55,14 +71,12 @@ WITH comp_pos AS (
     SELECT
         id_company,
         commune,
-        earth_distance(ll_to_earth(49.0817, 2.5003), ll_to_earth(lat, lon)) AS dist
+        earth_distance(ll_to_earth(48.9993, 2.3558), ll_to_earth(lat, lon)) AS dist
     FROM
         company_position
     WHERE
-        earth_box(ll_to_earth(49.0817, 2.5003), 10000) @> ll_to_earth(lat, lon)
-        -- slower, circle-shaped variant:
-        -- earth_distance(ll_to_earth(49.0817, 2.5003), ll_to_earth(lat, lon)) < 5000
-    ORDER BY earth_box(ll_to_earth(49.0817, 2.5003), 10000) @> ll_to_earth(lat, lon) ASC
+        earth_box(ll_to_earth(49.0817, 2.5003), 20000) @> ll_to_earth(lat, lon)
+    ORDER BY earth_box(ll_to_earth(48.9993, 2.3558), 20000) @> ll_to_earth(lat, lon) ASC
     limit 10000
     ), crit_geo AS (
     SELECT
@@ -98,19 +112,17 @@ WITH comp_pos AS (
     SELECT
         comp_pos.id_company,
         CASE company.naf
-            WHEN '8130Z' THEN 3
-            WHEN '9104Z' THEN 3
-            WHEN '5530Z' THEN 2
-            WHEN '4312A' THEN 2
-            WHEN '9321Z' THEN 2
-            ELSE
-                CASE substring(company.naf, 0, 3)
-                    WHEN '02' THEN 3
-                    -- WHEN '81' THEN 2
-                    WHEN '01' THEN 2
-                    WHEN '03' THEN 2
-                    ELSE 1
-                END 
+            WHEN '3220Z' THEN 3
+            WHEN '3240Z' THEN 3
+            WHEN '3101Z' THEN 3
+            WHEN '1629Z' THEN 3
+        ELSE
+            CASE substring(company.naf, 0, 3)
+                WHEN '31' THEN 2
+                WHEN '32' THEN 2
+                WHEN '16' THEN 2
+                ELSE 1
+            END
         END AS score
     FROM comp_pos
     INNER JOIN
@@ -140,6 +152,7 @@ INNER JOIN
 LEFT JOIN
     naf ON c.naf = naf.sous_classe_a_732
 ORDER BY score_total DESC
+LIMIT 500
 -- ORDER BY cg.score DESC, cn.score DESC, cs.score DESC;
 
 ) TO '/tmp/test_out.csv' With CSV DELIMITER ',';
