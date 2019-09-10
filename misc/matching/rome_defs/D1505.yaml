@@ -1,0 +1,26 @@
+rome: 'D1505'
+desc: 'Personnel de caisse'
+naf_domains_principal:
+  - '46' # Commerce de gros
+  - '47' # Commerce de détail
+naf_domains_secondary:
+  - '52' # Entreposage et services auxiliaires de transport
+  # - '90' # Activités créatives, artistiques, de spectacle
+  # - '93' # Activité sportives, récréatives et de loisir
+naf_principal:
+  - '4711C' # Supérettes
+  - '4711D' # Supermarchés
+  - '4711F' # Hypermarchés
+  - '4719A' # Grands magasins
+  - '4752B' # Commerce de détail de quincaillerie, peintures et verres en grandes surfaces (400 m² et plus)
+naf_secondary:
+  - '4730Z' # Commerce de détail de carburants en magasin spécialisé
+  - '5610A' # Restauration traditionelle
+  - '5610C' # Restauration de type rapide
+naf_of_interest:
+  - '1071C' # Boulangerie et boulangerie-pâtisserie
+  - '4771Z' # Commerce de détail d'habillement en magasin spécialisé
+
+# linked_romes:
+# D1501 Animation de vente
+# D1506 Marchandisage

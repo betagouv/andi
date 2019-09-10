@@ -1,0 +1,16 @@
+rome: 'N4101'
+desc: 'Conduite de transport de marchandises sur longue distance'
+naf_domains_principal:
+  - ''
+naf_domains_secondary:
+  - ''
+naf_principal:
+  - '4941A' # Transports routiers de fret interurbains
+  - '4941B' # Transports routiers de fret de proximité
+  - '4941C' # Location de camions avec chauffeur
+naf_secondary:
+  - ''
+naf_of_interest:
+  - ''
+
+# linked_romes:

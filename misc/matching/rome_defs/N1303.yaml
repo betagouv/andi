@@ -1,0 +1,17 @@
+rome: 'N1303'
+desc: 'Intervention technique d''exploitation logistique'
+naf_domains_principal:
+  - ''
+naf_domains_secondary:
+  - ''
+naf_principal:
+  - '5210B' # Entreposage et stockage non frigorifique
+  - '5229B' # Affrètement et organisation des transports
+  - '4941A' # Transports routiers de fret interurbains
+  - '4941B' # Transports routiers de fret de proximité
+naf_secondary:
+  - ''
+naf_of_interest:
+  - ''
+
+# linked_romes:

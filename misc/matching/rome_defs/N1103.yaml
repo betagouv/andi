@@ -1,0 +1,16 @@
+rome: 'N1103'
+desc: 'Magasinage et préparation de commandes'
+naf_domains_principal:
+  - ''
+naf_domains_secondary:
+  - ''
+naf_principal:
+  - '5210B' # Entreposage et stockage non frigorifique
+  - '4941B' # Transports routiers de fret de proximité
+  - '5229B' # Affrètement et organisation des transports
+naf_secondary:
+  - ''
+naf_of_interest:
+  - ''
+
+# linked_romes:
