@@ -148,17 +148,22 @@ def parse_naf_list(naf_defs):
 
     for rome, d in naf_defs.items():
         vgroup = int(d['value_group'])
-        for naf in d['naf_domains_secondary']:
-            domains[str(vgroup - 1)].add(naf)
-        for naf in d['naf_domains_principal']:
-            domains[str(vgroup)].add(naf)
-        for naf in d['naf_secondary']:
-            codes[str(vgroup - 1)].add(naf)
-        for naf in d['naf_principal']:
-            codes[str(vgroup)].add(naf)
+        if 'naf_domains_secondary' in d:
+            for naf in d['naf_domains_secondary']:
+                domains[str(vgroup - 1)].add(naf)
+        if 'naf_domains_principal' in d:
+            for naf in d['naf_domains_principal']:
+                domains[str(vgroup)].add(naf)
+        if 'naf_secondary' in d:
+            for naf in d['naf_secondary']:
+                codes[str(vgroup - 1)].add(naf)
+        if 'naf_principal' in d:
+            for naf in d['naf_principal']:
+                codes[str(vgroup)].add(naf)
 
-        for naf in d['naf_of_interest']:
-            codes[str(vgroup)].add(naf)
+        if 'naf_of_interest' in d:
+            for naf in d['naf_of_interest']:
+                codes[str(vgroup)].add(naf)
 
     out_codes, out_domains = {}, {}
     done = set()
@@ -241,7 +246,9 @@ def main(config_file, lat, lon, max_distance, rome, csv_file):
     logger.debug('Naf sql:\n%s', naf_sql)
 
     result = {}
+    logger.debug('Connecting to database ...')
     with psycopg2.connect(cursor_factory=RealDictCursor, **cfg['postgresql']) as conn, conn.cursor() as cur:
+        logger.debug('Obtained database cursor')
         data = {
             'lat': lat,
             'lon': lon,

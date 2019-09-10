@@ -1,0 +1,16 @@
+rome: 'D1404'
+desc: 'Relation commerciale en vente de véhicules'
+naf_domains_principal:
+  - '45' # Commerce et réparation d'automobiles et de motocycles
+# naf_domains_secondary:
+naf_principal:
+  - '4511Z' # Commerce de voitures et de véhicules automobiles légers
+  - '4540Z' # Commerce et réparation de motocycles
+  - '4531Z' # Commerce de gros d'équipements automobiles
+  - '4519Z' # Commerce d'autres véhicules automobiles
+naf_secondary:
+  - '4532Z' # Commerce de détail d'équipements automobiles
+  - '4520A' # Entretien et réparation de véhicules automobiles légers
+# naf_of_interest:
+
+# linked_romes:
