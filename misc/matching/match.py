@@ -9,7 +9,7 @@ from psycopg2.extras import RealDictCursor
 import csv
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.getLevelName('INFO'))
+logger.setLevel(logging.getLevelName('DEBUG'))
 logger.addHandler(logging.StreamHandler())
 
 """
@@ -138,9 +138,14 @@ def get_rome_defs(romes):
     return out
 
 
-def parse_naf_list(naf_defs):
+def parse_naf_list(naf_defs, include=None, exclude=None):
+    include = set() if not include else include
+    exclude = set() if not exclude else exclude
+
     codes = {str(i): set() for i in range(1, int(MAX_VALUE_GROUP) + 1)}
     domains = {str(i): set() for i in range(1, int(MAX_VALUE_GROUP) + 1)}
+
+    [codes[MAX_VALUE_GROUP].add(naf) for naf in include]
 
     def clean(l, n):
         if n in l:
@@ -171,7 +176,7 @@ def parse_naf_list(naf_defs):
         vg = str(vgroup)
         if vg in codes:
             for naf in codes[vg]:
-                if naf not in done:
+                if naf not in done and naf not in exclude:
                     done.add(naf)
                     out_codes[naf] = vgroup
         if vg in domains:
@@ -204,12 +209,18 @@ def get_naf_sql(rules):
     for naf, value in codes.items():
         sql.append(f'WHEN \'{naf}\' THEN {value}')
 
-    sql.append('ELSE CASE substring(company.naf, 0, 3)')
-    for naf, value in domains.items():
-        value -= 1
-        sql.append(f'WHEN \'{naf}\' THEN {value}')
+    if domains:
+        sql.append('ELSE CASE substring(company.naf, 0, 3)')
+        for naf, value in domains.items():
+            value -= 1
+            sql.append(f'WHEN \'{naf}\' THEN {value}')
+
     sql.append('ELSE 1')
-    sql.append('END END AS score')
+
+    if domains:
+        sql.append('END')
+
+    sql.append('END AS score')
 
     return "\n".join(sql)
 
@@ -223,8 +234,10 @@ def get_naf_sql(rules):
 @click.option('--lon', help="longitude", default='2.0861')
 @click.option('--max-distance', help="Max distance (km)", default=10)
 @click.option('--rome', help="rome code", multiple=True, default=None)
+@click.option('--include', help="Include naf code", multiple=True, default=None)
+@click.option('--exclude', help="Exclude naf code", multiple=True, default=None)
 @click.option('--csv-file', help="output csv file", default='output.csv')
-def main(config_file, lat, lon, max_distance, rome, csv_file):
+def main(config_file, lat, lon, max_distance, rome, include, exclude, csv_file):
     logger.info(
         'Matching started, lat/lon %s/%s, max %s km, ROME: %s',
         lat,
@@ -239,7 +252,7 @@ def main(config_file, lat, lon, max_distance, rome, csv_file):
     naf_def = get_rome_defs(rome)
     logger.debug('Naf matching definitions:\n%s', json.dumps(naf_def, indent=2))
 
-    naf_rules = parse_naf_list(naf_def)
+    naf_rules = parse_naf_list(naf_def, include, exclude)
     logger.debug('Naf matching rules:\n%s', json.dumps(naf_rules, indent=2))
 
     naf_sql = get_naf_sql(naf_rules)
@@ -262,7 +275,7 @@ def main(config_file, lat, lon, max_distance, rome, csv_file):
     print('Obtained results preview:')
     for row in result:
         score = f"({row['score_naf']}-{row['score_size']}-{row['score_geo']} => {row['score_total']})"
-        print(f"{ row['siret']} {row['nom']:50}\t{row['sector']:40}\t{row['distance']}\t{score}")
+        print(f"{row['siret']} {row['naf']} {row['nom']:50}\t{row['sector']:40}\t{row['distance']}\t{score}")
         count += 1
         if count > 20:
             break
