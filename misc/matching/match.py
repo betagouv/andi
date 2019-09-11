@@ -7,9 +7,10 @@ import os
 import psycopg2
 from psycopg2.extras import RealDictCursor
 import csv
+from urllib.parse import quote_plus
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.getLevelName('DEBUG'))
+logger.setLevel(logging.getLevelName('INFO'))
 logger.addHandler(logging.StreamHandler())
 
 """
@@ -45,21 +46,7 @@ WITH comp_pos AS (
     ), crit_size AS (
     SELECT
         comp_pos.id_company,
-        CASE company.taille
-            WHEN '3-5' THEN 2
-            WHEN '6-9' THEN 3
-            WHEN '10-19' THEN 3
-            WHEN '20-49' THEN 3
-            WHEN '50-99' THEN 3
-            WHEN '100-199' THEN 3
-            WHEN '200-249' THEN 2
-            WHEN '250-499' THEN 2
-            WHEN '500-999' THEN 2
-            WHEN '1000-1999' THEN 2
-            WHEN '2000-4999' THEN 2
-            WHEN '5000-9999' THEN 2
-            ELSE 1
-        END AS score
+        {size_rules}
     FROM comp_pos
     INNER JOIN
         company ON company.id_internal = comp_pos.id_company
@@ -82,7 +69,9 @@ SELECT
     cg.score AS score_geo,
     cs.score AS score_size,
     cn.score AS score_naf,
-    cg.score * 1 + cs.score * 2 + cn.score * 3 AS score_total
+    cg.score * 1 + cs.score * 2 + cn.score * 3 AS score_total,
+    cp.departement AS departement,
+    cp.commune as commune
 FROM
     crit_geo cg
 INNER JOIN
@@ -190,6 +179,7 @@ def parse_naf_list(naf_defs, include=None, exclude=None):
 
 def get_naf_sql(rules):
     '''
+    -- example output:
     CASE company.naf
         WHEN '3220Z' THEN 3
         WHEN '3240Z' THEN 3
@@ -225,6 +215,123 @@ def get_naf_sql(rules):
     return "\n".join(sql)
 
 
+def sub_maxvg(vg, num):
+    if num >= int(vg):
+        return '1'
+    return str(int(vg) - num)
+
+
+def get_size_rules(tpe, pme, eti, ge):
+    '''
+    CASE company.taille
+        WHEN '3-5' THEN 2
+        WHEN '6-9' THEN 3
+        WHEN '10-19' THEN 3
+        WHEN '20-49' THEN 3
+        WHEN '50-99' THEN 3
+        WHEN '100-199' THEN 3
+        WHEN '200-249' THEN 2
+        WHEN '250-499' THEN 2
+        WHEN '500-999' THEN 2
+        WHEN '1000-1999' THEN 2
+        WHEN '2000-4999' THEN 2
+        WHEN '5000-9999' THEN 2
+        ELSE 1
+    END AS score
+
+    don't forget 0, 1-2 and null
+    '''
+    # < 10 pers
+    tpe_def = {
+        '1-2': 0,
+        '3-5': 0,
+        '6-9': 0,
+        '10-19': 1,
+        '20-49': 1,
+        '50-99': 1,
+        '100-199': 2,
+        '200-249': 2,
+        '250-499': 3,
+        '500-999': 4,
+        '1000-1999': 5,
+        '2000-4999': 6,
+        '5000-9999': 7,
+        '+10000': 8
+    }
+    # 10-249 pers
+    pme_def = {
+        '1-2': 3,
+        '3-5': 2,
+        '6-9': 1,
+        '10-19': 0,
+        '20-49': 0,
+        '50-99': 0,
+        '100-199': 0,
+        '200-249': 0,
+        '250-499': 1,
+        '500-999': 1,
+        '1000-1999': 2,
+        '2000-4999': 3,
+        '5000-9999': 4,
+        '+10000': 5
+    }
+    # 250-4999 pers
+    eti_def = {
+        '1-2': 5,
+        '3-5': 4,
+        '6-9': 3,
+        '10-19': 3,
+        '20-49': 2,
+        '50-99': 2,
+        '100-199': 1,
+        '200-249': 1,
+        '250-499': 0,
+        '500-999': 0,
+        '1000-1999': 0,
+        '2000-4999': 0,
+        '5000-9999': 1,
+        '+10000': 2
+    }
+    # > 5000 pers
+    ge_def = {
+        '1-2': 9,
+        '3-5': 9,
+        '6-9': 8,
+        '10-19': 7,
+        '20-49': 6,
+        '50-99': 5,
+        '100-199': 4,
+        '200-249': 3,
+        '250-499': 2,
+        '500-999': 2,
+        '1000-1999': 1,
+        '2000-4999': 1,
+        '5000-9999': 0,
+        '+10000': 0
+    }
+    keys = ['1-2', '3-5', '6-9', '10-19', '20-49',
+            '50-99', '100-199', '200-249', '250-499',
+            '500-999', '1000-1999', '2000-4999',
+            '5000-9999', '+10000']
+    root = {k: int(MAX_VALUE_GROUP) for k in keys}
+
+    loop = [(tpe, tpe_def), (pme, pme_def), (eti, eti_def), (ge, ge_def)]
+    for (check, definition) in loop:
+        if not check:
+            continue
+        for k, v in definition.items():
+            root[k] = v if root[k] > v else root[k]
+
+    root = {k: sub_maxvg(MAX_VALUE_GROUP, v) for k, v in root.items()}
+
+    sql = ['CASE company.taille']
+    for k, v in root.items():
+        sql.append(f'WHEN \'{k}\' THEN {v}')
+
+    sql.append('ELSE 1')
+    sql.append('END AS score')
+
+    return "\n".join(sql)
 
 # ################################################################### MAIN FLOW
 # #############################################################################
@@ -237,7 +344,16 @@ def get_naf_sql(rules):
 @click.option('--include', help="Include naf code", multiple=True, default=None)
 @click.option('--exclude', help="Exclude naf code", multiple=True, default=None)
 @click.option('--csv-file', help="output csv file", default='output.csv')
-def main(config_file, lat, lon, max_distance, rome, include, exclude, csv_file):
+@click.option('--tpe/--no-tpe', help="Include 'Très Petites Entreprises' < 10 pers", default=False)
+@click.option('--pme/--no-pme', help="Include 'Petites et Moyennes Entreprises' 10 - 249 pers", default=False)
+@click.option('--eti/--no-eti', help="Include 'Entreprises de Taille Intermédiaire' 250 - 4999 pers", default=False)
+@click.option('--ge/--no-ge', help="Include 'Grandes Entreprises' > 5000 pers", default=False)
+@click.option('--debug', is_flag=True, default=False)
+def main(config_file, lat, lon, max_distance, rome, include, exclude, csv_file, tpe, pme, eti, ge, debug):
+    if debug:
+        logger.setLevel(logging.getLevelName('DEBUG'))
+        logger.debug('Debugging enabled')
+
     logger.info(
         'Matching started, lat/lon %s/%s, max %s km, ROME: %s',
         lat,
@@ -258,27 +374,38 @@ def main(config_file, lat, lon, max_distance, rome, include, exclude, csv_file):
     naf_sql = get_naf_sql(naf_rules)
     logger.debug('Naf sql:\n%s', naf_sql)
 
+    size_sql = get_size_rules(tpe, pme, eti, ge)
+    logger.debug('Size rules:\n%s', size_sql)
+
     result = {}
-    logger.debug('Connecting to database ...')
+    logger.info('Connecting to database ...')
     with psycopg2.connect(cursor_factory=RealDictCursor, **cfg['postgresql']) as conn, conn.cursor() as cur:
-        logger.debug('Obtained database cursor')
+        logger.info('Obtained database cursor')
         data = {
             'lat': lat,
             'lon': lon,
             'dist': max_distance
         }
-        sql = cur.mogrify(MATCH_QUERY.format(naf_rules=naf_sql), data)
+        sql = cur.mogrify(MATCH_QUERY.format(naf_rules=naf_sql, size_rules=size_sql), data)
         logger.debug(sql.decode('utf8'))
         cur.execute(sql)
         result = cur.fetchall()
     count = 0
     print('Obtained results preview:')
     for row in result:
-        score = f"({row['score_naf']}-{row['score_size']}-{row['score_geo']} => {row['score_total']})"
-        print(f"{row['siret']} {row['naf']} {row['nom']:50}\t{row['sector']:40}\t{row['distance']}\t{score}")
+        # row['google_url'] = ''.join(['https://google.fr/search?q=', quote_plus(row['nom']), quote_plus(row['departement'])])
+        row['google_search'] = ''.join([
+            'https://google.fr/search?q=',
+            quote_plus(row['nom'].lower()),
+            '+',
+            quote_plus(str(row['departement'])),
+            '+',
+            quote_plus(str(row['commune'])),
+        ])
         count += 1
-        if count > 20:
-            break
+        if count < 20:
+            score = f"({row['score_naf']}-{row['score_size']}-{row['score_geo']} => {row['score_total']})"
+            print(f"{row['naf']}  {row['nom']:32.30}\t{row['sector']:35.37}\t{row['distance']}\t{score}")
 
     keys = result[0].keys()
     with open(csv_file, 'w') as output_csv:
