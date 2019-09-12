@@ -1,5 +1,7 @@
 rome: 'D1209'
 desc: 'Vente de végétaux'
+preferred_size: 
+  - 'tpe'
 naf_domains_principal:
   - '47' # Commerce de détail
 naf_domains_secondary:

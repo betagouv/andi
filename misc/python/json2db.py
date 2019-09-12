@@ -9,6 +9,7 @@ import yaml
 
 from lib_2db_hereGeoLoc import exec_row as update_hero
 from lib_2db_company import exec_row as write_company
+from lib_2db_company_update import exec_row as update_company
 from lib_2db_siren import exec_row as write_sirene
 from lib_2db_user import exec_row as write_user
 
@@ -30,13 +31,14 @@ def cfg_get(config):
 @click.command()
 @click.option('--config_file', default=None)
 @click.option('--company', is_flag=True)
+@click.option('--company-update', is_flag=True)
 @click.option('--user', is_flag=True)
 @click.option('--sirene', is_flag=True)
 @click.option('--here', is_flag=True)
 @click.option('--debug', '-d', is_flag=True)
 @click.option('--dry', is_flag=True)
 @click.option('--tag', default=None)
-def main(config_file, company, user, sirene, here, debug, dry, tag):
+def main(config_file, company, company_update, user, sirene, here, debug, dry, tag):
     """
     Get json line by line, write to enterpise database
     Reads from stdin (pipe)
@@ -59,6 +61,8 @@ def main(config_file, company, user, sirene, here, debug, dry, tag):
                     iden = update_hero(cur, record, dry)
                 elif company:
                     iden = write_company(cur, record)
+                elif company_update:
+                    iden = update_company(cur, record)
                 elif sirene:
                     iden = write_sirene(cur, record, tag, dry)
                 elif user:

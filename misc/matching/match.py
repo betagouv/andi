@@ -5,6 +5,7 @@ import yaml
 import json
 import os
 import psycopg2
+from collections import OrderedDict
 from psycopg2.extras import RealDictCursor
 import csv
 from urllib.parse import quote_plus
@@ -125,6 +126,24 @@ def get_rome_defs(romes):
             )
 
     return out
+
+
+def parse_rome_size_prefs(rome_defs, tpe, pme, eti, ge):
+    base = OrderedDict([
+        ('tpe', tpe),
+        ('pme', pme),
+        ('eti', eti),
+        ('ge', ge)
+    ])
+    for rome, d in rome_defs.items():
+        if 'preferred_size' in d and d['preferred_size'] is not None:
+            logger.info('ROME %s preferred sizes: %s', rome, ', '.join(d['preferred_size']))
+            for t in d['preferred_size']:
+                base[t] = True if base[t] is None else base[t]
+
+    base = {k: False if v is None else v for k, v in base.items()}
+
+    return base.values()
 
 
 def parse_naf_list(naf_defs, include=None, exclude=None):
@@ -344,10 +363,10 @@ def get_size_rules(tpe, pme, eti, ge):
 @click.option('--include', help="Include naf code", multiple=True, default=None)
 @click.option('--exclude', help="Exclude naf code", multiple=True, default=None)
 @click.option('--csv-file', help="output csv file", default='output.csv')
-@click.option('--tpe/--no-tpe', help="Include 'Très Petites Entreprises' < 10 pers", default=False)
-@click.option('--pme/--no-pme', help="Include 'Petites et Moyennes Entreprises' 10 - 249 pers", default=False)
-@click.option('--eti/--no-eti', help="Include 'Entreprises de Taille Intermédiaire' 250 - 4999 pers", default=False)
-@click.option('--ge/--no-ge', help="Include 'Grandes Entreprises' > 5000 pers", default=False)
+@click.option('--tpe/--no-tpe', help="Include 'Très Petites Entreprises' < 10 pers", default=None)
+@click.option('--pme/--no-pme', help="Include 'Petites et Moyennes Entreprises' 10 - 249 pers", default=None)
+@click.option('--eti/--no-eti', help="Include 'Entreprises de Taille Intermédiaire' 250 - 4999 pers", default=None)
+@click.option('--ge/--no-ge', help="Include 'Grandes Entreprises' > 5000 pers", default=None)
 @click.option('--debug', is_flag=True, default=False)
 def main(config_file, lat, lon, max_distance, rome, include, exclude, csv_file, tpe, pme, eti, ge, debug):
     if debug:
@@ -373,6 +392,15 @@ def main(config_file, lat, lon, max_distance, rome, include, exclude, csv_file, 
 
     naf_sql = get_naf_sql(naf_rules)
     logger.debug('Naf sql:\n%s', naf_sql)
+
+    tpe, pme, eti, ge = parse_rome_size_prefs(naf_def, tpe, pme, eti, ge)
+    logger.info(
+        'Parsed sizes: tpe: %s, pme: %s, eti: %s, ge: %s',
+        tpe,
+        pme,
+        eti,
+        ge
+    )
 
     size_sql = get_size_rules(tpe, pme, eti, ge)
     logger.debug('Size rules:\n%s', size_sql)

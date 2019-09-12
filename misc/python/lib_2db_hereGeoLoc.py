@@ -1,4 +1,3 @@
-
 SQL_POSITION = """
     UPDATE "company_position"
     SET

@@ -5,7 +5,7 @@ naf_domains_principal:
 naf_domains_secondary:
   # - '85' # Enseignement
   - '88' # Action sociale sans hébergement
-  - '97' # Activit²s des ménages en tant qu'employeurs de personnel domestique
+  - '97' # Activités des ménages en tant qu'employeurs de personnel domestique
 naf_principal:
   - '8810A' # Aide à domicile
   - '8891A' # Accueil de jeunes enfants

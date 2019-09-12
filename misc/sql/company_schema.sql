@@ -47,7 +47,7 @@ CREATE TABLE "company" (
 
     siren VARCHAR(9),
     nic VARCHAR(5),
-    siret VARCHAR(14),
+    siret VARCHAR(14) UNIQUE,
     naf VARCHAR(5),
     naf_label TEXT,
     macro_sector TEXT,
@@ -74,7 +74,7 @@ CREATE INDEX company_naf_macro ON "company" (substring(naf, 0, 3));
 
 CREATE TABLE "company_position" (
     id_internal SERIAL PRIMARY KEY,
-    id_company INT NOT NULL,
+    id_company INT NOT NULL UNIQUE,
     label TEXT,
     numero VARCHAR(10),
     rue VARCHAR(128),
