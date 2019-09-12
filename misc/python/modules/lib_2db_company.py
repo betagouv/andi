@@ -1,4 +1,8 @@
 import re
+import logging
+
+logger = logging.getLogger(__name__)
+logger.addHandler(logging.StreamHandler())
 
 SQL_COMPANY = """
 INSERT INTO "company" (
@@ -77,27 +81,47 @@ VALUES (
 """
 
 
-def exec_row(cur, data_row):
-    cur.execute(sql_company(cur, data_row))
-    (cid,) = cur.fetchone()
-    sqls = [
-        sql_position(cur, cid, data_row),
-        sql_contact(cur, cid, data_row)
-    ]
-    cur.execute(';'.join(sqls))
-    d = data_row
+def exec_row(cur, d, dry_run=False):
+    if not check_company(cur, d):
+        return f"Skipped {d.get('siret')} / {d.get('raison_sociale')}: already known"
+    if not dry_run:
+        cur.execute(sql_company(cur, d))
+        (cid,) = cur.fetchone()
+        sqls = [
+            sql_position(cur, cid, d).decode('utf8'),
+            sql_contact(cur, cid, d).decode('utf8')
+        ]
+        cur.execute(';'.join(sqls))
+    else:
+        cid = 'test_id'
+        sqls = [
+            sql_company(cur, d),
+            sql_position(cur, cid, d),
+            sql_contact(cur, cid, d),
+        ]
+        print("Dry run results:")
+        for sql in sqls:
+            print(sql.decode('utf8'))
+
     return f"{cid}: {d.get('raison_sociale')} / {d.get('enseigne')}"
 
+def check_company(cur, d):
+    siret = d.get('siret')
+    cur.execute( 'SELECT id_internal FROM company WHERE siret = %s;', (siret, ))
+    results = cur.fetchall()
+    if len(results) != 0:
+        return False
+    return True
 
 def sql_company(cur, d):
     # Get size
     match = re.match(
         r'(\d{3}) A (\d{3})',
-        d.get('tranche_deffectif_de_lentreprise')
+        d.get('tranche_effectif_insee')
     )
     if match:
         taille = f'{match[1]}-{match[2]}'
-    elif d.get('tranche_deffectif_de_lentreprise').startswith('10000'):
+    elif d.get('tranche_effectif_insee').startswith('10000'):
         taille = '+10000'
     else:
         taille = '0'
@@ -123,8 +147,8 @@ def sql_company(cur, d):
         'pmsmp_interest': "OUI" in d.get('volontaire_pmsmp', ''),
         'pmsmp_count_recent': int(d.get('nb_pmsmp_24_mois')),
         'rome_offers': rome_list,
-        'source': 'csv_26k_pole_emploi',
-        'import_tag': 'csv_26k',
+        'source': 'pe_pmsmp_files',
+        'import_tag': 'pmsmp_unknown_siret',
         'flags': [],
     }
     return cur.mogrify(SQL_COMPANY, data)

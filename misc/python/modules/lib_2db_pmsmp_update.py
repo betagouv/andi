@@ -1,4 +1,8 @@
 import re
+import logging
+
+logger = logging.getLogger(__name__)
+logger.addHandler(logging.StreamHandler())
 
 SQL_COMPANY = """
     UPDATE "company"
@@ -6,9 +10,9 @@ SQL_COMPANY = """
         pmsmp_interest = %(pmsmp_interest)s,
         pmsmp_count_recent = %(pmsmp_count_recent)s,
         rome_offers = %(rome_offers)s,
-        flags = array_append(flags, 'pole_emploi_updated'),
+        flags = array_append(flags, 'pmsmp_poleemploi'),
         date_updated = now()
-    WHERE siret = %(siret)s
+    WHERE id_internal = %(id_internal)s
     RETURNING id_internal
 """
 
@@ -27,18 +31,64 @@ SQL_CONTACT = """
 """
 
 
-def exec_row(cur, data_row):
-    cur.execute(sql_company(cur, data_row))
-    (cid,) = cur.fetchone()
-    sqls = [
-        sql_contact(cur, cid, data_row).decode('ascii'),
-    ]
-    cur.execute(';'.join(sqls))
+def exec_row(cur, data_row, dry_run=False):
+    (success, cid) = check_company(cur, data_row)
+    if not success:
+        return f'Failed to update company {data_row.get("siret")}'
+
+    if not dry_run:
+        cur.execute(sql_company(cur, cid, data_row))
+        sqls = [
+            sql_contact(cur, cid, data_row).decode('utf8'),
+        ]
+        cur.execute(';'.join(sqls))
+    else:
+        sqls = [
+            sql_company(cur, cid, data_row),
+            sql_contact(cur, cid, data_row)
+        ]
+        print("Dry run results:")
+        for sql in sqls:
+            print(sql.decode('utf8'))
+
     d = data_row
     return f"{cid}: {d.get('raison_sociale')} / {d.get('enseigne')}"
 
 
-def sql_company(cur, d):
+def check_company(cur, d):
+    siret = d.get('siret')
+    siren = d.get('siret')[0:9]
+    cur.execute( 'SELECT id_internal FROM company WHERE siret = %s;', (siret, ))
+    results = cur.fetchall()
+    if len(results) != 1:
+        logger.warning('siret %s: %s rows found, trying siren', siret, cur.rowcount)
+        cur.execute( 'SELECT id_internal, siret FROM company WHERE siren = %s;', (siren, ))
+        if cur.rowcount == 0:
+            logger.critical('Failed to find siren %s (siret %s)', siren, siret)
+            return (False, None)
+        if cur.rowcount > 3:
+            logger.critical(
+                'Too many results (%s) for siren %s (siret %s)',
+                cur.rowcount,
+                siren,
+                siret
+            )
+            return (False, None)
+        ids = [(k[0], k[1]) for k in cur.fetchall()]
+        logger.info(
+            'siren %s: %s rows found, using id %s / siret %s',
+            siren,
+            cur.rowcount,
+            ids[0][0],
+            ids[0][1])
+        return_id = ids[0][0]
+    else:
+        return_id = results[0]
+
+    return (True, return_id)
+
+
+def sql_company(cur, cid, d):
     # Get romes
     if d.get('rome_offres_deposees_12_mois'):
         rome_list = d.get('rome_offres_deposees_12_mois').split(';')
@@ -49,6 +99,7 @@ def sql_company(cur, d):
 
     # continue
     data = {
+        'id_internal': cid,
         'nom': d.get('raison_sociale'),
         'enseigne': d.get('enseigne'),
         'siren': d.get('siret')[0:9],

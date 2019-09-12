@@ -9,6 +9,7 @@ from collections import OrderedDict
 from psycopg2.extras import RealDictCursor
 import csv
 from urllib.parse import quote_plus
+from sql import MATCH_QUERY
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.getLevelName('INFO'))
@@ -22,73 +23,6 @@ Each rome code has a NAF definition file, used for scoring naf/rome adequacy
 """
 
 MAX_VALUE_GROUP = '3'
-
-MATCH_QUERY = '''
-WITH comp_pos AS (
-    SELECT
-        id_company,
-        commune,
-        earth_distance(ll_to_earth(%(lat)s, %(lon)s), ll_to_earth(lat, lon))
-            AS dist
-    FROM
-        company_position
-    WHERE
-        earth_box(ll_to_earth(%(lat)s, %(lon)s), %(dist)s * 1000) @> ll_to_earth(lat, lon)
-    ORDER BY earth_box(ll_to_earth(%(lat)s, %(lon)s), %(dist)s * 1000) @> ll_to_earth(lat, lon) ASC
-    ), crit_geo AS (
-    SELECT
-        id_company,
-        dist,
-        4 - NTILE(3) OVER(
-            ORDER BY dist ASC
-        ) AS score
-    FROM comp_pos
-    ORDER BY dist ASC
-    ), crit_size AS (
-    SELECT
-        comp_pos.id_company,
-        {size_rules}
-    FROM comp_pos
-    INNER JOIN
-        company ON company.id_internal = comp_pos.id_company
-    ), crit_naf AS (
-    SELECT
-        comp_pos.id_company,
-        {naf_rules}
-    FROM comp_pos
-    INNER JOIN
-        company ON company.id_internal = comp_pos.id_company
-    )
-SELECT
-    c.nom AS nom,
-    c.siret AS siret,
-    c.naf AS naf,
-    c.macro_sector AS macro_sector,
-    naf.intitule_de_la_naf_rev_2 AS sector,
-    c.taille AS taille,
-    round(cg.dist/1000) || ' km' AS distance,
-    cg.score AS score_geo,
-    cs.score AS score_size,
-    cn.score AS score_naf,
-    cg.score * 1 + cs.score * 2 + cn.score * 3 AS score_total,
-    cp.departement AS departement,
-    cp.commune as commune
-FROM
-    crit_geo cg
-INNER JOIN
-    crit_size cs ON cs.id_company = cg.id_company
-INNER JOIN
-    crit_naf cn ON cn.id_company = cg.id_company
-INNER JOIN
-    company c ON c.id_internal = cg.id_company
-INNER JOIN
-    company_position cp ON cp.id_internal = cg.id_company
-LEFT JOIN
-    naf ON c.naf = naf.sous_classe_a_732
-ORDER BY score_total DESC
-LIMIT 100
-
-'''
 
 
 def cfg_get(config=''):
@@ -198,20 +132,6 @@ def parse_naf_list(naf_defs, include=None, exclude=None):
 
 def get_naf_sql(rules):
     '''
-    -- example output:
-    CASE company.naf
-        WHEN '3220Z' THEN 3
-        WHEN '3240Z' THEN 3
-        WHEN '3101Z' THEN 3
-        WHEN '1629Z' THEN 3
-    ELSE
-        CASE substring(company.naf, 0, 3)
-            WHEN '31' THEN 2
-            WHEN '32' THEN 2
-            WHEN '16' THEN 2
-            ELSE 1
-        END
-    END AS score
     '''
     codes, domains = rules
     sql = ['CASE company.naf']
@@ -241,25 +161,6 @@ def sub_maxvg(vg, num):
 
 
 def get_size_rules(tpe, pme, eti, ge):
-    '''
-    CASE company.taille
-        WHEN '3-5' THEN 2
-        WHEN '6-9' THEN 3
-        WHEN '10-19' THEN 3
-        WHEN '20-49' THEN 3
-        WHEN '50-99' THEN 3
-        WHEN '100-199' THEN 3
-        WHEN '200-249' THEN 2
-        WHEN '250-499' THEN 2
-        WHEN '500-999' THEN 2
-        WHEN '1000-1999' THEN 2
-        WHEN '2000-4999' THEN 2
-        WHEN '5000-9999' THEN 2
-        ELSE 1
-    END AS score
-
-    don't forget 0, 1-2 and null
-    '''
     # < 10 pers
     tpe_def = {
         '1-2': 0,
@@ -432,8 +333,8 @@ def main(config_file, lat, lon, max_distance, rome, include, exclude, csv_file, 
         ])
         count += 1
         if count < 20:
-            score = f"({row['score_naf']}-{row['score_size']}-{row['score_geo']} => {row['score_total']})"
-            print(f"{row['naf']}  {row['nom']:32.30}\t{row['sector']:35.37}\t{row['distance']}\t{score}")
+            score = f"({row['score_naf']}-{row['score_size']}-{row['score_geo']}-{row['score_welcome']}-{row['score_contact']} => {row['score_total']})"
+            print(f"{row['naf']}  {row['nom']:32.30}\t{row['sector']:35.37}\t{row['distance']}\t{score}\t{row['id']}")
 
     keys = result[0].keys()
     with open(csv_file, 'w') as output_csv:

@@ -71,6 +71,8 @@ CREATE TABLE "company" (
     date_updated TIMESTAMP WITH TIME ZONE
 );
 CREATE INDEX company_naf_macro ON "company" (substring(naf, 0, 3));
+CREATE INDEX company_siret ON "company" (siret);
+CREATE INDEX company_siren ON "company" (siren);
 
 CREATE TABLE "company_position" (
     id_internal SERIAL PRIMARY KEY,
