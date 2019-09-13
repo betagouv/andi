@@ -1,0 +1,32 @@
+rome: 'D1106'
+desc: 'Vente en alimentation'
+naf_domains_principal:
+  - '46' # Commerce de gros, à l'exception des automobiles et motocycles
+  - '47' # Commerce de detail, à l'exception des automobiles et motocycles
+naf_domains_secondary:
+  - ''
+naf_principal:
+  - '4711B' # Commerce d'alimentation générale
+  - '4724Z' # Commerce de détail de pain, pâtisserie et confiserie en magasin spécialisé
+  - '4781Z' # Commerce de détail alimentaire sur éventaires et marchés
+  - '4729Z' # Autres commerces de détail alimentaires en magasin spécialisé
+  - '4722Z' # Commerce de détail de viandes et de produits à base de viande en magasin spécialisé
+  - '4721Z' # Commerce de détail de fruits et légumes en magasin spécialisé
+  - '4725Z' # Commerce de détail de boissons en magasin spécialisé
+  - '4723Z' # Commerce de détail de poissons, crustacés et mollusques en magasin spécialisé
+  - '4711A' # Commerce de détail de produits surgelés
+  - '4789Z' # Autres commerces de détail sur éventaires et marchés
+naf_secondary:
+  - '4711D' # Supermarchés
+  - '4711F' # Hypermarchés
+  - '4711C' # Supérettes
+  - '4711E' # Magasins multi-commerces
+  - '4719A' # Grands magasins
+naf_of_interest:
+  - '1071C' # Boulangerie et boulangerie-pâtisserie
+  - '1013B' # Charcuterie
+  - '1071D' # Pâtisserie
+  - '5610A' # Restauration traditionnelle
+
+# linked_romes:
+#

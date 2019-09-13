@@ -7,12 +7,15 @@ naf_domains_secondary:
   - '88' # Action sociale sans hébergement
   - '97' # Activités des ménages en tant qu'employeurs de personnel domestique
 naf_principal:
-  - '8810A' # Aide à domicile
   - '8891A' # Accueil de jeunes enfants
   - '8891B' # Accueil ou accompagnement de jeunes enfants handicapés
 naf_secondary:
+  - '8810A' # Aide à domicile
   - '8899B' # Action sociale sans hébergement n.c.a.
   - '9609Z' # Autres services personnels n.c.a.
+  - '8510Z' # Enseignement pré-primaire
+  - '8520Z' # Enseignement primaire
+  - '9700Z' #	Activités des ménages en tant qu'employeurs de personnel domestique
 naf_of_interest:
   - '8560Z' # Activités de soutien à l'enseignement
 

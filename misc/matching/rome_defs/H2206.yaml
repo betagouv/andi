@@ -1,0 +1,17 @@
+rome: 'H2206'
+desc: 'Réalisation de menuiserie bois et tonnellerie'
+naf_domains_principal:
+  - '16' # Travail du bois mais pas de meubles
+naf_domains_secondary:
+  - '43' # Travail de construction spécialisée
+naf_principal:
+  - '1629Z' # Fabrication d'objets divers en bois ; fabrication d'objets en liège, vannerie et sparterie
+  - '1610A' # Sciage et rabotage du bois, hors imprégnation
+naf_secondary:
+  - '4332C' # Agencement de lieux de vente
+  - '4391A' # Travaux de charpente
+naf_of_interest:
+  - '3101Z' # Fabrication de meubles de bureau et de magasin
+  - '3102Z' # Fabrication de meubles de cuisine
+
+# linked_romes:

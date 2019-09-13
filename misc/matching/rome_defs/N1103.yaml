@@ -12,5 +12,7 @@ naf_secondary:
   - '5221Z' # Services auxiliaires des transports terrestres
 naf_of_interest:
   - '4941B' # Transports routiers de fret de proximité
+  - '4941A' # Transports routiers de fret interurbains
+  - '5310Z' # Activités de poste dans le cadre d'une obligation de service universel
 
 # linked_romes:

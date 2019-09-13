@@ -16,6 +16,9 @@ naf_principal:
 
 naf_secondary:
   - '8810A' # Aide à domicile
+  - '8610Z' # Activités hospitalières
+  - '8899B' # Autre accueil ou accompagnement sans hébergement d'enfants et d'adolescents
 
 naf_of_interest:
   - '8430A' # Activités générales de sécurité sociale
+  - '5590Z' # Autre hébergements

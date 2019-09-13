@@ -320,7 +320,7 @@ def main(config_file, lat, lon, max_distance, rome, include, exclude, csv_file, 
         cur.execute(sql)
         result = cur.fetchall()
     count = 0
-    print('Obtained results preview:')
+    print('Obtained results preview (score is naf / size / geo / welcome / contact):')
     for row in result:
         # row['google_url'] = ''.join(['https://google.fr/search?q=', quote_plus(row['nom']), quote_plus(row['departement'])])
         row['google_search'] = ''.join([

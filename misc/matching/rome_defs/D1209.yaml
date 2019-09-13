@@ -9,6 +9,8 @@ naf_domains_secondary:
 naf_principal:
   - '4776Z' # Commerce de détail de fleurs, plantes, graines, engrais, animaux de compagnie et aliments pour ces animaux en magasin spécialisé
 naf_secondary:
+  - '0119Z' # Autres cultures non permanentes
+  - '0129Z' # Autres cultures permanentes
   - '4711F' # Hypermarchés
   - '0130Z' # Reproduction de plantes
 naf_of_interest:

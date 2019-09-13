@@ -13,6 +13,12 @@ naf_principal:
   - '5819Z' # Autres activités d'édition
   - '5911B' # Production de films institutionnels et publicitaires
   - '7311Z' # Activités des agences de publicité
+  - '6312Z' # Portails Internet
+  - '6391Z' # Activités des agences de presse
+  - '6399Z' # Autres services d'information n.c.a.
+  - '5811Z' # Édition de livres
+  - '5813Z' # Édition de journaux
+  - '5814Z' # Édition de revues et périodiques
 naf_secondary:
   - '6010Z' # édition et diffusion de programmes radio
   - '5911A' # Production de films et de programmes pour la télévision

@@ -15,5 +15,9 @@ naf_principal:
 #   - ''
 naf_of_interest:
   - '4211Z' # Construction de routes et autoroutes
+  - '3811Z' #	Collecte des déchets non dangereux
+  - '5229B' # Affrètement et organisation des transports
+  - '5229A' # Messagerie, fret express
+  - '3832Z' # Récupération de déchets triés
 
 # linked_romes:
