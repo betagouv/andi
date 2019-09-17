@@ -8,7 +8,7 @@ module.exports = {
 	filesUrl: 'http://localhost:3000/pix/',
 
 	// - Pagination
-	pageSize: 50,
+	pageSize: 100,
 
 	// - Language (en/fr)
 	// defaults to getting locale from browser
