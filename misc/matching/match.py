@@ -4,6 +4,7 @@ import logging
 import yaml
 import json
 import os
+import json
 import csv
 import exec_drive
 import lib_match
@@ -33,34 +34,75 @@ def cfg_get(config=''):
 
 # ################################################################### MAIN FLOW
 # #############################################################################
-@click.command()
+@click.group()
 @click.option('--config_file', default=None)
+@click.option('--debug', is_flag=True, default=False)
+@click.option('--limit', help="Limit output rows (testing only)", default=False)
+@click.pass_context
+def main(ctx, config_file, debug, limit):
+    if debug:
+        logger.setLevel(logging.getLevelName('DEBUG'))
+        logger.debug('Debugging enabled')
+
+    ctx.obj['cfg'] = cfg_get(config_file)
+    logger.debug('Loaded Config:\n%s', json.dumps(ctx.obj['cfg'], indent=2))
+
+    if limit:
+        logger.warning('Output Limiter set to %s', limit)
+        ctx.obj['cfg']['limit'] = limit
+
+
+@main.command()
+@click.pass_context
+def list_drive(ctx):
+    profiles = exec_drive.get_data(ctx.obj['cfg'])
+    logger.info('Outputting available profiles')
+    print(json.dumps(list(profiles.keys()), indent=2))
+
+
+@main.command()
+@click.pass_context
+@click.option('--profile', help="specify profile(s)", multiple=True, default=None)
+def run_drive(ctx, profile):
+    logger.info('Getting settings from google drive')
+    profiles = exec_drive.get_data(ctx.obj['cfg'])
+    results = {}
+    for k, params in profiles.items():
+        if profile and k not in profile:
+            continue
+        logger.info('Running match for profile %s', k)
+        logger.debug(json.dumps(params, indent=2))
+        try:
+            results[k] = lib_match.run_profile(ctx.obj['cfg'], **params)
+        except Exception as e:
+            logger.exception(e)
+            logger.warning('Failed parsing profile %s, skipping', k)
+
+    for key, result in results.items():
+        keys = result[0].keys()
+        temp_file = f'{key}.csv'
+        with open(temp_file, 'w') as output_csv:
+            dwriter = csv.DictWriter(output_csv, keys)
+            dwriter.writeheader()
+            dwriter.writerows(result)
+        logger.info('CSV file %s written', temp_file)
+
+
+@main.command()
+@click.option('--csv-file', help="output csv file", default='output.csv')
 @click.option('--lat', help="latitude", default='49.0619')
 @click.option('--lon', help="longitude", default='2.0861')
 @click.option('--max-distance', help="Max distance (km)", default=10)
 @click.option('--rome', help="rome code", multiple=True, default=None)
 @click.option('--include', help="Include naf code", multiple=True, default=None)
 @click.option('--exclude', help="Exclude naf code", multiple=True, default=None)
-@click.option('--csv-file', help="output csv file", default='output.csv')
-@click.option('--drive-in', help="Read input from google drive", is_flag=True, default=False)
 @click.option('--tpe/--no-tpe', help="Include 'Très Petites Entreprises' < 10 pers", default=None)
 @click.option('--pme/--no-pme', help="Include 'Petites et Moyennes Entreprises' 10 - 249 pers", default=None)
 @click.option('--eti/--no-eti', help="Include 'Entreprises de Taille Intermédiaire' 250 - 4999 pers", default=None)
 @click.option('--ge/--no-ge', help="Include 'Grandes Entreprises' > 5000 pers", default=None)
-@click.option('--debug', is_flag=True, default=False)
-def main(config_file, lat, lon, max_distance, rome, include, exclude, csv_file, drive_in, tpe, pme, eti, ge, debug):
-    if debug:
-        logger.setLevel(logging.getLevelName('DEBUG'))
-        logger.debug('Debugging enabled')
-
-    cfg = cfg_get(config_file)
-    logger.debug('Loaded Config:\n%s', json.dumps(cfg, indent=2))
-
-    if drive_in:
-        logger.info('Getting settings from google drive')
-        exec_drive.run(cfg)
-        return
-
+@click.pass_context
+def run_csv(ctx, csv_file, lat, lon, max_distance, rome, include, exclude, tpe, pme, eti, ge):
+    cfg = ctx.obj['cfg']
     logger.info(
         'Matching started, lat/lon %s/%s, max %s km, ROME: %s',
         lat,
@@ -95,4 +137,4 @@ def main(config_file, lat, lon, max_distance, rome, include, exclude, csv_file, 
 
 
 if __name__ == '__main__':
-    main()  # pylint:disable=no-value-for-parameter, unexpected-keyword-arg
+    main(obj={})  # pylint:disable=no-value-for-parameter, unexpected-keyword-arg

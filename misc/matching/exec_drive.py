@@ -2,7 +2,6 @@ import os
 import re
 import unidecode
 import pickle
-import json
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -15,10 +14,12 @@ SHEED_ID = '1686694416'
 RANGE = 'Config_Matching!A:I'
 
 
-def run(config):
+def get_data(config):
+    from match import logger
     service = get_service()
     profiles = get_profiles(service)
-    print(json.dumps(profiles, indent=2))
+    logger.info('Obtained %s profiles from google drive', len(profiles))
+    return profiles
 
 
 def key_to_slug(raw_string):
@@ -46,11 +47,11 @@ def get_profiles(service):
             'name': name,
             'lat': p['lat'],
             'lon': p['lon'],
-            'max_distance': p.get('distance', 10),
-            'size': p.get('taille', '').split(' '),
-            'rome': p.get('rome', '').split(' '),
-            'include': p.get('include', '').split(' '),
-            'exclude': p.get('exclude', '').split(' '),
+            'max_distance': p['distance'] if 'distance' in p and p['distance'] else 10,
+            'sizes': p.get('taille', 'pme').split(' '),
+            'romes': p.get('rome', '').split(' '),
+            'includes': p['include'].split(' ') if 'include' in p and p['include'] else None,
+            'excludes': p['exclude'].split(' ') if 'exclude' in p and p['exclude'] else None,
         }
     return profiles
 

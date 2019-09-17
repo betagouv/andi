@@ -238,7 +238,9 @@ def get_size_rules(tpe, pme, eti, ge):
 
 # ####################################################################### MATCH
 # #############################################################################
-def run_profile(cfg, lat, lon, max_distance, romes, includes, excludes, sizes):
+def run_profile(cfg, lat, lon, max_distance, romes, includes, excludes, sizes, *args, **kwargs):
+    if max_distance == '':
+        max_distance = 10
 
     naf_def = get_rome_defs(romes)
     logger.debug('Naf matching definitions:\n%s', json.dumps(naf_def, indent=2))
@@ -276,7 +278,11 @@ def run_profile(cfg, lat, lon, max_distance, romes, includes, excludes, sizes):
             'lon': lon,
             'dist': max_distance
         }
-        sql = cur.mogrify(MATCH_QUERY.format(naf_rules=naf_sql, size_rules=size_sql), data)
+        sql = cur.mogrify(MATCH_QUERY.format(
+            naf_rules=naf_sql,
+            size_rules=size_sql,
+            limit_test=f'LIMIT {cfg["limit"]}' if 'limit' in cfg else ''
+        ), data)
         logger.debug(sql.decode('utf8'))
         cur.execute(sql)
         result = cur.fetchall()

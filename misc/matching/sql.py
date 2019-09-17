@@ -44,6 +44,7 @@ WITH comp_pos AS (
     WHERE
         earth_box(ll_to_earth(%(lat)s, %(lon)s), %(dist)s * 1000) @> ll_to_earth(lat, lon)
     ORDER BY earth_box(ll_to_earth(%(lat)s, %(lon)s), %(dist)s * 1000) @> ll_to_earth(lat, lon) ASC
+    {limit_test}
     ), crit_geo AS (
     -- crit geo ----------------------------------------------
     SELECT
@@ -102,23 +103,24 @@ WITH comp_pos AS (
 SELECT
     c.id_internal as id,
     c.nom AS nom,
-    c.siret AS siret,
+    c.taille AS taille,
     c.naf AS naf,
-    c.macro_sector AS macro_sector,
-    cp.label as adresse,
+    naf.intitule_de_la_naf_rev_2 AS sector,
+    array_to_string(ARRAY[
+        cn.phone_official_1,
+        cn.phone_official_2], ', ') AS phone_official,
     array_to_string(ARRAY[
         cn.phone_preferred_1,
-        cn.phone_preferred_2,
-        cn.phone_official_1,
-        cn.phone_official_2], ', ') AS phone,
-    array_to_string(ARRAY[
-        cn.email_preferred,
-        cn.email_official], ', ') as email,
-    naf.intitule_de_la_naf_rev_2 AS sector,
-    c.taille AS taille,
+        cn.phone_preferred_2], ', ') AS phone_personal,
+    cn.email_official as email_official,
+    cn.email_preferred as email_personal,
+    c.pmsmp_interest as pmsmp_interest,
     round(cr_ge.dist/1000) || ' km' AS distance,
-    cp.departement AS departement,
+    cp.label as adresse,
     cp.commune as commune,
+    cp.departement as departement,
+    c.macro_sector AS macro_sector,
+    c.siret AS siret,
     cr_nf.score AS score_naf,
     cr_wc.score AS score_welcome,
     cr_cn.score AS score_contact,
