@@ -66,6 +66,7 @@ CREATE TABLE "company" (
     import_tag TEXT,
     flags TEXT [],
     qoc QOD,
+    comments TEXT[],
 
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     date_updated TIMESTAMP WITH TIME ZONE
@@ -73,6 +74,9 @@ CREATE TABLE "company" (
 CREATE INDEX company_naf_macro ON "company" (substring(naf, 0, 3));
 CREATE INDEX company_siret ON "company" (siret);
 CREATE INDEX company_siren ON "company" (siren);
+CREATE INDEX company_naf ON "company" (naf);
+CREATE INDEX trgm_company_name ON "company" USING gin(nom gin_trgm_ops);
+CREATE INDEX trgm_company_enseigne ON "company" USING gin(enseigne gin_trgm_ops);
 
 CREATE TABLE "company_position" (
     id_internal SERIAL PRIMARY KEY,
@@ -85,8 +89,6 @@ CREATE TABLE "company_position" (
     postal_code VARCHAR(10),
     region VARCHAR(128),
     departement VARCHAR(128),
-
-    postal_code VARCHAR(10),
     lat NUMERIC,
     lon NUMERIC,
     error_margin_km SMALLINT DEFAULT 0,
@@ -124,19 +126,136 @@ CREATE TABLE "company_contact" (
     postal_code VARCHAR(10),
     postal_commune VARCHAR(64),
     postal_person VARCHAR(64),
-    phone_preferred_1 VARCHAR(32),
-    phone_preferred_2 VARCHAR(32),
     phone_official_1 VARCHAR(32),
     phone_official_2 VARCHAR(32),
-    email_preferred VARCHAR(64),
-    email_preferred_modified_date TIMESTAMP WITH TIME ZONE,
-    email_preferred_confirmed BOOLEAN,
     email_official VARCHAR(64),
     email_official_modified_date TIMESTAMP WITH TIME ZONE,
     email_official_confirmed BOOLEAN,
+    contact_1_name VARCHAR(64),
+    contact_1_role VARCHAR(64),
+    contact_1_phone VARCHAR(32),
+    contact_1_mail VARCHAR(64),
+    contact_2_name VARCHAR(64),
+    contact_2_role VARCHAR(64),
+    contact_2_phone VARCHAR(32),
+    contact_2_mail VARCHAR(64),
+    email_preferred_modified_date TIMESTAMP WITH TIME ZONE,
+    email_preferred_confirmed BOOLEAN,
     data_quality QOD,
 
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     date_updated TIMESTAMP WITH TIME ZONE
 );
 CREATE UNIQUE index company_contact_company_id ON "company_contact" (id_company);
+
+
+DROP VIEW IF EXISTS "company_view";
+CREATE VIEW "company_view" AS
+    SELECT
+        c.id_internal,
+        c.nom,
+        c.enseigne,
+        c.siret,
+        c.naf,
+        c.taille,
+        c.pmsmp_interest,
+        c.pmsmp_count_recent,
+        c.rating_us,
+        c.comments,
+        c.source,
+        c.import_tag,
+        c.flas,
+        c.date_created,
+        c.date_updated,
+
+        cp.numero,
+        cp.rue,
+        cp.quartier,
+        cp.commune,
+        cp.postal_code,
+        cp.region,
+        cp.departement,
+        cp.lat,
+        cp.lon,
+
+        cc.phone_official_1,
+        cc.phone_official_2,
+        cc.email_official,
+
+        cc.contact_1_name,
+        cc.contact_1_role,
+        cc.contact_1_mail,
+        cc.contact_1_phone,
+
+        cc.contact_2_name,
+        cc.contact_2_role,
+        cc.contact_2_mail,
+        cc.contact_2_phone
+    FROM
+        company c
+    INNER JOIN 
+        company_position cp ON c.id_internal = cp.id_company
+    INNER JOIN 
+        company_contact cc ON c.id_internal = cc.id_company
+    ;
+
+-- Messy stuff below, update later on
+CREATE TABLE entreprises AS
+    SELECT
+           c.id_internal,
+           c.nom,
+           c.enseigne,
+           c.siret,
+           c.naf,
+           c.taille,
+           c.pmsmp_interest,
+           c.pmsmp_count_recent,
+           c.rating_us,
+           c.comments,
+           c.source,
+           c.import_tag,
+           c.flags,
+           c.date_created,
+           c.date_updated,
+    
+           cp.label,
+           cp.numero,
+           cp.rue,
+           cp.quartier,
+           cp.commune,
+           cp.postal_code,
+           cp.region,
+           cp.departement,
+           cp.lat,
+           cp.lon,
+    
+           cc.phone_official_1,
+           cc.phone_official_2,
+           cc.email_official,
+    
+           cc.contact_1_name,
+           cc.contact_1_role,
+           cc.contact_1_mail,
+           cc.contact_1_phone,
+    
+           cc.contact_2_name,
+           cc.contact_2_role,
+           cc.contact_2_mail,
+           cc.contact_2_phone
+       FROM
+           company c
+       INNER JOIN 
+           company_position cp ON c.id_internal = cp.id_company
+       INNER JOIN 
+           company_contact cc ON c.id_internal = cc.id_company
+       ;
+
+CREATE INDEX entreprises_naf_macro ON "entreprises" (substring(naf, 0, 3));
+CREATE INDEX entreprises_siret ON "entreprises" (siret);
+CREATE INDEX entreprises_naf ON "entreprises" (naf);
+CREATE INDEX trgm_entreprises_name ON "entreprises" USING gin(nom gin_trgm_ops);
+CREATE INDEX trgm_entreprises_enseigne ON "entreprises" USING gin(enseigne gin_trgm_ops);
+CREATE INDEX entreprises_geoloc ON entreprises USING gist(ll_to_earth(lat, lon));
+
+
+
