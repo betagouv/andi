@@ -1,0 +1,24 @@
+rome: 'K1201'
+desc: 'Action sociale'
+
+naf_domains_principal:
+  - '87' # Hébergement médico-social et social
+  - '88' # Action sociale sans hébergement
+
+naf_domains_secondary:
+  - '94' # Activités des organisations associatives
+
+naf_principal:
+  - '8810C' # Aide par le travail
+  - '8891A' # Accueil de jeunes enfants
+  - '8899A' # Autre accueil ou accompagnement sans hébergement d'enfants et d'adolescents
+  # - '8899B'
+
+naf_secondary:
+  - '8810A' # Aide à domicile
+  - '8610Z' # Activités hospitalières
+  - '8899B' # Autre accueil ou accompagnement sans hébergement d'enfants et d'adolescents
+
+naf_of_interest:
+  - '8430A' # Activités générales de sécurité sociale
+  - '5590Z' # Autre hébergements

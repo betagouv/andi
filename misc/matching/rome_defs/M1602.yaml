@@ -1,0 +1,21 @@
+rome: 'M1602'
+desc: 'Opérations administratives'
+naf_domains_principal:
+  - '82' # Activités administratives et autres activités de soutien aux entreprises
+naf_domains_secondary:
+  - '84' # Administration publique et défense §écurité sociale obligatoire
+naf_principal:
+  - '8299Z' # Autres activités de soutien aux entreprises n.c.a.
+  - '8211Z' # Services administratifs combinés de bureau
+naf_secondary:
+  - '8411Z' # Administration publique générale
+  - '8413Z' # Administration publique (tutelle) des activités économiques
+  - '8531Z' # Enseignement secondaire général
+  - '8610Z' # Activités hospitalières
+  - '8430A' # Activités générales de sécurité sociale
+  - '9499Z' # Autres organisations fonctionnant par adhésion volontaire
+  - '8810A' # Aide à domicile
+naf_of_interest:
+  - '9499Z' # Autres organisations fonctionnant par adhésion volontaire
+
+# linked_romes:

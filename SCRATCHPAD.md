@@ -75,10 +75,12 @@ WITH comp_pos AS (
     FROM
         company_position
     WHERE
-        earth_box(ll_to_earth(49.0817, 2.5003), 20000) @> ll_to_earth(lat, lon)
-    ORDER BY earth_box(ll_to_earth(48.9993, 2.3558), 20000) @> ll_to_earth(lat, lon) ASC
+        earth_box(ll_to_earth(49.0817, 2.5003), 10000) @> ll_to_earth(lat, lon)
+    -- ORDER BY earth_box(ll_to_earth(48.9993, 2.3558), 10000) @> ll_to_earth(lat, lon) ASC
+    ORDER BY earth_distance(ll_to_earth(48.9993, 2.3558), ll_to_earth(lat, lon))
     limit 10000
     ), crit_geo AS (
+    -- crit geo ----------------------------------------------
     SELECT
         id_company,
         dist,
@@ -88,9 +90,10 @@ WITH comp_pos AS (
     FROM comp_pos
     ORDER BY dist ASC
     ), crit_size AS (
+    -- crit size ---------------------------------------------
     SELECT 
         comp_pos.id_company,
-        CASE company.taille 
+        CASE company.taille
             WHEN '3-5' THEN 2
             WHEN '6-9' THEN 3
             WHEN '10-19' THEN 3
@@ -109,6 +112,7 @@ WITH comp_pos AS (
     INNER JOIN
         company ON company.id_internal = comp_pos.id_company
     ), crit_naf AS (
+    -- crit naf ----------------------------------------------
     SELECT
         comp_pos.id_company,
         CASE company.naf
@@ -127,6 +131,34 @@ WITH comp_pos AS (
     FROM comp_pos
     INNER JOIN
         company ON company.id_internal = comp_pos.id_company
+    ), crit_welcome AS (
+    -- crit welcome ------------------------------------------
+    SELECT
+        comp_pos.id_company,
+        CASE
+            WHEN company.pmsmp_interest THEN 2
+            WHEN (company.pmsmp_interest) AND (company.pmsmp_count_recent > 0) THEN 3
+            ELSE 1
+        END AS score
+    FROM comp_pos
+    INNER JOIN
+        company ON company.id_internal = comp_pos.id_company
+    ), crit_contact AS (
+    -- crit contact ------------------------------------------
+    SELECT
+        comp_pos.id_company,
+        CASE
+            WHEN (cc.email_official IS NOT NULL)
+            OR (cc.phone_official_1 IS NOT NULL)
+            OR (cc.phone_official_2 IS NOT NULL) THEN 2
+            WHEN (cc.email_preferred IS NOT NULL)
+            OR (cc.phone_preferred_1 IS NOT NULL)
+            OR (cc.phone_preferred_2 IS NOT NULL) THEN 3
+            ELSE 1
+        END AS score
+    FROM comp_pos
+    INNER JOIN
+        company_contact cc ON cc.id_company = comp_pos.id_company
     )
 SELECT
     c.nom,
@@ -134,25 +166,35 @@ SELECT
     c.naf,
     naf.intitule_de_la_naf_rev_2 as sector,
     c.taille,
-    round(cg.dist/1000) || ' km' AS distance,
-    cg.score AS score_geo,
-    cs.score AS score_size,
-    cn.score AS score_naf,
-    cg.score * 1 + cs.score * 2 + cn.score * 3 AS score_total
+    round(cr_ge.dist/1000) || ' km' AS distance,
+    cr_ge.score AS score_geo,
+    cr_si.score AS score_size,
+    cr_nf.score AS score_naf,
+    cr_wc.score AS score_welcome,
+    cr_cn.score AS score_contact,
+    cr_ge.score * 1 +
+    cr_si.score * 2 +
+    cr_cn.score * 2 +
+    cr_wc.score * 2 +
+    cr_nf.score * 3 AS score_total
 FROM
-    crit_geo cg
+    crit_geo cr_ge
 INNER JOIN
-    crit_size cs ON cs.id_company = cg.id_company
+    crit_size cr_si ON cr_si.id_company = cr_ge.id_company
 INNER JOIN
-    crit_naf cn ON cn.id_company = cg.id_company
+    crit_naf cr_nf ON cr_nf.id_company = cr_ge.id_company
 INNER JOIN
-    company c ON c.id_internal = cg.id_company
+    crit_welcome cr_wc ON cr_wc.id_company = cr_ge.id_company
 INNER JOIN
-    company_position cp ON cp.id_internal = cg.id_company
+    crit_contact cr_cn ON cr_cn.id_company = cr_ge.id_company
+INNER JOIN
+    company c ON c.id_internal = cr_ge.id_company
+INNER JOIN
+    company_position cp ON cp.id_internal = cr_ge.id_company
 LEFT JOIN
     naf ON c.naf = naf.sous_classe_a_732
 ORDER BY score_total DESC
 LIMIT 500
--- ORDER BY cg.score DESC, cn.score DESC, cs.score DESC;
+-- ORDER BY cr_ge.score DESC, cr_nf.score DESC, cr_si.score DESC;
 
-) TO '/tmp/test_out.csv' With CSV DELIMITER ',';
+) TO '/tmp/test_out.cr_siv' With cr_siV DELIMITER ',';

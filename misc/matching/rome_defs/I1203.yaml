@@ -1,0 +1,14 @@
+rome: 'I1203'
+desc: 'Maintenance bâtiments et locaux'
+naf_domains_principal:
+  - '81' # Services relatifs aux bâtiments et aménagement paysager
+# naf_domains_secondary:
+naf_principal:
+  - '8110Z' # Activités combinées de soutien lié aux bâtiments
+# naf_secondary:
+naf_of_interest:
+  - '5222Z' # Services auxiliaires des transports par eau
+  - '5530Z' # Terrains de camping et parcs pour caravanes ou véhicules de loisirs
+  - '5590Z' # Autres hébergements
+
+# linked_romes:

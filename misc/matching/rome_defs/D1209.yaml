@@ -1,0 +1,20 @@
+rome: 'D1209'
+desc: 'Vente de végétaux'
+preferred_size: 
+  - 'tpe'
+naf_domains_principal:
+  - '47' # Commerce de détail
+naf_domains_secondary:
+  - '01' # Culture et production animale, chasse et services annexes
+naf_principal:
+  - '4776Z' # Commerce de détail de fleurs, plantes, graines, engrais, animaux de compagnie et aliments pour ces animaux en magasin spécialisé
+naf_secondary:
+  - '0119Z' # Autres cultures non permanentes
+  - '0129Z' # Autres cultures permanentes
+  - '4711F' # Hypermarchés
+  - '0130Z' # Reproduction de plantes
+naf_of_interest:
+  - '4622Z' # Commerce de gros (commerce interentreprises) de fleurs et plantes
+  - '8130Z' # Services d'aménagement paysager
+
+# linked_romes:

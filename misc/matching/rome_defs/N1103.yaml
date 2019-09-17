@@ -1,0 +1,18 @@
+rome: 'N1103'
+desc: 'Magasinage et préparation de commandes'
+naf_domains_principal:
+  - '47' # Commerce de détail, à l'exception des automobiles et des motocycles
+  - '52' # Entreposage et services auxiliaires des transports
+# naf_domains_secondary:
+#   - ''
+naf_principal:
+  - '5210B' # Entreposage et stockage non frigorifique
+  - '5229B' # Affrètement et organisation des transports
+naf_secondary:
+  - '5221Z' # Services auxiliaires des transports terrestres
+naf_of_interest:
+  - '4941B' # Transports routiers de fret de proximité
+  - '4941A' # Transports routiers de fret interurbains
+  - '5310Z' # Activités de poste dans le cadre d'une obligation de service universel
+
+# linked_romes:

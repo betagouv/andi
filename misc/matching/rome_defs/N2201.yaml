@@ -1,0 +1,15 @@
+rome: 'N2201'
+desc: 'Personnel d''escale aéroportuaire'
+naf_domains_principal:
+  - '51' # Transports aériens
+naf_domains_secondary:
+  - '52' # Entreposage et services auxilières de transports
+naf_principal:
+  - '5110Z' # Transports aériens de passagers
+  - '5223Z' # Services auxiliaires des transports aériens
+naf_secondary:
+  - '5229B' # Affrètement et organisation des transports
+  - '8299Z' # Autres activités de soutien aux entreprises n.c.a.
+# naf_of_interest:
+
+# linked_romes:

@@ -2,6 +2,8 @@ config.yaml
 start_docker.sh
 *.csv
 __pycache__
+credentials.json
+token.pickle
 
 # Logs
 logs

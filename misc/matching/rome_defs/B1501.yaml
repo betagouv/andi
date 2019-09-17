@@ -1,0 +1,15 @@
+rome: 'B1501'
+desc: 'Fabrication et réparation d''instruments de musique'
+naf_domains_principal:
+  - '32' # Autres industries manufacturières
+naf_domains_secondary:
+  - '95' # Réparation d'ordinateurs et de biens personnels et domestiques
+naf_principal:
+  - '3220Z' # Fabrication d'instruments de musique
+naf_secondary:
+  - '4759B' # Commerce de détail d'autres équipements du foyer
+  - '4649Z' # Commerce de gros (commerce interentreprises) d'autres biens domestiques
+# naf_of_interest:
+#   - ''
+
+# linked_romes:

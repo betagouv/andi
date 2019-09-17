@@ -10,9 +10,12 @@ pylint = "*"
 
 [packages]
 click = "*"
-unidecode = "*"
 pyyaml = "*"
 psycopg2-binary = "*"
+google-api-python-client = "*"
+google-auth-httplib2 = "*"
+google-auth-oauthlib = "*"
+unidecode = "*"
 
 [requires]
 python_version = "3.7"

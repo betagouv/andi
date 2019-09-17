@@ -1,0 +1,23 @@
+rome: 'N4101'
+desc: 'Conduite de transport de marchandises sur longue distance'
+naf_domains_principal:
+  - '47' # Commerce de détail, à l'exception des automobiles et des motocycles
+  - '49' # Transports terrestres et transport par conduites
+# naf_domains_secondary:
+#   - ''
+naf_principal:
+  - '4941A' # Transports routiers de fret interurbains
+  - '4941B' # Transports routiers de fret de proximité
+  - '4941C' # Location de camions avec chauffeur
+  - '5229B' # Affrètement et organisation des transports
+  - '5229A' # Messagerie, fret express
+# naf_secondary:
+#   - ''
+naf_of_interest:
+  - '4211Z' # Construction de routes et autoroutes
+  - '3811Z' #	Collecte des déchets non dangereux
+  - '5229B' # Affrètement et organisation des transports
+  - '5229A' # Messagerie, fret express
+  - '3832Z' # Récupération de déchets triés
+
+# linked_romes:
