@@ -32,7 +32,7 @@ jobs:
         --build-arg PG_PORT=$PG_PORT ./
       - docker images
       - docker tag andi_evolutility $DOCKER_USER/private:evolutility
-      - docker push $DOCKER_USER/private/private:evolutility
+      - docker push $DOCKER_USER/private:evolutility
   - name: Build docker form_handler
     script:
       - cd misc/docker/form_handler
@@ -43,7 +43,7 @@ jobs:
         --build-arg PG_PASS=$PG_PASS
         --build-arg PG_PORT=$PG_PORT ./
       - docker images
-      - docker tag andi_formhandler -ci-build $DOCKER_USER/private:andi_formhandler
+      - docker tag andi_formhandler $DOCKER_USER/private:andi_formhandler
       - docker push $DOCKER_USER/private:andi_formhandler
 
 
