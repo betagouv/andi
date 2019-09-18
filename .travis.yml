@@ -26,25 +26,25 @@ jobs:
       - cd misc/docker/evolutility
       - echo "$DOCKER_PW" | docker login -u "$DOCKER_USER" --password-stdin
       - >
-        docker build -t andi_evolutility:$TRAVIS_COMMIT
+        docker build -t andi_evolutility
         --build-arg PG_USER=$PG_USER 
         --build-arg PG_PASS=$PG_PASS
         --build-arg PG_PORT=$PG_PORT ./
       - docker images
-      - docker tag andi_evolutility:$TRAVIS_COMMIT $DOCKER_USER/private/andi_evolutility:$TRAVIS_COMMIT
-      - docker push $DOCKER_USER/private/andi_evolutility:$TRAVIS_COMMIT
+      - docker tag andi_evolutility $DOCKER_USER/private:evolutility
+      - docker push $DOCKER_USER/private/private:evolutility
   - name: Build docker form_handler
     script:
       - cd misc/docker/form_handler
       - echo "$DOCKER_PW" | docker login -u "$DOCKER_USER" --password-stdin
       - >
-        docker build -t andi_formhandler:$TRAVIS_COMMIT
+        docker build -t andi_formhandler
         --build-arg PG_USER=$PG_USER 
         --build-arg PG_PASS=$PG_PASS
         --build-arg PG_PORT=$PG_PORT ./
       - docker images
-      - docker tag andi_formhandler:$TRAVIS_COMMIT -ci-build $DOCKER_USER/private/andi_formhandler:$TRAVIS_COMMIT
-      - docker push $DOCKER_USER/private/andi_formhandler:$TRAVIS_COMMIT
+      - docker tag andi_formhandler -ci-build $DOCKER_USER/private:andi_formhandler
+      - docker push $DOCKER_USER/private:andi_formhandler
 
 
   - stage: Deploy
