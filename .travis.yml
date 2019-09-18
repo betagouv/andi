@@ -20,6 +20,19 @@ jobs:
     script: 
       - npm run build
     skip_cleanup: true
+  - name: Build docker images
+    script:
+      - cd misc/docker/evolutility
+      - echo "$DOCKER_PW" | docker login -u "$DOCKER_USER" --password-stdin
+      - >
+        docker build -t andi_evolutility 
+        --build-arg PG_USER=$PG_USER 
+        --build-arg PG_PASS=$PG_PASS
+        --build-arg PG_PORT=$PG_PORT ./
+      - docker images
+      - docker tag travis-ci-build $DOCKER_USER/andi_evolutility:test
+      - docker push $DOCKER_USER/andi_evolutility
+
   - stage: Deploy
     name: Deploy pages to host
     if: branch = master AND type = push AND fork = false

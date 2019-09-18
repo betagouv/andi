@@ -42,7 +42,7 @@ module.exports = {
             column: 'taille',
             type: 'text',
             label: 'Taille',
-            readOnly: true,
+            readOnly: false,
             inMany: true
         }, {
             id: 'pmsmp_interest',
