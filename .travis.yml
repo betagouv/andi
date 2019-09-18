@@ -30,8 +30,8 @@ jobs:
         --build-arg PG_PASS=$PG_PASS
         --build-arg PG_PORT=$PG_PORT ./
       - docker images
-      - docker tag travis-ci-build $DOCKER_USER/andi_evolutility:test
-      - docker push $DOCKER_USER/andi_evolutility
+      - docker tag andi_evolutility:andi_evolutility-ci-build $DOCKER_USER/private:andi_evolutility
+      - docker push $DOCKER_USER/private:andi_evolutility
 
   - stage: Deploy
     name: Deploy pages to host
