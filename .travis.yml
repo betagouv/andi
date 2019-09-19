@@ -45,7 +45,11 @@ jobs:
       - docker images
       - docker tag andi_formhandler $DOCKER_USER/private:andi_formhandler
       - docker push $DOCKER_USER/private:andi_formhandler
-
+  - name: Deploy docker evolutility
+      - ssh -i deploy_ed25519 'echo "$DOCKER_PW" | docker login -u "$DOCKER_USER" --password-stdin'
+      - ssh -i deploy_ed25519 'docker stop evolutility || true'
+      - ssh -i deploy_ed25519 'docker pull'
+      - ssh -i deploy_ed25519 'docker run -d --rm -p 8080:3000 --add-host=database:172.17.0.1 --ip 172.17.0.2 --name evolutility'
 
   - stage: Deploy
     name: Deploy pages to host

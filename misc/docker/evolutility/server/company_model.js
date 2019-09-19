@@ -53,7 +53,7 @@ module.exports = {
             id: 'pmsmp_count_recent',
             column: 'pmsmp_count_recent',
             type: 'integer',
-            label: 'Nombre PMSMP 24 mois',
+            label: '# PMSMP 24 mois',
             readOnly: true,
         },
         // {
