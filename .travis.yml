@@ -46,6 +46,7 @@ jobs:
       - docker tag andi_formhandler $DOCKER_USER/private:andi_formhandler
       - docker push $DOCKER_USER/private:andi_formhandler
   - name: Deploy docker evolutility
+    script:
       - ssh -i deploy_ed25519 'echo "$DOCKER_PW" | docker login -u "$DOCKER_USER" --password-stdin'
       - ssh -i deploy_ed25519 'docker stop evolutility || true'
       - ssh -i deploy_ed25519 'docker pull'
