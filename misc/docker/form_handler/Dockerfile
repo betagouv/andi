@@ -23,11 +23,11 @@ ARG PG_HOST="database"
 ARG PG_PORT="54320"
 ARG PG_DB="andi_entreprises"
 
-RUN sed -i s/DBNAME/$PG_DB/ src/config.default.yaml
-RUN sed -i s/DBUSER/$PG_USER/ src/config.default.yaml
-RUN sed -i s/DBPASS/$PG_PASS/ src/config.default.yaml
-RUN sed -i s/DBHOST/$PG_HOST/ src/config.default.yaml
-RUN sed -i s/DBPORT/$PG_PORT/ src/config.default.yaml
+RUN sed -i s/DBNAME/$PG_DB/ src/config.default.yaml && \
+    sed -i s/DBUSER/$PG_USER/ src/config.default.yaml && /
+    sed -i s/DBPASS/$PG_PASS/ src/config.default.yaml && /
+    sed -i s/DBHOST/$PG_HOST/ src/config.default.yaml && /
+    sed -i s/DBPORT/$PG_PORT/ src/config.default.yaml
 
 RUN pipenv install --system --deploy
 ENV PYTHONPATH "${PYTONPATH}:/app/src"
