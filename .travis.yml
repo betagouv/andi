@@ -11,6 +11,9 @@ cache:
     - public
 notifications:
   slack: andi-startup:4EvkZ1UZEV4LwZXzvXhDGP8u
+stages:
+  - Build
+  - Deploy
 
 # TODO: add S3 integration to copy stage artefacts
 jobs:
@@ -76,6 +79,7 @@ jobs:
       - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker pull berzemus/private:andi_formhandler || true"
       - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker stop formhandler || true"
       - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker run -d --rm -p 8070:8080 --add-host=database:172.17.0.1 -v /data/logs:/log --ip 172.17.0.4 --name formhandler berzemus/private:andi_formhandler"
+
 addons:
   ssh_known_hosts: andi.beta.gouv.fr
 
