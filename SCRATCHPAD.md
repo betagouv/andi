@@ -151,9 +151,10 @@ WITH comp_pos AS (
             WHEN (cc.email_official IS NOT NULL)
             OR (cc.phone_official_1 IS NOT NULL)
             OR (cc.phone_official_2 IS NOT NULL) THEN 2
-            WHEN (cc.email_preferred IS NOT NULL)
-            OR (cc.phone_preferred_1 IS NOT NULL)
-            OR (cc.phone_preferred_2 IS NOT NULL) THEN 3
+            WHEN (cc.contact_1_mail IS NOT NULL)
+            OR (cc.contact_1_phone IS NOT NULL)
+            OR (cc.contact_2_mail IS NOT NULL)
+            OR (cc.contact_2_phone IS NOT NULL) THEN 3
             ELSE 1
         END AS score
     FROM comp_pos
@@ -198,3 +199,4 @@ LIMIT 500
 -- ORDER BY cr_ge.score DESC, cr_nf.score DESC, cr_si.score DESC;
 
 ) TO '/tmp/test_out.cr_siv' With cr_siV DELIMITER ',';
+

@@ -80,7 +80,7 @@ def run_drive(ctx, profile):
 
     for key, result in results.items():
         keys = result[0].keys()
-        temp_file = f'{key}.csv'
+        temp_file = f'./output/{key}.csv'
         with open(temp_file, 'w') as output_csv:
             dwriter = csv.DictWriter(output_csv, keys)
             dwriter.writeheader()

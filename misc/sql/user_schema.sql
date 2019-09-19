@@ -15,3 +15,6 @@ CREATE TABLE "inscription" (
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     date_updated TIMESTAMP WITH TIME ZONE
 );
+CREATE INDEX trgm_user_name ON "inscription" USING gin(prenom gin_trgm_ops);
+CREATE INDEX trgm_user_famname ON "inscription" USING gin(nom gin_trgm_ops);
+CREATE INDEX user_name ON "inscription" (prenom);

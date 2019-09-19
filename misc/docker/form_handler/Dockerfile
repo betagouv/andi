@@ -17,8 +17,18 @@ ARG ARG_MG_BOX="nope"
 ARG ARG_MG_KEY="nope"
 ENV MG_BOX=$ARG_MG_BOX
 ENV MG_KEY=$ARG_MG_KEY
+ARG PG_USER="user"
+ARG PG_PASS="secret"
+ARG PG_HOST="database"
+ARG PG_PORT="54320"
+ARG PG_DB="andi_entreprises"
+
+RUN sed -i s/DBNAME/$PG_DB/ src/config.default.yaml && \
+    sed -i s/DBUSER/$PG_USER/ src/config.default.yaml && \
+    sed -i s/DBPASS/$PG_PASS/ src/config.default.yaml && \
+    sed -i s/DBHOST/$PG_HOST/ src/config.default.yaml && \
+    sed -i s/DBPORT/$PG_PORT/ src/config.default.yaml
 
 RUN pipenv install --system --deploy
 ENV PYTHONPATH "${PYTONPATH}:/app/src"
-# ENTRYPOINT ["bash"]
 ENTRYPOINT ["waitress-serve", "--call", "src:create_app"]
