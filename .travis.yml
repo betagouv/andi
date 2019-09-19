@@ -63,18 +63,19 @@ jobs:
         https://hooks.zapier.com/hooks/catch/5355796/oo5ibqz/
 
   - name: Deploy docker evolutility
+    if: branch = master AND type = push AND fork = false
     script:
       - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "echo ${DOCKER_PW} | docker login -u ${DOCKER_USER} --password-stdin"
-      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker pull berzemus/private:andi_evolutility"
+      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker pull berzemus/private:andi_evolutility || true"
       - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker stop evolutility || true"
       - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker run -d --rm -p 8080:3000 --add-host=database:172.17.0.1 --ip 172.17.0.2 --name evolutility berzemus/private:andi_evolutility"
 
   - name: Deploy docker form_handler
     script:
       - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "echo ${DOCKER_PW} | docker login -u ${DOCKER_USER} --password-stdin"
-      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker pull berzemus/private:andi_formhandler"
+      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker pull berzemus/private:andi_formhandler || true"
       - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker stop formhandler || true"
-      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker run -d --rm -p 8080:3000 --add-host=database:172.17.0.1 --ip 172.17.0.2 --name formhandler berzemus/private:andi_formhandler"
+      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker run -d --rm -p 8070:8080 --add-host=database:172.17.0.1 -v /data/logs:/log --ip 172.17.0.4 --name formhandler berzemus/private:andi_formhandler"
 addons:
   ssh_known_hosts: andi.beta.gouv.fr
 

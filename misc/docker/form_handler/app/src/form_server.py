@@ -103,7 +103,6 @@ VALUES (
 """
 
 
-
 # ################################################################ FLASK ROUTES
 # #############################################################################
 def create_app():
@@ -120,7 +119,7 @@ def create_app():
         is_get = request.method == 'GET'
         is_json = request.content_type == 'application/json'
         if is_get:
-            if requests.args.get('verstopt') != 'vrst':
+            if request.args.get('verstopt') != 'vrst':
                 logger.info('Security check failed')
                 abort(400)
             data = {
