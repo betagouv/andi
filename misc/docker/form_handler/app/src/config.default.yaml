@@ -1,3 +1,9 @@
 pickle_db: './pickle.db'
 pickle_persist: False
 csv_file: './log.csv'
+postgresql:
+  dbname: 'DBNAME'
+  user: 'DBUSER'
+  password: 'DBPASS'
+  host: 'DBHOST'
+  port: DBPORT

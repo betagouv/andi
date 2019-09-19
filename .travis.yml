@@ -31,26 +31,22 @@ jobs:
         --build-arg PG_PASS=$PG_PASS
         --build-arg PG_PORT=$PG_PORT ./
       - docker images
-      - docker tag andi_evolutility $DOCKER_USER/private:evolutility
-      - docker push $DOCKER_USER/private:evolutility
+      - docker tag andi_evolutility $DOCKER_USER/private:andi_evolutility
+      - docker push $DOCKER_USER/private:andi_evolutility
   - name: Build docker form_handler
     script:
       - cd misc/docker/form_handler
       - echo "$DOCKER_PW" | docker login -u "$DOCKER_USER" --password-stdin
       - >
         docker build -t andi_formhandler
+        --build-arg ARG_MG_BOX=$MAILGUN_BOX
+        --build-arg ARG_MG_KEY=$MAILGUN_KEY
         --build-arg PG_USER=$PG_USER 
         --build-arg PG_PASS=$PG_PASS
         --build-arg PG_PORT=$PG_PORT ./
       - docker images
       - docker tag andi_formhandler $DOCKER_USER/private:andi_formhandler
       - docker push $DOCKER_USER/private:andi_formhandler
-  - name: Deploy docker evolutility
-    script:
-      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "echo ${DOCKER_PW} | docker login -u ${DOCKER_USER} --password-stdin"
-      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker stop evolutility || true"
-      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker pull berzemus/private:evolutility"
-      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker run -d --rm -p 8080:3000 --add-host=database:172.17.0.1 --ip 172.17.0.2 --name evolutility berzemus/private:evolutility"
 
   - stage: Deploy
     name: Deploy pages to host
@@ -65,6 +61,20 @@ jobs:
         --header "Content-Type: application/json"
         --request POST --data "{\"message\":\"ANDi - Site mis a jour\"}"
         https://hooks.zapier.com/hooks/catch/5355796/oo5ibqz/
+
+  - name: Deploy docker evolutility
+    script:
+      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "echo ${DOCKER_PW} | docker login -u ${DOCKER_USER} --password-stdin"
+      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker pull berzemus/private:andi_evolutility"
+      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker stop evolutility || true"
+      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker run -d --rm -p 8080:3000 --add-host=database:172.17.0.1 --ip 172.17.0.2 --name evolutility berzemus/private:andi_evolutility"
+
+  - name: Deploy docker form_handler
+    script:
+      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "echo ${DOCKER_PW} | docker login -u ${DOCKER_USER} --password-stdin"
+      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker pull berzemus/private:andi_formhandler"
+      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker stop formhandler || true"
+      - ssh -i deploy_ed25519 travis@andi.beta.gouv.fr "docker run -d --rm -p 8080:3000 --add-host=database:172.17.0.1 --ip 172.17.0.2 --name formhandler berzemus/private:andi_formhandler"
 addons:
   ssh_known_hosts: andi.beta.gouv.fr
 
