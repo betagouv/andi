@@ -31,5 +31,4 @@ RUN sed -i s/DBPORT/$PG_PORT/ src/config.default.yaml
 
 RUN pipenv install --system --deploy
 ENV PYTHONPATH "${PYTONPATH}:/app/src"
-ENTRYPOINT ["bash"]
-# ENTRYPOINT ["waitress-serve", "--call", "src:create_app"]
+ENTRYPOINT ["waitress-serve", "--call", "src:create_app"]
