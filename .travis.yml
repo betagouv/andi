@@ -42,7 +42,9 @@ jobs:
   - stage: test
     name: Test accessibility
     script:
-      - $(npm bin)/ cypress run --record
+      # - $(npm bin)/ cypress run --record
+      # - npm run cypress:run
+      - npm run test:e2e:ci
   - stage: deploy
     name: Deploy pages to host
     if: branch = master AND type = push AND fork = false
