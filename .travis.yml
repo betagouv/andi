@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '10.0'
+- 10
 
 stages:
   - build
@@ -28,6 +28,7 @@ addons:
       - libgconf-2-4
 
 install:
+  - npm version
   - npm ci
 
 # TODO: add S3 integration to copy stage artefacts
