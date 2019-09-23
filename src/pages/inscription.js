@@ -89,16 +89,18 @@ class FormPage extends React.Component {
               <div className="col-12 col-lg-10 inscription-block--right" style={{marginTop: '40px'}}>
                 <h1>{ this.d.titre }</h1>
 
-                <p>{ this.d.experimental }</p>
+                { this.d.experimental }
 
                 <form action={ this.formAction } acceptCharset="UTF-8" encType="multipart/form-data" method="POST" onSubmit={this.handleSubmit}>
-                    <input type="text" name="verstopt" aria-hidden="true" style={{ display: 'none' }} value="vrst" />
+                    <input aria-hidden="true" type="text" name="verstopt" style={{ display: 'none' }} value="vrst" readOnly/>
                     <FormElement name="prenom" text={ this.d.prenom } onclick={ this.handleClick } />
                     <FormElement name="nom" text={ this.d.nom } onclick={ this.handleClick } />
                     <FormElement name="email" text={ this.d.email } onclick={ this.handleClick } />
                     <p>
-                      <input type="checkbox" name="checkbox" value="disabled" checked={this.state.checked} onChange={this.handleChange}  required="true" />
-                      <Link to="/conditions-generales" style={{color: '#26353f', fontSize: '12px'}}><span className="underline">J’accepte les conditions générales d’utilisation</span></Link>
+                      <label>
+                          <input type="checkbox" name="checkbox" value="disabled" checked={this.state.checked} onChange={this.handleChange}  required />
+                          <Link to="/conditions-generales" style={{color: '#26353f', fontSize: '12px'}}><span className="underline">J’accepte les conditions générales d’utilisation</span></Link>
+                      </label>
                     </p>
                     <input type="submit" className="button light-green" value={ this.d.envoyer } style={{width: '100%'}} onClick={ this.handleClick }/>
                     <p>{ this.d.apres_envoi }</p>

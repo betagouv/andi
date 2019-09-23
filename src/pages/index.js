@@ -59,7 +59,7 @@ const Hero = ({title, text, button}) => (
        </div>
      </section>
 )
-    
+
 
 class IndexPage extends React.Component {
 
@@ -78,8 +78,8 @@ class IndexPage extends React.Component {
     render() {
         return (
             <Layout>
-            <div>
-                <Hero title={ this.d.titre } text={this.d.slogan} button={this.d.bouton} />
+            <Hero title={ this.d.titre } text={this.d.slogan} button={this.d.bouton} />
+            <main role="main">
                {/* <div className="svg_container" aria-hidden="true" focusable="false">
                   <svg className="svg_1" viewBox="0 70 500 80" preserveAspectRatio="none">
                     <rect x={0} y={0} width={500} height={500} style={{stroke: 'none'}} />
@@ -121,7 +121,7 @@ class IndexPage extends React.Component {
                         <div className="row">
                           <div className="col-lg-5 col-xs-12 align-self-center">
                               <h2>{ this.d.soustitre2 }</h2>
-                              <p>{ this.d.quinous }</p>
+                              <div>{ this.d.quinous }</div>
                           </div>
                           <div className="col-lg-7 col-xs-12 align-self-center text-center no-gutters">
                             <img className="opt_img team-startup-illu" src={team_illu} alt="" srcSet={`${team_illu_2x} 2x, ${team_illu_3x} 3x`} />
@@ -131,7 +131,7 @@ class IndexPage extends React.Component {
                       </div> 
                     </div>
                 </section>
-            </div>
+            </main>
             </Layout>
     )
     }
