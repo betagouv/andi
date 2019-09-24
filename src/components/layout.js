@@ -49,7 +49,7 @@ const Layout = ({ children }) => {
 }
 */
 
-const Layout = ({children}) => {
+const Layout = ({children, role}) => {
     return (
         <>
         <Helmet
@@ -59,7 +59,9 @@ const Layout = ({children}) => {
         >
         </Helmet>
         <Header />
-        {children}
+        <div role={role}>
+            {children}
+        </div>
         <Footer />
         </>
     )

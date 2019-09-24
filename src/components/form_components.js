@@ -30,6 +30,12 @@ export const InputText = ({id, label, ...props}) => (
     </div>
 )
 
+export const InputHidden = ({id, value, ...props}) => (
+    <div className='form-group form__group'>
+        <Field id={ id } name={ id } component='hidden' value={value} {...props} />
+    </div>
+)
+
 export const InputTextMulti = ({id, label, ...props}) => (
     <div className='form-group form__group'>
         <Label htmlFor={ id } classes="col-form-label">
