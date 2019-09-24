@@ -27,8 +27,11 @@ const Footer = () => (
               <ul className="footer-link">
                 <li><Link to="/conditions-generales">Conditions générales</Link></li>
                 <li><a href="mailto:andi@beta.gouv.fr" title="Nous écrire un mail">Nous contacter</a></li>
-                <ul className="social-link col-6 col-xs-4">
+                <li>
+                    <ul className="social-link col-6 col-xs-4">
                     <li className="col"><a href="https://twitter.com/ANDi_betagouv" title="Twitter"><span className="icon-twitter"></span></a></li>
+                    </ul>
+                </li>
                     { /* <li className="col"><a href="https://github.com/betagouv/andi" title="Github"><span className="icon-github"></span></a></li> */ }
                     {/* <li className="col">
                       <a href="">
@@ -45,7 +48,7 @@ const Footer = () => (
                         <span className="icon-facebook"></span>
                       </a>
                     </li> */}
-                </ul>
+                { /* </ul> */ }
                 { /*<a href="#top" style={{marginTop: '25px', color: 'white', display: 'block'}}>Retour en haut de page</a>*/ }
               </ul>
             </div>

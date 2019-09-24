@@ -1,9 +1,10 @@
 language: node_js
 node_js:
-- '10.0'
+- 10
 
 stages:
   - build
+  - test
   - deploy
 
 git:
@@ -11,10 +12,24 @@ git:
 dist: trusty
 sudo: false
 cache:
+  npm: true
   directories:
     - public
+    - ~/.cache
+    - "$HOME/.npm"
+
 notifications:
   slack: andi-startup:4EvkZ1UZEV4LwZXzvXhDGP8u
+
+addons:
+  apt:
+    packages:
+      # Ubuntu 16+ does not install this dependency by default, so we need to install it ourselves
+      - libgconf-2-4
+
+install:
+  - npm version
+  - npm ci
 
 # TODO: add S3 integration to copy stage artefacts
 jobs:
@@ -24,6 +39,12 @@ jobs:
     script: 
       - npm run build
     skip_cleanup: true
+  - stage: test
+    name: Test accessibility
+    script:
+      # - $(npm bin)/ cypress run --record
+      # - npm run cypress:run
+      - npm run test:e2e:ci
   - stage: deploy
     name: Deploy pages to host
     if: branch = master AND type = push AND fork = false
@@ -44,3 +65,4 @@ addons:
 before_install:
   - openssl aes-256-cbc -K $encrypted_218785b12a81_key -iv $encrypted_218785b12a81_iv -in misc/deploy_ed25519.enc -out deploy_ed25519 -d
   - chmod 600 deploy_ed25519
+  - npm install -g npm@latest
