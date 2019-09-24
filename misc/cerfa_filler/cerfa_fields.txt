@@ -1,0 +1,944 @@
+---
+FieldType: Text
+FieldName: Observations
+FieldNameAlt: Observations
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: CONVENTION RELATIVE A LA MISE EN OEUVRE D&apos;UNE PERIODE DE MISE EN SITUATION EN MILIEU PROFESSIONNEL N?
+FieldNameAlt: CONVENTION RELATIVE A LA MISE EN OEUVRE D&apos;UNE PERIODE DE MISE EN SITUATION EN MILIEU PROFESSIONNEL N?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: D?nomination de l&apos;organisme prescripteur
+FieldNameAlt: D?nomination de l&apos;organisme prescripteur
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Adresse de l&apos;organisme prescripteur
+FieldNameAlt: Adresse de l&apos;organisme prescripteur
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Code postal de l&apos;organisme prescripteur
+FieldNameAlt: Code postal de l&apos;organisme prescripteur
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 5
+---
+FieldType: Text
+FieldName: Commune de l&apos;organisme prescripteur
+FieldNameAlt: Commune de l&apos;organisme prescripteur
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: T?l?phone de l&apos;organisme prescripteur
+FieldNameAlt: T?l?phone de l&apos;organisme prescripteur
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 10
+---
+FieldType: Button
+FieldName: S&apos;agit-il d&apos;un prescripteur conventionn? ?
+FieldFlags: 49152
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Non
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: Si oui, r?f?rence du conventionnement
+FieldNameAlt: Si oui, r?f?rence du conventionnement
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Coordonn?es de la structue conventionnant
+FieldNameAlt: Coordonn?es de la structue conventionnant
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Coordonn?es de la structue conventionnant (suite)
+FieldNameAlt: Coordonn?es de la structue conventionnant
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: S&apos;agit-il de la structure d&apos;accompagnement ?
+FieldFlags: 49152
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Non
+FieldStateOption: Off
+---
+FieldType: Button
+FieldName: Civilit? du b?n?ficiaire
+FieldFlags: 49152
+FieldJustification: Left
+FieldStateOption: M.
+FieldStateOption: Mme
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: Nom de naissance
+FieldNameAlt: Nom de naissance
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Pr?nom du b?n?ficiaire
+FieldNameAlt: Pr?nom du b?n?ficiaire
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Nom d&apos;usage du b?n?ficiaire
+FieldNameAlt: Nom d&apos;usage du b?n?ficiaire
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: RQTH, AAH ou Autres TH
+FieldFlags: 49152
+FieldJustification: Left
+FieldStateOption: RQTH
+FieldStateOption: AAH
+FieldStateOption: Autres TH
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: Date de naissance du b?n?ficiaire
+FieldNameAlt: Date de naissance du b?n?ficiaire
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 8
+---
+FieldType: Text
+FieldName: Lieu de naissance du b?n?ficiaire
+FieldNameAlt: Lieu de naissance du b?n?ficiaire
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: D?partement /  Pays de naissance du b?n?ficiaire
+FieldNameAlt: D?partement /  Pays de naissance du b?n?ficiaire
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: Nationalit? du b?n?ficiaire
+FieldFlags: 49152
+FieldJustification: Left
+FieldStateOption: Union europ?enne ou EEE ou Conf?d?ration suisse
+FieldStateOption: Autre
+FieldStateOption: France
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: Si autre : intitul? du titre de s?jour
+FieldNameAlt: Si autre : intitul? du titre de s?jour
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: N? du titre de s?jour
+FieldNameAlt: N? du titre de s?jour
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Date d&apos;expiration
+FieldNameAlt: Date d&apos;expiration
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 8
+---
+FieldType: Text
+FieldName: Adresse du b?n?ficiaire
+FieldNameAlt: Adresse du b?n?ficiaire
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Compl?ment d&apos;adresse du b?n?ficiaire
+FieldNameAlt: Compl?ment d&apos;adresse du b?n?ficiaire
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Commune du b?n?ficiaire
+FieldNameAlt: Commune du b?n?ficiaire
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Pays du b?n?ficiaire
+FieldNameAlt: Pays du b?n?ficiaire
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Courriel du b?n?ficiaire
+FieldNameAlt: Courriel du b?n?ficiaire
+FieldFlags: 0
+FieldJustification: Right
+---
+FieldType: Text
+FieldName: Courriel du b?n?ficiaire (suite)
+FieldNameAlt: Courriel du b?n?ficiaire (suite)
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Personne ? pr?venir en cas d&apos;urgence
+FieldNameAlt: Personne ? pr?venir en cas d&apos;urgence
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: Demandeur d&apos;emploi suivi par le P?le emploi
+FieldNameAlt: Demandeur d&apos;emploi suivi par le P?le emploi
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: N? DE
+FieldNameAlt: N? DE
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: Jeune sans emploi suivi par la mission locale
+FieldNameAlt: Jeune sans emploi suivi par la mission locale
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Button
+FieldName: Demandeur d&apos;emploi suivi par un organisme relevant du1 ?bis du L.5311-4 du code du travail
+FieldNameAlt: Demandeur d&apos;emploi suivi par un organisme relevant du1 ?bis du L.5311-4 du code du travail
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: Date d&apos;inscription
+FieldNameAlt: Date d&apos;inscription
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 8
+---
+FieldType: Text
+FieldName: Date d&apos;inscription ? l&apos;organisme
+FieldNameAlt: Date d&apos;inscription ? l&apos;organisme
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 8
+---
+FieldType: Button
+FieldName: Salari? d&apos;une structure de l&apos;IAE relevant du 2? du L.5311-4 du code du travail
+FieldNameAlt: Salari? d&apos;une structure de l&apos;IAE relevant du 2? du L.5311-4 du code du travail
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Button
+FieldName: Salari? b?n?ficiant d&apos;un contrat aid?
+FieldNameAlt: Salari? b?n?ficiant d&apos;un contrat aid?
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: dept - ann?e - n?d&apos;ordre
+FieldNameAlt: dept - ann?e - n?d&apos;ordre
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 11
+---
+FieldType: Text
+FieldName: avenant renouvellement
+FieldNameAlt: avenant renouvellement
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 1
+---
+FieldType: Text
+FieldName: avenant modification
+FieldNameAlt: avenant modification
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 1
+---
+FieldType: Button
+FieldName: Autre salari? en accompagnement social ou professionnel
+FieldNameAlt: Autre salari? en accompagnement social ou professionnel
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Button
+FieldName: Autre
+FieldNameAlt: Autre
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: ? pr?ciser
+FieldNameAlt: ? pr?ciser
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Forme juridique
+FieldNameAlt: Forme juridique
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Forme juridique de l&apos;employeur
+FieldNameAlt: Forme juridique de l&apos;employeur
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Code postal du b?n?ficiaire
+FieldNameAlt: Code postal du b?n?ficiaire
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 5
+---
+FieldType: Text
+FieldName: Indicatif t?l?phonique du b?n?ficiaire
+FieldNameAlt: Indicatif t?l?phonique du b?n?ficiaire
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 3
+---
+FieldType: Text
+FieldName: T?l?phone du b?n?ficiaire
+FieldNameAlt: T?l?phone du b?n?ficiaire
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 9
+---
+FieldType: Text
+FieldName: Fonction du repr?sentant
+FieldNameAlt: Fonction du repr?sentant
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: D?nomination / Raison sociale de l&apos;employeur
+FieldNameAlt: D?nomination / Raison sociale de l&apos;employeur
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: D?nomination / Raison sociale de la structure d&apos;accueil
+FieldNameAlt: D?nomination / Raison sociale de la structure d&apos;accueil
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Forme juridique de la structure d&apos;accueil
+FieldNameAlt: Forme juridique de la structure d&apos;accueil
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: N? SIRET
+FieldNameAlt: N? SIRET
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 14
+---
+FieldType: Text
+FieldName: N? SIRET de la structure d&apos;accueil
+FieldNameAlt: N? SIRET de la structure d&apos;accueil
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 14
+---
+FieldType: Text
+FieldName: Code APE de la structure d&apos;accueil
+FieldNameAlt: Code APE de la structure d&apos;accueil
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Adresse de l&apos;employeur
+FieldNameAlt: Adresse de l&apos;employeur
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Adresse de la structure d&apos;accueil
+FieldNameAlt: Adresse de la structure d&apos;accueil
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Code postal de l&apos;employeur
+FieldNameAlt: Code postal de l&apos;employeur
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 5
+---
+FieldType: Text
+FieldName: Commune de l&apos;employeur
+FieldNameAlt: Commune de l&apos;employeur
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Commune de la structure d&apos;accueil
+FieldNameAlt: Commune de la structure d&apos;accueil
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Pays de la structure d&apos;accueil
+FieldNameAlt: Pays de la structure d&apos;accueil
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Activit? principale de la structure d&apos;accueil
+FieldNameAlt: Activit? principale de la structure d&apos;accueil
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Convention collective ou accord de branche applicable
+FieldNameAlt: Convention collective ou accord de branche applicable
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Nom du repr?sentant
+FieldNameAlt: Nom du repr?sentant
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Pr?nom du repr?sentant
+FieldNameAlt: Pr?nom du repr?sentant
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Pr?nom de la personne responsable du b?n?ficiaire
+FieldNameAlt: Pr?nom de la personne responsable du b?n?ficiaire
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Nom de la personne responsable du b?n?ficiaire
+FieldNameAlt: Nom de la personne responsable du b?n?ficiaire
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Fonction de la personne responsable du b?n?ficiaire
+FieldNameAlt: Fonction de la personne responsable du b?n?ficiaire
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Indicatif t?l?phonique de l&apos;employeur
+FieldNameAlt: Indicatif t?l?phonique de l&apos;employeur
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 3
+---
+FieldType: Text
+FieldName: T?l?phone de l&apos;employeur
+FieldNameAlt: T?l?phone de l&apos;employeur
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 9
+---
+FieldType: Button
+FieldName: S&apos;agit-il de l&apos;organisme prescripteur ?
+FieldFlags: 49152
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Non
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: D?nomination de la structure d&apos;accompagnement
+FieldNameAlt: D?nomination de la structure d&apos;accompagnement
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Forme juridique de la structure d&apos;accompagnement
+FieldNameAlt: Forme juridique de la structure d&apos;accompagnement
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Adresse de la structure d&apos;accompagnement
+FieldNameAlt: Adresse de la structure d&apos;accompagnement
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Code postal de la structure d&apos;accueil
+FieldNameAlt: Code postal de la structure d&apos;accueil
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 5
+---
+FieldType: Text
+FieldName: Code postal de la structure d&apos;accompagnement
+FieldNameAlt: Code postal de la structure d&apos;accompagnement
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 5
+---
+FieldType: Text
+FieldName: Commune de la structure d&apos;accompagnement
+FieldNameAlt: Commune de la structure d&apos;accompagnement
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Nom de conseiller r?f?rent
+FieldNameAlt: Nom de conseiller r?f?rent
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Indicatif t?l?phonique de la personne responsable du b?n?ficiaire
+FieldNameAlt: Indicatif t?l?phonique de la personne responsable du b?n?ficiaire
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 3
+---
+FieldType: Text
+FieldName: Indicatif t?l?phonique du conseiller r?f?rent
+FieldNameAlt: Indicatif t?l?phonique du conseiller r?f?rent
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 3
+---
+FieldType: Text
+FieldName: T?l?phone de la personne responsable du b?n?ficiaire
+FieldNameAlt: T?l?phone de la personne responsable du b?n?ficiaire
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 9
+---
+FieldType: Text
+FieldName: T?l?phone du conseiller r?f?rent
+FieldNameAlt: T?l?phone du conseiller r?f?rent
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 9
+---
+FieldType: Text
+FieldName: Courriel de la personne responsable du b?n?ficiaire
+FieldNameAlt: Courriel de la personne responsable du b?n?ficiaire
+FieldFlags: 0
+FieldJustification: Right
+---
+FieldType: Text
+FieldName: Courriel du conseiller r?f?rent
+FieldNameAlt: Courriel du conseiller r?f?rent
+FieldFlags: 0
+FieldJustification: Right
+---
+FieldType: Text
+FieldName: Pr?nom du conseiller r?f?rent
+FieldNameAlt: Pr?nom du conseiller r?f?rent
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Courriel de la personne responsable du b?n?ficiaire (suite)
+FieldNameAlt: Courriel de la personne responsable du b?n?ficiaire (suite)
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Courriel du conseiller r?f?rent (suite)
+FieldNameAlt: Courriel du conseiller r?f?rent (suite)
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: La p?riode est pr?vue du :
+FieldNameAlt: La p?riode est pr?vue du :
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 8
+---
+FieldType: Text
+FieldName: soit : (en heures)
+FieldNameAlt: soit : (en heures)
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: au :
+FieldNameAlt: au :
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 8
+---
+FieldType: Button
+FieldName: Renouvellement ?
+FieldFlags: 49152
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Non
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: Si oui, n? de la convention initiale
+FieldNameAlt: Si oui, n? de la convention initiale
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Lieu d&apos;ex?cution (si diff?rent de l&apos;adresse de la structure d&apos;accueil)
+FieldNameAlt: Lieu d&apos;ex?cution (si diff?rent de l&apos;adresse de la structure d&apos;accueil)
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: Objet de la p?riode de mise en situation en milieu professionnel
+FieldFlags: 49152
+FieldJustification: Left
+FieldStateOption: Initier une d?marche de recrutement
+FieldStateOption: D?couvrir un m?tier ou un secteur d&apos;activit?
+FieldStateOption: Confirmer un projet professionnel
+FieldStateOption: Off
+---
+FieldType: Button
+FieldName: D?tail des activit?s et conditions de mise en oeuvre en annexe
+FieldNameAlt: D?tail des activit?s et conditions de mise en oeuvre en annexe
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: Activit?s confi?es et objectifs associ?s
+FieldNameAlt: Activit?s confi?es et objectifs associ?s
+FieldFlags: 4096
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: Lundi
+FieldNameAlt: Lundi
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: de (Lundi)
+FieldNameAlt: de
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: ? (Lundi)
+FieldNameAlt: ?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: et de (Lundi)
+FieldNameAlt: et de
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: ? (Lundi apr?s-midi)
+FieldNameAlt: ?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: Mardi
+FieldNameAlt: Mardi
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: de (Mardi)
+FieldNameAlt: de
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: ? (Mardi)
+FieldNameAlt: ?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: et de (Mardi)
+FieldNameAlt: et de
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: ? (Mardi apr?s-midi)
+FieldNameAlt: ?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: Mercredi
+FieldNameAlt: Mercredi
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: de (Mercredi)
+FieldNameAlt: de
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: ? (Mercredi)
+FieldNameAlt: ?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: et de (Mercredi)
+FieldNameAlt: et de
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: ? (Mercredi apr?s-midi)
+FieldNameAlt: ?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: Jeudi
+FieldNameAlt: Jeudi
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: de (Jeudi)
+FieldNameAlt: de
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: ? (Jeudi)
+FieldNameAlt: ?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: et de (Jeudi)
+FieldNameAlt: et de
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: ? (Jeudi apr?s-midi)
+FieldNameAlt: ?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: Vendredi
+FieldNameAlt: Vendredi
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: de (Vendredi)
+FieldNameAlt: de
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: ? (Vendredi)
+FieldNameAlt: ?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: et de (Vendredi)
+FieldNameAlt: et de
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: ? (Vendredi apr?s-midi)
+FieldNameAlt: ?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: Samedi
+FieldNameAlt: Samedi
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: de (Samedi)
+FieldNameAlt: de
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: ? (Samedi)
+FieldNameAlt: ?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: et de (Samedi)
+FieldNameAlt: et de
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: ? (Samedi apr?s-midi)
+FieldNameAlt: ?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: Dimanche
+FieldNameAlt: Dimanche
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: de (Dimanche)
+FieldNameAlt: de
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: ? (dimanche)
+FieldNameAlt: ?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: et de (Dimanche)
+FieldNameAlt: et de
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: ? (Dimanche apr?s-midi)
+FieldNameAlt: ?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: Mise ? disposition d&apos;?quipement de protection individuelle
+FieldFlags: 49152
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Non
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: Si oui, pr?ciser
+FieldNameAlt: Si oui, pr?ciser
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: Pr?sence d&apos;autres mesures de pr?vention
+FieldFlags: 49152
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Non
+FieldStateOption: Off
+---
+FieldType: Text
+FieldName: Si oui, pr?ciser les mesures de pr?vention
+FieldNameAlt: Si oui, pr?ciser les mesures de pr?vention
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Fait le
+FieldNameAlt: Fait le
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 8
+---
+FieldType: Text
+FieldName: ?
+FieldNameAlt: ?
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: Transmis ? l&apos;ASP le
+FieldNameAlt: Transmis ? l&apos;ASP le
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 8
+---
+FieldType: Button
+FieldName: PMSMP en suspension (1)
+FieldNameAlt: PMSMP en suspension
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Button
+FieldName: PMSMP en suspension (2)
+FieldNameAlt: PMSMP en suspension
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
+---
+FieldType: Button
+FieldName: PMSMP en suspension (3)
+FieldNameAlt: PMSMP en suspension
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Oui
+FieldStateOption: Off
