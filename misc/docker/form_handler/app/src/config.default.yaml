@@ -1,3 +1,0 @@
-pickle_db: './pickle.db'
-pickle_persist: False
-csv_file: './log.csv'
