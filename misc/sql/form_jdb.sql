@@ -4,7 +4,7 @@ CREATE TABLE "form_jdb_psh" (
     date_day TIMESTAMP WITH TIME ZONE,
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     activites_semaines TEXT,
-    utilisation_outils_it BOOLEAN,
+    utilisation_outils_it VARCHAR(16),
     evenements_plu TEXT,
     evenements_deplu TEXT
 );
@@ -15,7 +15,7 @@ CREATE TABLE "form_jdb_entreprise" (
     id_andi VARCHAR(16),
     date_day TIMESTAMP WITH TIME ZONE,
     date_created TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    utilisation_outils_it BOOLEAN,
+    utilisation_outils_it VARCHAR(16),
     faits TEXT,
     difficultes TEXT
 );

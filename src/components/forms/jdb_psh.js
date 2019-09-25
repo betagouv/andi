@@ -88,7 +88,7 @@ class JdbPshForm extends React.Component {
                             validate={required}
                         />
                         <InputTextMulti
-                            id='desc_events_notok'
+                            id='desc_events_nook'
                             label={ this.d.question_4 }
                             type="text"
                             placeholder=""
