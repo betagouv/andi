@@ -1,7 +1,24 @@
 import React from "react"
 import { Field, FieldArray } from "formik";
+import DatePicker, { registerLocale } from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"
+import fr from "date-fns/locale/fr";
+registerLocale("fr", fr);
 // Sources:
 // - https://codesandbox.io/s/pjqp3xxq7q?from-embed
+
+// export class InputDatePicker extends React.component {
+//     state = {
+//         date: new Date()
+//     }
+// 
+//     render() {
+//         return (
+//             <DatePicker
+//             />
+//         )
+//     }
+// }
 
 export const Error = ({ name }) => (
   <Field
@@ -19,6 +36,36 @@ export const Label = ({ classes, error, children, ...props }) => {
     </label>
   )
 }
+
+export const InputDatePicker = ({
+    id,
+    label,
+    value,
+    onChange,
+    // form: { setFieldValue, setFieldTouched, values },
+    ...props
+    }) => {
+    return (
+      <div className='form-group form__group'>
+        <Label htmlFor={ id } classes="">
+            { label }
+        </Label>
+        <DatePicker
+            id={ id }
+            name={ id }
+            selected={(value && new Date(value)) || null}
+            dateFormat='dd/MM/yyyy'
+            onChange={val => {
+                console.log(id, val);
+                onChange(id, val);
+            }}
+            locale='fr'
+        />
+        <Error name= { id } />
+      </div>
+    )
+};
+
 
 export const InputText = ({id, label, ...props}) => (
     <div className='form-group form__group'>
@@ -121,147 +168,3 @@ export const InputSelect = ({id, label, defs, ...props}) => (
             />
     </fieldset>
 )
-
-// Sources:
-// - https://codesandbox.io/s/pjqp3xxq7q?from-embed
-// export const Checkbox = ({
-//   field: { name, value, onChange, onBlur },
-//   form: { errors, touched, setFieldValue },
-//   id,
-//   label,
-//   className,
-//   ...props
-// }) => {
-//   return (
-//     <div>
-//       <input
-//         name={name}
-//         id={id}
-//         type="checkbox"
-//         value={value}
-//         checked={value}
-//         onChange={onChange}
-//         onBlur={onBlur}
-//         // *className={classNames("radio-button")}
-//       />
-//       <label htmlFor={id}>{label}</label>
-//       <Error name={ id } />
-//     </div>
-//   );
-// };
-// 
-// 
-// export class CheckboxGroup extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-// 
-//   handleChange = event => {
-//     const target = event.currentTarget;
-//     let valueArray = [...this.props.value] || [];
-// 
-//     if (target.checked) {
-//       valueArray.push(target.id);
-//     } else {
-//       valueArray.splice(valueArray.indexOf(target.id), 1);
-//     }
-// 
-//     this.props.onChange(this.props.id, valueArray);
-//   };
-// 
-//   handleBlur = () => {
-//     // take care of touched
-//     this.props.onBlur(this.props.id, true);
-//   };
-// 
-//   render() {
-//     const { value, error, touched, label, className, children } = this.props;
-// 
-//     const classes = []
-//     
-//     // const classes = classNames(
-//     //   "input-field",
-//     //   {
-//     //     "is-success": value || (!error && touched), // handle prefilled or user-filled
-//     //     "is-error": !!error && touched
-//     //   },
-//     //   className
-//     // );
-// 
-//     return (
-//       <div className={classes}>
-//         <fieldset>
-//           <legend>{label}</legend>
-//           {React.Children.map(children, child => {
-//             return React.cloneElement(child, {
-//               field: {
-//                 value: value.includes(child.props.id),
-//                 onChange: this.handleChange,
-//                 onBlur: this.handleBlur
-//               }
-//             });
-//           })}
-//           <Error name={ id } />
-//         </fieldset>
-//       </div>
-//     );
-//   }
-// }
-// 
-// 
-// export const RadioButton = ({
-//   field: { name, value, onChange, onBlur },
-//   id,
-//   label,
-//   className,
-//   ...props
-// }) => {
-//   return (
-//     <div>
-//       <input
-//         name={name}
-//         id={id}
-//         type="radio"
-//         value={id} // could be something else for output?
-//         checked={id === value}
-//         onChange={onChange}
-//         onBlur={onBlur}
-//         // className={classNames("radio-button")}
-//         {...props}
-//       />
-//       <label htmlFor={id}>{label}</label>
-//     </div>
-//   );
-// };
-// 
-// 
-// export const RadioButtonGroup = ({
-//   value,
-//   error,
-//   touched,
-//   id,
-//   label,
-//   className,
-//   children
-// }) => {
-//   
-//   const classes = []
-//   // const classes = classNames(
-//   //   "input-field",
-//   //   {
-//   //     "is-success": value || (!error && touched), // handle prefilled or user-filled
-//   //     "is-error": !!error && touched
-//   //   },
-//   //   className
-//   // );
-// 
-//   return (
-//     <div className={classes}>
-//       <fieldset>
-//         <legend>{label}</legend>
-//         {children}
-//         <Error name={ id } />
-//       </fieldset>
-//     </div>
-//   );
-// };

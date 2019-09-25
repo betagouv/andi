@@ -6,6 +6,7 @@
   "author": "Pieterjan Montens <pieterjan@montens.net>",
   "dependencies": {
     "anchor-scroll": "^2.0.0",
+    "date-fns": "^2.3.0",
     "formik": "^1.5.8",
     "gatsby": "^2.15.20",
     "gatsby-image": "^2.2.20",
@@ -29,6 +30,7 @@
     "query-string": "^6.8.3",
     "react": "^16.9.0",
     "react-albus": "^2.0.0",
+    "react-datepicker": "^2.9.6",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
     "react-leaflet": "^2.4.0",
