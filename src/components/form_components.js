@@ -47,7 +47,7 @@ export const InputDatePicker = ({
     }) => {
     return (
       <div className='form-group form__group'>
-        <Label htmlFor={ id } classes="">
+        <Label htmlFor={ id } classes="col-form-label">
             { label }
         </Label>
         <DatePicker
@@ -60,6 +60,7 @@ export const InputDatePicker = ({
                 onChange(id, val);
             }}
             locale='fr'
+            className='form-control'
         />
         <Error name= { id } />
       </div>

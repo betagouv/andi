@@ -4,7 +4,7 @@ import Layout from "../components/layout";
 import { InputText, InputTextMulti, InputRadios, InputCheckboxes, InputSelect, Error } from "../components/form_components.js";
 import * as Yup from 'yup';
 
-import { Formik, Field } from 'formik';
+import { Field } from 'formik';
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -282,14 +282,6 @@ const TheForm = () => (
               <Error name="email" />
             </div>
             <div>
-              <label>Favorite Color</label>
-              <Field name="favoriteColor" component="select">
-                <option />
-                <option value="#ff0000">❤️ Red</option>
-                <option value="#00ff00">💚 Green</option>
-                <option value="#0000ff">💙 Blue</option>
-              </Field>
-              <Error name="favoriteColor" />
             </div>
           </Wizard.Page>
         </Wizard>

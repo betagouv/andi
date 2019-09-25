@@ -49,7 +49,9 @@ const Layout = ({ children }) => {
 }
 */
 
-const Layout = ({children, role}) => {
+const Layout = ({children, role=false}) => {
+    const isMain = role === 'main';
+
     return (
         <>
         <Helmet
@@ -59,9 +61,10 @@ const Layout = ({children, role}) => {
         >
         </Helmet>
         <Header />
-        <div role={role}>
-            {children}
-        </div>
+        { isMain
+            ? <main role='main'>{ children }</main>
+            : <div>{ children }</div>
+        }
         <Footer />
         </>
     )

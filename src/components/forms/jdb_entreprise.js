@@ -14,13 +14,14 @@ const JDBSchema = Yup.object().shape({
 
 const required = value => (value ? undefined : 'Required');
 
-class JdbPshForm extends React.Component {
+
+class JdbEntrepriseForm extends React.Component {
     constructor(props) {
         super(props);
         let data = {};
         // For now evolutility graphql does not support filters, so filter here instead
         for (let asset of props.assets) {
-            if (asset.description === 'form_jdb_psh' || asset.description === 'form_misc') {
+            if (asset.description === 'form_jdb_entreprise' || asset.description === 'form_misc') {
                 data[asset.key] = asset.markdown ? mdReact()(asset.value) : asset.value
             }
         }
@@ -64,16 +65,9 @@ class JdbPshForm extends React.Component {
                             value={ values.date }
                             onChange={ setFieldValue }
                         />
-                        <InputTextMulti
-                            id='desc_activities'
-                            label={ this.d.question_1 }
-                            type="text"
-                            placeholder=""
-                            validate={required}
-                        />
                         <InputRadios
                             id='used_it_tools'
-                            label={ this.d.question_2 }
+                            label={ this.d.question_1 }
                             defs={[
                                 {id: 'oui', label: 'Oui'},
                                 {id: 'non', label: 'Non'},
@@ -81,15 +75,15 @@ class JdbPshForm extends React.Component {
                             validate={required}
                         />
                         <InputTextMulti
-                            id='desc_events_ok'
-                            label={ this.d.question_3 }
+                            id='desc_facts'
+                            label={ this.d.question_2 }
                             type="text"
                             placeholder=""
                             validate={required}
                         />
                         <InputTextMulti
-                            id='desc_events_notok'
-                            label={ this.d.question_4 }
+                            id='desc_difficulties'
+                            label={ this.d.question_3 }
                             type="text"
                             placeholder=""
                             validate={required}
@@ -105,4 +99,4 @@ class JdbPshForm extends React.Component {
             </div>
         </div>)}
 }
-export default JdbPshForm
+export default JdbEntrepriseForm
