@@ -70,7 +70,7 @@ class FormPage extends React.Component {
 
   render(){
     return (
-    <Layout role="main">
+    <Layout role="main" title="Inscription expérimentation">
       <section id="lp_form">
         <div className="row">
           <div className="col section pane leftpane" role="main">

@@ -49,7 +49,7 @@ const Layout = ({ children }) => {
 }
 */
 
-const Layout = ({children, role=false}) => {
+const Layout = ({children, role=false, title="ANDi"}) => {
     const isMain = role === 'main';
 
     return (
@@ -59,6 +59,7 @@ const Layout = ({children, role=false}) => {
                 { name: 'description', content: 'Faciliter l\'immersion professionnelle des personnes en situation de handicap' }
             ]}
         >
+            <title>{ title }</title>
         </Helmet>
         <Header />
         { isMain
