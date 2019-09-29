@@ -80,7 +80,7 @@ export const InputText = ({id, label, ...props}) => (
 
 export const InputHidden = ({id, value, ...props}) => (
     <div className='form-group form__group'>
-        <Field id={ id } name={ id } component='hidden' value={value} {...props} />
+        <input id={ id } name={ id } type='hidden' value={value} {...props} />
     </div>
 )
 
@@ -102,7 +102,7 @@ export const InputRadios = ({id, label, defs, ...props}) => (
             render={ arrayHelpers => (
                 <div>
                     { defs.map( def => (
-                        <div className="form-check">
+                        <div className="form-check" key={ def.id }>
                             <Field
                                 id={ def.id }
                                 name={ id }
@@ -132,7 +132,7 @@ export const InputCheckboxes = ({id, label, defs, ...props}) => (
             render={ arrayHelpers => (
                 <div>
                     { defs.map( def => (
-                        <div className="form-check">
+                        <div className="form-check" key={ def.id }>
                             <Field
                                 id={ def.id }
                                 name={ id }

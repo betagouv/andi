@@ -34,6 +34,7 @@
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
     "react-leaflet": "^2.4.0",
+    "react-toastify": "^5.4.0",
     "smooth-scroll-anchor": "^1.2.2",
     "yup": "^0.27.0"
   },
