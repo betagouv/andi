@@ -1,3 +1,30 @@
+/* Custom rules */
+
+.form_help {
+  background: var(--light-green);
+  border-bottom: 5px solid var(--green);
+  margin: 2em 0;
+  padding: .5em ;
+  font-size:1.25em;
+  position:relative;
+  width:120%;
+  margin-left:-10%;
+}
+
+.form_container {
+  margin-top:2em;
+  margin-bottom:4em;
+}
+
+.form_error {
+  color:#fff;
+  padding:0 1em;
+  background-color:var(--dark-red);
+  border-bottom:3px solid var(--light-red);
+  border-radius: var(--theme-border-radius);
+  margin:3px 0 1em;
+}
+
 /* global rules */
 
 @font-face {
@@ -741,6 +768,7 @@ a.button.secondary {
   fill: var(--grey);
 }
 
+
 .label-list {
   padding: 0;
   margin: 0;
@@ -804,6 +832,7 @@ legend {
 }
 
 label.label-inline {
+  font-size: 1em;
   display: inline;
   color: #1c1c1c;
   color: var(--black);
