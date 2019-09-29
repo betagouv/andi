@@ -133,7 +133,7 @@ class JdbPshForm extends React.Component {
                             label={ this.d.date_du_jour }
                             value={ values.date }
                             onChange={ setFieldValue }
-                            required="true"
+                            required={ true }
                         />
                         <InputTextMulti
                             id='desc_activities'
@@ -141,7 +141,7 @@ class JdbPshForm extends React.Component {
                             type="text"
                             placeholder=""
                             validate={required}
-                            required="true"
+                            required={ true }
                         />
                         <InputRadios
                             id='used_it_tools'
@@ -151,7 +151,7 @@ class JdbPshForm extends React.Component {
                                 {id: 'non', label: 'Non'},
                             ]}
                             validate={required}
-                            required="true"
+                            required={ true }
                         />
                         <InputTextMulti
                             id='desc_events_ok'
