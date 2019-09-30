@@ -19,7 +19,7 @@ export const query = graphql`
 `
 
 const App = ({data}) => (
-  <Layout role="main">
+  <Layout role="main" showNav={ false }>
     <Router>
       <JdbPshForm path="/formulaires/journal-de-bord/p/:andi_id" assets={data.andi.assets} />
       <JdbEntrepriseForm path="/formulaires/journal-de-bord/e/:andi_id" assets={data.andi.assets} />

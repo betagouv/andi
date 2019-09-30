@@ -140,6 +140,7 @@ class JdbPshForm extends React.Component {
                             label={ this.d.question_1 }
                             type="text"
                             placeholder=""
+                            rows="5"
                             validate={required}
                             required={ true }
                         />
