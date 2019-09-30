@@ -5,7 +5,8 @@ import { Link } from "gatsby"
 
 import Svg from "./svg"
 
-import marianneSVG from '../images/logo-marianne.svg'
+// import marianneSVG from '../images/logo-marianne.svg'
+import marianneDeuilPNG from '../images/logo-marianne-deuil.png'
 // import betagouvSVG from '../images/pointbetagouvfr.svg'
 
 /*
@@ -47,7 +48,7 @@ const Header = () => (
             <header className="navbar" aria-label="en-tête de la page" >
                 <div className="navbar__container">
                   <Link to="/" className="navbar__home">
-                    <img className="navbar__logo" src={marianneSVG} alt="logo république française" />
+                    <img className="navbar__logo" src={marianneDeuilPNG} alt="logo république française" />
                     <span className="navbar_domain">andi<b>.beta.gouv.</b><em>fr</em></span>
                   </Link>
                 </div>
