@@ -14,7 +14,7 @@ dans le channel slack #journal_de_bord, un bot vous avertit du déploiment de l'
 
 # Journal des modifications
 
-- 04/10/2019 Pierjan: update formulaires journal-de-bord
+- 04/10/2019 Pierjan: update formulaires journal-de-bord x
 - 29/08/2019 Karel: Fin inscriptions septembre xxxx
 - 09/08/2019 Pieterjan: update page inscription x
 - 07/08/2019 Pietejran: modifications contenu "deploiement 3"
