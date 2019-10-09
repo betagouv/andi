@@ -170,6 +170,7 @@ class JdbPshForm extends React.Component {
                         <br />
                         <button
                             className="button btn-primary"
+                            style= {{ width: '100%' }}
                             type="submit"
                             disabled={ isSubmitting }>{ this.d.send }</button>
                     </form>
