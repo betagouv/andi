@@ -307,7 +307,6 @@ input,
 textarea,
 select {
   width: 100%;
-  outline: none;
   padding: 0.5em 0.875em;
   font: inherit;
   line-height: 1.6;
@@ -453,9 +452,6 @@ select {
   }
 }
 
-select:focus {
-  outline: none;
-}
 
 select:-moz-focusring {
   color: transparent;
