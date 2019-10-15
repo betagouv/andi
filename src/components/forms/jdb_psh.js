@@ -63,8 +63,8 @@ class JdbPshForm extends React.Component {
 
     render(){
         let form_date = new Date()
-        form_date.setHours(form_date.get_Hours() - 6)
-        console.log(form_date)
+        form_date.setHours(form_date.getHours() - 12)
+
         return (
         <div className="container">
             <div className="row justify-content-md-center">

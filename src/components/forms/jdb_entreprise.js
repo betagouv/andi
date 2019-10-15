@@ -63,6 +63,9 @@ class JdbEntrepriseForm extends React.Component {
     }
 
     render(){
+        let form_date = new Date()
+        form_date.setHours(form_date.getHours() - 12)
+
         return (
         <div className="container">
             <div className="row justify-content-md-center">
@@ -71,7 +74,7 @@ class JdbEntrepriseForm extends React.Component {
                 <p>{ this.d.description }</p>
                 <Formik
                     initialValues={{
-                        date: new Date(),
+                        date: form_date,
                         used_it_tools: '',
                         desc_facts: '',
                         desc_difficulties: '',
