@@ -62,6 +62,9 @@ class JdbPshForm extends React.Component {
     }
 
     render(){
+        let form_date = new Date()
+        form_date.setHours(form_date.get_Hours() - 6)
+        console.log(form_date)
         return (
         <div className="container">
             <div className="row justify-content-md-center">
@@ -71,7 +74,7 @@ class JdbPshForm extends React.Component {
                 <Formik
                     ref={ this.reference }
                     initialValues={{
-                        date: new Date(),
+                        date: form_date,
                         desc_activities: '',
                         used_it_tools: '',
                         desc_events_ok: '',
