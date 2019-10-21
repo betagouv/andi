@@ -7,6 +7,7 @@ import sys
 
 import click
 import unidecode
+import unicodedata
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.getLevelName('DEBUG'))
@@ -68,6 +69,26 @@ def parse(ctx):
 
 @main.command()
 @click.pass_context
+@click.option('--field', help='Field to search on', default=None)
+@click.option('--value', help='Value to find', default=None)
+@click.option('--non-null', is_flag=True, default=False)
+def find(ctx, field, value, non_null):
+    """
+    Find value in field, then output
+    """
+    needle = normalize(value)
+    for row in ctx.obj['data']:
+        if field in row and normalize(row[field]) == needle:
+            logging.debug('Found "%s" occurence: %s', value, row[field])
+            if non_null:
+                data = {k: v for k, v in row.items() if v }
+            else:
+                data = row
+            sys.stdout.write(json.dumps(data) + "\n")
+
+
+@main.command()
+@click.pass_context
 def keys(ctx):
     """
     Output keys / column titles
@@ -80,6 +101,11 @@ def key_to_slug(raw_string):
     step1 = unidecode.unidecode(raw_string)
     step2 = re.sub('[^a-zA-Z0-9 ]', '', step1)
     return re.sub(r'\s+', '_', step2).lower()
+
+
+def normalize(string):
+    string = string.lower()
+    return ''.join(c for c in unicodedata.normalize('NFD', string) if unicodedata.category(c) != 'Mn')
 
 
 if __name__ == '__main__':
