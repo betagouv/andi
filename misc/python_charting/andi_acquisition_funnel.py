@@ -1,6 +1,7 @@
 from plotly import graph_objects as go
+import os
 
-fig = go.Figure(go.Funnel(
+funnel = go.Funnel(
     y = [
         "Visites Accueil",
         "Visites Formulaire d'inscription",
@@ -19,7 +20,7 @@ fig = go.Figure(go.Funnel(
         21,
         7,
     ],
-    textposition = "inside",
+    # textposition = "inside",
     textinfo = "value+percent initial",
     opacity = 0.65,
     marker = {
@@ -33,11 +34,18 @@ fig = go.Figure(go.Funnel(
             '#ffa600'
         ],
         "line": {
-            "width": [4, 2, 2, 3, 1, 1],
-            "color": ["wheat", "wheat", "blue", "wheat", "wheat"]
+            "width": 3,
+            "color": '#333333'
         }
     },
-    connector = {"line": {"color": "royalblue", "dash": "dot", "width": 3}})
-    )
+    connector = {"line": {"color": "#333333", "dash": "solid", "width": 3}}
+)
+
+layout = go.Layout (
+    title = 'Chiffres Expérimentation ANDi',
+    margin= {'l': 200, 'r': 200}
+)
+
+fig = go.Figure(funnel, layout)
 
 fig.show()
