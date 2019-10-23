@@ -6,32 +6,20 @@ funnel = go.Funnel(
         "Visites Accueil",
         "Visites Formulaire d'inscription",
         "Inscriptions",
-        "Sélection périmêtre 95",
-        "Profils suivis Cap ou Pôle Emploi",
-        "Profils retenus",
-        "Immersions réalisées",
     ],
     x = [
         854,
         298,
         234,
-        94,
-        75,
-        21,
-        7,
     ],
     # textposition = "inside",
     textinfo = "value+percent initial",
     opacity = 0.65,
     marker = {
         "color": [
-            '#003f5c',
             '#374c80',
-            '#7a5195',
             '#bc5090',
-            '#ef5675',
             '#ff764a',
-            '#ffa600'
         ],
         "line": {
             "width": 3,
@@ -42,7 +30,7 @@ funnel = go.Funnel(
 )
 
 layout = go.Layout (
-    title = 'Chiffres Expérimentation ANDi',
+    title = 'Chiffres Expérimentation ANDi: Acquisition Landing Page',
     margin= {'l': 200, 'r': 200}
 )
 
