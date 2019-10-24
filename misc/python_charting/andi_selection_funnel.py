@@ -3,12 +3,14 @@ import os
 
 funnel = go.Funnel(
     y = [
+        "Questionnaire rempli",
         "Sélection périmêtre 95",
         "Profils suivis Cap ou Pôle Emploi",
         "Profils retenus",
         "Immersions réalisées",
     ],
     x = [
+        128,
         94,
         75,
         21,
