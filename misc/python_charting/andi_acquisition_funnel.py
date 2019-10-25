@@ -6,7 +6,7 @@ funnel = go.Funnel(
         "Visites Accueil",
         "Visites Formulaire d'inscription",
         "Inscriptions",
-        "Questionnaire rempli",
+        "Questionnaires remplis",
     ],
     x = [
         854,
@@ -15,7 +15,7 @@ funnel = go.Funnel(
         128
     ],
     # textposition = "inside",
-    textinfo = "value+percent initial",
+    textinfo = "value+percent initial+percent previous",
     opacity = 0.65,
     marker = {
         "color": [
@@ -32,7 +32,7 @@ funnel = go.Funnel(
 )
 
 layout = go.Layout (
-    title = 'Chiffres Expérimentation ANDi: Acquisition Landing Paget',
+    title = 'Chiffres Expérimentation ANDi: Acquisition Landing Page',
     margin= {'l': 200, 'r': 200}
 )
 

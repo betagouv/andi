@@ -17,7 +17,7 @@ funnel = go.Funnel(
         7,
     ],
     # textposition = "inside",
-    textinfo = "value+percent initial",
+    textinfo = "value+percent initial+percent previous",
     opacity = 0.65,
     marker = {
         "color": [
