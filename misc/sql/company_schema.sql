@@ -1,3 +1,20 @@
+-- OBSOLETE --
+-- OBSOLETE --
+-- OBSOLETE --
+-- OBSOLETE --
+-- OBSOLETE --
+-- OBSOLETE --
+-- OBSOLETE --
+-- OBSOLETE --
+-- OBSOLETE --
+-- OBSOLETE --
+-- OBSOLETE --
+-- OBSOLETE --
+-- OBSOLETE --
+-- OBSOLETE --
+-- "company" table has been replaced, for all uses, by table 'entreprises'
+-- This is left as documentation only
+
 -- Drop Tables
 DROP TABLE IF EXISTS "company";
 DROP TABLE IF EXISTS "company_position";

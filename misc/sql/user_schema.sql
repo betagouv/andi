@@ -6,6 +6,7 @@ CREATE TABLE "inscription" (
     nom VARCHAR(128),
     email VARCHAR(128),
     entry_point VARCHAR(64) [],
+    user_type VARCHER(128),
 
     questionnaire_sent BOOLEAN DEFAULT FALSE,
     questionaire_replied BOOLEAN DEFAULT FALSE,
@@ -17,4 +18,5 @@ CREATE TABLE "inscription" (
 );
 CREATE INDEX trgm_user_name ON "inscription" USING gin(prenom gin_trgm_ops);
 CREATE INDEX trgm_user_famname ON "inscription" USING gin(nom gin_trgm_ops);
+CREATE INDEX trgm_user_type ON "inscription" USING gin(user_type gin_trgm_ops);
 CREATE INDEX user_name ON "inscription" (prenom);
