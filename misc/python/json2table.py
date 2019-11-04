@@ -11,6 +11,23 @@ logger.setLevel(logging.getLevelName('DEBUG'))
 logger.addHandler(logging.StreamHandler())
 sys.path.insert(1, './modules')
 
+KEY_TO_TEXT = {
+    'idinternal': 'Identifiant interne',
+    'idandi': 'Identifiant ANDi',
+    'dateday': 'Date du Journal',
+    'datecreated': 'Date d\'enregistrement',
+    'activitessemaines': 'Activités',
+    'utilisationoutilsit': 'Utilisation IT',
+    'evenementsplu': 'Évènements +',
+    'evenementsdeplu': 'Évènements -',
+    'faits': 'Faits marquants',
+    'difficultes': 'Difficultées',
+}
+
+
+def text_get(key):
+    return KEY_TO_TEXT.get(key, key)
+
 
 def cfg_get(config):
     def_config_file = open('config_default.yaml', 'r')
@@ -21,10 +38,10 @@ def cfg_get(config):
 
 
 def dict2table(data):
-    html = ['<br><br><table width="99%" border=5 bordercolorlight="#ccc" bordercolordark="#444">']
+    html = ['<br><br><table width="99%" border=0 bordercolorlight="#fff" bordercolordark="#fff" style="background-color:#fff;border-bottom:1px solid #555;border-top:1px solid #555; border-spacing:10px 10px;border-collapse:separate;table-layout:fixed;font-family:arial, helvetica">']
     for k, v in data.items():
         html.append('<tr>')
-        html.append(f'<th width="20%" style="padding:3px;background-color:#000;color:#fff;font-weight:bold">{ k }</th>')
+        html.append(f'<th width="20%" style="word-break:break-all;padding:3px;border-right:5px solid #000;color:#555;font-weight:bold; padding-right:9px; text-align:right">{ text_get(k) }</th>')
         html.append(f'<td width="80%" style="padding:3px;">{ v }</td>')
         html.append('</tr>')
     html.append('</table>')
