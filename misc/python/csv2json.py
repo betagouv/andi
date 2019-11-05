@@ -81,7 +81,7 @@ def find(ctx, field, value, non_null):
         if field in row and normalize(row[field]) == needle:
             logging.debug('Found "%s" occurence: %s', value, row[field])
             if non_null:
-                data = {k: v for k, v in row.items() if v }
+                data = {k: v for k, v in row.items() if v}
             else:
                 data = row
             sys.stdout.write(json.dumps(data) + "\n")
