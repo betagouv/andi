@@ -4,6 +4,7 @@ start_docker.sh
 __pycache__
 credentials.json
 token.pickle
+cypress/videos/*.mp4
 
 # Logs
 logs
