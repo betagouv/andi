@@ -43,7 +43,7 @@ const CguPage = () => (
         <p>17 Avenue de France</p>
         <p>75013 Paris</p>
         <p>Cette demande écrite est accompagnée d’une copie du titre d’identité avec signature du titulaire de la pièce, en précisant l’adresse à laquelle la réponse doit être envoyée.</p>
-        <p>Le délégué à la protection des données de la direction des retraites et de la solidarité peut également être contacté à l’adresse suivante : DPOdroits@caissedesdepots.fr</p>
+        <p>Le délégué à la protection des données de la direction des retraites et de la solidarité peut également être contacté à l’adresse suivante : mesdonneespersonnelles@caissedesdepots.fr</p>
         <p>Conformément au règlement général sur la protection des données, vous disposez du droit d’introduire une réclamation auprès de la CNIL (3 place de Fontenoy – TSA 80715 – 75334 PARIS CEDEX 07).</p>
         <h4 id="procdureencasdeviolationsdedonnescaractrepersonnel">Procédure en cas de violations de données à caractère personnel</h4>
         <p>En cas de destruction, de perte, d'altération, de divulgation non autorisée de données à caractère personnel transmises, conservées ou traitées d'une autre manière, ou d'accès non autorisé à de telles données, de manière accidentelle ou illicite, susceptible d'engendrer un risque élevé pour les droits et libertés de l’utilisateur, nous vous en informerons des faits et des mesures prises, dans les meilleurs délais.</p>
