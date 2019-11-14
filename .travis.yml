@@ -45,7 +45,6 @@ jobs:
       # - $(npm bin)/ cypress run --record
       # - npm run cypress:run
       - npm run test:e2e:ci
-      - rsync -e "ssh -i deploy_ed25519" -r --delete-after --quiet deploy* travis@andi.beta.gouv.fr:~/
   - stage: deploy
     name: Deploy pages to host
     if: branch = master AND type = push AND fork = false
