@@ -94,3 +94,11 @@ L'importation de ses données se fait comme les autres outils, avec le paramètr
 ```sql
 COPY (select array_to_string(ARRAY[c.id_internal::text, array_to_string(addr, ' '), postal_commune, postal_code, 'FRA'], '|') from company c inner join company_contact cc on c.id_internal = cc.id_company where cc.postal_code LIKE 'XX%') TO '/tmp/list_XX.csv' (format csv, delimiter '|', quote '$');
 ```
+
+#### Tableaux récapitulatifs / fiches
+La création des fiches c'est principalement la conversion vers une mise en page "utilisable" de données CSV qui se trouvent dans le répertoire "raw_data"
+
+L'export SQL des données des journeaux de bord en CSV se fait par:
+```sql
+COPY (SELECT * FROM form_jdb_psh) TO '/tmp/psh.csv' WITH CSV DELIMITER ',' HEADER;
+```
