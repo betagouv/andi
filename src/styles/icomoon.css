@@ -1,13 +1,23 @@
+/*
 @font-face {
   font-family: 'icomoon';
   src:url('../../static/icomoon.ttf?8qifw8') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
+*/
+
+@font-face {
+  font-family: 'fontello';
+  src:url('../../static/fontello.ttf?7qifw8') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: 'fontello' !important;
+  /* font-family: 'icomoon' !important; */
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -21,17 +31,34 @@
 }
 
 .icon-linkedin:before {
-  content: "\e900";
+  content: "\f31b";
 }
 .icon-facebook:before {
-  content: "\e901";
+  content: "\f301";
 }
 .icon-medium:before {
-  content: "\e902";
+  content: "\f23a";
 }
 .icon-twitter:before {
-  content: "\e903";
+  content: "\e802";
 }
 .icon-github:before {
-  content: "\e91e";
+  content: "\e800";
+  /*content: "\f09b";*/
+}
+.icon-one:before {
+  content: "\e817";
+  /*content: "\f09b";*/
+}
+.icon-two:before {
+  content: "\e816";
+  /*content: "\f09b";*/
+}
+.icon-three:before {
+  content: "\e812";
+  /*content: "\f09b";*/
+}
+.icon-four:before {
+  content: "\f181";
+  /*content: "\f09b";*/
 }

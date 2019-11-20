@@ -10,6 +10,7 @@ import marianneSVG from '../images/logo-marianne.svg'
 // import betagouvSVG from '../images/pointbetagouvfr.svg'
 
 const Header = ({showNav=true}) => {
+    showNav = false
     return (
         <>
         <Svg />

@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { mdReact } from 'markdown-react-js';
 
 import Layout from "../components/layout"
@@ -33,11 +33,14 @@ export const query = graphql`
 
 // const abbr_andi = "accompagnement numérique au développement de l'insertion"
 
-const PointDetail = ({number, title, text}) => (
+const PointDetail = ({number, title, text=false}) => (
     <div className="col">
-      <span className="number">{ number }</span>
+      <span className="number"><span className={ number }></span></span>
       <h3>{ title }</h3>
-      <p>{ text }</p>
+      { text 
+        ?  <p>{ text }</p>
+        :  <p></p>
+      }
     </div>
 )
 
@@ -50,7 +53,12 @@ const Hero = ({title, text, button}) => (
              <div className="hero__p">
                <p>{ text }</p>
              </div>
-             <Link className="button large btn-xl" to="/inscription" style={{top: '30px'}}>{ button }</Link>
+             { /* J'assume */ }
+             <br />
+             <br />
+             <br />
+             { /* <Link className="button large btn-xl" to="/inscription" style={{top: '30px'}}>{ button }</Link> */}
+             { /* <Link className="button large btn-xl" to="/inscription" style={{top: '30px'}}>{ button }</Link> */}
            </div>
            <div className="col-lg-4 col-sm-12 text-right no-gutters">
            <img  className="opt_img illu-1" src={illu1} alt="" srcSet={`${illu1_2x} 2x, ${illu1_3x} 3x`}  />
@@ -87,20 +95,24 @@ class IndexPage extends React.Component {
                   </svg>
                 </div> */}
                 <section>
-                  <h2 className="section__title" style={{marginTop: '6rem'}}>{ this.d.soustitre1 }</h2>
+                  <h2 className="section__title" style={{marginTop: '3rem'}}>{ this.d.soustitre1 }</h2>
                   <div className="container-fluid" style={{marginTop: '6rem', marginBottom: '4rem'}}>
                     <div className="row numlist">
                       <div className="col-lg-10 offset-lg-1 col-sm-12">
                         <div className="row">
+                          { /*
                           <div className="col">
                             <span className="number">1</span>
                             <h3>{ this.d.point1 }</h3>
                             <p>{ this.d.point1_texte }</p>
                             <Link className="button fullwidth large" to="/inscription">{ this.d.bouton }</Link>
                           </div>
-                          <PointDetail number="2" title={ this.d.point2 }  text={ this.d.point2_texte } />
-                          <PointDetail number="3" title={ this.d.point3 }  text={ this.d.point3_texte } />
-                          <PointDetail number="4" title={ this.d.point4 }  text={ this.d.point4_texte } />
+                          */ }
+                          { /* <PointDetail number="icon-one" title={ this.d.point1 }  text={ this.d.point1_texte } /> */ }
+                          <PointDetail number="icon-one" title={ this.d.point1 } />
+                          <PointDetail number="icon-two" title={ this.d.point2 } />
+                          <PointDetail number="icon-three" title={ this.d.point3 } />
+                          <PointDetail number="icon-four" title={ this.d.point4 } />
                         </div>
                       </div>
                     </div>

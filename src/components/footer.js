@@ -30,9 +30,10 @@ const Footer = () => (
                 <li>
                     <ul className="social-link col-6 col-xs-4">
                     <li className="col"><a href="https://twitter.com/ANDi_betagouv" title="Twitter"><span className="icon-twitter"></span></a></li>
+                    <li className="col"><a href="https://github.com/betagouv/andi" title="Github"><span className="icon-github"></span></a></li>
+                    <li className="col"><a href="https://www.linkedin.com/company/andi-betagouv/" title="LinkedIn"><span className="icon-linkedin"></span></a></li>
                     </ul>
                 </li>
-                    { /* <li className="col"><a href="https://github.com/betagouv/andi" title="Github"><span className="icon-github"></span></a></li> */ }
                     {/* <li className="col">
                       <a href="">
                         <span className="icon-medium"></span>

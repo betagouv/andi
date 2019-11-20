@@ -103,7 +103,7 @@ class FormPage extends React.Component {
                       </label>
                     </p>
                     <input type="submit" className="button light-green" value={ this.d.envoyer } style={{width: '100%'}} onClick={ this.handleClick }/>
-                    <p>{ this.d.apres_envoi }</p>
+                    { /* <p>{ this.d.apres_envoi }</p> */ }
                 </form>
 
                 </div>
