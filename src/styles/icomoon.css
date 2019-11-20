@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: 'fontello';
-  src:url('../../static/fontello.ttf?8qifw8') format('truetype');
+  src:url('../../static/fontello.ttf?7qifw8') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -44,5 +44,21 @@
 }
 .icon-github:before {
   content: "\e800";
+  /*content: "\f09b";*/
+}
+.icon-one:before {
+  content: "\e806";
+  /*content: "\f09b";*/
+}
+.icon-two:before {
+  content: "\e809";
+  /*content: "\f09b";*/
+}
+.icon-three:before {
+  content: "\F135";
+  /*content: "\f09b";*/
+}
+.icon-four:before {
+  content: "\f0c3";
   /*content: "\f09b";*/
 }
