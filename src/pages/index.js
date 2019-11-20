@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { mdReact } from 'markdown-react-js';
 
 import Layout from "../components/layout"
@@ -33,11 +33,14 @@ export const query = graphql`
 
 // const abbr_andi = "accompagnement numérique au développement de l'insertion"
 
-const PointDetail = ({number, title, text}) => (
+const PointDetail = ({number, title, text=false}) => (
     <div className="col">
       <span className="number"><span className={ number }></span></span>
       <h3>{ title }</h3>
-      <p>{ text }</p>
+      { text 
+        ?  <p>{ text }</p>
+        :  <p></p>
+      }
     </div>
 )
 
@@ -51,8 +54,6 @@ const Hero = ({title, text, button}) => (
                <p>{ text }</p>
              </div>
              { /* J'assume */ }
-             <br />
-             <br />
              <br />
              <br />
              <br />
@@ -94,7 +95,7 @@ class IndexPage extends React.Component {
                   </svg>
                 </div> */}
                 <section>
-                  <h2 className="section__title" style={{marginTop: '6rem'}}>{ this.d.soustitre1 }</h2>
+                  <h2 className="section__title" style={{marginTop: '3rem'}}>{ this.d.soustitre1 }</h2>
                   <div className="container-fluid" style={{marginTop: '6rem', marginBottom: '4rem'}}>
                     <div className="row numlist">
                       <div className="col-lg-10 offset-lg-1 col-sm-12">
@@ -107,10 +108,11 @@ class IndexPage extends React.Component {
                             <Link className="button fullwidth large" to="/inscription">{ this.d.bouton }</Link>
                           </div>
                           */ }
-                          <PointDetail number="icon-one" title={ this.d.point1 }  text={ this.d.point1_texte } />
-                          <PointDetail number="icon-two" title={ this.d.point2 }  text={ this.d.point2_texte } />
-                          <PointDetail number="icon-three" title={ this.d.point3 }  text={ this.d.point3_texte } />
-                          <PointDetail number="icon-four" title={ this.d.point4 }  text={ this.d.point4_texte } />
+                          { /* <PointDetail number="icon-one" title={ this.d.point1 }  text={ this.d.point1_texte } /> */ }
+                          <PointDetail number="icon-one" title={ this.d.point1 } />
+                          <PointDetail number="icon-two" title={ this.d.point2 } />
+                          <PointDetail number="icon-three" title={ this.d.point3 } />
+                          <PointDetail number="icon-four" title={ this.d.point4 } />
                         </div>
                       </div>
                     </div>
