@@ -48,7 +48,7 @@ const Hero = ({title, text, button}) => (
      <section className="section section-grey section__bottom_svg" role="banner">
        <div className="container-fluid">
          <div className="row">
-           <div className="col-lg-6 offset-lg-2 col-sm-10 offset-sm-1 col-xs-12 offset-xs-0 title_wrapper">
+           <div className="col-lg-7 offset-lg-1 col-sm-10 offset-sm-1 col-xs-12 offset-xs-0 title_wrapper">
              <h1>{ title }</h1>
              <div className="hero__p">
                <p>{ text }</p>
