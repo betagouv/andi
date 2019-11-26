@@ -10,7 +10,7 @@
 
 [ANDi](https://andi.beta.gouv.fr) est une service numérique en développement visant à faciliter l'immersion professionnelle des personnes en situation de handicap.
 
-## 🚀 C'est Parti !
+## 🚀 C'est parti !
 
 ### Les dépôts d'ANDi
 
