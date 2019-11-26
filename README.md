@@ -19,6 +19,7 @@
 - 🎚 [andi-matching](https://github.com/betagouv/andi-matching/), qui contient l'algorithme de matching et les interfaces d'accès (CLI, API, ...)
 - 📟 [andi-matching-ui](https://github.com/betagouv/andi-matching-ui/), qui contient un prototype d'interface web pour l'outil de matching
 - 🏗 [andi-service](https://github.com/betagouv/andi-service), qui contient le MVP du service numérique développé par ANDi
+- 🧪 [andi-data](https://github.com/betagouv/andi-data), qui contient les outils et résultats d'analyses des données dans le cadre du développement du service ANDi
 
 ### Contribuer ?
 Comment déployer en local pour contribuer ? C'est par ici:
