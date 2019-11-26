@@ -10,8 +10,6 @@
 CREATE EXTENSION IF NOT EXISTS cube;
 CREATE EXTENSION IF NOT EXISTS earthdistance;
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
-DROP TYPE IF EXISTS COMPANY_SIZE;
-DROP TYPE IF EXISTS RATING;
 DROP INDEX IF EXISTS entreprises_geoloc;
 DROP INDEX IF EXISTS entreprises_naf;
 DROP INDEX IF EXISTS entreprises_naf_macro;
@@ -20,6 +18,8 @@ DROP INDEX IF EXISTS entreprises_siret;
 DROP INDEX IF EXISTS trgm_entreprises_enseigne;
 DROP INDEX IF EXISTS trgm_entreprises_name;
 DROP TABLE IF EXISTS "entreprises";
+DROP TYPE IF EXISTS COMPANY_SIZE;
+DROP TYPE IF EXISTS RATING;
 -- END OF DROP STATEMENTS
 
 CREATE TYPE COMPANY_SIZE AS ENUM (
@@ -53,6 +53,7 @@ CREATE TABLE entreprises (
     enseigne text,
     siret character varying(14) NOT NULL UNIQUE,
     naf character varying(5),
+    addr TEXT [],
     taille public.company_size,
     pmsmp_interest boolean,
     pmsmp_count_recent integer,

@@ -86,6 +86,7 @@ def main(config_file, module, company, company_update, user, sirene, here, debug
             except Exception as e:  # pylint:disable=broad-except
                 logger.exception(e)
                 count_error += 1
+                conn.rollback()
     logger.info(
         'Ended import of csv data, %s records written, %s failed',
         count_success,
