@@ -7,8 +7,11 @@
 -- Name: entreprises; Type: TABLE; Schema: public; Owner: intendant
 --
 -- DROP STATEMENTS
-DROP TYPE COMPANY_SIZE;
-DROP TYPE RATING;
+CREATE EXTENSION IF NOT EXISTS cube;
+CREATE EXTENSION IF NOT EXISTS earthdistance;
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+DROP TYPE IF EXISTS COMPANY_SIZE;
+DROP TYPE IF EXISTS RATING;
 DROP INDEX IF EXISTS entreprises_geoloc;
 DROP INDEX IF EXISTS entreprises_naf;
 DROP INDEX IF EXISTS entreprises_naf_macro;
@@ -91,3 +94,4 @@ CREATE INDEX entreprises_nom_nulls_last ON public.entreprises USING btree (nom);
 CREATE INDEX entreprises_siret ON public.entreprises USING btree (siret);
 CREATE INDEX trgm_entreprises_enseigne ON public.entreprises USING gin (enseigne public.gin_trgm_ops);
 CREATE INDEX trgm_entreprises_name ON public.entreprises USING gin (nom public.gin_trgm_ops);
+
