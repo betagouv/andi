@@ -1,11 +1,3 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 11.5 (Debian 11.5-1.pgdg90+1)
--- Dumped by pg_dump version 11.5 (Debian 11.5-1.pgdg90+1)
--- Name: entreprises; Type: TABLE; Schema: public; Owner: intendant
---
 -- DROP STATEMENTS
 CREATE EXTENSION IF NOT EXISTS cube;
 CREATE EXTENSION IF NOT EXISTS earthdistance;
@@ -49,8 +41,9 @@ CREATE TYPE RATING AS ENUM (
 
 CREATE TABLE entreprises (
     id_internal SERIAL PRIMARY KEY,
-    nom text NOT NULL,
+    nom text,
     enseigne text,
+    enseignes text [],
     siret character varying(14) NOT NULL UNIQUE,
     naf character varying(5),
     addr TEXT [],
@@ -70,8 +63,10 @@ CREATE TABLE entreprises (
     quartier character varying(128),
     commune character varying(128),
     postal_code character varying(10),
+    commune_code character varying(10),
     region character varying(128),
     departement character varying(128),
+    siege BOOLEAN,
     lat numeric,
     lon numeric,
     phone_official_1 character varying(32),

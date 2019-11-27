@@ -17,7 +17,10 @@ INSERT INTO "entreprises" (
     flags,
     commune,
     addr,
-    postal_code
+    postal_code,
+    commune_code,
+    siege,
+    enseignes
 )
 VALUES (
     %(nom)s,
@@ -32,7 +35,10 @@ VALUES (
     %(flags)s,
     %(commune)s,
     %(addr)s,
-    %(postal_code)s
+    %(postal_code)s,
+    %(commune_code)s,
+    %(siege)s,
+    %(enseignes)s
 )
 RETURNING id_internal
 """
@@ -74,9 +80,16 @@ def sql_company(cur, d, tag):
     ]
     addr = [f for f in addr_raw if f]
 
+    enseignes_raw = [
+        d.get('enseigne1etablissement'),
+        d.get('enseigne2etablissement'),
+        d.get('enseigne3etablissement'),
+    ]
+    enseignes = [f for f in enseignes_raw if f]
+
     # continue
     data = {
-        'nom': d.get('denominationunitelegale'),
+        'nom': d.get('denominationusuelleetablissement'),
         'enseigne': d.get('enseigne1etablissement'),
         # 'siren': d.get('siren'),
         # 'nic': d.get('nic'),
@@ -90,7 +103,10 @@ def sql_company(cur, d, tag):
         'flags': [],
         'commune': d.get('libellecommuneetablissement'),
         'addr': addr,
-        'postal_code': d.get('codecommuneetablissement'),
+        'postal_code': d.get('codepostaletablissement'),
+        'commune_code': d.get('codecommuneetablissement'),
+        'siege': d.get('etablissementsiege') == "true",
+        'enseignes': enseignes,
     }
 
     return cur.mogrify(SQL_COMPANY, data)
