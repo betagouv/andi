@@ -8,7 +8,7 @@ import psycopg2
 import yaml
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.getLevelName('DEBUG'))
+logger.setLevel(logging.getLevelName('INFO'))
 logger.addHandler(logging.StreamHandler())
 sys.path.insert(1, './modules')
 
@@ -48,6 +48,8 @@ def main(config_file, module, company, company_update, user, sirene, here, debug
     """
     if not module:
         raise RuntimeError('No module specified, add --module [SOME_MODULE]')
+    if debug:
+        logger.setLevel(logging.getLevelName('DEBUG'))
 
     cfg = cfg_get(config_file)
     logging.debug('Config:\n%s', json.dumps(cfg, indent=2))
@@ -63,29 +65,24 @@ def main(config_file, module, company, company_update, user, sirene, here, debug
         for line in sys.stdin:
             try:
                 record = json.loads(line)
-                if debug:
-                    logger.debug(record)
+                logger.debug(record)
                 iden = execute(cur, record, dry)
-                # if here:
-                #     iden = update_hero(cur, record, dry)
-                # elif company:
-                #     iden = write_company(cur, record)
-                # elif company_update:
-                #     iden = update_company(cur, record)
-                # elif sirene:
-                #     iden = write_sirene(cur, record, tag, dry)
-                # elif user:
-                #     iden = write_user(cur, record)
-                # else:
-                #     raise RuntimeError("No valid write destination specified")
                 logger.debug(
                     'Wrote record for %s',
                     iden
                 )
                 count_success += 1
+                if count_success % 10000 == 0:
+                    logger.info(
+                        'Wrote %s records. Latest: %s',
+                        count_success,
+                        iden
+                    )
+                    conn.commit()
             except Exception as e:  # pylint:disable=broad-except
                 logger.exception(e)
                 count_error += 1
+                conn.rollback()
     logger.info(
         'Ended import of csv data, %s records written, %s failed',
         count_success,

@@ -27,6 +27,13 @@ Exemples d'utilisation:
 
 # Importation geo-données:
 ./csv2json.py --delimiter "|" --maxrows 2 ~/temp/lists_csv/output_27.csv  parse | ./json2db.py --here --config_file config.yaml
+
+# Utilisation de jq pour filtrer certaines données:
+./csv2json.py \
+    --delimiter "," \
+    ./raw_data/StockEtablissement_utf8.csv parse | \
+jq -c 'select((.etatadministratifetablissement == "A") and (.caractereemployeuretablissement  == "O"))' | \
+./json2db.py --module siren --tag csv_siren_datagouv --config_file config.yaml
 ```
 
 ### Documentation:

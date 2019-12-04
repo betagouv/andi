@@ -1,14 +1,7 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 11.5 (Debian 11.5-1.pgdg90+1)
--- Dumped by pg_dump version 11.5 (Debian 11.5-1.pgdg90+1)
--- Name: entreprises; Type: TABLE; Schema: public; Owner: intendant
---
 -- DROP STATEMENTS
-DROP TYPE COMPANY_SIZE;
-DROP TYPE RATING;
+CREATE EXTENSION IF NOT EXISTS cube;
+CREATE EXTENSION IF NOT EXISTS earthdistance;
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
 DROP INDEX IF EXISTS entreprises_geoloc;
 DROP INDEX IF EXISTS entreprises_naf;
 DROP INDEX IF EXISTS entreprises_naf_macro;
@@ -17,6 +10,8 @@ DROP INDEX IF EXISTS entreprises_siret;
 DROP INDEX IF EXISTS trgm_entreprises_enseigne;
 DROP INDEX IF EXISTS trgm_entreprises_name;
 DROP TABLE IF EXISTS "entreprises";
+DROP TYPE IF EXISTS COMPANY_SIZE;
+DROP TYPE IF EXISTS RATING;
 -- END OF DROP STATEMENTS
 
 CREATE TYPE COMPANY_SIZE AS ENUM (
@@ -46,10 +41,12 @@ CREATE TYPE RATING AS ENUM (
 
 CREATE TABLE entreprises (
     id_internal SERIAL PRIMARY KEY,
-    nom text NOT NULL,
+    nom text,
     enseigne text,
+    enseignes text [],
     siret character varying(14) NOT NULL UNIQUE,
     naf character varying(5),
+    addr TEXT [],
     taille public.company_size,
     pmsmp_interest boolean,
     pmsmp_count_recent integer,
@@ -66,8 +63,10 @@ CREATE TABLE entreprises (
     quartier character varying(128),
     commune character varying(128),
     postal_code character varying(10),
+    commune_code character varying(10),
     region character varying(128),
     departement character varying(128),
+    siege BOOLEAN,
     lat numeric,
     lon numeric,
     phone_official_1 character varying(32),
@@ -91,3 +90,4 @@ CREATE INDEX entreprises_nom_nulls_last ON public.entreprises USING btree (nom);
 CREATE INDEX entreprises_siret ON public.entreprises USING btree (siret);
 CREATE INDEX trgm_entreprises_enseigne ON public.entreprises USING gin (enseigne public.gin_trgm_ops);
 CREATE INDEX trgm_entreprises_name ON public.entreprises USING gin (nom public.gin_trgm_ops);
+
