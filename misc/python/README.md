@@ -1,18 +1,23 @@
 ## Script d'importation CSV
 **WIP**
-Script d'importation de données CSV vers une base de données. Il combine plusieurs outils, pour le moment
- spécifique à l'importation de données d'entreprise.
+Scripts d'importation de données CSV vers une base de données. Il combine plusieurs outils, spécifiques à l'importation de données d'entreprise et aux sources utilisées.
 
-Il faudrait un repo propre au code python pour tester correctement. En attendant, les tests flak8 et pylint peuvent s'exécuter en ligne de commande:
+### Sources employées
+- Base de données Sirene https://www.data.gouv.fr/fr/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/
+- Sirene geocodé http://data.cquest.org/geo\_sirene/last/ https://github.com/cquest/geocodage-spd
+- Exports d'insée https://www.sirene.fr/sirene/public/static/acces-donnees
+
+
+## Installation et usage
+ - créer, a partir de `config_default.yaml` un fichier `config.yaml` avec les paramètres qui conviennent
+ - récuper l'un ou l'autre fichier CSV à transférer
+
+### Tests
 ```
 make test
 ```
 
-## Installation:
- - créer, a partir de `config_default.yaml` un fichier `config.yaml` avec les paramètres qui conviennent
- - récuper l'un ou l'autre fichier CSV à transférer
-
-## Utilisation:
+### Utilisation:
 Exemples d'utilisation:
 
 ```
@@ -36,7 +41,7 @@ jq -c 'select((.etatadministratifetablissement == "A") and (.caractereemployeure
 ./json2db.py --module siren --tag csv_siren_datagouv --config_file config.yaml
 ```
 
-### Documentation:
+## Scripts et Documentation:
 #### csv2json
 ```
 Usage: csv2json.py [OPTIONS] FILE COMMAND [ARGS]...
@@ -67,7 +72,7 @@ Options:
   --help              Show this message and exit.
 ```
 
-#### Geocoding
+## Geocoding / heredoc
 L'outil [Batch Geocoder API](https://developer.here.com/documentation/batch-geocoder/topics/introduction.html) de _here_ est utilisée pour le géocodage des données.
 
 Celui-ci accepte en entrée des adresses sous cette forme:
