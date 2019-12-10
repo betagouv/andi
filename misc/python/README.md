@@ -21,17 +21,14 @@ make test
 Exemples d'utilisation:
 
 ```
-# Importation entreprise:
+# Importation entreprise (ancienne écriture):
 ./csv2json.py --maxrows 100 ./CSV_FILE parse | ./json2db.py --company --config_file config.yaml
 
-# Importation inscription
+# Importation inscription (ancienne écriture)
 ./csv2json.py --maxrows 100 --delimiter "," ./CSV_FILE parse | ./json2db.py --user --config_file config.yaml
 
-# Importation sirene (depuis docker):
+# Importation sirene (depuis docker) (ancienne écriture):
 ./csv2json.py --delimiter "," --maxrows 1 /data/etablissements_95.csv parse  | ./json2db.py --sirene --tag csv_sirene_95 --config_file config.yaml
-
-# Importation geo-données:
-./csv2json.py --delimiter "|" --maxrows 2 ~/temp/lists_csv/output_27.csv  parse | ./json2db.py --here --config_file config.yaml
 
 # Utilisation de jq pour filtrer certaines données:
 ./csv2json.py \
@@ -39,6 +36,16 @@ Exemples d'utilisation:
     ./raw_data/StockEtablissement_utf8.csv parse | \
 jq -c 'select((.etatadministratifetablissement == "A") and (.caractereemployeuretablissement  == "O"))' | \
 ./json2db.py --module siren --tag csv_siren_datagouv --config_file config.yaml
+
+# Importation avec mémoire tampon, parallélisée
+./csv2json.py \
+    --delimiter "," \
+    -f "etatadministratifetablissement==A" \
+    -f "caractereemployeuretablissement==O" \
+    ./raw_data/StockEtablissement_utf8.csv parse | \
+dd obs=50M | \
+parallel --max-lines=5000 --pipe ./json2db.py --module siren --tag csv_siren_datagouv --config_file config.yaml
+
 ```
 
 ## Scripts et Documentation:
