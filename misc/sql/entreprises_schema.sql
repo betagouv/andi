@@ -9,6 +9,7 @@ DROP INDEX IF EXISTS entreprises_nom_nulls_last;
 DROP INDEX IF EXISTS entreprises_siret;
 DROP INDEX IF EXISTS trgm_entreprises_enseigne;
 DROP INDEX IF EXISTS trgm_entreprises_name;
+DROP INDEX IF EXISTS enterprises_flags_gin;
 DROP TABLE IF EXISTS "entreprises";
 DROP TYPE IF EXISTS COMPANY_SIZE;
 DROP TYPE IF EXISTS RATING;
@@ -45,6 +46,7 @@ CREATE TABLE entreprises (
     enseigne TEXT,
     enseignes TEXT [],
     siret CHARACTER VARYING(14) NOT NULL UNIQUE,
+    siren CHARACTER VARYING(9),
     nic_siege CHARACTER VARYING(5),
     naf CHARACTER VARYING(5),
     addr TEXT [],
@@ -99,4 +101,5 @@ CREATE INDEX entreprises_nom_nulls_last ON public.entreprises USING btree (nom);
 CREATE INDEX entreprises_siret ON public.entreprises USING btree (siret);
 CREATE INDEX trgm_entreprises_enseigne ON public.entreprises USING gin (enseigne public.gin_trgm_ops);
 CREATE INDEX trgm_entreprises_name ON public.entreprises USING gin (nom public.gin_trgm_ops);
+CREATE INDEX enterprises_flags_gin ON PUBLIC.entreprises USING GIN (flags);
 

@@ -11,6 +11,7 @@ Scripts d'importation de données CSV vers une base de données. Il combine plus
 ## Installation et usage
  - créer, a partir de `config_default.yaml` un fichier `config.yaml` avec les paramètres qui conviennent
  - récuper l'un ou l'autre fichier CSV à transférer
+ - certaines commandes utilisent `jq`, `parallel` et `dd`: leur utilisation est optionelle mais néanmoins recommandée
 
 ### Tests
 ```
@@ -21,6 +22,12 @@ make test
 Exemples d'utilisation:
 
 ```
+# Lister les clés disponibles:
+./csv2json.py ./CSV_FILE keys
+
+# Tester une entrée:
+./csv2json.py --maxrows 10 --delimiter ',' CSV_FILE test | jq '.'
+
 # Importation entreprise (ancienne écriture):
 ./csv2json.py --maxrows 100 ./CSV_FILE parse | ./json2db.py --company --config_file config.yaml
 
