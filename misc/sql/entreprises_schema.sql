@@ -9,6 +9,7 @@ DROP INDEX IF EXISTS entreprises_nom_nulls_last;
 DROP INDEX IF EXISTS entreprises_siret;
 DROP INDEX IF EXISTS trgm_entreprises_enseigne;
 DROP INDEX IF EXISTS trgm_entreprises_name;
+DROP INDEX IF EXISTS enterprises_flags_gin;
 DROP TABLE IF EXISTS "entreprises";
 DROP TYPE IF EXISTS COMPANY_SIZE;
 DROP TYPE IF EXISTS RATING;
@@ -41,53 +42,64 @@ CREATE TYPE RATING AS ENUM (
 
 CREATE TABLE entreprises (
     id_internal SERIAL PRIMARY KEY,
-    nom text,
-    enseigne text,
-    enseignes text [],
-    siret character varying(14) NOT NULL UNIQUE,
-    naf character varying(5),
+    nom TEXT,
+    enseigne TEXT,
+    enseignes TEXT [],
+    siret CHARACTER VARYING(14) NOT NULL UNIQUE,
+    siren CHARACTER VARYING(9),
+    nic_siege CHARACTER VARYING(5),
+    naf CHARACTER VARYING(5),
     addr TEXT [],
     taille public.company_size,
     pmsmp_interest boolean,
     pmsmp_count_recent integer,
     rating_us public.rating,
-    comments text,
-    source text,
-    import_tag text,
-    flags text[],
-    date_created timestamp with time zone DEFAULT now(),
-    date_updated timestamp with time zone,
-    label text,
-    numero character varying(10),
-    rue character varying(128),
-    quartier character varying(128),
-    commune character varying(128),
-    postal_code character varying(10),
-    commune_code character varying(10),
-    region character varying(128),
-    departement character varying(128),
+    comments TEXT,
+    source TEXT,
+    import_tag TEXT,
+    flags TEXT[],
+    date_created TIMESTAMP WITH TIME ZONE DEFAULT now(),
+    date_updated TIMESTAMP WITH TIME ZONE,
+    data_majdate TIMESTAMP WITH TIME ZONE,
+    label TEXT,
+    numero CHARACTER VARYING(10),
+    rue CHARACTER VARYING(128),
+    quartier CHARACTER VARYING(128),
+    commune CHARACTER VARYING(128),
+    postal_code CHARACTER VARYING(10),
+    commune_code CHARACTER VARYING(10),
+    region CHARACTER VARYING(128),
+    departement CHARACTER VARYING(128),
     siege BOOLEAN,
-    lat numeric,
-    lon numeric,
-    phone_official_1 character varying(32),
-    phone_official_2 character varying(32),
-    email_official character varying(64),
-    contact_1_name character varying(64),
-    contact_1_role character varying(64),
-    contact_1_mail character varying(64),
-    contact_1_phone character varying(32),
-    contact_2_name character varying(64),
-    contact_2_role character varying(64),
-    contact_2_mail character varying(64),
-    contact_2_phone character varying(32)
+    -- geo
+    lat NUMERIC,
+    lon NUMERIC,
+    geo_type CHARACTER VARYING(128),
+    geo_score NUMERIC,
+    geo_addr CHARACTER VARYING(256),
+    geo_id CHARACTER VARYING(32),
+
+    -- contact
+    phone_official_1 CHARACTER VARYING(32),
+    phone_official_2 CHARACTER VARYING(32),
+    email_official CHARACTER VARYING(64),
+    contact_1_name CHARACTER VARYING(64),
+    contact_1_role CHARACTER VARYING(64),
+    contact_1_mail CHARACTER VARYING(64),
+    contact_1_phone CHARACTER VARYING(32),
+    contact_2_name CHARACTER VARYING(64),
+    contact_2_role CHARACTER VARYING(64),
+    contact_2_mail CHARACTER VARYING(64),
+    contact_2_phone CHARACTER VARYING(32)
 );
 
 
 CREATE INDEX entreprises_geoloc ON public.entreprises USING gist (public.ll_to_earth((lat)::double precision, (lon)::double precision));
 CREATE INDEX entreprises_naf ON public.entreprises USING btree (naf);
-CREATE INDEX entreprises_naf_macro ON public.entreprises USING btree ("substring"((naf)::text, 0, 3));
+CREATE INDEX entreprises_naf_macro ON public.entreprises USING btree ("substring"((naf)::TEXT, 0, 3));
 CREATE INDEX entreprises_nom_nulls_last ON public.entreprises USING btree (nom);
 CREATE INDEX entreprises_siret ON public.entreprises USING btree (siret);
 CREATE INDEX trgm_entreprises_enseigne ON public.entreprises USING gin (enseigne public.gin_trgm_ops);
 CREATE INDEX trgm_entreprises_name ON public.entreprises USING gin (nom public.gin_trgm_ops);
+CREATE INDEX enterprises_flags_gin ON PUBLIC.entreprises USING GIN (flags);
 

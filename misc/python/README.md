@@ -1,32 +1,41 @@
 ## Script d'importation CSV
 **WIP**
-Script d'importation de données CSV vers une base de données. Il combine plusieurs outils, pour le moment
- spécifique à l'importation de données d'entreprise.
+Scripts d'importation de données CSV vers une base de données. Il combine plusieurs outils, spécifiques à l'importation de données d'entreprise et aux sources utilisées.
 
-Il faudrait un repo propre au code python pour tester correctement. En attendant, les tests flak8 et pylint peuvent s'exécuter en ligne de commande:
+### Sources employées
+- Base de données Sirene https://www.data.gouv.fr/fr/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/
+- Sirene geocodé http://data.cquest.org/geo\_sirene/last/ https://github.com/cquest/geocodage-spd
+- Exports d'insée https://www.sirene.fr/sirene/public/static/acces-donnees
+
+
+## Installation et usage
+ - créer, a partir de `config_default.yaml` un fichier `config.yaml` avec les paramètres qui conviennent
+ - récuper l'un ou l'autre fichier CSV à transférer
+ - certaines commandes utilisent `jq`, `parallel` et `dd`: leur utilisation est optionelle mais néanmoins recommandée
+
+### Tests
 ```
 make test
 ```
 
-## Installation:
- - créer, a partir de `config_default.yaml` un fichier `config.yaml` avec les paramètres qui conviennent
- - récuper l'un ou l'autre fichier CSV à transférer
-
-## Utilisation:
+### Utilisation:
 Exemples d'utilisation:
 
 ```
-# Importation entreprise:
+# Lister les clés disponibles:
+./csv2json.py ./CSV_FILE keys
+
+# Tester une entrée:
+./csv2json.py --maxrows 10 --delimiter ',' CSV_FILE test | jq '.'
+
+# Importation entreprise (ancienne écriture):
 ./csv2json.py --maxrows 100 ./CSV_FILE parse | ./json2db.py --company --config_file config.yaml
 
-# Importation inscription
+# Importation inscription (ancienne écriture)
 ./csv2json.py --maxrows 100 --delimiter "," ./CSV_FILE parse | ./json2db.py --user --config_file config.yaml
 
-# Importation sirene (depuis docker):
+# Importation sirene (depuis docker) (ancienne écriture):
 ./csv2json.py --delimiter "," --maxrows 1 /data/etablissements_95.csv parse  | ./json2db.py --sirene --tag csv_sirene_95 --config_file config.yaml
-
-# Importation geo-données:
-./csv2json.py --delimiter "|" --maxrows 2 ~/temp/lists_csv/output_27.csv  parse | ./json2db.py --here --config_file config.yaml
 
 # Utilisation de jq pour filtrer certaines données:
 ./csv2json.py \
@@ -34,9 +43,19 @@ Exemples d'utilisation:
     ./raw_data/StockEtablissement_utf8.csv parse | \
 jq -c 'select((.etatadministratifetablissement == "A") and (.caractereemployeuretablissement  == "O"))' | \
 ./json2db.py --module siren --tag csv_siren_datagouv --config_file config.yaml
+
+# Importation avec mémoire tampon, parallélisée
+./csv2json.py \
+    --delimiter "," \
+    -f "etatadministratifetablissement==A" \
+    -f "caractereemployeuretablissement==O" \
+    ./raw_data/StockEtablissement_utf8.csv parse | \
+dd obs=50M | \
+parallel --max-lines=5000 --pipe ./json2db.py --module siren --tag csv_siren_datagouv --config_file config.yaml
+
 ```
 
-### Documentation:
+## Scripts et Documentation:
 #### csv2json
 ```
 Usage: csv2json.py [OPTIONS] FILE COMMAND [ARGS]...
@@ -67,7 +86,7 @@ Options:
   --help              Show this message and exit.
 ```
 
-#### Geocoding
+## Geocoding / heredoc
 L'outil [Batch Geocoder API](https://developer.here.com/documentation/batch-geocoder/topics/introduction.html) de _here_ est utilisée pour le géocodage des données.
 
 Celui-ci accepte en entrée des adresses sous cette forme:
