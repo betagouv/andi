@@ -40,6 +40,7 @@ jobs:
   - stage: build
     name: Build static pages
     script: 
+      - echo 'travis@$HOST:$WWW_PATH'
       - npm run build
     skip_cleanup: true
   - stage: test
@@ -55,6 +56,7 @@ jobs:
     script: 
       - ls public/
       - npm run build
+      - echo 'travis@$HOST:$WWW_PATH'
       - rsync -e "ssh -i deploy_ed25519" -r --delete-after --quiet public/ travis@$HOST:$WWW_PATH
       - >
         curl
