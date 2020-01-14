@@ -23,6 +23,7 @@ ansible -i inv.ini -u admin-andi --ask-pass ANDi -m ping
 - **secure_ssh**: configuration accès SSH
 - **default_apps**: applications par défaut
 - **docker_suppport**: Support docker
+- **andi_toolset**: Installation de services et d'outils spécifiques
 
 ### Exécution
 Le playbook `secure_ssh` s'exécute avec les droits d'aministrateur (root). Les autres utilisent l'utilisateur de déploiement définit dans les _playbooks_
