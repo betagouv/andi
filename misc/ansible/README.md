@@ -11,7 +11,7 @@ Différents scripts qui permettent de configurer et mettre en place l'environnem
 ### Exécution
 Le playbook `secure_ssh` s'exécute avec les droits d'aministrateur (root). Les autres utilisent l'utilisateur de déploiement définit dans les _playbooks_
 
-#### Exemples:
+#### Examples:
 ```bash
 # configuration SSH
 ansible-playbook secure_ssh.yml -i inv.ini -u root --ask-pass
