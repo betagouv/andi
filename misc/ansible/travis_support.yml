@@ -15,4 +15,4 @@
         user: travis
         state: present
         manage_dir: yes
-        key: "{{travis_key}}"
+        key: "{{ travis_key }}"
