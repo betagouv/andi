@@ -26,6 +26,9 @@ addons:
     packages:
       # Ubuntu 16+ does not install this dependency by default, so we need to install it ourselves
       - libgconf-2-4
+  ssh_known_hosts:
+  - 40.89.150.201
+  - andi.beta.gouv.fr
 
 install:
   - npm version
@@ -58,9 +61,6 @@ jobs:
         --header "Content-Type: application/json"
         --request POST --data "{\"message\":\"ANDi - Site mis a jour\"}"
         https://hooks.zapier.com/hooks/catch/5355796/oo5ibqz/
-
-addons:
-  ssh_known_hosts: andi.beta.gouv.fr
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_218785b12a81_key -iv $encrypted_218785b12a81_iv -in misc/deploy_ed25519.enc -out deploy_ed25519 -d
