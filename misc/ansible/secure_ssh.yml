@@ -1,8 +1,8 @@
 ---
 - hosts: all
   vars:
-      root_password: 'ROOT_PASSWORD'
-      intendant_password: 'ADMIN_PASSWORD'
+      root_password: '[ROOT_PASSWORD]'
+      intendant_password: '[INTENDANT_PASSWORD]'
       deploy_user: 'intendant'
       deploy_keys:
           - ~/.ssh/id_intendant.pub
@@ -19,9 +19,9 @@
         update_password: on_create
     register: newuser
 
-  - name: Force operator to update password
-    shell: passwd -e "{{ deploy_user }}"
-    when: newuser.changed
+  # - name: Force operator to update password
+  #   shell: passwd -e "{{ deploy_user }}"
+  #   when: newuser.changed
   
   - name: Add intendant to the sudoers
     copy:
@@ -77,6 +77,6 @@
   handlers:
     - name: restart sshd
       service: name=sshd state=restarted
-      shell: sleep 3; /etc/init.d/sshd restart
+      # shell: sleep 3; /etc/init.d/sshd restart
       async: 1
       poll: 0

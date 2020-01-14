@@ -1,0 +1,19 @@
+---
+- hosts: all
+  vars:
+    travis_password: [TRAVIS_PASSWORD]
+    travis_key: [TRAVIS_KEY]
+  tasks:
+  - name: Add travis user
+    user:
+        name: travis
+        shell: /bin/bash
+        password: "{{ travis_password | password_hash('sha512') }}"
+        update_password: on_create
+        groups: sudo,www-data,docker
+  - name: Add authorized key
+    authorized_key:
+        user: travis
+        state: present
+        manage_dir: yes
+        key: "{{ travis_key }}"

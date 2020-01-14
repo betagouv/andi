@@ -1,0 +1,27 @@
+---
+- hosts: all
+  vars:
+    intendant_password: [INTENDANT_PASSWORD]
+    jupyter_password: [JUPYTER_PASSWORD]
+  tasks:
+
+  - name: add default database
+    postgresql_db:
+        name: andi
+        encoding: UTF-8
+
+  - name: add default user
+    postgresql_user:
+        db: andi
+        name: intendant
+        password: "{{ intendant_password }}"
+        role_attr_flags: CREATEDB,LOGIN,SUPERUSER
+        priv: "CONNECT"
+
+  - name: add jupyter user
+    postgresql_user:
+        db: andi
+        name: jupyter
+        password: "{{ jupyter_password }}"
+        role_attr_flags: LOGIN
+        priv: "CONNECT"

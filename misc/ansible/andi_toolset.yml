@@ -1,0 +1,47 @@
+---
+# Warning: check manually of correct version (3) is installed
+- hosts: all
+  vars:
+    root_packages:
+        - nginx
+        - postgresql-12
+    dependencies:
+        - nginx-extras
+        - certbot
+        - python-certbot-nginx
+        - postgresql-client-12
+        - pgcli
+        - postgis
+        - postgresql-12-postgis-3
+        - python3-psycopg2
+        - python-psycopg2
+        
+
+  tasks:
+  ## Add postgresql repo
+  - name: Add postgresql apt key
+    apt_key: 
+        url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+        state: present
+  
+  - name: Add postgresql apt source
+    apt_repository:
+        repo: deb http://apt.postgresql.org/pub/repos/apt/ {{ ansible_distribution_release }}-pgdg main
+        state: present
+
+  - name: Add nginx repo
+    apt_repository:
+      repo: ppa:nginx/stable
+  
+  - name: Update APT package cache
+    apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 3600
+
+  ## Install packages
+  - name: Install required packages
+    apt: state=present pkg={{ root_packages }}
+
+  - name: Install optional packages
+    apt: state=present pkg={{ dependencies }}
