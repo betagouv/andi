@@ -118,4 +118,4 @@ CREATE INDEX entreprises_nic ON public.entreprises USING BTREE (nic);
 CREATE INDEX trgm_entreprises_enseigne ON public.entreprises USING GIN (enseigne public.gin_trgm_ops);
 CREATE INDEX trgm_entreprises_name ON public.entreprises USING GIN (nom public.gin_trgm_ops);
 CREATE INDEX entreprises_flags_gin ON PUBLIC.entreprises USING GIN (flags);
-CREATE INDEX entreprises_postgis_geom ON PUBLIC.entreprises USING GIST ((geom:geography))
+CREATE INDEX entreprises_postgis_geom ON PUBLIC.entreprises USING GIST ((geom::geography))
