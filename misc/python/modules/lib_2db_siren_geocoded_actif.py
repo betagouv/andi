@@ -5,7 +5,7 @@ logger = logging.getLogger(__name__)
 
 SQL_COMPANY = """
 INSERT INTO "entreprises" (
-    nom,
+    nom,                                    
     enseigne,
     siret,
     naf,
@@ -58,6 +58,7 @@ VALUES (
     %(nic_siege)s,
     %(geo_addr)s,
     %(geo_id)s,
+    %(geo_score)s,
     %(geo_type)s,
     %(lat)s,
     %(lon)s,
@@ -136,6 +137,7 @@ def sql_company(cur, d, tag):
         'geo_addr': d.get('geoadresse'),
         'geo_id': d.get('geoid'),
         'geo_type': d.get('geotype'),
+        'geo_score': d.get('geoscore'),
         'lat': d.get('latitude', 0) if d.get('latitude') != '' else 0,
         'lon': d.get('longitude', 0) if d.get('longitude') != '' else 0,
     }
