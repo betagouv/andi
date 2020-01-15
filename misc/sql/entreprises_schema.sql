@@ -1,6 +1,11 @@
 -- DROP STATEMENTS
+-- 
+-- Extensions for v1 matching geo searching /!\ DEPRECATED /!\
 CREATE EXTENSION IF NOT EXISTS cube;
 CREATE EXTENSION IF NOT EXISTS earthdistance;
+-- Extensions for v2 matching geo searching
+CREATE EXTENSION IF NOT EXISTS postgis;
+-- Extension for accelerated text search
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
 DROP INDEX IF EXISTS entreprises_geoloc;
 DROP INDEX IF EXISTS entreprises_naf;
@@ -10,6 +15,7 @@ DROP INDEX IF EXISTS entreprises_siret;
 DROP INDEX IF EXISTS trgm_entreprises_enseigne;
 DROP INDEX IF EXISTS trgm_entreprises_name;
 DROP INDEX IF EXISTS enterprises_flags_gin;
+DROP INDEX IF EXISTS entreprises_postgis_geom;
 DROP TABLE IF EXISTS "entreprises";
 DROP TYPE IF EXISTS COMPANY_SIZE;
 DROP TYPE IF EXISTS RATING;
@@ -78,6 +84,7 @@ CREATE TABLE entreprises (
     geo_score NUMERIC,
     geo_addr CHARACTER VARYING(256),
     geo_id CHARACTER VARYING(32),
+    geom GEOMETRY(Point, 4326),
 
     -- contact
     phone_official_1 CHARACTER VARYING(32),
@@ -94,12 +101,12 @@ CREATE TABLE entreprises (
 );
 
 
-CREATE INDEX entreprises_geoloc ON public.entreprises USING gist (public.ll_to_earth((lat)::double precision, (lon)::double precision));
-CREATE INDEX entreprises_naf ON public.entreprises USING btree (naf);
-CREATE INDEX entreprises_naf_macro ON public.entreprises USING btree ("substring"((naf)::TEXT, 0, 3));
-CREATE INDEX entreprises_nom_nulls_last ON public.entreprises USING btree (nom);
-CREATE INDEX entreprises_siret ON public.entreprises USING btree (siret);
-CREATE INDEX trgm_entreprises_enseigne ON public.entreprises USING gin (enseigne public.gin_trgm_ops);
-CREATE INDEX trgm_entreprises_name ON public.entreprises USING gin (nom public.gin_trgm_ops);
+CREATE INDEX entreprises_geoloc ON public.entreprises USING GIST (public.ll_to_earth((lat)::double precision, (lon)::double precision));
+CREATE INDEX entreprises_naf ON public.entreprises USING BTREE (naf);
+CREATE INDEX entreprises_naf_macro ON public.entreprises USING BTREE ("substring"((naf)::TEXT, 0, 3));
+CREATE INDEX entreprises_nom_nulls_last ON public.entreprises USING BTREE (nom);
+CREATE INDEX entreprises_siret ON public.entreprises USING BTREE (siret);
+CREATE INDEX trgm_entreprises_enseigne ON public.entreprises USING GIN (enseigne public.gin_trgm_ops);
+CREATE INDEX trgm_entreprises_name ON public.entreprises USING GIN (nom public.gin_trgm_ops);
 CREATE INDEX enterprises_flags_gin ON PUBLIC.entreprises USING GIN (flags);
-
+CREATE INDEX entreprises_postgis_geom ON PUBLIC.entreprises USING GIST(( geom:geography ));
