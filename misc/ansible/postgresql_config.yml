@@ -25,3 +25,24 @@
         password: "{{ jupyter_password }}"
         role_attr_flags: LOGIN
         priv: "CONNECT"
+
+  ## Extensions
+  - name: activate postgis
+    postgresql_ext:
+        name: postgis
+        db: andi
+
+  - name: activate cube
+    postgresql_ext:
+        name: cube
+        db: andi
+
+  - name: activate earthdistance
+    postgresql_ext:
+        name: earthdistance
+        db: andi
+
+  - name: activate earthdistance
+    postgresql_ext:
+        name: pg_trgm
+        db: andi
