@@ -59,6 +59,8 @@ CREATE TABLE entreprises (
     taille public.company_size,
     pmsmp_interest boolean,
     pmsmp_count_recent integer,
+    caractere_employeur BOOLEAN,
+    etat_administratif CHARACTER VARYING(1),
     rating_us public.rating,
     comments TEXT,
     source TEXT,
