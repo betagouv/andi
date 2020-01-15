@@ -27,6 +27,7 @@
           - xsel
           - xauth
           - git
+          - telnet
           - less
       logwatch_mail: 'pieterjan@montens.net'
 
