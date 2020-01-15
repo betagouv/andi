@@ -59,8 +59,8 @@ VALUES (
     %(geo_addr)s,
     %(geo_id)s,
     %(geo_type)s,
-    %(lat),
-    %(lon),
+    %(lat)s,
+    %(lon)s,
     ST_SetSRID(ST_MakePoint(%(lon)s, %(lat)s), 4326)
 )
 RETURNING id_internal
