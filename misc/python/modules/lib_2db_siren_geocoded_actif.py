@@ -10,10 +10,12 @@ INSERT INTO "entreprises" (
     siret,
     naf,
     siren,
+    nic,
     taille,
     pmsmp_interest,
     pmsmp_count_recent,
     caractere_employeur,
+    etat_actif,
     source,
     import_tag,
     flags,
@@ -29,7 +31,8 @@ INSERT INTO "entreprises" (
     geo_score,
     geo_type,
     lat,
-    lon
+    lon,
+    geom
 )
 VALUES (
     %(nom)s,
@@ -37,10 +40,12 @@ VALUES (
     %(siret)s,
     %(naf)s,
     %(siren)s,
+    %(nic)s,
     %(taille)s,
     %(pmsmp_interest)s,
     %(pmsmp_count_recent)s,
     %(caractere_employeur)s,
+    %(etat_actif)s,
     %(source)s,
     %(import_tag)s,
     %(flags)s,
@@ -55,7 +60,8 @@ VALUES (
     %(geo_id)s,
     %(geo_type)s,
     %(lat),
-    %(lon)
+    %(lon),
+    ST_SetSRID(ST_MakePoint(%(lon)s, %(lat)s), 4326)
 )
 RETURNING id_internal
 """
@@ -108,14 +114,16 @@ def sql_company(cur, d, tag):
     data = {
         'nom': d.get('denominationusuelleetablissement'),
         'enseigne': d.get('enseigne1etablissement'),
-        # 'siren': d.get('siren'),
-        # 'nic': d.get('nic'),
         'siret': d.get('siret'),
         'naf': d.get('activiteprincipaleetablissement').replace('.', ''),
+        'siren': d.get('siren'),
+        'nic': d.get('nic'),
         'taille': taille,
         'pmsmp_interest': False,
         'pmsmp_count_recent': 0,
-        'source': 'insee_sirene',
+        'caractere_employeur': d.get('caractereemployeuretablissement') != 'N',
+        'etat_actif': d.get('etatadministratifetablissement') == 'A',
+        'source': 'insee_sirene_geo_cquest',
         'import_tag': tag,
         'flags': [],
         'commune': d.get('libellecommuneetablissement'),
@@ -124,6 +132,12 @@ def sql_company(cur, d, tag):
         'commune_code': d.get('codecommuneetablissement'),
         'siege': d.get('etablissementsiege') == "true",
         'enseignes': enseignes,
+        'nic_siege': d.get('nicsiege'),
+        'geo_addr': d.get('geoadresse'),
+        'geo_id': d.get('geoid'),
+        'geo_type': d.get('geotype'),
+        'lat': d.get('latitude', 0) if d.get('latitude') != '' else 0,
+        'lon': d.get('longitude', 0) if d.get('longitude') != '' else 0,
     }
 
     return cur.mogrify(SQL_COMPANY, data)

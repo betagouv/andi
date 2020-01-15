@@ -1,21 +1,19 @@
 -- DROP STATEMENTS
--- 
--- Extensions for v1 matching geo searching /!\ DEPRECATED /!\
 CREATE EXTENSION IF NOT EXISTS cube;
 CREATE EXTENSION IF NOT EXISTS earthdistance;
--- Extensions for v2 matching geo searching
-CREATE EXTENSION IF NOT EXISTS postgis;
--- Extension for accelerated text search
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
+CREATE EXTENSION IF NOT EXISTS postgis;
 DROP INDEX IF EXISTS entreprises_geoloc;
 DROP INDEX IF EXISTS entreprises_naf;
 DROP INDEX IF EXISTS entreprises_naf_macro;
 DROP INDEX IF EXISTS entreprises_nom_nulls_last;
 DROP INDEX IF EXISTS entreprises_siret;
+DROP INDEX IF EXISTS entreprises_siren;
+DROP INDEX IF EXISTS entreprises_nic;
+DROP INDEX IF EXISTS entreprises_flags_gin;
+DROP INDEX IF EXISTS entreprises_geom;
 DROP INDEX IF EXISTS trgm_entreprises_enseigne;
 DROP INDEX IF EXISTS trgm_entreprises_name;
-DROP INDEX IF EXISTS enterprises_flags_gin;
-DROP INDEX IF EXISTS entreprises_postgis_geom;
 DROP TABLE IF EXISTS "entreprises";
 DROP TYPE IF EXISTS COMPANY_SIZE;
 DROP TYPE IF EXISTS RATING;
@@ -53,6 +51,7 @@ CREATE TABLE entreprises (
     enseignes TEXT [],
     siret CHARACTER VARYING(14) NOT NULL UNIQUE,
     siren CHARACTER VARYING(9),
+    nic CHARACTER VARYING(5),
     nic_siege CHARACTER VARYING(5),
     naf CHARACTER VARYING(5),
     addr TEXT [],
@@ -60,7 +59,7 @@ CREATE TABLE entreprises (
     pmsmp_interest boolean,
     pmsmp_count_recent integer,
     caractere_employeur BOOLEAN,
-    etat_administratif CHARACTER VARYING(1),
+    etat_actif BOOLEAN,
     rating_us public.rating,
     comments TEXT,
     source TEXT,
@@ -86,7 +85,7 @@ CREATE TABLE entreprises (
     geo_score NUMERIC,
     geo_addr CHARACTER VARYING(256),
     geo_id CHARACTER VARYING(32),
-    geom GEOMETRY(Point, 4326),
+    geom geometry(Point, 4326),
 
     -- contact
     phone_official_1 CHARACTER VARYING(32),
@@ -103,12 +102,15 @@ CREATE TABLE entreprises (
 );
 
 
-CREATE INDEX entreprises_geoloc ON public.entreprises USING GIST (public.ll_to_earth((lat)::double precision, (lon)::double precision));
+-- Deprecated: using postgis method now
+-- CREATE INDEX entreprises_geoloc ON public.entreprises USING GIST (public.ll_to_earth((lat)::double precision, (lon)::double precision));
 CREATE INDEX entreprises_naf ON public.entreprises USING BTREE (naf);
 CREATE INDEX entreprises_naf_macro ON public.entreprises USING BTREE ("substring"((naf)::TEXT, 0, 3));
 CREATE INDEX entreprises_nom_nulls_last ON public.entreprises USING BTREE (nom);
 CREATE INDEX entreprises_siret ON public.entreprises USING BTREE (siret);
+CREATE INDEX entreprises_siren ON public.entreprises USING BTREE (siren);
+CREATE INDEX entreprises_nic ON public.entreprises USING BTREE (nic);
 CREATE INDEX trgm_entreprises_enseigne ON public.entreprises USING GIN (enseigne public.gin_trgm_ops);
 CREATE INDEX trgm_entreprises_name ON public.entreprises USING GIN (nom public.gin_trgm_ops);
-CREATE INDEX enterprises_flags_gin ON PUBLIC.entreprises USING GIN (flags);
-CREATE INDEX entreprises_postgis_geom ON PUBLIC.entreprises USING GIST(( geom:geography ));
+CREATE INDEX entreprises_flags_gin ON PUBLIC.entreprises USING GIN (flags);
+CREATE INDEX entreprises_geom ON PUBLIC.entreprises USING GIST ((geom:geography))
