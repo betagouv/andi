@@ -1,8 +1,13 @@
 -- DROP STATEMENTS
+-- 
+-- Extensions for v1 matching geo searching /!\ DEPRECATED /!\
 CREATE EXTENSION IF NOT EXISTS cube;
 CREATE EXTENSION IF NOT EXISTS earthdistance;
-CREATE EXTENSION IF NOT EXISTS pg_trgm;
+-- Extensions for v2 matching geo searching
 CREATE EXTENSION IF NOT EXISTS postgis;
+-- Extension for accelerated text search
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+
 DROP INDEX IF EXISTS entreprises_geoloc;
 DROP INDEX IF EXISTS entreprises_naf;
 DROP INDEX IF EXISTS entreprises_naf_macro;
@@ -11,7 +16,7 @@ DROP INDEX IF EXISTS entreprises_siret;
 DROP INDEX IF EXISTS entreprises_siren;
 DROP INDEX IF EXISTS entreprises_nic;
 DROP INDEX IF EXISTS entreprises_flags_gin;
-DROP INDEX IF EXISTS entreprises_geom;
+DROP INDEX IF EXISTS entreprises_postgis_geom;
 DROP INDEX IF EXISTS trgm_entreprises_enseigne;
 DROP INDEX IF EXISTS trgm_entreprises_name;
 DROP TABLE IF EXISTS "entreprises";
@@ -113,4 +118,4 @@ CREATE INDEX entreprises_nic ON public.entreprises USING BTREE (nic);
 CREATE INDEX trgm_entreprises_enseigne ON public.entreprises USING GIN (enseigne public.gin_trgm_ops);
 CREATE INDEX trgm_entreprises_name ON public.entreprises USING GIN (nom public.gin_trgm_ops);
 CREATE INDEX entreprises_flags_gin ON PUBLIC.entreprises USING GIN (flags);
-CREATE INDEX entreprises_geom ON PUBLIC.entreprises USING GIST ((geom:geography))
+CREATE INDEX entreprises_postgis_geom ON PUBLIC.entreprises USING GIST ((geom:geography))

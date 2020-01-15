@@ -5,11 +5,13 @@
     jupyter_password: [JUPYTER_PASSWORD]
   tasks:
 
+  ## Database creation
   - name: add default database
     postgresql_db:
         name: andi
         encoding: UTF-8
 
+  ## User setup
   - name: add default user
     postgresql_user:
         db: andi
@@ -25,6 +27,15 @@
         password: "{{ jupyter_password }}"
         role_attr_flags: LOGIN
         priv: "CONNECT"
+
+  - name: allow default user connecting through tunnel
+    postgresql_pg_hba:
+        dest: /etc/postgresql/12/main/pg_hba.conf
+        contype: host
+        users: intendant,jupyter
+        databases: andi
+        source: [HOST IP]
+        method: password
 
   ## Extensions
   - name: activate postgis
