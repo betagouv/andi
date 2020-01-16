@@ -49,11 +49,6 @@ def exec_row(cur, data_row, tag=False, dry_run=False):
         cid = None
         cur.execute(sql_company(cur, data_row, tag))
         (cid,) = cur.fetchone()
-        # sqls = [
-        #     sql_position(cur, cid, data_row),
-        #     sql_contact(cur, cid, data_row)
-        # ]
-        # [cur.execute(sql) for sql in sqls]
     else:
         cid = "test"
         sqls = [

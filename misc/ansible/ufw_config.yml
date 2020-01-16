@@ -1,0 +1,31 @@
+---
+- hosts: all
+  tasks:
+  - name: Allow ssh \o/
+    ufw:
+        rule: allow
+        name: OpenSSH
+
+  - name: Rate limit ssh
+    ufw:
+      rule: limit
+      port: ssh
+      proto: tcp
+  - name: allow standard web traffic
+    ufw:
+        rule: allow
+        port: '80'
+        proto: tcp
+
+  - name: allow secured web traffic
+    ufw:
+        rule: allow
+        port: '443'
+        proto: tcp
+
+  - name: allow seconderay secured web traffic
+    ufw:
+        rule: allow
+        port: '4430'
+        proto: tcp
+
