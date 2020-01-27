@@ -103,6 +103,7 @@ CREATE TABLE entreprises (
 
 CREATE INDEX entreprises_geoloc ON public.entreprises USING GIST (public.ll_to_earth((lat)::double precision, (lon)::double precision));
 CREATE INDEX entreprises_naf ON public.entreprises USING BTREE (naf);
+CREATE INDEX entreprises_employeur ON public.entreprises USING BTREE (caractere_employeur);
 CREATE INDEX entreprises_naf_macro ON public.entreprises USING BTREE ("substring"((naf)::TEXT, 0, 3));
 CREATE INDEX entreprises_nom_nulls_last ON public.entreprises USING BTREE (nom);
 CREATE INDEX entreprises_siret ON public.entreprises USING BTREE (siret);
