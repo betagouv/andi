@@ -35,7 +35,7 @@ export const query = graphql`
 
 const PointDetail = ({number, title, text=false}) => (
     <div className="col">
-      <span className="number"><span className={ number }></span></span>
+      <div className="number"><span className={ number }></span></div>
       <h3>{ title }</h3>
       { text 
         ?  <p>{ text }</p>
@@ -112,7 +112,9 @@ class IndexPage extends React.Component {
                           <PointDetail number="icon-one" title={ this.d.point1 } />
                           <PointDetail number="icon-two" title={ this.d.point2 } />
                           <PointDetail number="icon-three" title={ this.d.point3 } />
+                          { /*
                           <PointDetail number="icon-four" title={ this.d.point4 } />
+                          */ }
                         </div>
                       </div>
                     </div>
