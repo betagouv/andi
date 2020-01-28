@@ -35,7 +35,7 @@ export const query = graphql`
 
 const PointDetail = ({number, title, text=false}) => (
     <div className="col">
-      <span className="number"><span className={ number }></span></span>
+      <div className="number"><span className={ number }></span></div>
       <h3>{ title }</h3>
       { text 
         ?  <p>{ text }</p>
