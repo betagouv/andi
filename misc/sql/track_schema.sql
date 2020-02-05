@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS "trackers";
 
 CREATE TABLE trackers (
     id_internal SERIAL PRIMARY KEY,
+    version INT NOT NULL,
     date_created TIMESTAMP WITH TIME ZONE DEFAULT now(),
     session_id UUID NOT NULL,
     send_order INT,
