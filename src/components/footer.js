@@ -26,6 +26,7 @@ const Footer = () => (
               <h2>Liens</h2>
               <ul className="footer-link">
                 <li><Link to="/conditions-generales">Conditions générales</Link></li>
+                <li><Link to="/mentions-legales">Mentions légales</Link></li>
                 <li><a href="mailto:ANDI_Startup@caissedesdepots.fr" title="Nous écrire un mail">Nous contacter</a></li>
                 <li>
                     <ul className="social-link col-6 col-xs-4">
