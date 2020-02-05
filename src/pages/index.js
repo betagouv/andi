@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { mdReact } from 'markdown-react-js';
 
 import Layout from "../components/layout"
@@ -56,7 +56,8 @@ const Hero = ({title, text, button}) => (
              { /* J'assume */ }
              <br />
              <br />
-             <Link className="button large btn-xl" to="https://andi.beta.gouv.fr/service" style={{top: '-40px'}}>{ button }</Link>
+             { /*<Link className="button large btn-xl" to="https://andi.beta.gouv.fr/service" style={{top: '-40px'}}>{ button }</Link> */}
+             <a className="button large btn-xl" href="https://andi.beta.gouv.fr/service" style={{top: '-40px'}}>{ button }</a>
            </div>
            <div className="col-lg-4 col-sm-12 text-right no-gutters">
            <img  className="opt_img illu-1" src={illu1} alt="" srcSet={`${illu1_2x} 2x, ${illu1_3x} 3x`}  />
