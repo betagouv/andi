@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import { mdReact } from 'markdown-react-js';
 
+// import Layout from "../components/layout"
 // import Image from "../components/image"
  import SEO from "../components/seo"
 
@@ -9,6 +10,10 @@ import illu1 from '../images/illu-1.png';
 import illu1_2x from '../images/illu-1@2x.png';
 import illu1_3x from '../images/illu-1@3x.png';
 
+/* TODO: 
+ * - use gatsby images
+ * - add SEO
+ */
 export const query = graphql`
 { 
     andi {
@@ -27,9 +32,9 @@ const Hero = ({title, text, button}) => (
        <div className="container-fluid">
          <div className="row">
            <div className="col-lg-7 offset-lg-1 col-sm-10 offset-sm-1 col-xs-12 offset-xs-0 title_wrapper">
-             <SEO title="404: Page non trouvée" />
+             <SEO title="50X: Erreur serveur" />
              <div className="hero__p">
-               <p>Cette page n'existe pas</p>
+               <p>Un erreur du service empêche son fonctionnement</p>
              </div>
              { /* J'assume */ }
              <br />
