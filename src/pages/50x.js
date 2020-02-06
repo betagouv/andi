@@ -34,12 +34,14 @@ const Hero = ({title, text, button}) => (
            <div className="col-lg-7 offset-lg-1 col-sm-10 offset-sm-1 col-xs-12 offset-xs-0 title_wrapper">
              <SEO title="50X: Erreur serveur" />
              <div className="hero__p">
-               <p>Un erreur du service empêche son fonctionnement</p>
+               <p>
+               Nous sommes en train de réparer une panne.  Vous pourrez bientôt relancer votre recherche.
+               </p>
              </div>
              { /* J'assume */ }
              <br />
              <br />
-             <Link className="button large btn-xl" to="/" style={{top: '-40px'}}>{ "Accueil" }</Link>
+             <Link className="button large btn-xl" to="/" style={{top: '-40px'}}>{ "Retour à l'accueil 🤞" }</Link>
            </div>
            <div className="col-lg-4 col-sm-12 text-right no-gutters">
            <img  className="opt_img illu-1" src={illu1} alt="" srcSet={`${illu1_2x} 2x, ${illu1_3x} 3x`}  />
