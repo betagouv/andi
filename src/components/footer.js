@@ -25,8 +25,6 @@ const Footer = () => (
             <div className="col-xs-12 offset-xs-0 col offset-lg-2">
               <h2>Liens</h2>
               <ul className="footer-link">
-                <li><Link to="/conditions-generales">Conditions générales</Link></li>
-                <li><Link to="/mentions-legales">Mentions légales</Link></li>
                 <li><a href="mailto:ANDI_Startup@caissedesdepots.fr" title="Nous écrire un mail">Nous contacter</a></li>
                 <li>
                     <ul className="social-link col-6 col-xs-4">
@@ -35,6 +33,9 @@ const Footer = () => (
                     <li className="col"><a href="https://www.linkedin.com/company/andi-betagouv/" title="LinkedIn"><span className="icon-linkedin"></span></a></li>
                     </ul>
                 </li>
+                <li><Link to="/conditions-generales">Conditions générales</Link></li>
+                <li><Link to="/donnees-personnelles">Données personnelles</Link></li>
+                <li><Link to="/mentions-legales">Mentions légales</Link></li>
                     {/* <li className="col">
                       <a href="">
                         <span className="icon-medium"></span>
