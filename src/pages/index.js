@@ -14,6 +14,8 @@ import team_illu from '../images/team-startup-illu.png';
 import team_illu_2x from '../images/team-startup-illu@2x.png';
 import team_illu_3x from '../images/team-startup-illu@3x.png';
 
+import { track, Steps } from '../../static/tracker.js';
+
 /* TODO: 
  * - use gatsby images
  * - add SEO
@@ -51,7 +53,7 @@ const Hero = ({title, text, button}) => (
            <div className="col-lg-7 offset-lg-1 col-sm-10 offset-sm-1 col-xs-12 offset-xs-0 title_wrapper">
              <h1>{ title }</h1>
              <div className="hero__p">
-               <p>{ text }</p>
+               { text }
              </div>
              { /* J'assume */ }
              <br />
@@ -80,6 +82,7 @@ class IndexPage extends React.Component {
             }
         }
         this.d = data
+        track('landing-page', Steps.ARRIVAL);
     }
 
     render() {
