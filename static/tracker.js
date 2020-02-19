@@ -4,15 +4,17 @@ var SESSION_ID = "";
 export function track(page, action, meta={}) {
     meta.descriptor = 'mvp';
     meta.dev = process.env.GATSBY_ACTIVE_ENV !== 'prod';
-    const body = computeRequestBody(page, action, meta)
+    const body = computeRequestBody(page, action, meta);
     
-    fetch('https://andi.beta.gouv.fr/api/track', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
+    if (typeof window !== 'undefined'   ) {
+        fetch('https://andi.beta.gouv.fr/api/track', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(body),
+        });
+    }
 }
 
 
