@@ -73,6 +73,12 @@ module.exports = {
       resolve: `gatsby-plugin-create-client-paths`,
       options: { prefixes: [`/formulaires/*`] },
     },
+    {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        whitelist: ["GATSBY_ACTIVE_ENV"]
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

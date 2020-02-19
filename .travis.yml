@@ -53,6 +53,8 @@ jobs:
     name: Deploy pages to host
     if: branch = master AND type = push AND fork = false
     skip_cleanup: true
+    env:
+      - GATSBY_ACTIVE_ENV=prod
     script: 
       - ls public/
       - npm run build

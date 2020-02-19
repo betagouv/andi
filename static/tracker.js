@@ -3,10 +3,8 @@ var SESSION_ID = "";
 
 export function track(page, action, meta={}) {
     meta.descriptor = 'mvp';
-    // FIXME
-    meta.dev = true;
+    meta.dev = process.env.GATSBY_ACTIVE_ENV !== 'prod';
     const body = computeRequestBody(page, action, meta)
-    console.log('Tracker:', body);
     
     fetch('https://andi.beta.gouv.fr/api/track', {
       method: 'POST',
@@ -14,7 +12,7 @@ export function track(page, action, meta={}) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
-    })
+    });
 }
 
 
@@ -48,7 +46,7 @@ function computeRequestBody(page, action, meta) {
         session_id: getSessionId(),
         page: page,
         action: action,
-        meta: meta,
+        meta: JSON.stringify(meta),
         client_context: {},
         server_context: {}
     }
