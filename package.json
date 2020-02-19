@@ -6,6 +6,7 @@
   "author": "Pieterjan Montens <pieterjan@montens.net>",
   "dependencies": {
     "anchor-scroll": "^2.0.0",
+    "browser-monads": "^1.0.0",
     "date-fns": "^2.9.0",
     "formik": "^1.5.8",
     "gatsby": "^2.19.12",

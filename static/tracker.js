@@ -5,14 +5,15 @@ export function track(page, action, meta={}) {
     meta.descriptor = 'mvp';
     // FIXME
     meta.dev = true;
-    console.log(page, action, meta);
+    const body = computeRequestBody(page, action, meta)
+    console.log('Tracker:', body);
     
     fetch('https://andi.beta.gouv.fr/api/track', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(computeRequestBody(page, action, meta)),
+      body: JSON.stringify(body),
     })
 }
 
@@ -24,6 +25,7 @@ export const Steps = {
     LINKTO: 'linkto',
     BILAN: 'bilan',
     TO_MATCHING: 'to_matching',
+    TO_SERVICE: 'to_service',
     QUESTION_ARRIVAL: 'question_arrival',
     QUESTION_DEPARTURE: 'question_departure',
     QUESTION_RESPONSE: 'question_response',
@@ -43,11 +45,28 @@ function computeRequestBody(page, action, meta) {
         _v:1,
         timestamp: timeNow.toISOString(),
         order: ORDER += 1,
-        session_id: SESSION_ID,
+        session_id: getSessionId(),
         page: page,
         action: action,
         meta: meta,
         client_context: {},
         server_context: {}
     }
-    }
+}
+
+
+function uuidv4() {
+  try {
+      return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+      );
+  } catch {
+      return 'ANONYMOUS';
+  }
+}
+
+export function getSessionId() {
+    if (SESSION_ID === "")
+        SESSION_ID =  uuidv4();
+    return SESSION_ID;
+}
