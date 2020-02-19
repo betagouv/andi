@@ -1,6 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
+import { track, Steps } from '../../static/tracker.js';
 
+function track_event(step, meta={}) {
+    return () => {track('landing-page', step, meta)} ;
+}
 
 const Footer = () => (
       <footer className="footer" role="contentinfo">
@@ -25,17 +29,17 @@ const Footer = () => (
             <div className="col-xs-12 offset-xs-0 col offset-lg-2">
               <h2>Liens</h2>
               <ul className="footer-link">
-                <li><a href="mailto:ANDI_Startup@caissedesdepots.fr" title="Nous écrire un mail">Nous contacter</a></li>
+                <li><a href="mailto:ANDI_Startup@caissedesdepots.fr" title="Nous écrire un mail" onClick={ track_event(Steps.MAILTO, {link:'ANDI_Startup@caissedesdepots.fr'}) }>Nous contacter</a></li>
                 <li>
                     <ul className="social-link col-6 col-xs-4">
-                    <li className="col"><a href="https://twitter.com/ANDi_betagouv" title="Twitter"><span className="icon-twitter"></span></a></li>
-                    <li className="col"><a href="https://github.com/betagouv/andi" title="Github"><span className="icon-github"></span></a></li>
-                    <li className="col"><a href="https://www.linkedin.com/company/andi-betagouv/" title="LinkedIn"><span className="icon-linkedin"></span></a></li>
+                    <li className="col"><a href="https://twitter.com/ANDi_betagouv" title="Twitter" onClick={ track_event(Steps.LINKTO, {link:'twitter', type:'external'}) }><span className="icon-twitter"></span></a></li>
+                    <li className="col"><a href="https://github.com/betagouv/andi" title="Github" onClick={ track_event(Steps.LINKTO, {link:'github', type:'external'}) }><span className="icon-github"></span></a></li>
+                    <li className="col"><a href="https://www.linkedin.com/company/andi-betagouv/" title="LinkedIn" onClick={ track_event(Steps.LINKTO, {link:'linkedin', type:'external'}) }><span className="icon-linkedin"></span></a></li>
                     </ul>
                 </li>
-                <li><Link to="/conditions-generales">Conditions générales</Link></li>
-                <li><Link to="/donnees-personnelles">Données personnelles</Link></li>
-                <li><Link to="/mentions-legales">Mentions légales</Link></li>
+                <li><Link to="/conditions-generales" onClick={ track_event(Steps.LINKTO, {link:'/conditions-generales', type:'internal'}) }>Conditions générales</Link></li>
+                <li><Link to="/donnees-personnelles" onClick={ track_event(Steps.LINKTO, {link:'/donnees-personnelles', type:'internal'}) }>Données personnelles</Link></li>
+                <li><Link to="/mentions-legales" onClick={ track_event(Steps.LINKTO, {link:'/mentions-legales', type:'internal'}) }>Mentions légales</Link></li>
                     {/* <li className="col">
                       <a href="">
                         <span className="icon-medium"></span>
