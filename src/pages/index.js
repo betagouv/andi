@@ -14,6 +14,8 @@ import team_illu from '../images/team-startup-illu.png';
 import team_illu_2x from '../images/team-startup-illu@2x.png';
 import team_illu_3x from '../images/team-startup-illu@3x.png';
 
+import { track, Steps, getSessionId } from '../../static/tracker.js';
+
 /* TODO: 
  * - use gatsby images
  * - add SEO
@@ -44,20 +46,26 @@ const PointDetail = ({number, title, text=false}) => (
     </div>
 )
 
-const Hero = ({title, text, button}) => (
+function track_event(step, meta={}) {
+    return () => {track('landing-page', step, meta)} ;
+}
+
+const Hero = ({title, text, button}) => {
+
+     return (
      <section className="section section-grey section__bottom_svg" role="banner">
        <div className="container-fluid">
          <div className="row">
            <div className="col-lg-7 offset-lg-1 col-sm-10 offset-sm-1 col-xs-12 offset-xs-0 title_wrapper">
              <h1>{ title }</h1>
              <div className="hero__p">
-               <p>{ text }</p>
+               { text }
              </div>
              { /* J'assume */ }
              <br />
              <br />
              { /*<Link className="button large btn-xl" to="https://andi.beta.gouv.fr/service" style={{top: '-40px'}}>{ button }</Link> */}
-             <a className="button large btn-xl" href="https://andi.beta.gouv.fr/service" style={{top: '-40px'}}>{ button }</a>
+             <a className="button large btn-xl" href={"/service?sid=" + getSessionId()} style={{top: '-40px'}} onClick={track_event(Steps.TO_SERVICE)} >{ button }</a>
            </div>
            <div className="col-lg-4 col-sm-12 text-right no-gutters">
            <img  className="opt_img illu-1" src={illu1} alt="" srcSet={`${illu1_2x} 2x, ${illu1_3x} 3x`}  />
@@ -65,7 +73,8 @@ const Hero = ({title, text, button}) => (
          </div>
        </div>
      </section>
-)
+     )
+}
 
 
 class IndexPage extends React.Component {
@@ -80,6 +89,7 @@ class IndexPage extends React.Component {
             }
         }
         this.d = data
+        track_event(Steps.ARRIVAL)();
     }
 
     render() {

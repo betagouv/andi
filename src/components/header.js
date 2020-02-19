@@ -9,6 +9,12 @@ import marianneSVG from '../images/logo-marianne.svg'
 // import marianneDeuilPNG from '../images/logo-marianne-deuil.png'
 // import betagouvSVG from '../images/pointbetagouvfr.svg'
 
+import { track, Steps } from '../../static/tracker.js';
+
+function track_event(step, meta={}) {
+    return () => {track('landing-page', step, meta)} ;
+}
+
 const Header = ({showNav=true}) => {
     showNav = false
     return (
@@ -18,7 +24,7 @@ const Header = ({showNav=true}) => {
         <nav>
             <header className="navbar" aria-label="en-tête de la page" >
                 <div className="navbar__container">
-                  <Link to="/" className="navbar__home">
+                  <Link to="/" className="navbar__home" onClick={ track_event(Steps.LINKTO, {link:'/', type:'internal'}) }>
                     <img className="navbar__logo" src={marianneSVG} alt="logo république française" />
                     <span className="navbar_domain">andi<b>.beta.gouv.</b><em>fr</em></span>
                   </Link>
@@ -28,10 +34,10 @@ const Header = ({showNav=true}) => {
                   ? <div className="sub-nav">
                       <ul className="navbar-nav">
                         <li className="nav-item">
-                          <Link to="/" className='nav-link' activeClassName="active" style={{marginRight: '10px'}}>Accueil</Link>
+                          <Link to="/" className='nav-link' activeClassName="active" style={{marginRight: '10px'}} onClick={ track_event(Steps.LINKTO, {link:'/', type:'internal'}) }>Accueil</Link>
                         </li>
                         <li className="nav-item">
-                          <Link to="/inscription" className='nav-link' activeClassName="active">Inscription</Link>
+                          <Link to="/inscription" className='nav-link' activeClassName="active" onClick={ track_event(Steps.LINKTO, {link:'/inscription', type:'internal'}) }>Inscription</Link>
                         </li>
                       </ul>
                     </div>

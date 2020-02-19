@@ -6,11 +6,13 @@
   "author": "Pieterjan Montens <pieterjan@montens.net>",
   "dependencies": {
     "anchor-scroll": "^2.0.0",
+    "browser-monads": "^1.0.0",
     "date-fns": "^2.9.0",
     "formik": "^1.5.8",
     "gatsby": "^2.19.12",
     "gatsby-image": "^2.2.40",
     "gatsby-plugin-create-client-paths": "^2.1.22",
+    "gatsby-plugin-env-variables": "^1.0.1",
     "gatsby-plugin-favicon": "^3.1.6",
     "gatsby-plugin-google-analytics": "^2.1.35",
     "gatsby-plugin-hotjar": "^1.0.1",
