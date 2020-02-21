@@ -27,7 +27,7 @@ const Header = ({showNav=true}) => {
                 <div className="navbar__container">
 
                   <a href="https://www.caissedesdepots.fr/" className="navbar_cdc" onClick={ track_event(Steps.LINKTO, {link:'cdc', type:'external'}) }>
-                     <img src={cdcSVG} />
+                     <img src={cdcSVG}  alt="logo caisse des dépôts"/>
                      
                   </a>
                   <Link to="/" className="navbar__home" onClick={ track_event(Steps.LINKTO, {link:'/', type:'internal'}) } style={{marginTop: '-6px'}}>
