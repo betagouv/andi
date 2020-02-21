@@ -4792,6 +4792,11 @@ footer.footer .footer-link li > a {
   /* text-decoration: none; */
 }
 
+footer.footer .footer-link .icon a {
+  text-decoration: none;
+}
+
+
 footer.footer .social-link {
   display: -webkit-box;
   display: -ms-flexbox;
