@@ -1445,17 +1445,11 @@ select.pagination__display {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   padding: 1em;
   padding: var(--space-s);
-}
-
-.navbar__home {
-  height: 40px;
 }
 
 .navbar__logo {
@@ -1533,9 +1527,10 @@ span.navbar__domain {
   -webkit-padding-after: 3px; /* fix the broken line-height in logo */
 }
 
-@media (max-width: 749px) {
+@media (max-width: 200px) {
+  /*
   .navbar__container {
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
@@ -1548,6 +1543,7 @@ span.navbar__domain {
     padding-top: 1em;
     padding-top: var(--space-s);
   }
+  */
 }
 
 .hero {

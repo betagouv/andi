@@ -32,9 +32,10 @@ const Footer = () => (
                 <li><a href="mailto:ANDI_Startup@caissedesdepots.fr" title="Nous écrire un mail" onClick={ track_event(Steps.MAILTO, {link:'ANDI_Startup@caissedesdepots.fr'}) }>Nous contacter</a></li>
                 <li>
                     <ul className="social-link col-6 col-xs-4">
-                    <li className="col"><a href="https://twitter.com/ANDi_betagouv" title="Twitter" onClick={ track_event(Steps.LINKTO, {link:'twitter', type:'external'}) }><span className="icon-twitter"></span></a></li>
-                    <li className="col"><a href="https://github.com/betagouv/andi" title="Github" onClick={ track_event(Steps.LINKTO, {link:'github', type:'external'}) }><span className="icon-github"></span></a></li>
-                    <li className="col"><a href="https://www.linkedin.com/company/andi-betagouv/" title="LinkedIn" onClick={ track_event(Steps.LINKTO, {link:'linkedin', type:'external'}) }><span className="icon-linkedin"></span></a></li>
+                    <li className="col icon"><a href="https://www.youtube.com/channel/UCpdxQewkNIf11dwc1nqgS8A/featured?disable_polymer=1" title="YouTube ANDi" onClick={ track_event(Steps.LINKTO, {link:'youtube', type:'external'}) }><span className="icon-youtube"></span></a></li>
+                    <li className="col icon"><a href="https://twitter.com/ANDi_betagouv" title="Twitter ANDi" onClick={ track_event(Steps.LINKTO, {link:'twitter', type:'external'}) }><span className="icon-twitter"></span></a></li>
+                    <li className="col icon"><a href="https://github.com/betagouv/andi" title="Github ANDi" onClick={ track_event(Steps.LINKTO, {link:'github', type:'external'}) }><span className="icon-github"></span></a></li>
+                    <li className="col icon"><a href="https://www.linkedin.com/company/andi-betagouv/" title="LinkedIn ANDi" onClick={ track_event(Steps.LINKTO, {link:'linkedin', type:'external'}) }><span className="icon-linkedin"></span></a></li>
                     </ul>
                 </li>
                 <li><Link to="/conditions-generales" onClick={ track_event(Steps.LINKTO, {link:'/conditions-generales', type:'internal'}) }>Conditions générales</Link></li>
