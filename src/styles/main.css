@@ -4665,6 +4665,10 @@ a.nav-link:hover, button.nav-link:hover {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 auto;
           flex: 0 1 auto;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  overflow:hidden;
+  min-width:0;
 }
 
 .navbar__home {
