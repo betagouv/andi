@@ -30,7 +30,7 @@ const Header = ({showNav=true}) => {
                      <img src={cdcSVG} />
                      
                   </a>
-                  <Link to="/" className="navbar__home" onClick={ track_event(Steps.LINKTO, {link:'/', type:'internal'}) }>
+                  <Link to="/" className="navbar__home" onClick={ track_event(Steps.LINKTO, {link:'/', type:'internal'}) } style={{marginTop: '-6px'}}>
                     <img className="navbar__logo" src={marianneSVG} alt="logo république française" />
                     <span className="navbar_domain">andi<b>.beta.gouv.</b><em>fr</em></span>
                   </Link>

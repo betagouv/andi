@@ -1454,10 +1454,6 @@ select.pagination__display {
   padding: var(--space-s);
 }
 
-.navbar__home {
-  height: 40px;
-}
-
 .navbar__logo {
   height: 100%;
 }

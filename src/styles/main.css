@@ -4789,7 +4789,7 @@ footer.footer .footer-link li {
 
 footer.footer .footer-link li > a {
   color: white;
-  text-decoration: none;
+  /* text-decoration: none; */
 }
 
 footer.footer .social-link {
