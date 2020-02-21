@@ -6,6 +6,7 @@ import { Link } from "gatsby"
 import Svg from "./svg"
 
 import marianneSVG from '../images/logo-marianne.svg'
+import cdcSVG from '../images/logo-cdc.svg'
 // import marianneDeuilPNG from '../images/logo-marianne-deuil.png'
 // import betagouvSVG from '../images/pointbetagouvfr.svg'
 
@@ -24,6 +25,11 @@ const Header = ({showNav=true}) => {
         <nav>
             <header className="navbar" aria-label="en-tête de la page" >
                 <div className="navbar__container">
+
+                  <a href="https://www.caissedesdepots.fr/" className="navbar_cdc" onClick={ track_event(Steps.LINKTO, {link:'cdc', type:'external'}) }>
+                     <img src={cdcSVG} />
+                     
+                  </a>
                   <Link to="/" className="navbar__home" onClick={ track_event(Steps.LINKTO, {link:'/', type:'internal'}) }>
                     <img className="navbar__logo" src={marianneSVG} alt="logo république française" />
                     <span className="navbar_domain">andi<b>.beta.gouv.</b><em>fr</em></span>
