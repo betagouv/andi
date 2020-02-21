@@ -42,6 +42,9 @@
 .icon-twitter:before {
   content: "\e802";
 }
+.icon-youtube:before {
+  content: "\f167";
+}
 .icon-github:before {
   content: "\e800";
   /*content: "\f09b";*/
