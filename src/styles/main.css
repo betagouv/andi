@@ -4946,6 +4946,11 @@ dt button {
     width:100%;
     text-align:left;
     font-size:1.5em;
+    padding-top:.3em;
+}
+
+dt button:hover {
+    background-color:#f2f2f2;
 }
 
 dt button span {
@@ -4958,6 +4963,7 @@ dd span {
     display:block;
     padding:1rem;
     font-size:1.5em;
+    line-height:1.8em;
 }
 
 .pointdetail {

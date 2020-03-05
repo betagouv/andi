@@ -82,7 +82,7 @@ class ImmersionDetails extends React.Component {
 
         for (const el of this.list) {
             list.push(
-                <dt className="col-12 col-lg-10 col-xl-8 mt-4">
+                <dt className="col-12 col-lg-10 col-xl-8 mt-4 pt-2">
                     <button onClick={ () => this.toggleHidden(el[0]) }>
                         { el[1] }
                         <span className={this.state.show[el[0]] ? 'icon-arrow-up' : 'icon-arrow-down'}></span>
