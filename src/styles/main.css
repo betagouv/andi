@@ -4960,3 +4960,12 @@ dd span {
     font-size:1.5em;
 }
 
+.pointdetail {
+    margin:0;
+    padding:0;
+    font-size:1.5em;
+}
+.pointdetail h3 {
+    margin:0;
+    padding:0;
+}

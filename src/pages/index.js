@@ -36,10 +36,10 @@ export const query = graphql`
 // const abbr_andi = "accompagnement numérique au développement de l'insertion"
 
 const PointDetail = ({number, title, text=false}) => (
-    <div className="col px-8 mx-3">
-      <div className="row">
-         <div className="col-2 number"><span className={ number }></span></div>
-         <div className="col-8">
+    <div className="col col-12 col-lg-3 mx-0">
+      <div className="row pointdetail">
+         <div className="col col-2 col-lg-2 number"><span className={ number }></span></div>
+         <div className="col col-lg-8">
            <h3>{ title }</h3>
            { text 
              ?  <p>{ text }</p>
@@ -77,13 +77,13 @@ class ImmersionDetails extends React.Component {
 
         for (const el of this.list) {
             list.push(
-                <dt className="col-8">
+                <dt className="col-12 col-lg-10 col-xl-8 mt-4">
                     <button onClick={ () => this.toggleHidden(el[0]) }>
                         { el[1] }
                         <span className={this.state.show[el[0]] ? 'icon-arrow-up' : 'icon-arrow-down'}></span>
                     </button>
                 </dt>);
-            list.push(<dd className="col-8">{ this.state.show[el[0]] && <span>{ el[2] }</span> }</dd>);
+            list.push(<dd className="col-12 col-lg-10 col-xl-8 mb-4">{ this.state.show[el[0]] && <span>{ el[2] }</span> }</dd>);
             i =+ 1;
         }
         return list;
@@ -91,7 +91,7 @@ class ImmersionDetails extends React.Component {
     
     render() {
         return(
-            <dl className="col-9">
+            <dl className="col-12 col-lg-10 col-xl-9">
                 { this.createList() }
             </dl>
         )
@@ -171,8 +171,8 @@ class IndexPage extends React.Component {
                 <section>
                   <div className="container-fluid" style={{marginTop: '1rem', marginBottom: '4rem'}}>
                     <div className="row numlist">
-                      <div className="col-lg-10 offset-lg-1 col-sm-12">
-                        <h2 className="row" style={{marginTop: '3rem'}}>{ this.d.soustitre1 }</h2>
+                      <div className="col-xl-10 offset-xl-1 offset-0 col-12">
+                        <h2 className="row offset-2 offset-lg-0" style={{marginTop: '3rem'}}>{ this.d.soustitre1 }</h2>
                         <div className="row">
                             <ImmersionDetails details={ this.definitions } />
                         </div>
@@ -182,8 +182,8 @@ class IndexPage extends React.Component {
 
                   <div className="container-fluid" style={{marginTop: '6rem', marginBottom: '4rem'}}>
                     <div className="row numlist">
-                      <div className="col-lg-10 offset-lg-1 col-sm-12">
-                        <h2 className="section__title" style={{marginTop: '3rem'}}>{ this.d.soustitre2 }</h2>
+                      <div className="col-xl-10 offset-xl-1 offset-0 col-12">
+                        <h2 className="section__title offset-2 offset-xl-0" style={{marginTop: '3rem'}}>{ this.d.soustitre2 }</h2>
                         <div className="row">
                           <PointDetail number="icon-one" title={ this.d.point1 } text={ this.d.point1_texte } />
                           <PointDetail number="icon-two" title={ this.d.point2 } text={ this.d.point2_texte } />
@@ -205,7 +205,7 @@ class IndexPage extends React.Component {
                 <section id="a-propos" className="section-grey" style={{marginTop: '1rem', paddingBottom: '8rem'}}>  
                   <div className="container-fluid" style={{display: 'inline-block'}}>
                     <div className="row no-gutters">
-                      <div className="col-lg-10 offset-lg-1 col-xs-12">
+                      <div className="col-xl-10 offset-xl-1 col-12">
                         <div className="row">
                           <div className="col-lg-5 col-xs-12 align-self-center">
                               <h2>{ this.d.soustitrequi }</h2>
