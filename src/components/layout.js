@@ -63,8 +63,8 @@ const Layout = ({children, role=false, title="ANDi", showNav=true}) => {
         </Helmet>
         <Header showNav={ showNav }/>
         { isMain
-            ? <main role='main'>{ children }</main>
-            : <div>{ children }</div>
+            ? <main id='andi_body' role='main'>{ children }</main>
+            : <div id='andi_body'>{ children }</div>
         }
         <Footer />
         </>

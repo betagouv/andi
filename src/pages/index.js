@@ -40,12 +40,12 @@ export const query = graphql`
 // const abbr_andi = "accompagnement numérique au développement de l'insertion"
 
 const PointDetail = ({image, title, text=false}) => (
-    <div className="col col-12 col-lg-3 mx-0">
-      <div className="row pointdetail">
-         <div className="col col-2 col-lg-2 number">
-            <img src={ image } aria-hidden="true" />
+    <div className="col-12 col-lg-3 offset-md-1 offset-0">
+      <div className="pointdetail">
+         <div className="point">
+            <img src={ image } aria-hidden="true" alt="illustration" />
         </div>
-        <div className="col col-lg-8 detail">
+        <div className="detail">
           <h3>{ title }</h3>
           { text 
             ?  <p>{ text }</p>
@@ -57,7 +57,6 @@ const PointDetail = ({image, title, text=false}) => (
 )
 
 class ImmersionDetails extends React.Component {
-    
     constructor(props) {
         super(props);
         this.list = props.details;
@@ -82,20 +81,20 @@ class ImmersionDetails extends React.Component {
 
         for (const el of this.list) {
             list.push(
-                <dt className="col-12 col-lg-10 col-xl-8 mt-4 pt-2">
+                <dt className="col-12 col-lg-10 col-xl-10 mt-4">
                     <button onClick={ () => this.toggleHidden(el[0]) }>
                         { el[1] }
                         <span className={this.state.show[el[0]] ? 'icon-arrow-up' : 'icon-arrow-down'}></span>
                     </button>
                 </dt>);
-            list.push(<dd className="col-12 col-lg-10 col-xl-8 mb-4">{ this.state.show[el[0]] && <span>{ el[2] }</span> }</dd>);
+            list.push(<dd className="col-12 col-lg-10 col-xl-10 mb-4">{ this.state.show[el[0]] && <span>{ el[2] }</span> }</dd>);
         }
         return list;
     }
     
     render() {
         return(
-            <dl className="col-12 col-lg-10 col-xl-9">
+            <dl className="col-12 col-lg-10 col-xl-10 offset-xl-1 offset-0">
                 { this.createList() }
             </dl>
         )
@@ -176,7 +175,7 @@ class IndexPage extends React.Component {
                   <div className="container-fluid" style={{marginTop: '1rem', marginBottom: '4rem'}}>
                     <div className="row numlist">
                       <div className="col-xl-10 offset-xl-1 offset-0 col-12">
-                        <h2 className="row offset-2 offset-lg-0" style={{marginTop: '3rem'}}>{ this.d.soustitre1 }</h2>
+                        <h2 className="section__title " style={{marginTop: '3rem'}}>{ this.d.soustitre1 }</h2>
                         <div className="row">
                             <ImmersionDetails details={ this.definitions } />
                         </div>
@@ -186,8 +185,8 @@ class IndexPage extends React.Component {
 
                   <div className="container-fluid" style={{marginTop: '6rem', marginBottom: '4rem'}}>
                     <div className="row numlist">
-                      <div className="col-xl-10 offset-xl-1 offset-0 col-12">
-                        <h2 className="section__title offset-2 offset-xl-0" style={{marginTop: '3rem'}}>{ this.d.soustitre2 }</h2>
+                      <div className="col-md-10 offset-xl-1 offset-0 col-12">
+                        <h2 className="section__title" style={{marginTop: '3rem'}}>{ this.d.soustitre2 }</h2>
                         <div className="row">
                           <PointDetail image={ tickbox } title={ this.d.point1 } text={ this.d.point1_texte } />
                           <PointDetail image={ glass } title={ this.d.point2 } text={ this.d.point2_texte } />

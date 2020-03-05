@@ -4751,13 +4751,6 @@ a.nav-link:hover, button.nav-link:hover {
   padding: .5rem;
 }
 
-.number {
-	font-size:5rem;
-	font-weight:bold;
-	font-family: 'Evolventa';
-    color: var(--theme-dark-text);
-}
-
 /* PANE */
 .leftpane {
   background-image: -webkit-gradient(linear, right top, left top, from(#0053b3), to(#003b80));
@@ -4970,13 +4963,21 @@ dd span {
     margin:0;
     padding:0;
     font-size:1.5em;
+    display:flex;
 }
+
 .pointdetail h3 {
     margin:0;
     padding:0;
 }
 
+.pointdetail img {
+    width:80px;
+}
+
 
 .pointdetail .detail {
-    border-left: 1px solid #e5e5e5;
+    border-left:2px solid #e5e5e5;
+    padding-left:.4em;
+    padding-right:.4em;
 }

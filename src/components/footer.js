@@ -11,7 +11,7 @@ const Footer = () => (
         <div className="container-fluid">
           <div className="row">
             <div className="col-xs-12 offset-xs-0 col-lg-6 offset-lg-1">
-              <h2>Dîtes-nous tout</h2>
+              <h2>Dites-nous tout</h2>
               <p style={{marginTop: '20px'}}>Ce projet est expérimental. Si vous rencontrez des difficultés faites-le savoir ici.</p>
               <p style={{marginBottom: '25px'}}>
                     Nous travaillons à rendre cette page la plus accessible possible pour vous.
