@@ -4969,3 +4969,8 @@ dd span {
     margin:0;
     padding:0;
 }
+
+
+.pointdetail .detail {
+    border-left: 1px solid #333;
+}

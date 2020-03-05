@@ -14,6 +14,10 @@ import team_illu from '../images/team-startup-illu.png';
 import team_illu_2x from '../images/team-startup-illu@2x.png';
 import team_illu_3x from '../images/team-startup-illu@3x.png';
 
+import tickbox from '../images/tickbox.svg';
+import glass from '../images/glass.svg';
+import talk from '../images/talk.svg';
+
 import { track, Steps, getSessionId } from '../../static/tracker.js';
 
 /* TODO: 
@@ -35,17 +39,19 @@ export const query = graphql`
 
 // const abbr_andi = "accompagnement numérique au développement de l'insertion"
 
-const PointDetail = ({number, title, text=false}) => (
+const PointDetail = ({image, title, text=false}) => (
     <div className="col col-12 col-lg-3 mx-0">
       <div className="row pointdetail">
-         <div className="col col-2 col-lg-2 number"><span className={ number }></span></div>
-         <div className="col col-lg-8">
-           <h3>{ title }</h3>
-           { text 
-             ?  <p>{ text }</p>
-             :  <p></p>
-           }
-         </div>
+         <div className="col col-2 col-lg-2 number">
+            <img src={ image } aria-hidden="true" />
+        </div>
+        <div className="col col-lg-8 detail">
+          <h3>{ title }</h3>
+          { text 
+            ?  <p>{ text }</p>
+            :  <p></p>
+          }
+        </div>
       </div>
     </div>
 )
@@ -73,7 +79,6 @@ class ImmersionDetails extends React.Component {
 
     createList = () => {
         let list = [];
-        var i = 0;
 
         for (const el of this.list) {
             list.push(
@@ -84,7 +89,6 @@ class ImmersionDetails extends React.Component {
                     </button>
                 </dt>);
             list.push(<dd className="col-12 col-lg-10 col-xl-8 mb-4">{ this.state.show[el[0]] && <span>{ el[2] }</span> }</dd>);
-            i =+ 1;
         }
         return list;
     }
@@ -185,9 +189,9 @@ class IndexPage extends React.Component {
                       <div className="col-xl-10 offset-xl-1 offset-0 col-12">
                         <h2 className="section__title offset-2 offset-xl-0" style={{marginTop: '3rem'}}>{ this.d.soustitre2 }</h2>
                         <div className="row">
-                          <PointDetail number="icon-one" title={ this.d.point1 } text={ this.d.point1_texte } />
-                          <PointDetail number="icon-two" title={ this.d.point2 } text={ this.d.point2_texte } />
-                          <PointDetail number="icon-three" title={ this.d.point3 } text={ this.d.point3_texte } />
+                          <PointDetail image={ tickbox } title={ this.d.point1 } text={ this.d.point1_texte } />
+                          <PointDetail image={ glass } title={ this.d.point2 } text={ this.d.point2_texte } />
+                          <PointDetail image={ talk } title={ this.d.point3 } text={ this.d.point3_texte } />
                         </div>
                       </div>
                     </div>
