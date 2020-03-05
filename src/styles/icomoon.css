@@ -50,18 +50,26 @@
   /*content: "\f09b";*/
 }
 .icon-one:before {
-  content: "\e817";
+  content: "\f14a";
   /*content: "\f09b";*/
 }
 .icon-two:before {
-  content: "\e816";
+  content: "\e821";
   /*content: "\f09b";*/
 }
 .icon-three:before {
-  content: "\e812";
+  content: "\e822";
   /*content: "\f09b";*/
 }
 .icon-four:before {
   content: "\f181";
   /*content: "\f09b";*/
+}
+.icon-arrow-down:before {
+  content: "\e81d";
+  /* content: "\e819"; */
+}
+.icon-arrow-up:before {
+  content: "\e81e";
+  /* content: "\e81a"; */
 }

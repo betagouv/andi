@@ -36,21 +36,74 @@ export const query = graphql`
 // const abbr_andi = "accompagnement numérique au développement de l'insertion"
 
 const PointDetail = ({number, title, text=false}) => (
-    <div className="col">
-      <div className="number"><span className={ number }></span></div>
-      <h3>{ title }</h3>
-      { text 
-        ?  <p>{ text }</p>
-        :  <p></p>
-      }
+    <div className="col px-8 mx-3">
+      <div className="row">
+         <div className="col-2 number"><span className={ number }></span></div>
+         <div className="col-8">
+           <h3>{ title }</h3>
+           { text 
+             ?  <p>{ text }</p>
+             :  <p></p>
+           }
+         </div>
+      </div>
     </div>
 )
 
-function track_event(step, meta={}) {
-    return () => {track('landing-page', step, meta)} ;
+class ImmersionDetails extends React.Component {
+    
+    constructor(props) {
+        super(props);
+        this.list = props.details;
+        var visibility_list = {};
+        for (const x of props.details) {
+            visibility_list[x[0]] = false;
+        }
+        this.state = {show: visibility_list};
+    }
+
+    toggleHidden(i) {
+        console.log('poulet');
+        this.setState((prevState) => {
+            const update = {...prevState.show};
+            update[i] = !update[i];
+            return {show: update};
+        });
+    }
+
+    createList = () => {
+        let list = [];
+        var i = 0;
+
+        for (const el of this.list) {
+            list.push(
+                <dt className="col-8">
+                    <button onClick={ () => this.toggleHidden(el[0]) }>
+                        { el[1] }
+                        <span className={this.state.show[el[0]] ? 'icon-arrow-up' : 'icon-arrow-down'}></span>
+                    </button>
+                </dt>);
+            list.push(<dd className="col-8">{ this.state.show[el[0]] && <span>{ el[2] }</span> }</dd>);
+            i =+ 1;
+        }
+        return list;
+    }
+    
+    render() {
+        return(
+            <dl className="col-9">
+                { this.createList() }
+            </dl>
+        )
+    }
 }
 
-const Hero = ({title, text, button}) => {
+
+function track_event(step, meta={}) {
+    return () => {track('landing-page', step, meta)}
+}
+
+const Hero = ({title, subtitle, text, button}) => {
 
     const [sessionId, setSessionId] = useState(0);
     useEffect( () => {
@@ -65,6 +118,7 @@ const Hero = ({title, text, button}) => {
            <div className="col-lg-7 offset-lg-1 col-sm-10 offset-sm-1 col-xs-12 offset-xs-0 title_wrapper">
              <h1>{ title }</h1>
              <div className="hero__p">
+               <h2>{ subtitle }</h2>
                { text }
              </div>
              { /* J'assume */ }
@@ -84,7 +138,6 @@ const Hero = ({title, text, button}) => {
 
 
 class IndexPage extends React.Component {
-
     constructor(props) {
         super(props);
         let data = {};
@@ -94,14 +147,20 @@ class IndexPage extends React.Component {
                 data[asset.key] = asset.markdown ? mdReact()(asset.value) : asset.value
             }
         }
-        this.d = data
+        this.d = data;
+        this.definitions = [
+            ['def3', data.definition1, data.definition1_texte],
+            ['def4', data.definition2, data.definition2_texte],
+            ['def5', data.definition3, data.definition3_texte],
+            ['def6', data.definition4, data.definition4_texte],
+        ];
         track_event(Steps.ARRIVAL)();
     }
 
     render() {
         return (
             <Layout title="Accueil ANDi">
-            <Hero title={ this.d.titre } text={this.d.slogan} button={this.d.bouton} />
+            <Hero title={ this.d.titre } subtitle={ this.d.titre_description} text={this.d.slogan} button={this.d.bouton} />
             <main role="main">
                {/* <div className="svg_container" aria-hidden="true" focusable="false">
                   <svg className="svg_1" viewBox="0 70 500 80" preserveAspectRatio="none">
@@ -110,30 +169,30 @@ class IndexPage extends React.Component {
                   </svg>
                 </div> */}
                 <section>
-                  <h2 className="section__title" style={{marginTop: '3rem'}}>{ this.d.soustitre1 }</h2>
-                  <div className="container-fluid" style={{marginTop: '6rem', marginBottom: '4rem'}}>
+                  <div className="container-fluid" style={{marginTop: '1rem', marginBottom: '4rem'}}>
                     <div className="row numlist">
                       <div className="col-lg-10 offset-lg-1 col-sm-12">
+                        <h2 className="row" style={{marginTop: '3rem'}}>{ this.d.soustitre1 }</h2>
                         <div className="row">
-                          { /*
-                          <div className="col">
-                            <span className="number">1</span>
-                            <h3>{ this.d.point1 }</h3>
-                            <p>{ this.d.point1_texte }</p>
-                            <Link className="button fullwidth large" to="/inscription">{ this.d.bouton }</Link>
-                          </div>
-                          */ }
-                          { /* <PointDetail number="icon-one" title={ this.d.point1 }  text={ this.d.point1_texte } /> */ }
-                          <PointDetail number="icon-one" title={ this.d.point1 } />
-                          <PointDetail number="icon-two" title={ this.d.point2 } />
-                          <PointDetail number="icon-three" title={ this.d.point3 } />
-                          { /*
-                          <PointDetail number="icon-four" title={ this.d.point4 } />
-                          */ }
+                            <ImmersionDetails details={ this.definitions } />
                         </div>
                       </div>
                     </div>
                   </div>
+
+                  <div className="container-fluid" style={{marginTop: '6rem', marginBottom: '4rem'}}>
+                    <div className="row numlist">
+                      <div className="col-lg-10 offset-lg-1 col-sm-12">
+                        <h2 className="section__title" style={{marginTop: '3rem'}}>{ this.d.soustitre2 }</h2>
+                        <div className="row">
+                          <PointDetail number="icon-one" title={ this.d.point1 } text={ this.d.point1_texte } />
+                          <PointDetail number="icon-two" title={ this.d.point2 } text={ this.d.point2_texte } />
+                          <PointDetail number="icon-three" title={ this.d.point3 } text={ this.d.point3_texte } />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <br />
                   <br />
                 </section>
@@ -149,7 +208,7 @@ class IndexPage extends React.Component {
                       <div className="col-lg-10 offset-lg-1 col-xs-12">
                         <div className="row">
                           <div className="col-lg-5 col-xs-12 align-self-center">
-                              <h2>{ this.d.soustitre2 }</h2>
+                              <h2>{ this.d.soustitrequi }</h2>
                               <div>{ this.d.quinous }</div>
                           </div>
                           <div className="col-lg-7 col-xs-12 align-self-center text-center no-gutters">

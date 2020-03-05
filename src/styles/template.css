@@ -166,6 +166,12 @@ h2 {
   line-height: 1.25em;
 }
 
+.hero__p h2 {
+  font-size: 2em;
+  line-height: 1.125em;
+}
+    
+
 h3 {
   font-size: 1.5em;
   line-height: 1.5em;
@@ -1601,8 +1607,7 @@ span.navbar__domain {
 }
 
 .footer {
-  background: #1c1c1c;
-  background: var(--theme-background-dark);
+  background: #333;
   color: #fff;
   color: var(--white);
   padding: 2em 0;
@@ -1759,7 +1764,7 @@ span.navbar__domain {
 
 .section__title,
 .section__subtitle {
-  text-align: center;
+  text-align: left;
 }
 
 .section__title + .section__subtitle {

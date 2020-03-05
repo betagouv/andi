@@ -9,7 +9,7 @@
     "browser-monads": "^1.0.0",
     "date-fns": "^2.10.0",
     "formik": "^1.5.8",
-    "gatsby": "^2.19.27",
+    "gatsby": "^2.19.28",
     "gatsby-image": "^2.2.42",
     "gatsby-plugin-create-client-paths": "^2.1.22",
     "gatsby-plugin-env-variables": "^1.0.1",

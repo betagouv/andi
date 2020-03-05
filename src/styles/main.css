@@ -4755,7 +4755,6 @@ a.nav-link:hover, button.nav-link:hover {
 	font-size:5rem;
 	font-weight:bold;
 	font-family: 'Evolventa';
-    text-align:center;
     color: var(--theme-dark-text);
 }
 
@@ -4937,3 +4936,27 @@ input.button:disabled:hover {
 }
 
 /*# sourceMappingURL=main.css.map */
+
+dt button {
+    border: None;
+    background-color:#fff;
+    border-bottom:1px solid #000;
+    margin:0;
+    padding:0;
+    width:100%;
+    text-align:left;
+    font-size:1.5em;
+}
+
+dt button span {
+    float:right;
+}
+
+dd span {
+    background-color:#f2f2f2;
+    width:100%;
+    display:block;
+    padding:1rem;
+    font-size:1.5em;
+}
+
