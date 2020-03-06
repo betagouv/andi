@@ -4538,7 +4538,7 @@ textarea {
   margin: var(--space-s) auto;
   color: #26353f;
   color: var(--theme-dark-text);
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 .alert__success {
@@ -4971,6 +4971,7 @@ dd span {
 }
 
 .pointdetail h3 {
+    font-size:1.3em;
     margin:0;
     padding:0;
 }
