@@ -175,7 +175,7 @@ class IndexPage extends React.Component {
                   <div className="container-fluid" style={{marginTop: '1rem', marginBottom: '4rem'}}>
                     <div className="row numlist">
                       <div className="col-xl-10 offset-xl-1 offset-0 col-12">
-                        <h2 className="section__title " style={{marginTop: '3rem'}}>{ this.d.soustitre1 }</h2>
+                        <h2 className="section__title " style={{marginTop: '0rem'}}>{ this.d.soustitre1 }</h2>
                         <div className="row">
                             <ImmersionDetails details={ this.definitions } />
                         </div>
@@ -186,7 +186,7 @@ class IndexPage extends React.Component {
                   <div className="container-fluid" style={{marginTop: '6rem', marginBottom: '4rem'}}>
                     <div className="row numlist">
                       <div className="col-md-10 offset-xl-1 offset-0 col-12">
-                        <h2 className="section__title" style={{marginTop: '3rem'}}>{ this.d.soustitre2 }</h2>
+                        <h2 className="section__title" style={{marginTop: '0rem'}}>{ this.d.soustitre2 }</h2>
                         <div className="row">
                           <PointDetail image={ tickbox } title={ this.d.point1 } text={ this.d.point1_texte } />
                           <PointDetail image={ glass } title={ this.d.point2 } text={ this.d.point2_texte } />

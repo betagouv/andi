@@ -4938,7 +4938,7 @@ dt button {
     padding:0;
     width:100%;
     text-align:left;
-    font-size:1.5em;
+    font-size:1.3em;
     padding-top:.3em;
 }
 
@@ -4959,14 +4959,14 @@ dd span {
     width:100%;
     display:block;
     padding:1rem;
-    font-size:1.5em;
-    line-height:1.8em;
+    font-size:1.3em;
+    line-height:1.5em;
 }
 
 .pointdetail {
     margin:0;
     padding:0;
-    font-size:1.5em;
+    font-size:1.3em;
     display:flex;
 }
 
