@@ -71,6 +71,7 @@ class ImmersionDetails extends React.Component {
         this.setState((prevState) => {
             const update = {...prevState.show};
             update[i] = !update[i];
+            track_event(Steps.BUTTON_CLICK, {'question': i, 'visible': update[i]})();
             return {show: update};
         });
     }
@@ -151,10 +152,10 @@ class IndexPage extends React.Component {
         }
         this.d = data;
         this.definitions = [
-            ['def3', data.definition1, data.definition1_texte],
-            ['def4', data.definition2, data.definition2_texte],
-            ['def5', data.definition3, data.definition3_texte],
-            ['def6', data.definition4, data.definition4_texte],
+            ['pourquoi', data.definition1, data.definition1_texte],
+            ['temps', data.definition2, data.definition2_texte],
+            ['remuneration', data.definition3, data.definition3_texte],
+            ['embauche', data.definition4, data.definition4_texte],
         ];
         track_event(Steps.ARRIVAL)();
     }

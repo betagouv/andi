@@ -24,6 +24,7 @@ export const Steps = {
     MAILTO: 'mailto',
     LINKTO: 'linkto',
     BILAN: 'bilan',
+    BUTTON_CLICK: 'button_click',
     TO_MATCHING: 'to_matching',
     TO_SERVICE: 'to_service',
     QUESTION_ARRIVAL: 'question_arrival',
