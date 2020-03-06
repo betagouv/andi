@@ -40,10 +40,10 @@ export const query = graphql`
 // const abbr_andi = "accompagnement numérique au développement de l'insertion"
 
 const PointDetail = ({image, title, text=false}) => (
-    <div className="col-12 col-lg-3 offset-md-1 offset-0">
+    <div className="col-12 col-lg-4 offset-md-0 offset-0">
       <div className="pointdetail">
          <div className="point">
-            <img src={ image } aria-hidden="true" alt="illustration" />
+            <img src={ image } aria-hidden="true" alt="" />
         </div>
         <div className="detail">
           <h3>{ title }</h3>
@@ -172,22 +172,22 @@ class IndexPage extends React.Component {
                   </svg>
                 </div> */}
                 <section>
-                  <div className="container-fluid" style={{marginTop: '1rem', marginBottom: '4rem'}}>
+                  <div className="container-fluid" style={{marginTop: '0rem', marginBottom: '1rem'}}>
                     <div className="row numlist">
                       <div className="col-xl-10 offset-xl-1 offset-0 col-12">
-                        <h2 className="section__title " style={{marginTop: '3rem'}}>{ this.d.soustitre1 }</h2>
-                        <div className="row">
+                        <h2 className="section__title " style={{marginTop: '0rem'}}>{ this.d.soustitre1 }</h2>
+                        <div className="row mt-0">
                             <ImmersionDetails details={ this.definitions } />
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="container-fluid" style={{marginTop: '6rem', marginBottom: '4rem'}}>
+                  <div className="container-fluid" style={{marginTop: '2rem', marginBottom: '1rem'}}>
                     <div className="row numlist">
                       <div className="col-md-10 offset-xl-1 offset-0 col-12">
-                        <h2 className="section__title" style={{marginTop: '3rem'}}>{ this.d.soustitre2 }</h2>
-                        <div className="row">
+                        <h2 className="section__title" style={{marginTop: '0rem'}}>{ this.d.soustitre2 }</h2>
+                        <div className="row mt-0">
                           <PointDetail image={ tickbox } title={ this.d.point1 } text={ this.d.point1_texte } />
                           <PointDetail image={ glass } title={ this.d.point2 } text={ this.d.point2_texte } />
                           <PointDetail image={ talk } title={ this.d.point3 } text={ this.d.point3_texte } />
