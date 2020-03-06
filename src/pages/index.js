@@ -68,7 +68,6 @@ class ImmersionDetails extends React.Component {
     }
 
     toggleHidden(i) {
-        console.log('poulet');
         this.setState((prevState) => {
             const update = {...prevState.show};
             update[i] = !update[i];
@@ -83,8 +82,8 @@ class ImmersionDetails extends React.Component {
             list.push(
                 <dt className="col-12 col-lg-10 col-xl-10 mt-4">
                     <button onClick={ () => this.toggleHidden(el[0]) }>
-                        { el[1] }
-                        <span className={this.state.show[el[0]] ? 'icon-arrow-up' : 'icon-arrow-down'}></span>
+                        <span className="question">{ el[1] }</span>
+                        <span className={this.state.show[el[0]] ? 'icn icon-arrow-up' : 'icn icon-arrow-down'}></span>
                     </button>
                 </dt>);
             list.push(<dd className="col-12 col-lg-10 col-xl-10 mb-4">{ this.state.show[el[0]] && <span>{ el[2] }</span> }</dd>);

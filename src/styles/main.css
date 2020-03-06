@@ -4942,11 +4942,15 @@ dt button {
     padding-top:.3em;
 }
 
+dt button .question {
+    padding-right:2rem;
+}
+
 dt button:hover {
     background-color:#f2f2f2;
 }
 
-dt button span {
+dt button span.icn {
     float:right;
 }
 
