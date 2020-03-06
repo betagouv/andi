@@ -7,4 +7,14 @@ body, html {
     height:400px;
 }
 
+#andi_body {
+    max-width:160rem;
+    margin:auto;
+}
+
+@media (min-width: 1200px) {
+    .hero__p, .title_wrapper a {
+        margin-left:12.6%;
+    }
+}
 

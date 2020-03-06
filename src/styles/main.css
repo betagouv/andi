@@ -4751,14 +4751,6 @@ a.nav-link:hover, button.nav-link:hover {
   padding: .5rem;
 }
 
-.number {
-	font-size:5rem;
-	font-weight:bold;
-	font-family: 'Evolventa';
-    text-align:center;
-    color: var(--theme-dark-text);
-}
-
 /* PANE */
 .leftpane {
   background-image: -webkit-gradient(linear, right top, left top, from(#0053b3), to(#003b80));
@@ -4937,3 +4929,59 @@ input.button:disabled:hover {
 }
 
 /*# sourceMappingURL=main.css.map */
+
+dt button {
+    border: None;
+    background-color:#fff;
+    border-bottom:1px solid #000;
+    margin:0;
+    padding:0;
+    width:100%;
+    text-align:left;
+    font-size:1.5em;
+    padding-top:.3em;
+}
+
+dt button .question {
+    padding-right:2rem;
+}
+
+dt button:hover {
+    background-color:#f2f2f2;
+}
+
+dt button span.icn {
+    float:right;
+}
+
+dd span {
+    background-color:#f2f2f2;
+    width:100%;
+    display:block;
+    padding:1rem;
+    font-size:1.5em;
+    line-height:1.8em;
+}
+
+.pointdetail {
+    margin:0;
+    padding:0;
+    font-size:1.5em;
+    display:flex;
+}
+
+.pointdetail h3 {
+    margin:0;
+    padding:0;
+}
+
+.pointdetail img {
+    width:80px;
+}
+
+
+.pointdetail .detail {
+    border-left:2px solid #e5e5e5;
+    padding-left:.4em;
+    padding-right:.4em;
+}
