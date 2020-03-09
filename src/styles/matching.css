@@ -7,14 +7,51 @@ body, html {
     height:400px;
 }
 
-#andi_body {
+#andi_body, .navbar, footer {
     max-width:160rem;
     margin:auto;
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        padding-left:0;
+    }
+}
+
+@media (max-width:410px) {
+    .navbar__container {
+      justify-content:space-between !important;
+    }
+    .navbar .sub-nav {
+      width:100%;
+    }
+    .navbar .sub-nav .navbar-nav {
+      flex-direction: column;
+      justify-content:space-between;
+    }
+    .navbar .sub-nav .navbar-nav .nav-item {
+      margin-bottom:1rem;
+      width:90%;
+    }
+
+    .navbar .sub-nav .navbar-nav .nav-item .nav-link {
+        display:block;
+    }
+
+    .navbar .sub-nav .navbar-nav .nav-item:last-child {
+      margin-bottom:0;
+    }
 }
 
 @media (min-width: 1200px) {
     .hero__p, .title_wrapper a {
         margin-left:12.6%;
+    }
+}
+
+@media (min-width: 2560px) {
+    .navbar {
+        padding-left:13.4rem;
     }
 }
 

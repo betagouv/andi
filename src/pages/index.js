@@ -162,7 +162,7 @@ class IndexPage extends React.Component {
 
     render() {
         return (
-            <Layout title="Accueil ANDi">
+            <Layout title="Accueil ANDi" showNav={ false } >
             <Hero title={ this.d.titre } subtitle={ this.d.titre_description} text={this.d.slogan} button={this.d.bouton} />
             <main role="main">
                {/* <div className="svg_container" aria-hidden="true" focusable="false">

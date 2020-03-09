@@ -73,3 +73,5 @@
   content: "\e81e";
   /* content: "\e81a"; */
 }
+.icon-glass:before { content: "\e821" }
+.icon-home:before { content: "\e824" }

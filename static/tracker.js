@@ -27,6 +27,7 @@ export const Steps = {
     BUTTON_CLICK: 'button_click',
     TO_MATCHING: 'to_matching',
     TO_SERVICE: 'to_service',
+    TO_SUMMARY: 'to_summary',
     QUESTION_ARRIVAL: 'question_arrival',
     QUESTION_DEPARTURE: 'question_departure',
     QUESTION_RESPONSE: 'question_response',

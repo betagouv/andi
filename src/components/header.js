@@ -1,6 +1,6 @@
 // import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, {useState, useEffect} from "react"
 import { Link } from "gatsby"
 
 import Svg from "./svg"
@@ -10,14 +10,19 @@ import cdcSVG from '../images/logo-cdc.svg'
 // import marianneDeuilPNG from '../images/logo-marianne-deuil.png'
 // import betagouvSVG from '../images/pointbetagouvfr.svg'
 
-import { track, Steps } from '../../static/tracker.js';
+import { track, Steps, getSessionId } from '../../static/tracker.js';
 
 function track_event(step, meta={}) {
     return () => {track('landing-page', step, meta)} ;
 }
 
 const Header = ({showNav=true}) => {
-    showNav = false
+
+    const [sessionId, setSessionId] = useState(0);
+    useEffect( () => {
+        setSessionId(getSessionId())
+    }, [] );
+        
     return (
         <>
         <Svg />
@@ -27,7 +32,6 @@ const Header = ({showNav=true}) => {
 
             <a href="https://www.caissedesdepots.fr/" className="navbar_cdc" onClick={ track_event(Steps.LINKTO, {link:'cdc', type:'external'}) }>
                <img src={cdcSVG}  alt="logo caisse des dépôts"/>
-               
             </a>
             <Link to="/" className="navbar__home" onClick={ track_event(Steps.LINKTO, {link:'/', type:'internal'}) } style={{marginTop: '-6px'}}>
               <img className="navbar__logo" src={marianneSVG} alt="logo république française" />
@@ -39,10 +43,10 @@ const Header = ({showNav=true}) => {
             ? <div className="sub-nav">
                 <ul className="navbar-nav">
                   <li className="nav-item">
-                    <Link to="/" className='nav-link' activeClassName="active" style={{marginRight: '10px'}} onClick={ track_event(Steps.LINKTO, {link:'/', type:'internal'}) }>Accueil</Link>
+                    <Link to="/" className='nav-link' activeClassName="active" style={{marginRight: '0px'}} onClick={ track_event(Steps.LINKTO, {link:'/', type:'internal'}) }><span className="icon-home">&nbsp;</span>Accueil</Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="/inscription" className='nav-link' activeClassName="active" onClick={ track_event(Steps.LINKTO, {link:'/inscription', type:'internal'}) }>Inscription</Link>
+                     <a className='nav-link' activeClassName="active" href={"/service/summary?sid=" + sessionId} onClick={track_event(Steps.TO_SUMMARY)} ><span className="icon-glass">&nbsp;</span>Chercher une immersion</a>
                   </li>
                 </ul>
               </div>
