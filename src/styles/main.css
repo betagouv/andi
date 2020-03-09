@@ -4661,6 +4661,8 @@ a.nav-link:hover, button.nav-link:hover {
   -webkit-box-pack: initial;
       -ms-flex-pack: initial;
           justify-content: initial;
+  display:block;
+  padding-left:8.2%;
 }
 
 .navbar__container {

@@ -7,14 +7,26 @@ body, html {
     height:400px;
 }
 
-#andi_body {
+#andi_body, .navbar, footer {
     max-width:160rem;
     margin:auto;
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        padding-left:0;
+    }
 }
 
 @media (min-width: 1200px) {
     .hero__p, .title_wrapper a {
         margin-left:12.6%;
+    }
+}
+
+@media (min-width: 2560px) {
+    .navbar {
+        padding-left:13.4rem;
     }
 }
 
