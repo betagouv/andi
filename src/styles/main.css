@@ -4917,18 +4917,39 @@ form {
   }
 }
 
-@media (max-width: 749px) {
+/*
+@media  screen and (max-width: 850px) {
   .illu-1 {
-    width: 100%;
+    width: 20% !important;
     top: 0;
   }
 }
+*/
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 996px) {
+  .illu-1 {
+    position: relative;
+    margin-top: 15px;
+    width: 50%;
+    min-width:17rem;
+  }
+
+  .team-startup-illu {
+    position: relative;
+    width:50%;
+    min-width:17rem;
+    right:0;
+  }
+}
+
+@media screen and (min-width: 997px) and (max-width: 1000px) {
   .illu-1 {
     position: relative;
     margin-top: 15px;
     width: auto;
+  }
+
+  .team-startup-illu {
   }
 }
 
