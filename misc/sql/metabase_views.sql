@@ -15,7 +15,7 @@ SELECT
     data->>'action' AS action,
     -- questions
     data->'meta'->>'visible' AS question_visible,
-    data->'meta'->>'question' AS question_title
+    data->'meta'->>'question' AS question_title,
     -- links
     data->'meta'->>'link' AS url,
     data->'meta'->>'type' AS link_type
