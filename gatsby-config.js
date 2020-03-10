@@ -76,7 +76,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-env-variables`,
       options: {
-        whitelist: ["GATSBY_ACTIVE_ENV"]
+        whitelist: [
+            "GATSBY_ACTIVE_ENV",
+            "GATSBY_AB_CHECK"
+        ]
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
