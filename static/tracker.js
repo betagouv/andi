@@ -69,6 +69,25 @@ function uuidv4() {
 
 export function getSessionId() {
     if (SESSION_ID === "")
-        SESSION_ID =  uuidv4();
+        SESSION_ID = (new URL(document.location)).searchParams.get('sid') || uuidv4();
+        uuidv4();
     return SESSION_ID;
+}
+
+export function getUrlMeta() {
+    // Avoid using JSON and interpreting user-provided values
+    const check = (new URL(document.location)).searchParams.get('t');
+    var meta = {};
+    try {
+        const split1 = check.split(';');
+        for (var tuple in split1) {
+            const keyval = tuple.split(':');
+            const key = keyval[0].replace(/[^0-9a-zA-Z]/,'');
+            const val = keyval[1].replace(/[^0-9a-zA-Z]/,'');
+            meta[key] = val;
+        }
+        console.log(meta);
+    } finally {
+        return meta;
+    }
 }
