@@ -40,8 +40,9 @@ export const Steps = {
 }
 
 
-function computeRequestBody(page, action, meta) {
+function computeRequestBody(page, action, metaIn) {
     const timeNow = new Date();
+    const meta = Object.assign(metaIn, getUrlMeta());
 
     return {
         _v:1,
@@ -74,19 +75,18 @@ export function getSessionId() {
     return SESSION_ID;
 }
 
-export function getUrlMeta() {
+function getUrlMeta() {
     // Avoid using JSON and interpreting user-provided values
     const check = (new URL(document.location)).searchParams.get('t');
     var meta = {};
     try {
         const split1 = check.split(';');
-        for (var tuple in split1) {
+        for (var tuple of split1) {
             const keyval = tuple.split(':');
-            const key = keyval[0].replace(/[^0-9a-zA-Z]/,'');
-            const val = keyval[1].replace(/[^0-9a-zA-Z]/,'');
+            const key = keyval[0].replace(/[^\-_0-9a-zA-Z]/g,'');
+            const val = keyval[1].replace(/[^\-_0-9a-zA-Z]/g,'');
             meta[key] = val;
         }
-        console.log(meta);
     } finally {
         return meta;
     }
