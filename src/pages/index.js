@@ -185,9 +185,9 @@ class IndexPage extends React.Component {
                                         <input type="text" name="u" value="ccc541cc9db76240c60a2c90a" tabindex="-1" />
                                         <input type="text" name="id" value="716406dce6" tabindex="-1" />
                                     </div>
-                                    <FormElement name="EMAIL" type="email" id="mce-EMAIL" text="Votre addresse e-mail:"/>
-                                    <input type="submit" className="button" name="subscribe"
-                                     value="Inscrivez-vous" id="mc-embedded-subscribe"
+                                    <FormElement name="EMAIL" type="email" id="mce-EMAIL" text="Votre adresse e-mail:"/>
+                                    <input type="submit" className="button" name="subscribe" style={{fontSize:'1.4em'}}
+                                     value="Je m'inscris" id="mc-embedded-subscribe"
                                      onClick={track_event(Steps.FORM_SUBMIT, {type:'newsletter_subscription', destination:'mailchimp'})}
                                     />
                                 </form>
