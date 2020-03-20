@@ -169,9 +169,9 @@ class IndexPage extends React.Component {
     render() {
         return (
             <Layout title="Accueil ANDi" showNav={ true } >
-             <div className="container-fluid covid" style={{ marginTop: '.5rem', marginBottom: '1rem', paddingTop: '1rem', paddingBottom: '1rem', zIndex:100, position:'relative'}}>
+             <div className="container-fluid covid" style={{ marginTop: '.5rem 0rem 1rem 0rem',  padding: '1rem 0rem 1rem 0rem', zIndex:100, position:'relative'}}>
                     <div className="row numlist">
-                      <div className="col-md-10 offset-xl-1 offset-0 col-12">
+                      <div className="col-md-10 offset-xl-1 offset-0 col-12" style={{paddingLeft:'2.1rem'}}>
                         <h2>Restez chez vous, ANDi vient à vous</h2>
                         <div className="row mt-0">
                             <div className="col-12 col-lg-8 offset-xl-1 offset-0" style={{fontSize: '1.4em'}}>
