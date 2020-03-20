@@ -217,7 +217,7 @@ class IndexPage extends React.Component {
                                 <form action="https://gouv.us3.list-manage.com/subscribe/post?u=ccc541cc9db76240c60a2c90a&amp;id=716406dce6" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                                     <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true"><input type="text" name="b_ccc541cc9db76240c60a2c90a_716406dce6" tabindex="-1" value="" /></div>
                                     <FormElement name="EMAIL" type="email" id="mce-EMAIL" text={ this.d.email }/>
-                                    <input type="submit" className="button" value="Inscription Newsletter"/>
+                                    <input type="submit" className="button" value="Inscription Newsletter" onClick={track_event(Steps.FORM_SUBMIT, {type:'newsletter_subscription', destination:'mailchimp'})}/>
                                 </form>
                             </div>
                         </div>
