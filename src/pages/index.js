@@ -121,7 +121,7 @@ const Hero = ({title, subtitle, text, button}) => {
         
 
      return (
-     <section className="section section-grey section__bottom_svg" role="banner" style={{zIndex:0}}>
+     <section className="section section-grey section__bottom_svg" style={{zIndex:0}}>
      <div className="container-fluid">
          <div className="row">
            <div className="col-lg-7 offset-lg-1 col-sm-10 offset-sm-1 col-xs-12 offset-xs-0 title_wrapper">
@@ -168,15 +168,13 @@ class IndexPage extends React.Component {
 
     render() {
         return (
-            <Layout title="Accueil ANDi" showNav={ true } >
-            <Hero title={ this.d.titre } subtitle={ this.d.titre_description} text={this.d.slogan} button={this.d.bouton} />
-            <main role="main" style={{zIndex:100}}>
-                  <div className="container-fluid covid" style={{ marginTop: '.5rem', marginBottom: '1rem', paddingTop: '1rem', paddingBottom: '1rem', zIndex:100, position:'relative'}}>
+            <Layout title="Accueil ANDi" showNav={ true } role="banner">
+             <div className="container-fluid covid" style={{ margin: '.5rem 0rem 1rem 0rem',  padding: '1rem 0rem 1rem 0rem', zIndex:100, position:'relative'}}>
                     <div className="row numlist">
-                      <div className="col-md-10 offset-xl-1 offset-0 col-12">
+                      <div className="col-md-10 offset-xl-1 offset-0 col-12" style={{paddingLeft:'2.1rem'}}>
                         <h2>Restez chez vous, ANDi vient à vous</h2>
                         <div className="row mt-0">
-                            <div className="col-12 col-lg-6 offset-xl-1 offset-0">
+                            <div className="col-12 col-lg-8 offset-xl-1 offset-0" style={{fontSize: '1.4em'}}>
                                 Pendant la période de confinement, ANDi vous propose de découvrir chaque semaine des ressources et des conseils pour préparer votre projet professionnel,
                                 vous former à distance et rester mobilisé en sécurité. Inscrivez-vous à notre newsletter ! 
                             </div>
@@ -184,18 +182,24 @@ class IndexPage extends React.Component {
                                 <form action= {"https://gouv.us3.list-manage.com/subscribe/post"} id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                                     <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true">
                                         <input type="text" name="b_ccc541cc9db76240c60a2c90a_716406dce6" tabindex="-1" value="" />
-                                        <input type="text" name="u" value="ccc541cc9db76240c60a2c90a" />
-                                        <input type="text" name="id" value="716406dce6" />
+                                        <input type="text" name="u" value="ccc541cc9db76240c60a2c90a" tabindex="-1" />
+                                        <input type="text" name="id" value="716406dce6" tabindex="-1" />
                                     </div>
-                                    <FormElement name="EMAIL" type="email" id="mce-EMAIL" text={ this.d.email }/>
-                                    <input type="submit" className="button" name="subscribe" value="Inscription Newsletter" id="mc-embedded-subscribe" onClick={track_event(Steps.FORM_SUBMIT, {type:'newsletter_subscription', destination:'mailchimp'})}/>
+                                    <FormElement name="EMAIL" type="email" id="mce-EMAIL" text="Votre adresse e-mail:"/>
+                                    <input type="submit" className="button" name="subscribe" style={{fontSize:'1.4em'}}
+                                     value="Je m'inscris" id="mc-embedded-subscribe"
+                                     onClick={track_event(Steps.FORM_SUBMIT, {type:'newsletter_subscription', destination:'mailchimp'})}
+                                    />
                                 </form>
                             </div>
                         </div>
                       </div>
                     </div>
                   </div>
-               {/* <div className="svg_container" aria-hidden="true" focusable="false">
+
+            <main role="main" style={{zIndex:100}}>
+                <Hero title={ this.d.titre } subtitle={ this.d.titre_description} text={this.d.slogan} button={this.d.bouton} />
+                                {/* <div className="svg_container" aria-hidden="true" focusable="false">
                   <svg className="svg_1" viewBox="0 70 500 80" preserveAspectRatio="none">
                     <rect x={0} y={0} width={500} height={500} style={{stroke: 'none'}} />
                     <path d="M0,100 C150,0 350,250 500,100 L500,00 L0,0 Z" style={{stroke: 'none'}} />
