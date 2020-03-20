@@ -25,6 +25,7 @@ export const Steps = {
     LINKTO: 'linkto',
     BILAN: 'bilan',
     BUTTON_CLICK: 'button_click',
+    FORM_SUBMIT: 'form_submit',
     TO_MATCHING: 'to_matching',
     TO_SERVICE: 'to_service',
     TO_SUMMARY: 'to_summary',
