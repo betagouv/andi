@@ -36,6 +36,12 @@ export const query = graphql`
     }
 }
 `
+const FormElement = ({name, text, onclick}) => (
+    <div className="form__group">
+      <label htmlFor={ name }>{ text }</label>
+      <input name={ name } id={ name } type="text" required onClick={ onclick }/>
+    </div>
+)
 
 // const abbr_andi = "accompagnement numérique au développement de l'insertion"
 
@@ -196,6 +202,28 @@ class IndexPage extends React.Component {
                     </div>
                   </div>
 
+                  <br />
+                  <br />
+                  <div className="container-fluid" style={{marginTop: '2rem', marginBottom: '1rem'}}>
+                    <div className="row numlist">
+                      <div className="col-md-10 offset-xl-1 offset-0 col-12">
+                        <h2>Restez chez vous, ANDi vient à vous</h2>
+                        <div className="row mt-0">
+                            <div className="col-12 col-lg-6 offset-xl-1 offset-0">
+                                Pendant la période de confinement, ANDi vous propose de découvrir chaque semaine des ressources et des conseils pour préparer votre projet professionnel,
+                                vous former à distance et rester mobilisé. Inscrivez-vous à notre newsletter !
+                            </div>
+                            <div className="col-12 col-lg-6 offset-xl-1 offset-0">
+                                <form action="https://gouv.us3.list-manage.com/subscribe/post?u=ccc541cc9db76240c60a2c90a&amp;id=716406dce6" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                    <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true"><input type="text" name="b_ccc541cc9db76240c60a2c90a_716406dce6" tabindex="-1" value="" /></div>
+                                    <FormElement name="EMAIL" type="email" id="mce-EMAIL" text={ this.d.email }/>
+                                    <input type="submit" className="button" value="Inscription Newsletter"/>
+                                </form>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <br />
                   <br />
                 </section>
