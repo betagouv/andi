@@ -121,7 +121,7 @@ const Hero = ({title, subtitle, text, button}) => {
         
 
      return (
-     <section className="section section-grey section__bottom_svg" role="banner" style={{zIndex:0}}>
+     <section className="section section-grey section__bottom_svg" style={{zIndex:0}}>
      <div className="container-fluid">
          <div className="row">
            <div className="col-lg-7 offset-lg-1 col-sm-10 offset-sm-1 col-xs-12 offset-xs-0 title_wrapper">
@@ -168,8 +168,8 @@ class IndexPage extends React.Component {
 
     render() {
         return (
-            <Layout title="Accueil ANDi" showNav={ true } >
-             <div className="container-fluid covid" style={{ marginTop: '.5rem 0rem 1rem 0rem',  padding: '1rem 0rem 1rem 0rem', zIndex:100, position:'relative'}}>
+            <Layout title="Accueil ANDi" showNav={ true } role="banner">
+             <div className="container-fluid covid" style={{ margin: '.5rem 0rem 1rem 0rem',  padding: '1rem 0rem 1rem 0rem', zIndex:100, position:'relative'}}>
                     <div className="row numlist">
                       <div className="col-md-10 offset-xl-1 offset-0 col-12" style={{paddingLeft:'2.1rem'}}>
                         <h2>Restez chez vous, ANDi vient à vous</h2>
@@ -197,8 +197,8 @@ class IndexPage extends React.Component {
                     </div>
                   </div>
 
-            <Hero title={ this.d.titre } subtitle={ this.d.titre_description} text={this.d.slogan} button={this.d.bouton} />
             <main role="main" style={{zIndex:100}}>
+                <Hero title={ this.d.titre } subtitle={ this.d.titre_description} text={this.d.slogan} button={this.d.bouton} />
                                 {/* <div className="svg_container" aria-hidden="true" focusable="false">
                   <svg className="svg_1" viewBox="0 70 500 80" preserveAspectRatio="none">
                     <rect x={0} y={0} width={500} height={500} style={{stroke: 'none'}} />
