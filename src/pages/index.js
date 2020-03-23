@@ -184,6 +184,7 @@ class IndexPage extends React.Component {
                                         <input type="text" name="b_ccc541cc9db76240c60a2c90a_716406dce6" tabindex="-1" value="" />
                                         <input type="text" name="u" value="ccc541cc9db76240c60a2c90a" tabindex="-1" />
                                         <input type="text" name="id" value="716406dce6" tabindex="-1" />
+                                        <input type="text" name="group[26893]" value="1" tabindex="-1" />
                                     </div>
                                     <FormElement name="EMAIL" type="email" id="mce-EMAIL" text="Votre adresse e-mail:"/>
                                     <input type="submit" className="button" name="subscribe" style={{fontSize:'1.4em'}}
