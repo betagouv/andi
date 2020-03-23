@@ -168,8 +168,8 @@ class IndexPage extends React.Component {
 
     render() {
         return (
-            <Layout title="Accueil ANDi" showNav={ true } role="banner">
-             <div className="container-fluid covid" style={{ margin: '.5rem 0rem 1rem 0rem',  padding: '1rem 0rem 1rem 0rem', zIndex:100, position:'relative'}}>
+             <Layout title="Accueil ANDi" showNav={ true } role={ false }>
+             <div className="container-fluid covid" style={{ margin: '.5rem 0rem 1rem 0rem',  padding: '1rem 0rem 1rem 0rem', zIndex:100, position:'relative'}} role="banner">
                     <div className="row numlist">
                       <div className="col-md-10 offset-xl-1 offset-0 col-12" style={{paddingLeft:'2.1rem'}}>
                         <h2>Restez chez vous, ANDi vient à vous</h2>
@@ -184,6 +184,7 @@ class IndexPage extends React.Component {
                                         <input type="text" name="b_ccc541cc9db76240c60a2c90a_716406dce6" tabindex="-1" value="" />
                                         <input type="text" name="u" value="ccc541cc9db76240c60a2c90a" tabindex="-1" />
                                         <input type="text" name="id" value="716406dce6" tabindex="-1" />
+                                        <input type="text" name="group[26893]" value="1" tabindex="-1" />
                                     </div>
                                     <FormElement name="EMAIL" type="email" id="mce-EMAIL" text="Votre adresse e-mail:"/>
                                     <input type="submit" className="button" name="subscribe" style={{fontSize:'1.4em'}}
