@@ -172,13 +172,13 @@ class IndexPage extends React.Component {
              <div className="container-fluid covid" style={{ margin: '.5rem 0rem 1rem 0rem',  padding: '1rem 0rem 1rem 0rem', zIndex:100, position:'relative'}} role="banner">
                     <div className="row numlist">
                       <div className="col-md-10 offset-xl-1 offset-0 col-12" style={{paddingLeft:'2.1rem'}}>
-                        <h2>Restez chez vous, ANDi vient à vous</h2>
+                        <h1>Restez chez vous, ANDi vient à vous</h1>
                         <div className="row mt-0">
                             <div className="col-12 col-lg-8 offset-xl-1 offset-0" style={{fontSize: '1.4em'}}>
                                 Pendant la période de confinement, ANDi vous propose de découvrir chaque semaine des ressources et des conseils pour préparer votre projet professionnel,
                                 vous former à distance et rester mobilisé en sécurité. Inscrivez-vous à notre newsletter ! 
                             </div>
-                            <div className="col-12 col-lg-6 offset-xl-1 offset-0">
+                            <div className="col-11 col-lg-6 offset-xl-1 offset-0">
                                 <form action= {"https://gouv.us3.list-manage.com/subscribe/post"} id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                                     <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true">
                                         <input type="text" name="b_ccc541cc9db76240c60a2c90a_716406dce6" tabindex="-1" value="" />
