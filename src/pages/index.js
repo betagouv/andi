@@ -174,7 +174,7 @@ class IndexPage extends React.Component {
                       <div className="col-md-10 offset-xl-1 offset-0 col-12" style={{paddingLeft:'2.1rem'}}>
                         <h1>Restez chez vous, ANDi vient à vous</h1>
                         <div className="row mt-0">
-                            <div className="col-12 col-lg-8 offset-xl-1 offset-0" style={{fontSize: '1.4em'}}>
+                            <div className="col-11 col-lg-8 offset-xl-1 offset-0" style={{fontSize: '1.4em'}}>
                                 Pendant la période de confinement, ANDi vous propose de découvrir chaque semaine des ressources et des conseils pour préparer votre projet professionnel,
                                 vous former à distance et rester mobilisé en sécurité. Inscrivez-vous à notre newsletter ! 
                             </div>
