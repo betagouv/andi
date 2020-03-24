@@ -7,7 +7,7 @@ const StatsPage = () => {
 
     var jwt = require("jsonwebtoken");
     
-    var METABASE_SITE_URL = "http://andi.beta.gouv.fr/metabase";
+    var METABASE_SITE_URL = "https://andi.beta.gouv.fr/metabase";
     var METABASE_SECRET_KEY = "cf2cdd6614efbeea460a916373ae8b02f7a5da4f8090744d826a637327b2f94a";
     
     var payload = {
