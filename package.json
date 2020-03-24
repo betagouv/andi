@@ -26,6 +26,7 @@
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-source-graphql": "^2.1.33",
     "gatsby-transformer-sharp": "^2.3.16",
+    "jsonwebtoken": "^8.5.1",
     "leaflet": "^1.6.0",
     "markdown-react-js": "^1.0.2",
     "prop-types": "^15.7.2",
