@@ -12,30 +12,25 @@ const StatsPage = () => {
     useEffect( () => {
         var jwt = require("jsonwebtoken");
         
-        var payload = {
-          resource: { question: 11 },
-          params: {},
-          exp: Math.round(Date.now() / 1000) + (10 * 60) // 10 minute expiration
-        };
-
+        var payload = { resource: { dashboard:  3}, params: {}, exp: Math.round(Date.now() / 1000) + (10 * 60)};
         var token = jwt.sign(payload, METABASE_SECRET_KEY);
-        
-        setIframeUrl(METABASE_SITE_URL + "/embed/question/" + token + "#bordered=true&titled=true");
+        setIframeUrl(METABASE_SITE_URL + "/embed/dashboard/" + token + "#bordered=true&titled=true");
     }, [] );
 
     return (
     <Layout>
       <section className="section">
         <div className="container">
-            <h1>Stats ANDi</h1>
-                <iframe
-                    title="metabase_test"
-                    src={iframeUrl}
-                    frameborder="0"
-                    width="800"
-                    height="600"
-                    allowtransparency
-                ></iframe>
+            <h1>Statistiques ANDi</h1>
+            <p>Cette page affiche, en temps réel, les stastiques de fréquentation et d'utilisation du service numérique ANDi</p>
+            <iframe
+                title="metabase_test"
+                src={iframeUrl}
+                frameborder="0"
+                width="1100"
+                height="1300"
+                allowtransparency
+            ></iframe>
         </div>
       </section>
     </Layout>
