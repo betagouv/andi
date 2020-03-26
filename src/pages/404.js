@@ -1,6 +1,7 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import { graphql, Link } from "gatsby"
 import { mdReact } from 'markdown-react-js';
+import { track, Steps, getSessionId } from '../../static/tracker.js';
 
 // import Image from "../components/image"
  import SEO from "../components/seo"
@@ -22,7 +23,18 @@ export const query = graphql`
 }
 `
 
-const Hero = ({title, text, button}) => (
+function track_event(step, meta={}) {
+    return () => {track('404-page', step, meta)}
+}
+
+const Hero = ({title, text, button}) => {
+
+    const [sessionId, setSessionId] = useState(0);
+    useEffect( () => {
+        setSessionId(getSessionId())
+    }, [] );
+
+    return (
      <section className="section section-grey section__bottom_svg" role="banner">
        <div className="container-fluid">
          <div className="row">
@@ -35,7 +47,7 @@ const Hero = ({title, text, button}) => (
              </div>
              <br />
              <br />
-             <Link className="button large btn-xl" to="/" style={{top: '-40px'}}>{ "Retour à l'accueil 🚀" }</Link>
+             <Link className="button large btn-xl" to={"/?sid=" + sessionId} style={{top: '-40px'}} onClick={track_event(Steps.LINKTO, {link:'/', type:'internal'})}>{ "Retour à l'accueil 🚀" }</Link>
            </div>
            <div className="col-lg-4 col-sm-12 text-right no-gutters">
            <img  className="opt_img illu-1" src={illu1} alt="" srcSet={`${illu1_2x} 2x, ${illu1_3x} 3x`}  />
@@ -43,7 +55,8 @@ const Hero = ({title, text, button}) => (
          </div>
        </div>
      </section>
-)
+    )
+}
 
 
 class ErrorPage extends React.Component {
