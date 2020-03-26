@@ -43,7 +43,7 @@ const Header = ({showNav=true}) => {
             ? <div className="sub-nav">
                 <ul className="navbar-nav">
                   <li className="nav-item">
-                    <Link to="/" className='nav-link' activeClassName="active" style={{marginRight: '0px'}} onClick={ track_event(Steps.LINKTO, {link:'/', type:'internal'}) }><span className="icon-home">&nbsp;</span>Accueil</Link>
+                    <Link to={"/?sid=" + sessionId} className='nav-link' activeClassName="active" style={{marginRight: '0px'}} onClick={ track_event(Steps.LINKTO, {link:'/', type:'internal'}) }><span className="icon-home">&nbsp;</span>Accueil</Link>
                   </li>
                   <li className="nav-item">
                      <a className='nav-link' activeClassName="active" href={"/service/summary?sid=" + sessionId} onClick={track_event(Steps.TO_SUMMARY)} ><span className="icon-glass">&nbsp;</span>Chercher une immersion</a>
