@@ -22,7 +22,7 @@ const StatsPage = () => {
       <section className="section">
         <div className="container">
             <h1>Statistiques ANDi</h1>
-            <p>Cette page affiche, en temps réel, les stastiques de fréquentation et d'utilisation du service numérique ANDi</p>
+            <p>Cette page affiche, en temps réel, les stastiques de fréquentation et d'utilisation du service numérique ANDi.</p>
             <iframe
                 title="metabase_test"
                 src={iframeUrl}
