@@ -33,10 +33,14 @@ const Header = ({showNav=true}) => {
             <a href="https://www.caissedesdepots.fr/" className="navbar_cdc" onClick={ track_event(Steps.LINKTO, {link:'cdc', type:'external'}) }>
                <img src={cdcSVG}  alt="logo caisse des dépôts"/>
             </a>
-            <Link to="/" className="navbar__home" onClick={ track_event(Steps.LINKTO, {link:'/', type:'internal'}) } style={{marginTop: '-6px'}}>
+            <Link to="/" className="navbar__home" onClick={ track_event(Steps.LINKTO, {link:'/', type:'internal'}) } style={{marginTop: '-6px', marginRight: '6px'}}>
               <img className="navbar__logo" src={marianneSVG} alt="logo république française" />
               <span className="navbar_domain">andi<b>.beta.gouv.</b><em>fr</em></span>
             </Link>
+            <a id="navbar_firm" href={"/service/employeurs?sid=" + sessionId} onClick={track_event(Steps.LINKTO, {link:'/service/employeurs', type:'service'})}>
+                Employeur : devenez ANDi accueillant
+                <span role="img" className="icn icon-arrow-right" aria-hidden="true" style={{marginLeft:'1rem'}}></span>
+            </a>
           </div>
           
           { showNav

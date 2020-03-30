@@ -16,6 +16,10 @@ body, html {
     .navbar {
         padding-left:0;
     }
+
+    .navbar__container {
+        flex-wrap: wrap;
+    }
 }
 
 @media (max-width:410px) {
@@ -40,6 +44,10 @@ body, html {
 
     .navbar .sub-nav .navbar-nav .nav-item:last-child {
       margin-bottom:0;
+    }
+
+    .navbar__home {
+        margin-left:0;
     }
 }
 
