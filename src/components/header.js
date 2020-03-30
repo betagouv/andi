@@ -38,7 +38,7 @@ const Header = ({showNav=true}) => {
               <span className="navbar_domain">andi<b>.beta.gouv.</b><em>fr</em></span>
             </Link>
             <a id="navbar_firm" href={"/service/employeurs?sid=" + sessionId} onClick={track_event(Steps.LINKTO, {link:'/service/employeurs', type:'service'})}>
-                Employeur: devenez ANDi accueillant
+                Employeur : devenez ANDi accueillant
             </a>
           </div>
           
