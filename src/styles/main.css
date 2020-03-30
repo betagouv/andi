@@ -5042,8 +5042,3 @@ dd span {
     background-color: #333;
     color: #e5e5e5;
 }
-
-#navbar_firm:after {
-    content : " >";
-    font-family: "Source Sans Pro", Arial, sans-serif;
-}
