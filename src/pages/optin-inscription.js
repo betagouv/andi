@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import { track, Steps, getSessionId } from '../../static/tracker.js';
 
 function track_event(step, meta={}) {
-    return () => {track('merci-inscription-page', step, meta)}
+    return () => {track('optin-inscription-page', step, meta)}
 }
 
 const OptinPage= () => {
@@ -36,10 +36,6 @@ const OptinPage= () => {
               </div>
             </div>
           </div>
-
-
-        <section style={{paddingBottom: '100px'}}>
-        </section>
     </Layout>
     )
 }

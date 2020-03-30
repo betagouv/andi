@@ -33,10 +33,6 @@ const MerciPage = () => {
               </div>
             </div>
           </div>
-
-
-        <section style={{paddingBottom: '100px'}}>
-        </section>
     </Layout>
     )
 }
