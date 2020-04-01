@@ -28,7 +28,7 @@ const StatsPage = () => {
                 src={iframeUrl}
                 frameborder="0"
                 width="1100"
-                height="1300"
+                height="1500"
                 allowtransparency
             ></iframe>
         </div>
