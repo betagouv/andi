@@ -2,7 +2,7 @@
   "name": "ANDi",
   "private": true,
   "description": "Faciliter l'immersion professionnelle des personnes en situation de handicap",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "author": "Pieterjan Montens <pieterjan@montens.net>",
   "dependencies": {
     "anchor-scroll": "^2.0.0",
