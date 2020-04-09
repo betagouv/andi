@@ -79,6 +79,7 @@ CREATE TABLE entreprises (
     departement CHARACTER VARYING(128),
     siege BOOLEAN,
     boe BOOLEAN DEFAULT False,
+    website TEXT,
     -- geo
     lat NUMERIC,
     lon NUMERIC,
