@@ -7,6 +7,7 @@ CREATE EXTENSION IF NOT EXISTS earthdistance;
 CREATE EXTENSION IF NOT EXISTS postgis;
 -- Extension for accelerated text search
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
+DROP INDEX IF EXISTS entreprises_boe_idx;
 DROP INDEX IF EXISTS entreprises_geoloc;
 DROP INDEX IF EXISTS entreprises_naf;
 DROP INDEX IF EXISTS entreprises_naf_macro;
@@ -77,6 +78,8 @@ CREATE TABLE entreprises (
     region CHARACTER VARYING(128),
     departement CHARACTER VARYING(128),
     siege BOOLEAN,
+    boe BOOLEAN DEFAULT False,
+    website TEXT,
     -- geo
     lat NUMERIC,
     lon NUMERIC,
@@ -101,6 +104,7 @@ CREATE TABLE entreprises (
 );
 
 
+CREATE INDEX entreprises_boe_idx ON entreprises((1)) WHERE boe;
 CREATE INDEX entreprises_geoloc ON public.entreprises USING GIST (public.ll_to_earth((lat)::double precision, (lon)::double precision));
 CREATE INDEX entreprises_naf ON public.entreprises USING BTREE (naf);
 CREATE INDEX entreprises_employeur ON public.entreprises USING BTREE (caractere_employeur);
