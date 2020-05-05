@@ -19,9 +19,10 @@
 - 🧭 Celui-ci, qui contient le site disponible sur [andi.beta.gouv.fr](https://andi.beta.gouv.fr)
 - 🐳 [andi-docker](https://github.com/betagouv/andi-docker/), qui contient les images docker des services secondaires (gestionnaire formulaire, backoffice, ...)
 - 🎚 [andi-matching](https://github.com/betagouv/andi-matching/), qui contient l'algorithme de matching et les interfaces d'accès (CLI, API, ...)
-- 📟 [andi-matching-ui](https://github.com/betagouv/andi-matching-ui/), qui contient un prototype d'interface web pour l'outil de matching
+- 📟 [andi-matching-ui](https://github.com/betagouv/andi-matching-ui/), qui contient un prototype d'interface web pour l'outil de matching (obsolète)
 - 🏗 [andi-service](https://github.com/betagouv/andi-service), qui contient le MVP du service numérique développé par ANDi
 - 🧪 [andi-data](https://github.com/betagouv/andi-data), qui contient les outils et résultats d'analyses des données dans le cadre du développement du service ANDi
+- 🐍 [andi-python](https://github.com/betagouv/andi-python), qui contient divers outils et scripts python utilisés lors des phases d'expérimentation d'ANDi
 
 
 # 🧭 Page d'accueil d'ANDi

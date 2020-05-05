@@ -36,6 +36,12 @@ export const query = graphql`
     }
 }
 `
+const FormElement = ({name, text, onclick, type}) => (
+    <div className="form__group">
+      <label htmlFor={ name }>{ text }</label>
+      <input name={ name } id={ name } type={ type }required onClick={ onclick }/>
+    </div>
+)
 
 // const abbr_andi = "accompagnement numérique au développement de l'insertion"
 
@@ -115,8 +121,8 @@ const Hero = ({title, subtitle, text, button}) => {
         
 
      return (
-     <section className="section section-grey section__bottom_svg" role="banner">
-       <div className="container-fluid">
+     <section className="section section-grey section__bottom_svg" style={{zIndex:0}}>
+     <div className="container-fluid">
          <div className="row">
            <div className="col-lg-7 offset-lg-1 col-sm-10 offset-sm-1 col-xs-12 offset-xs-0 title_wrapper">
              <h1>{ title }</h1>
@@ -162,17 +168,46 @@ class IndexPage extends React.Component {
 
     render() {
         return (
-            <Layout title="Accueil ANDi" showNav={ true } >
-            <Hero title={ this.d.titre } subtitle={ this.d.titre_description} text={this.d.slogan} button={this.d.bouton} />
-            <main role="main">
-               {/* <div className="svg_container" aria-hidden="true" focusable="false">
+             <Layout title="Accueil ANDi" showNav={ true } role={ false }>
+             <div className="container-fluid covid" style={{ margin: '.5rem 0rem 1rem 0rem',  padding: '1rem 0rem 1rem 0rem', zIndex:100, position:'relative'}} role="banner">
+                    <div className="row numlist">
+                      <div className="col-md-10 offset-xl-1 offset-0 col-12" style={{paddingLeft:'2.1rem'}}>
+                        <h1>Restez chez vous, ANDi vient à vous</h1>
+                        <div className="row mt-0">
+                            <div className="col-11 col-lg-8 offset-xl-1 offset-0" style={{fontSize: '1.4em'}}>
+                                Pendant la période de confinement, ANDi vous propose de découvrir chaque semaine des ressources et des conseils pour préparer votre projet professionnel,
+                                vous former à distance et rester mobilisé en sécurité. Inscrivez-vous à notre newsletter ! 
+                            </div>
+                            <div className="col-11 col-lg-6 offset-xl-1 offset-0">
+                                <form action= {"https://gouv.us3.list-manage.com/subscribe/post"} id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                    <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true">
+                                        <input type="text" name="b_ccc541cc9db76240c60a2c90a_716406dce6" tabindex="-1" value="" />
+                                        <input type="text" name="u" value="ccc541cc9db76240c60a2c90a" tabindex="-1" />
+                                        <input type="text" name="id" value="716406dce6" tabindex="-1" />
+                                        <input type="text" name="group[26893]" value="1" tabindex="-1" />
+                                    </div>
+                                    <FormElement name="EMAIL" type="email" id="mce-EMAIL" text="Votre adresse e-mail:"/>
+                                    <input type="submit" className="button" name="subscribe" style={{fontSize:'1.4em'}}
+                                     value="Je m'inscris" id="mc-embedded-subscribe"
+                                     onClick={track_event(Steps.FORM_SUBMIT, {type:'newsletter_subscription', destination:'mailchimp'})}
+                                    />
+                                </form>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+            <main role="main" style={{zIndex:100}}>
+                <Hero title={ this.d.titre } subtitle={ this.d.titre_description} text={this.d.slogan} button={this.d.bouton} />
+                                {/* <div className="svg_container" aria-hidden="true" focusable="false">
                   <svg className="svg_1" viewBox="0 70 500 80" preserveAspectRatio="none">
                     <rect x={0} y={0} width={500} height={500} style={{stroke: 'none'}} />
                     <path d="M0,100 C150,0 350,250 500,100 L500,00 L0,0 Z" style={{stroke: 'none'}} />
                   </svg>
                 </div> */}
                 <section>
-                  <div className="container-fluid" style={{marginTop: '0rem', marginBottom: '1rem'}}>
+                  <div className="container-fluid" style={{marginTop: '2rem', marginBottom: '1rem'}}>
                     <div className="row numlist">
                       <div className="col-xl-10 offset-xl-1 offset-0 col-12">
                         <h2 className="section__title " style={{marginTop: '0rem'}}>{ this.d.soustitre1 }</h2>

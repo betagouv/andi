@@ -25,6 +25,7 @@ export const Steps = {
     LINKTO: 'linkto',
     BILAN: 'bilan',
     BUTTON_CLICK: 'button_click',
+    FORM_SUBMIT: 'form_submit',
     TO_MATCHING: 'to_matching',
     TO_SERVICE: 'to_service',
     TO_SUMMARY: 'to_summary',
@@ -40,8 +41,9 @@ export const Steps = {
 }
 
 
-function computeRequestBody(page, action, meta) {
+function computeRequestBody(page, action, metaIn) {
     const timeNow = new Date();
+    const meta = Object.assign(metaIn, getUrlMeta());
 
     return {
         _v:1,
@@ -69,6 +71,30 @@ function uuidv4() {
 
 export function getSessionId() {
     if (SESSION_ID === "")
-        SESSION_ID =  uuidv4();
+        if (typeof document !== `undefined`) {
+            SESSION_ID = (new URL(document.location)).searchParams.get('sid') || uuidv4();
+        }
+        else {
+            SESSION_ID = uuidv4();
+        }
+        uuidv4();
     return SESSION_ID;
+}
+
+function getUrlMeta() {
+    // Avoid using JSON and interpreting user-provided values
+    var meta = {};
+    const doc = typeof document !== `undefined` ? document : null;
+    try {
+        const check = (new URL(doc.location)).searchParams.get('t');
+        const split1 = check.split(';');
+        for (var tuple of split1) {
+            const keyval = tuple.split(':');
+            const key = keyval[0].replace(/[^\-_0-9a-zA-Z]/g,'');
+            const val = keyval[1].replace(/[^\-_0-9a-zA-Z]/g,'');
+            meta[key] = val;
+        }
+    } finally {
+        return meta;
+    }
 }

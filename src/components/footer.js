@@ -34,6 +34,7 @@ const Footer = () => (
               <h2>Liens</h2>
               <ul className="footer-link">
                 <li><a href="mailto:ANDI_Startup@caissedesdepots.fr" title="Nous écrire un mail" onClick={ track_event(Steps.MAILTO, {link:'ANDI_Startup@caissedesdepots.fr'}) }>Nous contacter</a></li>
+                <li><Link to="/stats" onClick={ track_event(Steps.LINKTO, {link:'/stats', type:'internal'}) }>Statistiques ANDi</Link></li>
                 <li>
                     <ul className="social-link col-6 col-xs-4">
                     <li className="col icon"><a href="https://www.youtube.com/channel/UCpdxQewkNIf11dwc1nqgS8A/featured?disable_polymer=1" title="YouTube ANDi" onClick={ track_event(Steps.LINKTO, {link:'youtube', type:'external'}) }><span className="icon-youtube"></span></a></li>

@@ -5006,6 +5006,10 @@ dd span {
     display:flex;
 }
 
+.covid {
+    background-color:#ccdef4;
+}
+
 .pointdetail h3 {
     font-size:1.3em;
     margin:0;
@@ -5021,4 +5025,20 @@ dd span {
     border-left:2px solid #e5e5e5;
     padding-left:.4em;
     padding-right:.4em;
+}
+
+#navbar_firm {
+    background-color: #e5e5e5;
+    color: #333;
+    align-items: center;
+    padding:.4rem;
+    text-decoration:none;
+    font-size:1.1em;
+    align-self:flex-start;
+    margin-left:auto;
+}
+
+#navbar_firm:hover {
+    background-color: #333;
+    color: #e5e5e5;
 }
