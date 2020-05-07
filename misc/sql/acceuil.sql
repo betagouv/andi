@@ -1,10 +1,10 @@
 -- DROP STATEMENTS
+DROP TABLE IF EXISTS andi_accueil;
 DROP TYPE IF EXISTS andi_couverture;
 DROP TYPE IF EXISTS andi_acces;
 DROP TYPE IF EXISTS andi_pmr;
 DROP TYPE IF EXISTS andi_amenagements;
 DROP TYPE IF EXISTS andi_materiel;
-DROP TABLE IF EXISTS andi_acceuil;
 
 -- END OF DROP STATEMENTS
 
@@ -73,17 +73,17 @@ CREATE TABLE andi_accueil (
     couverture PUBLIC.andi_couverture,
     couverture_meta TEXT,
 
-    acces PUBLIC.andi_acces,
+    acces PUBLIC.andi_acces[],
     acces_meta TEXT,
 
     accueil_pmr BOOLEAN DEFAULT NULL, -- true, false, none = unknown
-    pmr PUBLIC.andi_pmr,
+    pmr PUBLIC.andi_pmr[],
     pmr_meta TEXT,
 
-    amenagement PUBLIC.andi_amenagements,
+    amenagement PUBLIC.andi_amenagements[],
     amenagement_meta TEXT,
 
-    materiel PUBLIC.andi_materiel,
+    materiel PUBLIC.andi_materiel[],
     materiel_meta TEXT,
 
     plateforme BOOLEAN DEFAULT NULL, --true, false, none = unknown
