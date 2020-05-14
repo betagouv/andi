@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/betagouv/andi.svg?branch=master)](https://travis-ci.org/betagouv/andi)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/betagouv/andi-matching/graphs/commit-activity)
-[![Generic badge](https://img.shields.io/badge/ANDi-oui-green.svg)](https://shields.io/)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://GitHub.com/betagouv/andi-matching/graphs/commit-activity)
+[![Generic badge](https://img.shields.io/badge/ANDi-toujours-green.svg)](https://shields.io/)
 <p align="center">
   <a href="https://andi.beta.gouv.fr">
     <img alt="Début description. Marianne. Fin description." src="https://upload.wikimedia.org/wikipedia/fr/3/38/Logo_de_la_R%C3%A9publique_fran%C3%A7aise_%281999%29.svg" width="90" />
